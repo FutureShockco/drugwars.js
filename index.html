@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DrugWars WS</title>
+  <script src="https://cdn.jsdelivr.net/npm/kbyte"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+var client = new kbyte.Client('ws://localhost:3000');
+
+/** Subscribe to notifications */
+client.subscribe(function(err, result) {
+  console.log('Subscribe', result);
+});
+
+/** Subscribe */
+client.request('subscribe', 'fabien', function(err, result) {
+  console.log('Subscribe', err, result);
+});
+
+/** Get props */
+client.request('get_props', null, function(err, result) {
+  console.log('Props', err, result);
+});
+
+/** Get prize props */
+client.request('get_prize_props', null, function(err, result) {
+  console.log('Prize props', err, result);
+});
+
+/** Get user */
+client.request('get_user', 'fabien', function(err, result) {
+  console.log('User', err, result);
+});
+
+/** Get attack */
+client.request('get_fights', 'fabien', function(err, result) {
+  console.log('Attack', err, result);
+});
+</script>
+
+</body>
+</html>
