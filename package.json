@@ -1,4 +1,17 @@
 {
   "name": "drugwars",
-  "version": "0.0.3"
+  "version": "0.0.4",
+  "description": "A lightweight JavaScript library for DrugWars",
+  "main": "index.js",
+  "dependencies": {
+    "ws": "^6.1.2"
+  },
+  "devDependencies": {
+    "bluebird": "^3.5.3",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "author": "Bonustrack",
+  "license": "MIT"
 }
