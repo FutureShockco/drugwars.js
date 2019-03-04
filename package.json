@@ -13,5 +13,12 @@
     "eslint-plugin-import": "^2.14.0"
   },
   "author": "Bonustrack",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FutureShockco/drugwars.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FutureShockco/drugwars.js/issues"
+  }
 }
