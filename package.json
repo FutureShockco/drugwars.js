@@ -1,10 +1,10 @@
 {
   "name": "drugwars",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A lightweight JavaScript library for DrugWars",
   "main": "index.js",
   "dependencies": {
-    "ws": "^6.1.2"
+    "kbyte": "0.0.4"
   },
   "devDependencies": {
     "bluebird": "^3.5.3",
