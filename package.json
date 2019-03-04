@@ -1,6 +1,6 @@
 {
   "name": "drugwars",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A lightweight JavaScript library for DrugWars",
   "main": "index.js",
   "dependencies": {
