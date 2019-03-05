@@ -9,10 +9,11 @@ class Unit {
     this.spec = unitsJson[key];
     this.health = unitsJson[key].defense;
     this.dead = false;
+    this.priority = unitsJson[key].priority;
   }
 
   takeDamages(damages) {
-    debug(`${this.name} ${this.key} ${this.i} -${damages}`);
+    debug(`${this.name} ${this.key} ${this.i} -${damages}/${this.health}`);
     if (this.health > damages) {
       this.health = this.health - damages;
     } else {

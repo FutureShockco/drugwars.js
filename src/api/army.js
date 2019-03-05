@@ -18,8 +18,7 @@ class Army {
   getAttacks() {
     const attacks = [];
 
-    const unitsSorted = orderBy(this.units, ['attack_priority'], ['asc']);
-    unitsSorted.forEach((unit) => {
+    this.units.forEach((unit) => {
       if (!unit.dead) {
         debug(`${this.name} ${unit.key} ${unit.i} attack ${unit.spec.attack}`);
         attacks.push(unit.spec.attack);
@@ -31,7 +30,7 @@ class Army {
   takeDamages(damages) {
     const pending = damages;
 
-    const unitsSorted = orderBy(this.units, ['defense_priority'], ['asc']);
+    const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
     unitsSorted.forEach((unit) => {
       while (!unit.dead && pending.length > 0) {
         unit.takeDamages(pending[0]);
