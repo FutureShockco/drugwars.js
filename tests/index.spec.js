@@ -32,7 +32,6 @@ describe('Fights', () => {
           {
             key: 'bouncer',
             amount: 12,
-            dead: 1,
           },
           {
             key: 'knifer',
@@ -157,92 +156,61 @@ describe('Fights', () => {
       attacker: {
         units: [
           {
-            key: 'ninja',
-            amount: 1,
-          }
-        ]
+            key: 'bouncer',
+            amount: 5,
+          },
+          {
+            key: 'rowdy',
+            amount: 10,
+          },
+        ],
       },
       target: {
         units: [
-          {
-            key: 'bazooka',
-            amount: 1,
-          },
           {
             key: 'big_mama',
             amount: 1,
           },
           {
-            key: 'bouncer',
-            amount: 61,
-          },
-          {
-            key: 'gunman',
-            amount: 78,
-          },
-          {
-            key: 'hitman',
+            key: 'mercenary',
             amount: 1,
           },
-          {
-            key: 'knifer',
-            amount: 85,
-          },
-          {
-            key: 'ninja',
-            amount: 1,
-          }
-        ]
-      }
+        ],
+      },
     };
 
     expected = {
-      result: 3,
+      result: 1,
       attacker: {
         units: [
           {
-            key: 'ninja',
-            amount: 1,
-            dead: 1
-          }
-        ]
+            key: 'bouncer',
+            amount: 5,
+          },
+          {
+            key: 'rowdy',
+            amount: 10,
+            dead: 8,
+          },
+        ],
       },
       target: {
         units: [
           {
-            key: 'bouncer',
-            amount: 61,
-            dead: 5,
-          },
-          {
-            key: 'knifer',
-            amount: 85,
-          },
-          {
-            key: 'gunman',
-            amount: 78,
-          },
-          {
-            key: 'hitman',
-            amount: 1,
-          },
-          {
-            key: 'ninja',
-            amount: 1,
-          },
-          {
             key: 'big_mama',
             amount: 1,
+            dead: 1,
           },
           {
-            key: 'bazooka',
+            key: 'mercenary',
             amount: 1,
+            dead: 1,
           },
-        ]
-      }
+        ],
+      },
     };
 
-    it('smaller units should die first', () => {
+    it('the priority is respected', () => {
       expect(new Fight(fight).fight()).toEqual(expected);
     });
   });
