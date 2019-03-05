@@ -159,8 +159,8 @@ describe('Fights', () => {
           {
             key: 'ninja',
             amount: 1,
-          }
-        ]
+          },
+        ],
       },
       target: {
         units: [
@@ -174,26 +174,10 @@ describe('Fights', () => {
           },
           {
             key: 'bouncer',
-            amount: 61,
-          },
-          {
-            key: 'gunman',
-            amount: 78,
-          },
-          {
-            key: 'hitman',
             amount: 1,
           },
-          {
-            key: 'knifer',
-            amount: 85,
-          },
-          {
-            key: 'ninja',
-            amount: 1,
-          }
-        ]
-      }
+        ],
+      },
     };
 
     expected = {
@@ -203,43 +187,27 @@ describe('Fights', () => {
           {
             key: 'ninja',
             amount: 1,
-            dead: 1
-          }
-        ]
+            dead: 1,
+          },
+        ],
       },
       target: {
         units: [
           {
-            key: 'bouncer',
-            amount: 61,
-            dead: 5,
-          },
-          {
-            key: 'knifer',
-            amount: 85,
-          },
-          {
-            key: 'gunman',
-            amount: 78,
-          },
-          {
-            key: 'hitman',
+            key: 'bazooka',
             amount: 1,
-          },
-          {
-            key: 'ninja',
-            amount: 1,
+            dead: 1,
           },
           {
             key: 'big_mama',
             amount: 1,
           },
           {
-            key: 'bazooka',
+            key: 'bouncer',
             amount: 1,
           },
-        ]
-      }
+        ],
+      },
     };
 
     it('smaller units should die first', () => {
