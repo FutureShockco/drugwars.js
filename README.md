@@ -57,7 +57,6 @@ client.request('get_fights', 'fabien', function(err, result) {
 
 // Log in with SteemConnect access token
 const token = 'eyJhbGciOiJIUzI...';
-
 client.request('login', token, function(err, result) {
   console.log('Subscribe', err, result);
 });
