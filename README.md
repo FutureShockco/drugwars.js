@@ -54,4 +54,11 @@ client.request('get_users', { maxDrugProductionRate: 0.1 }, function(err, result
 client.request('get_fights', 'fabien', function(err, result) {
   console.log('Attack', err, result);
 });
+
+// Log in with SteemConnect access token
+const token = 'eyJhbGciOiJIUzI...';
+
+client.request('login', token, function(err, result) {
+  console.log('Subscribe', err, result);
+});
 ```

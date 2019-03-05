@@ -1,11 +1,13 @@
 const { Client } = require('kbyte');
-const utils = require('./utils');
-const units = require('./units.json');
-const buildings = require('./buildings.json');
+const Fight = require('./src/api/fight');
+const units = require('./src/units.json');
+const buildings = require('./src/buildings.json');
+const utils = require('./src/utils');
 
 module.exports = {
   Client,
-  utils,
+  Fight,
   units,
   buildings,
+  utils,
 };
