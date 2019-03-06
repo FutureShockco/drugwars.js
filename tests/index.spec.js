@@ -180,17 +180,18 @@ describe('Fights', () => {
     };
 
     expected = {
-      result: 1,
+      result: 3,
       attacker: {
         units: [
           {
             key: 'bouncer',
             amount: 5,
+            dead: 5,
           },
           {
             key: 'rowdy',
             amount: 10,
-            dead: 8,
+            dead: 10,
           },
         ],
       },
@@ -199,12 +200,10 @@ describe('Fights', () => {
           {
             key: 'big_mama',
             amount: 1,
-            dead: 1,
           },
           {
             key: 'mercenary',
             amount: 1,
-            dead: 1,
           },
         ],
       },
