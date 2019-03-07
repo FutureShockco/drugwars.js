@@ -34,7 +34,7 @@ class Troop {
       const undead = parseFloat(healthAfterDamage / this.defense).toFixed(0);
       if (undead !== this.undead) {
         debug(`${this.name} ${this.key} ${this.undead - undead} dead`);
-        this.dead = this.undead - undead;
+        this.dead += this.undead - undead;
         this.undead = undead;
       }
     }
