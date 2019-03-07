@@ -1,15 +1,15 @@
-const debug = require('debug')('army');
 const { orderBy } = require('lodash');
 const Troop = require('./troop');
 
 class Army {
-  constructor(units, name) {
+  constructor(units, name, log) {
     this.troops = [];
     this.alive = true;
     this.name = name;
+    this.log = log;
 
     units.forEach((unit) => {
-      this.troops.push(new Troop(unit.key, unit.amount, name));
+      this.troops.push(new Troop(unit.key, unit.amount, name, log));
     });
   }
 
@@ -20,7 +20,7 @@ class Army {
       if (troop.undead > 0) {
         const attack = troop.getAttack();
         if (attack > 0) {
-          debug(`${this.name} ${troop.key} x ${troop.undead} attack ${attack}`);
+          this.log.add(`${this.name} ${troop.key} x ${troop.undead} attack ${attack}`);
           attacks.push(attack);
         }
       }
