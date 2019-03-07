@@ -1,8 +1,8 @@
-const debug = require('debug')('troop');
 const unitsJson = require('../units.json');
 
 class Troop {
-  constructor(key, amount, name) {
+  constructor(key, amount, name, log) {
+    this.log = log;
     this.key = key;
     this.amount = amount;
     this.name = name;
@@ -10,7 +10,6 @@ class Troop {
     this.attack = unitsJson[key].attack;
     this.defense = unitsJson[key].defense;
     this.priority = unitsJson[key].priority;
-
     this.dead = 0;
     this.undead = amount;
   }
@@ -23,17 +22,17 @@ class Troop {
     const health = this.undead * this.defense;
     const healthAfterDamage = health - damages;
 
-    debug(`${this.name} ${this.key} ${this.undead} -${damages}/${health}`);
+    this.log.add(`${this.name} ${this.key} ${this.undead} -${damages}/${health}`);
 
     if (healthAfterDamage <= 0) {
-      debug(`${this.name} ${this.key} ${this.undead} dead`);
+      this.log.add(`${this.name} ${this.key} ${this.undead} dead`);
 
       this.dead = this.amount;
       this.undead = 0;
     } else {
-      const undead = parseFloat(healthAfterDamage / this.defense).toFixed(0);
+      const undead = Math.ceil(healthAfterDamage / this.defense);
       if (undead !== this.undead) {
-        debug(`${this.name} ${this.key} ${this.undead - undead} dead`);
+        this.log.add(`${this.name} ${this.key} ${this.undead - undead} dead`);
         this.dead += this.undead - undead;
         this.undead = undead;
       }

@@ -1,21 +1,22 @@
-const debug = require('debug')('fight');
 const Army = require('./army');
+const Log = require('./log');
 
 class Fight {
   constructor(json) {
     this.attackerUnits = json.attacker.units || [];
     this.targetUnits = json.target.units || [];
+    this.log = new Log();
   }
 
   fight() {
-    debug('Fight start');
-    const attackerArmy = new Army(this.attackerUnits, 'A');
-    const targetArmy = new Army(this.targetUnits, 'T');
+    this.log.add('Fight start');
+    const attackerArmy = new Army(this.attackerUnits, 'attacker', this.log);
+    const targetArmy = new Army(this.targetUnits, 'target', this.log);
     let round = 0;
 
     while (attackerArmy.alive && targetArmy.alive) {
       round += 1;
-      debug(`Round ${round} start`);
+      this.log.add(`Round ${round} start`);
 
       const attackerAttacks = attackerArmy.getAttacks();
       const targetAttacks = targetArmy.getAttacks();
@@ -23,7 +24,7 @@ class Fight {
       targetArmy.takeDamages(attackerAttacks);
     }
 
-    debug(`Fight ended in round ${round}`);
+    this.log.add(`Fight ended in round ${round}`);
 
     let result = 2;
     if (attackerArmy.alive) {
@@ -41,6 +42,10 @@ class Fight {
         units: targetArmy.getResult(),
       },
     };
+  }
+
+  getLog() {
+    return this.log.log;
   }
 }
 
