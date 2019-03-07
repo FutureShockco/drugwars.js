@@ -209,7 +209,60 @@ describe('Fights', () => {
       },
     };
 
-    it('the priority is respected', () => {
+    it('should respect priority', () => {
+      expect(new Fight(fight).fight()).toEqual(expected);
+    });
+
+    fight = {
+      attacker: {
+        units: [
+          {
+            key: 'ninja',
+            amount: 5,
+          },
+        ],
+      },
+      target: {
+        units: [
+          {
+            key: 'rowdy',
+            amount: 1,
+          },
+          {
+            key: 'knifer',
+            amount: 1,
+          },
+        ],
+      },
+    };
+
+    expected = {
+      result: 1,
+      attacker: {
+        units: [
+          {
+            key: 'ninja',
+            amount: 5,
+          },
+        ],
+      },
+      target: {
+        units: [
+          {
+            key: 'rowdy',
+            amount: 1,
+            dead: 1,
+          },
+          {
+            key: 'knifer',
+            amount: 1,
+            dead: 1,
+          },
+        ],
+      },
+    };
+
+    it('should not kill ninja', () => {
       expect(new Fight(fight).fight()).toEqual(expected);
     });
   });

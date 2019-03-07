@@ -30,7 +30,7 @@ class Troop {
       this.dead = this.amount;
       this.undead = 0;
     } else {
-      const undead = parseFloat(healthAfterDamage / this.defense).toFixed(0);
+      const undead = Math.ceil(healthAfterDamage / this.defense);
       if (undead !== this.undead) {
         this.log.add(`${this.name} ${this.key} ${this.undead - undead} dead`);
         this.dead += this.undead - undead;
