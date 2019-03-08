@@ -1,4 +1,4 @@
-const { Fight } = require('..');
+const { Fight } = require('../src');
 
 describe('Fights', () => {
   describe('Resolve fights', () => {
