@@ -14,7 +14,7 @@ export default class Fight {
     const targetArmy = new Army(this.targetUnits, 'target', this.log);
     let round = 0;
 
-    while (attackerArmy.alive && targetArmy.alive) {
+    while (attackerArmy.alive && targetArmy.alive && round < 5) {
       round += 1;
       this.log.add(`Round ${round} start`);
 
