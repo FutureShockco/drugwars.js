@@ -27,9 +27,9 @@ export default class Fight {
     this.log.add(`Fight ended in round ${round}`);
 
     let result = 2;
-    if (attackerArmy.alive) {
+    if (attackerArmy.alive && !targetArmy.alive) {
       result = 1;
-    } else if (targetArmy.alive) {
+    } else if (!attackerArmy.alive && targetArmy.alive) {
       result = 3;
     }
 
