@@ -1,7 +1,7 @@
-const Army = require('./army');
-const Log = require('./log');
+import Army from './army';
+import Log from './log';
 
-class Fight {
+export default class Fight {
   constructor(json) {
     this.attackerUnits = json.attacker.units || [];
     this.targetUnits = json.target.units || [];
@@ -48,5 +48,3 @@ class Fight {
     return this.log.log;
   }
 }
-
-module.exports = Fight;

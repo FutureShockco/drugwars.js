@@ -1,7 +1,7 @@
-const { orderBy } = require('lodash');
-const Troop = require('./troop');
+import { orderBy } from 'lodash';
+import Troop from './troop';
 
-class Army {
+export default class Army {
   constructor(units, name, log) {
     this.troops = [];
     this.alive = true;
@@ -60,5 +60,3 @@ class Army {
     });
   }
 }
-
-module.exports = Army;
