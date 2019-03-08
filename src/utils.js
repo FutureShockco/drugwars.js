@@ -17,7 +17,7 @@ const calculateTimeToTrain = (coeff, level, amount) => {
   return (coeff * 80 - (level * 10) / 100) * amount * 1000;
 };
 
-module.exports = {
+export default {
   calculateCostToUpgrade,
   calculateTimeToBuild,
   calculateTimeToTrain,

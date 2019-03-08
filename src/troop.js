@@ -1,6 +1,6 @@
-const unitsJson = require('../units.json');
+import unitsJson from './units.json';
 
-class Troop {
+export default class Troop {
   constructor(key, amount, name, log) {
     this.log = log;
     this.key = key;
@@ -39,5 +39,3 @@ class Troop {
     }
   }
 }
-
-module.exports = Troop;

@@ -1,4 +1,4 @@
-class Log {
+export default class Log {
   constructor() {
     this.log = [];
   }
@@ -7,5 +7,3 @@ class Log {
     this.log.push(message);
   }
 }
-
-module.exports = Log;
