@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DrugWars.js</title>
+  <script src="../dist/drugwars.min.js"></script>
+</head>
+<body>
+
+<script>
+// Init WebSocket client
+const client = new drugwars.Client('wss://api.drugwars.io');
+
+// Get user
+client.request('get_user', 'fabien', (err, result) => {
+  console.log(err, result);
+});
+</script>
+
+</body>
+</html>
