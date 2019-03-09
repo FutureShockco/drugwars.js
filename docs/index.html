@@ -39,7 +39,11 @@
     </h4>
     <div v-for="(army) in ['attacker', 'target']" class="mb-4">
       <h4 class="mb-2">{{ army }}</h4>
-      <div class="Box p-2 mb-2" v-for="unit in result[army].units">
+      <div
+        class="Box p-2 mb-2"
+        v-for="unit in result[army].units"
+        v-if="unit.amount > 0"
+      >
         <b>
           <img
             :src="`https://drugwars.io/img/units/${unit.key}.jpg`"
@@ -66,10 +70,19 @@ window.onload = function() {
   new Vue({
     el: '#main',
     data: {
-      input: 'bouncer:10\nknifer:5\nVS\nninja:3',
+      input: null,
       error: null,
       log: [],
       result: {}
+    },
+    mounted() {
+      let attackerUnits = '';
+      let targetUnits = '';
+      Object.keys(drugwars.units).forEach(unit => {
+        attackerUnits += `${unit}:0\n`;
+        targetUnits += `${unit}:0\n`;
+      });
+      this.input = `${attackerUnits}VS\n${targetUnits}`;
     },
     methods: {
       handleSubmit: function () {
@@ -114,7 +127,7 @@ window.onload = function() {
 
 textarea {
   max-width: 600px;
-  height: 160px;
+  height: 450px;
 }
 </style>
 
