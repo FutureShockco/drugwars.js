@@ -5,7 +5,8 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars"></script>
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.12"></script>
+  <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 <body>
 
@@ -25,16 +26,28 @@
       Submit
     </button>
   </div>
-  <div class="mb-4">
+  <div v-if="log.length > 0" class="Box p-2 mb-4">
     <p v-for="l in log">{{ l }}</p>
   </div>
   <div v-if="result.result" class="mb-4">
-    <h4 class="mb-4"><b>Result:</b> {{ result.result }}</h4>
+    <h4 class="mb-4">
+      <b>Result:</b>
+      {{ result.result === 2
+        ? 'draw' : result.result === 1
+          ? 'attacker win' : 'attacker lose'
+      }}
+    </h4>
     <div v-for="(army) in ['attacker', 'target']" class="mb-4">
-      <h4>{{ army }}</h4>
-      <p v-for="unit in result[army].units">
+      <h4 class="mb-2">{{ army }}</h4>
+      <div class="Box p-2 mb-2" v-for="unit in result[army].units">
         <b>
-          {{ unit.key }}
+          <img
+            :src="`https://drugwars.io/img/units/${unit.key}.jpg`"
+            width="40"
+            height="40"
+            align="absmiddle"
+            class="mr-2"
+          />
           <span v-if="unit.dead" class="text-red">
             {{ unit.dead }}
           </span>
@@ -43,7 +56,7 @@
           </span>
           {{ unit.amount }}
         </b>
-      </p>
+      </div>
     </div>
   </div>
 </div>

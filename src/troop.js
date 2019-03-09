@@ -22,17 +22,19 @@ export default class Troop {
     const health = this.undead * this.defense;
     const healthAfterDamage = health - damages;
 
-    this.log.add(`${this.name} ${this.key} ${this.undead} -${damages}/${health}`);
+    this.log.add(
+      `[${this.name}] ${this.undead} x ${this.key} take damages -${damages} / ${health}`,
+    );
 
     if (healthAfterDamage <= 0) {
-      this.log.add(`${this.name} ${this.key} ${this.undead} dead`);
+      this.log.add(`[${this.name}] ${this.undead} x ${this.key} die`);
 
       this.dead = this.amount;
       this.undead = 0;
     } else {
       const undead = Math.ceil(healthAfterDamage / this.defense);
       if (undead !== this.undead) {
-        this.log.add(`${this.name} ${this.key} ${this.undead - undead} dead`);
+        this.log.add(`[${this.name}] ${this.undead - undead} x ${this.key} die`);
         this.dead += this.undead - undead;
         this.undead = undead;
       }

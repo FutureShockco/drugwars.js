@@ -21,7 +21,7 @@ export default class Army {
       if (troop.undead > 0) {
         const attack = troop.getAttack();
         if (attack > 0) {
-          this.log.add(`${this.name} ${troop.key} x ${troop.undead} attack ${attack}`);
+          this.log.add(`[${this.name}] ${troop.undead} x ${troop.key} attack +${attack}`);
           attacks.push(attack);
         }
       }
@@ -51,7 +51,7 @@ export default class Army {
   }
 
   getResult() {
-    return this.troops.map((troop) => {
+    return this.troops.map(troop => {
       const unit = {
         key: troop.key,
         amount: troop.amount,

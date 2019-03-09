@@ -7,15 +7,13 @@ const calculateCostToUpgrade = (amount, level) => {
     : ((amount * 2) / 5) * 2.5;
 };
 
-const calculateTimeToBuild = (id, coeff, level, hqLevel) => {
-  return id === 'headquarters'
+const calculateTimeToBuild = (id, coeff, level, hqLevel) =>
+  id === 'headquarters'
     ? 2500 * ((Math.sqrt(625 + 100 * (level * 250)) - 25) / 50) * 1000
     : ((coeff * 2000 * ((Math.sqrt(625 + 100 * (level * 250)) - 25) / 50)) / hqLevel) * 1000;
-};
 
-const calculateTimeToTrain = (coeff, level, amount) => {
-  return (coeff * 80 - (level * 10) / 100) * amount * 1000;
-};
+const calculateTimeToTrain = (coeff, level, amount) =>
+  (coeff * 80 - (level * 10) / 100) * amount * 1000;
 
 export default {
   calculateCostToUpgrade,
