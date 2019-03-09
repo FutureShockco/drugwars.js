@@ -15,6 +15,9 @@ jobs:
           name: Install packages
           command: npm install
       - run:
+          name: lint
+          command: npm run lint -- --no-fix
+      - run:
           name: test
           command: npm run test
       - save_cache:
