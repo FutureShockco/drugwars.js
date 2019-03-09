@@ -8,7 +8,7 @@ export default class Army {
     this.name = name;
     this.log = log;
 
-    units.forEach((unit) => {
+    units.forEach(unit => {
       this.troops.push(new Troop(unit.key, unit.amount, name, log));
     });
   }
@@ -16,7 +16,8 @@ export default class Army {
   getAttacks() {
     const attacks = [];
 
-    this.troops.forEach((troop) => {
+    const troopsSorted = orderBy(this.troops, ['priority'], ['asc']);
+    troopsSorted.forEach(troop => {
       if (troop.undead > 0) {
         const attack = troop.getAttack();
         if (attack > 0) {
@@ -32,7 +33,7 @@ export default class Army {
     const pending = damages;
 
     const troopsSorted = orderBy(this.troops, ['priority'], ['asc']);
-    troopsSorted.forEach((troop) => {
+    troopsSorted.forEach(troop => {
       if (troop.undead > 0 && pending.length > 0) {
         troop.takeDamages(pending[0]);
         pending.splice(0, 1);
