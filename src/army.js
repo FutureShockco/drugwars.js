@@ -76,7 +76,7 @@ export default class Army {
 
     const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
     unitsSorted.forEach(unit => {
-      while (!unit.dead && attacks.length > 0) {
+      if (attacks.length > 0) {
         unit.takeDamages(attacks[0]);
         attacks.splice(0, 1);
       }
