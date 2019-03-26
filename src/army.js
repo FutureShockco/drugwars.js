@@ -1,62 +1,110 @@
 import { orderBy } from 'lodash';
-import Troop from './troop';
+import Unit from './unit';
 
 export default class Army {
   constructor(units, name, log) {
-    this.troops = [];
+    this.units = [];
     this.alive = true;
     this.name = name;
     this.log = log;
 
     units.forEach(unit => {
-      this.troops.push(new Troop(unit.key, unit.amount, name, log));
+      for (let i = 0; i < unit.amount; i += 1) {
+        this.units.push(new Unit(unit.key, i + 1, name, log));
+      }
     });
   }
 
   getAttacks() {
     const attacks = [];
 
-    const troopsSorted = orderBy(this.troops, ['priority'], ['asc']);
-    troopsSorted.forEach(troop => {
-      if (troop.undead > 0) {
-        const attack = troop.getAttack();
-        if (attack > 0) {
-          this.log.add(`[${this.name}] ${troop.undead} x ${troop.key} attack +${attack}`);
-          attacks.push(attack);
-        }
+    this.units.forEach(unit => {
+      if (!unit.dead) {
+        const skills = unit.spec.skills || {};
+        const skillsMessage = skills.splash ? `splash (${skills.splash.range}) ` : '';
+        this.log.add(
+          `[${this.name}] ${unit.key} (${unit.i}) attack ${skillsMessage}+${unit.spec.attack}`,
+        );
+        attacks.push([unit.spec.attack, skills]);
       }
     });
+
     return attacks;
   }
 
   takeDamages(damages) {
+    const splashDamages = damages.filter(damage => damage[1] && damage[1].splash);
+    const normalDamages = damages.filter(damage => !damage[1] || !damage[1].splash);
+    this.takeSplashDamages(splashDamages);
+    this.takeNormalDamages(normalDamages);
+  }
+
+  takeNormalDamages(damages, loop = 0) {
     const pending = damages;
 
-    const troopsSorted = orderBy(this.troops, ['priority'], ['asc']);
-    troopsSorted.forEach(troop => {
-      if (troop.undead > 0 && pending.length > 0) {
-        troop.takeDamages(pending[0]);
+    const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
+    unitsSorted.forEach(unit => {
+      while (!unit.dead && pending.length > 0) {
+        unit.takeDamages(pending[0][0]);
         pending.splice(0, 1);
       }
     });
 
-    const troopsAlive = this.troops.filter(troop => troop.undead > 0).length;
-    if (!troopsAlive) {
+    const unitsAlive = this.units.filter(unit => !unit.dead).length;
+    if (!unitsAlive) {
       this.alive = false;
     }
 
-    if (troopsAlive > 0 && pending.length > 0) {
-      this.takeDamages(pending);
+    if (unitsAlive > 0 && pending.length > 0) {
+      this.takeNormalDamages(pending, loop + 1);
+    }
+  }
+
+  takeSplashDamages(damages) {
+    const attacks = [];
+
+    damages.forEach(damage => {
+      const attack = parseInt(damage[0] / damage[1].splash.range, 10);
+      for (let i = 0; i < damage[1].splash.range; i += 1) {
+        if (attacks[i]) {
+          attacks[i] += attack;
+        } else {
+          attacks.push(attack);
+        }
+      }
+    });
+
+    const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
+    unitsSorted.forEach(unit => {
+      while (!unit.dead && attacks.length > 0) {
+        unit.takeDamages(attacks[0]);
+        attacks.splice(0, 1);
+      }
+    });
+
+    const unitsAlive = this.units.filter(unit => !unit.dead).length;
+    if (!unitsAlive) {
+      this.alive = false;
     }
   }
 
   getResult() {
-    return this.troops.map(troop => {
-      const unit = {
-        key: troop.key,
-        amount: troop.amount,
-      };
-      if (troop.dead > 0) unit.dead = troop.dead;
+    const unitsObj = {};
+
+    this.units.forEach(unit => {
+      if (!unitsObj[unit.key]) {
+        unitsObj[unit.key] = {
+          amount: 0,
+          dead: 0,
+        };
+      }
+      unitsObj[unit.key].amount += 1;
+      unitsObj[unit.key].dead += unit.dead ? 1 : 0;
+    });
+
+    return Object.keys(unitsObj).map(key => {
+      const unit = { key, amount: unitsObj[key].amount };
+      if (unitsObj[key].dead) unit.dead = unitsObj[key].dead;
       return unit;
     });
   }
