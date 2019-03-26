@@ -64,11 +64,12 @@ export default class Army {
     const attacks = [];
 
     damages.forEach(damage => {
+      const attack = parseInt(damage[0] / damage[1].splash.range, 10);
       for (let i = 0; i < damage[1].splash.range; i += 1) {
         if (attacks[i]) {
-          attacks[i] += damage[0];
+          attacks[i] += attack;
         } else {
-          attacks.push(damage[0]);
+          attacks.push(attack);
         }
       }
     });
