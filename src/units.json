@@ -168,7 +168,12 @@
     "coeff": 4.28,
     "drugs_cost": 0,
     "weapons_cost": 15000,
-    "alcohols_cost": 13000
+    "alcohols_cost": 13000,
+    "skills": {
+      "splash": {
+        "range": 5
+      }
+    }
   },
   "mercenary": {
     "id": "mercenary",

@@ -20,8 +20,12 @@ export default class Army {
 
     this.units.forEach(unit => {
       if (!unit.dead) {
-        this.log.add(`[${this.name}] ${unit.key} (${unit.i}) attack +${unit.spec.attack}`);
-        attacks.push(unit.spec.attack);
+        const skills = unit.spec.skills || {};
+        const skillsMessage = skills.splash ? `splash (${skills.splash.range}) ` : '';
+        this.log.add(
+          `[${this.name}] ${unit.key} (${unit.i}) attack ${skillsMessage}+${unit.spec.attack}`,
+        );
+        attacks.push([unit.spec.attack, skills]);
       }
     });
 
@@ -29,12 +33,19 @@ export default class Army {
   }
 
   takeDamages(damages) {
+    const splashDamages = damages.filter(damage => damage[1] && damage[1].splash);
+    const normalDamages = damages.filter(damage => !damage[1] || !damage[1].splash);
+    this.takeSplashDamages(splashDamages);
+    this.takeNormalDamages(normalDamages);
+  }
+
+  takeNormalDamages(damages, loop = 0) {
     const pending = damages;
 
     const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
     unitsSorted.forEach(unit => {
       while (!unit.dead && pending.length > 0) {
-        unit.takeDamages(pending[0]);
+        unit.takeDamages(pending[0][0]);
         pending.splice(0, 1);
       }
     });
@@ -45,7 +56,34 @@ export default class Army {
     }
 
     if (unitsAlive > 0 && pending.length > 0) {
-      this.takeDamages(pending);
+      this.takeNormalDamages(pending, loop + 1);
+    }
+  }
+
+  takeSplashDamages(damages) {
+    const attacks = [];
+
+    damages.forEach(damage => {
+      for (let i = 0; i < damage[1].splash.range; i += 1) {
+        if (attacks[i]) {
+          attacks[i] += damage[0];
+        } else {
+          attacks.push(damage[0]);
+        }
+      }
+    });
+
+    const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
+    unitsSorted.forEach(unit => {
+      while (!unit.dead && attacks.length > 0) {
+        unit.takeDamages(attacks[0]);
+        attacks.splice(0, 1);
+      }
+    });
+
+    const unitsAlive = this.units.filter(unit => !unit.dead).length;
+    if (!unitsAlive) {
+      this.alive = false;
     }
   }
 
