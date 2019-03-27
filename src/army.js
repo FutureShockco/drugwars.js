@@ -19,7 +19,7 @@ export default class Army {
     const attacks = [];
 
     this.units.forEach(unit => {
-      if (!unit.dead) {
+      if (!unit.dead && unit.spec.attack > 0) {
         const skills = unit.spec.skills || {};
         const skillsMessage = skills.splash ? `splash (${skills.splash.range}) ` : '';
         this.log.add(
@@ -35,6 +35,11 @@ export default class Army {
   takeDamages(damages) {
     const splashDamages = damages.filter(damage => damage[1] && damage[1].splash);
     const normalDamages = damages.filter(damage => !damage[1] || !damage[1].splash);
+
+    this.units.forEach(unit => {
+      if (unit.spec.defense === 0) unit.kill();
+    });
+
     this.takeSplashDamages(splashDamages);
     this.takeNormalDamages(normalDamages);
   }
@@ -78,6 +83,10 @@ export default class Army {
       });
     });
 
+    this.updateAliveStatus();
+  }
+
+  updateAliveStatus() {
     const unitsAlive = this.units.filter(unit => !unit.dead).length;
     if (!unitsAlive) {
       this.alive = false;

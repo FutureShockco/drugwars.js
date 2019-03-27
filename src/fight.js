@@ -12,6 +12,8 @@ export default class Fight {
     this.log.add('Fight start');
     const attackerArmy = new Army(this.attackerUnits, 'attacker', this.log);
     const targetArmy = new Army(this.targetUnits, 'target', this.log);
+    attackerArmy.updateAliveStatus();
+    targetArmy.updateAliveStatus();
     let round = 0;
 
     while (attackerArmy.alive && targetArmy.alive && round < 5) {
