@@ -19,9 +19,13 @@ export default class Unit {
     if (this.health > damages) {
       this.health = this.health - damages;
     } else {
-      this.log.add(`[${this.name}] ${this.key} (${this.i}) is dead`);
-      this.health = 0;
-      this.dead = true;
+      this.kill();
     }
+  }
+
+  kill() {
+    this.log.add(`[${this.name}] ${this.key} (${this.i}) is dead`);
+    this.health = 0;
+    this.dead = true;
   }
 }
