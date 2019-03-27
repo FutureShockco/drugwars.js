@@ -61,25 +61,21 @@ export default class Army {
   }
 
   takeSplashDamages(damages) {
-    const attacks = [];
+    const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
 
     damages.forEach(damage => {
+      const serie = [];
       const attack = parseInt(damage[0] / damage[1].splash.range, 10);
       for (let i = 0; i < damage[1].splash.range; i += 1) {
-        if (attacks[i]) {
-          attacks[i] += attack;
-        } else {
-          attacks.push(attack);
-        }
+        serie.push(attack);
       }
-    });
 
-    const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
-    unitsSorted.forEach(unit => {
-      if (attacks.length > 0) {
-        unit.takeDamages(attacks[0]);
-        attacks.splice(0, 1);
-      }
+      unitsSorted.forEach(unit => {
+        if (!unit.dead && serie.length > 0) {
+          unit.takeDamages(serie[0]);
+          serie.splice(0, 1);
+        }
+      });
     });
 
     const unitsAlive = this.units.filter(unit => !unit.dead).length;
