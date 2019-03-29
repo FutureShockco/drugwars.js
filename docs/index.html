@@ -31,9 +31,6 @@
       Submit
     </button>
   </div>
-  <div v-if="log.length > 0" class="Box p-2 mb-4">
-    <p v-for="l in log">{{ l }}</p>
-  </div>
   <div v-if="result.result" class="mb-4">
     <h4 class="mb-4">
       <b>Result:</b>
@@ -67,6 +64,9 @@
         </b>
       </div>
     </div>
+  </div>
+  <div v-if="log.length > 0" class="Box p-2 mb-4">
+    <p v-for="l in log">{{ l }}</p>
   </div>
 </div>
 
