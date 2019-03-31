@@ -29,11 +29,11 @@
     "defense": 2,
     "speed": 12,
     "range": 1,
-    "time": 57,
+    "time": 64,
     "capacity": 100,
     "supply": 1,
     "priority": 50,
-    "coeff": 0.54,
+    "coeff": 0.62,
     "drugs_cost": 0,
     "weapons_cost": 600,
     "alcohols_cost": 0
@@ -109,7 +109,7 @@
     "capacity": 10,
     "supply": 0,
     "priority": 120,
-    "coeff": 3.84,
+    "coeff": 2.84,
     "drugs_cost": 100,
     "weapons_cost": 100,
     "alcohols_cost": 300
