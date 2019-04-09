@@ -1,11 +1,11 @@
 {
-  "hobo": {
-    "id": "hobo",
+  "bum": {
+    "id": "bum",
     "type": "Melee",
     "score": 6,
-    "name": "Hobo",
+    "name": "Bum",
     "desc": "He will fall into an ethylic coma after his first punch.",
-    "feature": "At the end of the first round, this unit will die.",
+    "feature": "If he meet an enemy at the end of the first round, this unit will die. Can not defend!",
     "attack": 2,
     "defense": 0,
     "speed": 13,
@@ -17,8 +17,9 @@
     "coeff": 0.54,
     "drugs_cost": 0,
     "weapons_cost": 0,
-    "alcohols_cost": 400
-  },
+    "alcohols_cost": 400,
+    "skills": [{"type":"attack","effect":1,"range":1,"use":"ever"}]
+    },
   "rowdy": {
     "id": "rowdy",
     "type": "Melee",
@@ -36,7 +37,8 @@
     "coeff": 0.62,
     "drugs_cost": 0,
     "weapons_cost": 600,
-    "alcohols_cost": 0
+    "alcohols_cost": 0,
+    "skills": [{"type":"group","effect":1,"range":1,"use":"ever"}]
   },
   "bouncer": {
     "id": "bouncer",
@@ -45,7 +47,7 @@
     "name": "Super Bouncer",
     "desc": "He's not smart but will follow you until he dies.",
     "attack": 6,
-    "defense": 10,
+    "defense": 8,
     "speed": 11,
     "range": 1,
     "time": 57,
@@ -55,7 +57,8 @@
     "coeff": 0.84,
     "drugs_cost": 0,
     "weapons_cost": 1400,
-    "alcohols_cost": 1300
+    "alcohols_cost": 1300,
+    "skills": [{"type":"shield","effect":2,"range":1,"use":1}]
   },
   "knifer": {
     "id": "knifer",
@@ -74,7 +77,8 @@
     "coeff": 0.72,
     "drugs_cost": 0,
     "weapons_cost": 3000,
-    "alcohols_cost": 800
+    "alcohols_cost": 800,
+    "skills": [{"type":"taster","effect":1,"range":1,"use":"ever"}]
   },
   "gunman": {
     "id": "gunman",
@@ -93,14 +97,15 @@
     "coeff": 1.28,
     "drugs_cost": 0,
     "weapons_cost": 3600,
-    "alcohols_cost": 3200
+    "alcohols_cost": 3200,
+    "skills": [{"type":"accuratehit","effect":1,"range":1,"use":"ever"}]
   },
   "spy": {
     "id": "spy",
     "type": "Melee",
     "score": 18,
     "name": "Spy",
-    "desc": "He can only gather informations but he does it at the speed of lightning.",
+    "desc": "He can only gather informations but he does it at the speed of lightning. Can not defend!",
     "attack": 0,
     "defense": 1,
     "speed": 3,
@@ -112,7 +117,8 @@
     "coeff": 2.84,
     "drugs_cost": 100,
     "weapons_cost": 100,
-    "alcohols_cost": 300
+    "alcohols_cost": 300,
+    "skills": [{"type":"attackonly","effect":0,"range":0,"use":"ever"}]
   },
   "sniper": {
     "id": "sniper",
@@ -131,7 +137,8 @@
     "coeff": 2.16,
     "drugs_cost": 0,
     "weapons_cost": 3000,
-    "alcohols_cost": 5600
+    "alcohols_cost": 5600,
+    "skills": [{"type":"criticalhit","effect":40,"range":1.5,"use":1}]
   },
   "hitman": {
     "id": "hitman",
@@ -150,7 +157,8 @@
     "coeff": 2.28,
     "drugs_cost": 0,
     "weapons_cost": 10000,
-    "alcohols_cost": 0
+    "alcohols_cost": 0,
+    "skills": [{"type":"multiplehit","effect":15,"range":2,"use":"ever"}]
   },
   "ninja": {
     "id": "ninja",
@@ -169,7 +177,8 @@
     "coeff": 3.84,
     "drugs_cost": 0,
     "weapons_cost": 7000,
-    "alcohols_cost": 7000
+    "alcohols_cost": 7000,
+    "skills": [{"type":"dodge","effect":3,"range":1,"use":1}]
   },
   "big_mama": {
     "id": "big_mama",
@@ -188,7 +197,8 @@
     "coeff": 4.72,
     "drugs_cost": 0,
     "weapons_cost": 9000,
-    "alcohols_cost": 12000
+    "alcohols_cost": 12000,
+    "skills": [{"type":"groupheal","effect":1,"range":3,"use":"ever"}]
   },
   "bazooka": {
     "id": "bazooka",
@@ -209,11 +219,7 @@
     "drugs_cost": 0,
     "weapons_cost": 15000,
     "alcohols_cost": 13000,
-    "skills": {
-      "splash": {
-        "range": 5
-      }
-    }
+    "skills": [{"type":"splash","effect":29,"range":5,"use":"ever"}]
   },
   "mercenary": {
     "id": "mercenary",
@@ -227,11 +233,12 @@
     "range": 6,
     "time": 137,
     "capacity": 400,
-    "supply": 2,
+    "supply": 7,
     "priority": 100,
     "coeff": 8,
     "drugs_cost": 0,
     "weapons_cost": 19000,
-    "alcohols_cost": 14000
+    "alcohols_cost": 14000,
+    "skills": [{"type":"bulletproof","effect":0,"range":0,"use":1}]
   }
 }
