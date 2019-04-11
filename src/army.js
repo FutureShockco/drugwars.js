@@ -10,31 +10,38 @@ export default class Army {
     this.log = log;
     units.forEach(unit => {
       for (let i = 0; i < unit.amount; i += 1) {
+        const skill =  dwunits[unit.key].skills[0]
         if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy') {
 
         }
-        else this.units.push(new Unit(unit.key, i + 1, name, log));
+        else this.units.push(new Unit(unit.key, i + 1, name, skill, log));
       }
     });
   }
 
-  chooseActions(attackpower) {
+  chooseActions(round) {
     const actions = [];
     this.units.forEach(unit => {
       if (!unit.dead && unit.spec.attack > 0) {
-        if (unit.skills.type === 'attack') {
-          this.log.add(
-            `[${this.name}] ${unit.key} (${unit.i}) simple attack with ${Math.round(unit.spec.attack * attackpower / 100)} dmg`,
-          );
+        if(round != 1 || unit.spec.range > 4 || unit.spec.skills[0].type === 'taster' || unit.key === 'hobo' )
+        {
+          if(unit.skill.passive)
+          {
+          }
+          else{
+            if(unit.use > 0 || unit.use === -1)
+            {
+              //this.log.add(`[${unit.name}] ${unit.key} use his skill ${unit.skill.type}`);
+            }
+            else{
+              //this.log.add(`[${unit.name}] ${unit.key} can't use ${unit.skill.type} anymore and will attack with ${unit.spec.attack} dmg`);
+              unit.skill.type = 'attack'
+            }
+          }
+          actions.push([unit.spec.attack, unit.skill, unit.key]);
         }
-        else {
-          this.log.add(`[${this.name}] ${unit.key} (${unit.i , unit.skills.use}) use ${unit.skills.type} skill and attack with ${Math.round(unit.spec.attack * attackpower / 100)} dmg`);
-        }
-        actions.push([unit.spec.attack, unit.skills]);
+        if (unit.health === 0 && !unit.dead) unit.kill();
       }
-    });
-    this.units.forEach(unit => {
-      if (unit.health === 0 && !unit.dead) unit.kill();
     });
     return actions;
   }
@@ -42,7 +49,7 @@ export default class Army {
   //Process all actions for attacker and defender
   processAllActions(allies, attackpower, enemies, round) {
     this.processArmyActions('allies', allies, null, round);
-    this.processArmyActions('enemies', enemies, attackpower, round);
+    this.processArmyActions('enemies',enemies, attackpower, round);
   }
 
   processArmyActions(target, actions, attackpower, round) {
@@ -50,71 +57,100 @@ export default class Army {
     const unitsByHighestPriority = orderBy(this.units, ['priority'], ['desc']);
     actions.forEach(action => {
       const serie = [];
-      const type = action[1].type;
+      const skill_type = action[1].type;
+      const name = action[2];
       let attack = 0;
       let buff = 0;
       if (target === 'allies') {
-        switch (type) {
+        switch (skill_type) {
           case 'heal':
-            buff = parseInt(action[1].effect);
-            serie.push(buff);
+              buff = {}
+              buff.points = parseInt(action[1].effect);
+              buff.author = name
+              serie.push(buff);
             break;
           case 'groupheal':
-            buff = parseInt(action[1].effect);
+              buff = {}
+              buff.points = parseInt(action[1].effect);
+              buff.author = name
             for (let i = 0; i < action[1].range; i += 1) {
               serie.push(buff);
             }
+            unitsSorted.forEach(unit => {
+              if (serie.length > 0 && unit.health > 0) {
+                unit.takeBuff(serie[0].points , skill_type, round ,serie[0].author);
+                serie.splice(0, 1);
+              }
+            });
             break;
           default:
             break;
         }
         unitsSorted.forEach(unit => {
           if (serie.length > 0 && unit.health > 0) {
-            unit.takeBuff(serie[0], type, round);
+            unit.takeBuff(serie[0].points , skill_type, round ,serie[0].author);
             serie.splice(0, 1);
           }
         });
       }
       else {
-        switch (type) {
+        switch (skill_type) {
           case 'splash':
-            attack = parseInt(action[1].effect);
+            attack = {}
+            attack.author = name
+            attack.dmg = parseInt(action[1].effect);
             for (let i = 0; i < action[1].range; i += 1) {
               serie.push(attack);
             }
             break;
           case 'attack':
-            attack = parseInt(action[0]);
+          attack = {}
+          attack.author = name
+          attack.dmg = parseInt(action[0]);
             serie.push(attack);
             break;
           case 'multiplehit':
-            attack = parseInt(action[1].effect);
+          attack = {}
+          attack.author = name
+          attack.dmg = parseInt(action[1].effect);
             for (let i = 0; i < action[1].range; i += 1) {
               serie.push(attack);
             }
+            unitsSorted.forEach(unit => {
+              if (!unit.dead && serie.length > 0) {
+                unit.takeDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round , serie[0].author);
+                serie.splice(0, 1);
+              }
+            });
             break;
           case 'criticalhit':
-            attack = parseInt(action[1].effect * action[1].range);
+          attack = {}
+          attack.author = name
+          attack.dmg = parseInt(Math.round((action[1].effect * action[1].range * round) * attackpower / 100));
             serie.push(attack);
             break;
           case 'taster':
-            attack = parseInt(action[0]);
+          attack = {}
+          attack.author = name
+          attack.dmg = parseInt(action[0]);
             serie.push(attack);
             unitsByHighestPriority.forEach(unit => {
               if (!unit.dead && serie.length > 0) {
-                unit.takeDamages(serie[0], type, round);
+                unit.takeDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round,serie[0].author);
                 serie.splice(0, 1);
               }
             });
             break;
           default:
-            attack = parseInt(action[0]);
+          attack = {}
+          attack.author = name
+          attack.dmg = parseInt(action[0]);
             serie.push(attack);
             break;
         }
         unitsSorted.forEach(unit => {
           if (!unit.dead && serie.length > 0) {
-            unit.takeDamages(Math.round(serie[0] * attackpower / 100), type, round);
+            unit.takeDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round , serie[0].author);
             serie.splice(0, 1);
           }
         });
@@ -137,7 +173,7 @@ export default class Army {
   }
 
   cost() {
-    //let drug_cost = 0;
+    let drug_cost = 0;
     let weapon_cost = 0;
     let alcohol_cost = 0;
     this.units.forEach(unit => {
@@ -147,9 +183,7 @@ export default class Army {
         alcohol_cost += dwunits[unit.key].alcohols_cost
       }
     });
-    //return `DRUGS ${drug_cost}, WEAPONS ${weapon_cost}, ALCOHOL ${alcohol_cost}`
-
-    return `WEAPONS ${weapon_cost}, ALCOHOL ${alcohol_cost}`
+    return `D ${drug_cost}, W ${weapon_cost}, A ${alcohol_cost}`
   }
 
   supply() {
@@ -167,7 +201,7 @@ export default class Army {
       if (!unit.dead)
         attackpower += dwunits[unit.key].supply
     });
-    return Math.round(100 - parseFloat(attackpower / 2).toFixed(0) / 100)
+    return Math.round(100 - parseFloat(attackpower / 4).toFixed(0) / 100)
   }
 
   getResult() {

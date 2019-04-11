@@ -1,57 +1,72 @@
 import units from './units.json';
-
 export default class Unit {
-  constructor(key, i, name, log) {
+  constructor(key, i, name, skill, log) {
     this.key = key;
     this.name = name;
     this.i = i;
     this.spec = units[key];
     this.health = units[key].defense;
+    this.max_health = units[key].defense;
+    this.use = skill.use
     this.dead = false;
     this.priority = units[key].priority;
-    this.skills = units[key].skills[0] || { type: 'attack' };
     this.log = log;
+    this.skill = skill
+    this.type = units[key].type
   }
 
-  takeDamages(damages,from,round) {
-    this.log.add(
-      `[${this.name}] ${this.key} (${this.i} ${this.skills.type,this.skills.use}) take damages from ${from} dmg -${damages} / ${this.health}`,
-    );
-    if(this.skills && this.skills && this.skills.type === 'bulletproof' && this.health < damages && this.skills.use > 0){
-      this.log.add(
-        `[${this.name}] ${this.key} (${this.i}) used his bullet proof`,
-      );
-      this.skills.use = 0;
+  takeDamages(damages,skill_type,round,name) {
+    let current =''
+    if(this.name === 'attacker')
+    current = "D"
+    else current = "A"
+    let currentlog = `[${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) with ${this.health} HP take <span style="color:red">${damages} DMG</span> from [${current}] ${name} with <span style="color:blueviolet"> "${skill_type}"</span>.`
+    if(this.skill.type === 'bulletproof' && this.health < damages &&  this.use > 0){
+      currentlog += `[${this.name}] ${this.key} (${this.i}) used his (${this.use}) bulletproof`
+      this.use = this.use -1;
       this.health = 25;
     }
-    else if (this.skills && this.skills && this.skills.type === 'shield' && this.skills.use > 0 && damages >0) {
-      this.log.add(
-        `[${this.name}] ${this.key} (${this.i}) used his shield`,
-      );
-      this.skills.use = 0;
-      this.health = this.health + this.skills.effect - damages;
+
+    if(this.type === 'Melee' && skill_type === 'accuratehit' && this.type != 'taster')
+    {
+      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${Math.round(damages/10)}  DMG</span> bonus.`
+      this.health = this.health - Math.round(damages/10);
+    }
+
+    if (this.skill.type === 'shield' && this.use > 0) {
+      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) shield.`
+      this.use = this.use-1;
+      this.health = this.health + this.skill.effect;
     } 
+
+    if(this.skill.type === 'dodge' && this.use > 0 && damages > this.health)
+    {
+      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) dodged ${Math.round(damages)} DMG.`
+    }
     else if (this.health > 0 && this.health > damages) {
       this.health = this.health - damages;
+      currentlog += ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) got now ${this.health} HP.`
+      this.log.add(currentlog);
     } 
-    else {
+    else{
+      currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) is <span style="color:darkorange">now dead.</span>`;
+      this.log.add(currentlog);
       this.kill();
     }
   }
 
-  takeBuff(points,type,round) {
-    if(this.health < this.maxhealth && type === 'heal' || this.health < this.maxhealth && type === 'groupheal')
+  takeBuff(points,skill_type,round,name) {
+  if(this.health < this.max_health && skill_type === 'heal' || this.health < this.max_health && skill_type === 'groupheal')
     {
       this.log.add(
-        `[${this.name}] ${this.key} (${this.i}) take buff ${type} +${points}`,
+        ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) take ${skill_type} <span style="color:chartreuse">+${points} HP</span> from ${name}.`,
       );
-      this.health += points;
+      this.health = this.health + points;
       this.dead = false;
     }
   }
 
   kill() {
-    this.log.add(`[${this.name}] ${this.key} (${this.i}) is dead`);
     this.health = 0;
     this.dead = true;
   }

@@ -1,135 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.16"></script>
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.17"></script>
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
+
 <body>
 
-<div id="main" class="p-6" v-cloak>
-  <div>
-    <h3 class="mb-2">
-      DrugWars fight simulator v0.0.16
-    </h3>
-    <textarea
-      v-model="input"
-      placeholder="Write a comment"
-      class="form-control mb-2 width-full"
-    /></textarea>
-  </div>
-  <div class="mb-4">
-    <button @click="handleSubmit" class="btn btn-primary mb-2">
-      Submit
-    </button>
-  </div>
-  <div v-if="result.result" class="mb-4">
-    <h4 class="mb-4">
-      <b>Result:</b>
-      {{ result.result === 2
-        ? 'draw' : result.result === 1
-          ? 'attacker win' : 'attacker lose'
-      }}
-    </h4>
-    <div v-for="(army) in ['attacker', 'target']" class="mb-4">
-      <h4 class="mb-2">{{ army }}</h4>
-      <div
-        class="Box p-2 mb-2"
-        v-for="unit in result[army].units"
-        v-if="unit.amount > 0"
-      >
-        <b>
-          <img
-            :src="`https://drugwars.io/img/units/${unit.key}.jpg`"
-            width="40"
-            height="40"
-            align="absmiddle"
-            class="mr-2"
-          />
-          <span v-if="unit.dead" class="text-red">
-            {{ unit.dead }}
-          </span>
-          <span v-if="unit.dead">
-             /
-          </span>
-          {{ unit.amount }}
-        </b>
+  <div id="main" class="p-6" v-cloak>
+    <div>
+      <h3 class="mb-2">
+        <img src="https://drugwars.io/img/drugwars.png">
+        DrugWars fight simulator v0.0.17
+      </h3>
+      <div class="mb-4 columns">
+          <div class="column col-6">
+              <textarea v-model="attacker" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
+
+          </div>
+          <div class="column col-6">
+              <textarea v-model="defender" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
+
+            </div>
+    </div>
+    </div>
+    <div class="mb-4 text-center">
+      <button @click="handleSubmit" class="btn btn-primary mb-2">
+        Submit
+      </button>
+    </div>
+    <div v-if="result.result" class="columns result">
+      <div class="column col-6 p-2 attacker">
+      <h5>
+        <b>Attacker Start:</b>
+        <div>
+          {{ result.attacker.value}}
+        </div>
+      </h5>
+    </div>
+      <div class="column col-6 p-2 defender">
+      <h5>
+        <b>Defender Start:</b>
+        <div>
+          {{ result.target.value}}
+        </div>
+      </h5>
       </div>
+          <div v-for="(army) in ['attacker', 'target']" class="column col-6">
+              <h4 class="mb-2 name">{{ army }}</h4>
+              <div class="value p-2 mb-2" v-for="unit in result[army].units" v-if="unit.amount > 0">
+                <b>
+                  <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle"
+                    class="mr-2" />
+                  <span v-if="unit.dead" class="text-red">
+                    {{ unit.dead }}
+                  </span>
+                  <span v-if="unit.dead">
+                    /
+                  </span>
+                  {{ unit.amount }}
+                </b>
+              </div>
+            </div>
+    </div>
+    <div  v-if="result.result" class="columns">
+        <div class="column col-6 p-2 attacker">
+            <h5>
+              <b>Attacker End:</b>
+              <div>
+                {{ result.attacker.end_value}}
+              </div>
+            </h5>
+          </div>
+            <div class="column col-6 p-2 defender">
+            <h5>
+              <b>Defender End:</b>
+              <div>
+                {{ result.target.end_value}}
+              </div>
+            </h5>
+            </div>
+          </div>
+    <div  v-if="result.result">
+        <h3 class="text-center result uppercase">
+          <b>Result:</b>
+          <div>
+          {{ result.result === 2
+          ? 'draw' : result.result === 1
+            ? 'attacker win' : 'attacker lose'
+        }}
+      </div>
+        </h3>
+      </div>
+    <div v-if="log.length > 0" class="p-2 mb-4">
+      <p v-for="l in log" v-html="l">{{ l }}</p>
     </div>
   </div>
-  <div v-if="log.length > 0" class="Box p-2 mb-4">
-    <p v-for="l in log">{{ l }}</p>
-  </div>
-</div>
 
-<script type="text/javascript">
-window.onload = function() {
-  new Vue({
-    el: '#main',
-    data: {
-      input: null,
-      error: null,
-      log: [],
-      result: {}
-    },
-    mounted() {
-      let attackerUnits = '';
-      let targetUnits = '';
-      Object.keys(drugwars.units).forEach(unit => {
-        attackerUnits += `${unit}:0\n`;
-        targetUnits += `${unit}:0\n`;
+  <script type="text/javascript">
+    window.onload = function () {
+      new Vue({
+        el: '#main',
+        data: {
+          attacker: null,
+          defender:null,
+          error: null,
+          log: [],
+          result: {}
+        },
+        mounted() {
+          let attackerUnits = '';
+          let targetUnits = '';
+          Object.keys(drugwars.units).forEach(unit => {
+            attackerUnits += `${unit}:0\n`;
+            targetUnits += `${unit}:0\n`;
+          });
+          this.attacker = `${attackerUnits}`;
+          this.defender = `${targetUnits}`;
+        },
+        methods: {
+          handleSubmit: function () {
+            const attackers = this.attacker;
+            const defenders = this.defender;
+            const attackerUnits = this.toUnits(attackers);
+            const targetUnits = this.toUnits(defenders);
+            const json = {
+              attacker: { units: attackerUnits },
+              target: { units: targetUnits }
+            };
+            console.log('JSON', json);
+
+            const fight = new drugwars.Fight(json);
+            const result = fight.fight();
+            this.result = result;
+            console.log('Result', result);
+
+            this.log = fight.getLog();
+          },
+          toUnits: function (input) {
+            const troops = input.split('\n').filter(Boolean);
+            return troops.map(troop => {
+              const [key, amount] = troop.split(':');
+              return { key, amount: parseInt(amount) };
+            });
+          }
+        }
       });
-      this.input = `${attackerUnits}VS\n${targetUnits}`;
-    },
-    methods: {
-      handleSubmit: function () {
-        const input = this.input.split('VS');
-        const attackerUnits = this.toUnits(input[0]);
-        const targetUnits = this.toUnits(input[1]);
-        const json = {
-          attacker: { units: attackerUnits },
-          target: { units: targetUnits }
-        };
-        console.log('JSON', json);
+    };
+  </script>
 
-        const fight = new drugwars.Fight(json);
-        const result = fight.fight();
-        this.result = result;
-        console.log('Result', result);
-
-        this.log = fight.getLog();
-      },
-      toUnits: function (input) {
-        const troops = input.split('\n').filter(Boolean);
-        return troops.map(troop => {
-          const [key, amount] = troop.split(':');
-          return { key, amount: parseInt(amount) };
-        });
-      }
+  <style type="text/css">
+    [v-cloak] {
+      display: none;
     }
-  });
-};
-</script>
+    body{
+      background: black;
+      color:white;
+    }
 
-<style type="text/css">
-[v-cloak] {
-  display: none;
-}
+    #main {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-#main {
-  text-align: left;
-  max-width: 600px;
-  margin: 0 auto;
-}
+    textarea {
+      max-width: 600px;
+      height: 280px;
+    }
 
-textarea {
-  max-width: 600px;
-  height: 450px;
-}
-</style>
+    .uppercase{
+      text-transform: uppercase;
+    }
+
+    .value{
+      background-image: radial-gradient(ellipse farthest-corner at center 0,#0a0a0a -150%,#131313 45%,rgb(17, 17, 17) 85%)!important;
+    }
+
+    .name{
+      visibility: hidden;
+      height: 0px;
+    }
+
+    .result{
+      background-color: black;
+      border-radius: 5px;
+      border: 2px solid #ffc400;
+    }
+
+  </style>
 
 </body>
+
 </html>

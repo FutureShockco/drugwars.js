@@ -1,9 +1,10 @@
 {
-  "bum": {
-    "id": "bum",
+  "hobo": {
+    "id": "hobo",
     "type": "Melee",
+    "mode": "attack",
     "score": 6,
-    "name": "Bum",
+    "name": "Hobo",
     "desc": "He will fall into an ethylic coma after his first punch.",
     "feature": "If he meet an enemy at the end of the first round, this unit will die. Can not defend!",
     "attack": 2,
@@ -18,11 +19,12 @@
     "drugs_cost": 0,
     "weapons_cost": 0,
     "alcohols_cost": 400,
-    "skills": [{"type":"attack","effect":1,"range":1,"use":"ever"}]
+    "skills": [{"type":"attack","effect":1,"range":1,"use":-1,"passive":true}]
     },
   "rowdy": {
     "id": "rowdy",
     "type": "Melee",
+    "mode": "both",
     "score": 6,
     "name": "Rowdy",
     "desc": "He makes more noise than he hits.",
@@ -32,17 +34,18 @@
     "range": 1,
     "time": 64,
     "capacity": 100,
-    "supply": 1,
+    "supply": 2,
     "priority": 50,
     "coeff": 0.62,
     "drugs_cost": 0,
     "weapons_cost": 600,
     "alcohols_cost": 0,
-    "skills": [{"type":"group","effect":1,"range":1,"use":"ever"}]
+    "skills": [{"type":"group","effect":1,"range":1,"use":-1,"passive":true}]
   },
   "bouncer": {
     "id": "bouncer",
     "type": "Melee",
+    "mode": "both",
     "score": 6,
     "name": "Super Bouncer",
     "desc": "He's not smart but will follow you until he dies.",
@@ -52,21 +55,22 @@
     "range": 1,
     "time": 57,
     "capacity": 400,
-    "supply": 2,
+    "supply": 3,
     "priority": 55,
     "coeff": 0.84,
     "drugs_cost": 0,
     "weapons_cost": 1400,
     "alcohols_cost": 1300,
-    "skills": [{"type":"shield","effect":2,"range":1,"use":1}]
+    "skills": [{"type":"shield","effect":2,"range":1,"use":1,"passive":true}]
   },
   "knifer": {
     "id": "knifer",
     "type": "Melee",
+    "mode": "both",
     "score": 4,
     "name": "Knifer",
     "desc": "He only speaks with his knives and he is nothing without them.",
-    "attack": 12,
+    "attack": 6,
     "defense": 5,
     "speed": 10,
     "range": 1,
@@ -78,15 +82,16 @@
     "drugs_cost": 0,
     "weapons_cost": 3000,
     "alcohols_cost": 800,
-    "skills": [{"type":"taster","effect":1,"range":1,"use":"ever"}]
+    "skills": [{"type":"taster","effect":1,"range":1,"use":-1,"passive":true}]
   },
   "gunman": {
     "id": "gunman",
     "type": "Range",
+    "mode": "both",
     "score": 21,
     "name": "Gunman",
     "desc": "The legend says that he was born with a gun in his hand.",
-    "attack": 25,
+    "attack": 20,
     "defense": 12,
     "speed": 9,
     "range": 5,
@@ -98,11 +103,12 @@
     "drugs_cost": 0,
     "weapons_cost": 3600,
     "alcohols_cost": 3200,
-    "skills": [{"type":"accuratehit","effect":1,"range":1,"use":"ever"}]
+    "skills": [{"type":"accuratehit","effect":1,"range":1,"use":-1,"passive":false}]
   },
   "spy": {
     "id": "spy",
     "type": "Melee",
+    "mode": "attack",
     "score": 18,
     "name": "Spy",
     "desc": "He can only gather informations but he does it at the speed of lightning. Can not defend!",
@@ -118,15 +124,16 @@
     "drugs_cost": 100,
     "weapons_cost": 100,
     "alcohols_cost": 300,
-    "skills": [{"type":"attackonly","effect":0,"range":0,"use":"ever"}]
+    "skills": [{"type":"attack","effect":0,"range":0,"use":"-1","passive":true}]
   },
   "sniper": {
     "id": "sniper",
     "type": "Range",
+    "mode": "both",
     "score": 53,
     "name": "Sniper",
     "desc": "He will protect his bros by hook or by crook.",
-    "attack": 40,
+    "attack": 30,
     "defense": 8,
     "speed": 14,
     "range": 6,
@@ -138,11 +145,12 @@
     "drugs_cost": 0,
     "weapons_cost": 3000,
     "alcohols_cost": 5600,
-    "skills": [{"type":"criticalhit","effect":40,"range":1.5,"use":1}]
+    "skills": [{"type":"criticalhit","effect":15,"range":1.5,"use":1,"passive":false}]
   },
   "hitman": {
     "id": "hitman",
     "type": "Range",
+    "mode": "both",
     "score": 120,
     "name": "Hitman",
     "desc": "He is meticulous, perfectionist and precise, he will never fail his job.",
@@ -158,18 +166,19 @@
     "drugs_cost": 0,
     "weapons_cost": 10000,
     "alcohols_cost": 0,
-    "skills": [{"type":"multiplehit","effect":15,"range":2,"use":"ever"}]
+    "skills": [{"type":"multiplehit","effect":8,"range":2,"use":-1,"passive":false}]
   },
   "ninja": {
     "id": "ninja",
     "type": "Melee",
+    "mode": "both",
     "score": 185,
     "name": "Ninja",
     "desc": "Cold as a sashimi, powerful like a wasabi, faster than a sushi master.",
     "attack": 50,
-    "defense": 20,
+    "defense": 30,
     "speed": 6,
-    "range": 5,
+    "range": 4,
     "time": 67,
     "capacity": 150,
     "supply": 2,
@@ -178,11 +187,12 @@
     "drugs_cost": 0,
     "weapons_cost": 7000,
     "alcohols_cost": 7000,
-    "skills": [{"type":"dodge","effect":3,"range":1,"use":1}]
+    "skills": [{"type":"dodge","effect":3,"range":1,"use":3,"passive":true}]
   },
   "big_mama": {
     "id": "big_mama",
     "type": "Melee",
+    "mode": "both",
     "score": 203,
     "name": "Big Mama",
     "desc": "With her motherly instinct, she will protect her kids until death does you apart.",
@@ -198,11 +208,12 @@
     "drugs_cost": 0,
     "weapons_cost": 9000,
     "alcohols_cost": 12000,
-    "skills": [{"type":"groupheal","effect":1,"range":3,"use":"ever"}]
+    "skills": [{"type":"groupheal","effect":2,"range":3,"use":3,"passive":false}]
   },
   "bazooka": {
     "id": "bazooka",
     "type": "Range",
+    "mode": "both",
     "score": 255,
     "name": "Bazooka Guy",
     "desc": "He would destroy a whole army as a sunday hobby.",
@@ -219,11 +230,12 @@
     "drugs_cost": 0,
     "weapons_cost": 15000,
     "alcohols_cost": 13000,
-    "skills": [{"type":"splash","effect":29,"range":5,"use":"ever"}]
+    "skills": [{"type":"splash","effect":15,"range":9,"use":5,"passive":false}]
   },
   "mercenary": {
     "id": "mercenary",
     "type": "Range",
+    "mode": "both",
     "score": 383,
     "name": "Mercenary",
     "desc": "He is a freelancer that will only listen to money, but you won’t regret spending on him.",
@@ -239,6 +251,6 @@
     "drugs_cost": 0,
     "weapons_cost": 19000,
     "alcohols_cost": 14000,
-    "skills": [{"type":"bulletproof","effect":0,"range":0,"use":1}]
+    "skills": [{"type":"bulletproof","effect":0,"range":0,"use":1,"passive":true}]
   }
 }
