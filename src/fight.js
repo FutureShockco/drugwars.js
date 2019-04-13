@@ -3,7 +3,7 @@ import Log from './log';
 
 export default class Fight {
   constructor(json) {
-    this.randomizer = json.merkle_root
+    this.randomizer = json.merkle_root;
     this.attackers = json.attacker.units || [];
     this.defenders = json.target.units || [];
     this.log = new Log();
@@ -45,13 +45,13 @@ export default class Fight {
       result,
       attacker: {
         units: attackers.getResult(),
-        value : attacker_value,
-        end_value : attacker_end_value
+        value: attacker_value,
+        end_value: attacker_end_value,
       },
       target: {
         units: defenders.getResult(),
-        value : defender_value,
-        end_value : defender_end_value
+        value: defender_value,
+        end_value: defender_end_value,
       },
     };
   }

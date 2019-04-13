@@ -43,10 +43,10 @@ export default class Army {
     return actions;
   }
 
-  //Process all actions for attacker and defender
+  // Process all actions for attacker and defender
   processAllActions(allies, attackpower, enemies, round) {
     this.processArmyActions('allies', allies, null, round);
-    this.processArmyActions('enemies',enemies, attackpower, round);
+    this.processArmyActions('enemies', enemies, attackpower, round);
   }
 
   processArmyActions(target, actions, attackpower, round) {
@@ -149,7 +149,6 @@ export default class Army {
           }
         });
       }
-
     });
 
     this.updateAliveStatus();
@@ -163,11 +162,11 @@ export default class Army {
   }
 
   size() {
-    return this.units.filter(unit => !unit.dead).length
+    return this.units.filter(unit => !unit.dead).length;
   }
 
   cost() {
-    let drug_cost = 0;
+    const drug_cost = 0;
     let weapon_cost = 0;
     let alcohol_cost = 0;
     this.units.forEach(unit => {
@@ -183,10 +182,9 @@ export default class Army {
   supply() {
     let supply = 0;
     this.units.forEach(unit => {
-      if (!unit.dead)
-        supply += dwunits[unit.key].supply
+      if (!unit.dead) supply += dwunits[unit.key].supply;
     });
-    return supply
+    return supply;
   }
 
   capacity() {
@@ -201,8 +199,7 @@ export default class Army {
   attackPower() {
     let attackpower = 0;
     this.units.forEach(unit => {
-      if (!unit.dead)
-        attackpower += dwunits[unit.key].supply
+      if (!unit.dead) attackpower += dwunits[unit.key].supply;
     });
     return Math.round(100 - parseFloat(attackpower / 5).toFixed(0) / 100)
   }
