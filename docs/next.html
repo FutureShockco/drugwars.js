@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.26"></script>
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -16,7 +16,7 @@
     <div>
       <h3 class="mb-2">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.17
+        DrugWars fight simulator v0.0.26
       </h3>
       <div class="mb-4 columns">
           <div class="column col-6">
@@ -35,22 +35,22 @@
       </button>
     </div>
     <div v-if="result.result" class="columns result">
-      <div class="column col-6 p-2 attacker">
+    <div class="column col-6 p-2 attacker text-center">
       <h5>
         <b>Attacker Start:</b>
-        <div>
-          {{ result.attacker.value}}
+        <div v-html="result.attacker.value">
         </div>
       </h5>
     </div>
-      <div class="column col-6 p-2 defender">
+      <div class="column col-6 p-2 defender text-center">
       <h5>
         <b>Defender Start:</b>
-        <div>
-          {{ result.target.value}}
+        <div v-html="result.target.value">
         </div>
       </h5>
       </div>
+    </div>
+    <div v-if="result.result" class="columns result">
           <div v-for="(army) in ['attacker', 'target']" class="column col-6">
               <h4 class="mb-2 name">{{ army }}</h4>
               <div class="value p-2 mb-2" v-for="unit in result[army].units" v-if="unit.amount > 0">
@@ -68,20 +68,19 @@
               </div>
             </div>
     </div>
-    <div  v-if="result.result" class="columns">
-        <div class="column col-6 p-2 attacker">
+    <div v-if="result.result" class="columns result">
+
+        <div class="column col-6 p-2 attacker text-center">
             <h5>
               <b>Attacker End:</b>
-              <div>
-                {{ result.attacker.end_value}}
+              <div v-html="result.attacker.end_value">
               </div>
             </h5>
           </div>
-            <div class="column col-6 p-2 defender">
+            <div class="column col-6 p-2 defender text-center">
             <h5>
               <b>Defender End:</b>
-              <div>
-                {{ result.target.end_value}}
+              <div v-html="result.target.end_value">
               </div>
             </h5>
             </div>
@@ -185,6 +184,10 @@
     .name{
       visibility: hidden;
       height: 0px;
+    }
+
+    .minip{
+      width: 24px;
     }
 
     .result{
