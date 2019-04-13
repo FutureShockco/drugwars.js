@@ -10,32 +10,22 @@ export default class Fight {
   }
 
   fight() {
-    this.log.add('Fight start [D] Defender - [A] Attacker');
+    this.log.add('Fight start [A] Attacker - [D] Defender');
     const attackers = new Army(this.attackers, 'attacker', this.log);
     const defenders = new Army(this.defenders, 'defender', this.log);
     attackers.updateAliveStatus();
     defenders.updateAliveStatus();
 
     let round = 0;
-    const attacker_value = `Supply : ${attackers.supply()} Power : ${attackers.attackPower()}% Size: ${attackers.size()} Value : ${attackers.cost()}`;
-    const defender_value = `Supply : ${defenders.supply()} Power : ${defenders.attackPower()}% Size: ${defenders.size()} Value :  ${defenders.cost()}`;
+    const attacker_value = `Supply : ${attackers.supply()} Power : ${attackers.attackPower()}% Size: ${attackers.size()}  <h5> Value :</h5><div> ${attackers.cost()} </div> Carry : ${attackers.capacity()}`;
+    const defender_value = `Supply : ${defenders.supply()} Power : ${defenders.attackPower()}% Size: ${defenders.size()} <h5> Value :</h5>  <div>${defenders.cost()}</div>`;
     while (attackers.alive && defenders.alive && round < 6) {
       round += 1;
       this.log.add(`Round ${round}`);
-      const attackersActions = attackers.chooseActions(round);
       const defendersActions = defenders.chooseActions(round);
-      attackers.processAllActions(
-        attackersActions,
-        defenders.attackPower(),
-        defendersActions,
-        round,
-      );
-      defenders.processAllActions(
-        defendersActions,
-        attackers.attackPower(),
-        attackersActions,
-        round,
-      );
+      const attackersActions = attackers.chooseActions(round);
+      defenders.processAllActions(defendersActions,attackers.attackPower(),attackersActions,round);
+      attackers.processAllActions(attackersActions,defenders.attackPower(),defendersActions,round);
     }
 
     let winner = 'none';
@@ -47,8 +37,8 @@ export default class Fight {
       result = 3;
       winner = 'defender';
     }
-    const attacker_end_value = `Supply : ${attackers.supply()} Power : ${attackers.attackPower()}% Size: ${attackers.size()} Value : ${attackers.cost()}`;
-    const defender_end_value = `Supply : ${defenders.supply()} Power : ${defenders.attackPower()}% Size: ${defenders.size()} Value :  ${defenders.cost()}`;
+    const attacker_end_value = `Supply : ${attackers.supply()} Power : ${attackers.attackPower()}% Size: ${attackers.size()} <h5> Value :</h5><div> ${attackers.cost()} </div> Carry : ${attackers.capacity()}`;
+    const defender_end_value = `Supply : ${defenders.supply()} Power : ${defenders.attackPower()}% Size: ${defenders.size()}  <h5> Value :</h5>  <div>${defenders.cost()}</div>`;
     this.log.add(`Fight ended in round ${round}, Winner is : ${winner}`);
 
     return {

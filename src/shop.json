@@ -1,0 +1,62 @@
+{
+  "item1":{
+  "id": "drugwars",
+  "name": "500 TOKENS",
+  "type": "FUTURE",
+  "img": "future",
+  "detail": "Buy any upgrades or units for a cheaper price.",
+  "price": 2.5,
+  "ref": "future",
+  "quantity": 500
+},
+"item2":{
+  "id": "drugwars",
+  "name": "1000 TOKENS",
+  "type": "FUTURE",
+  "img": "future",
+  "detail": "Buy any upgrades or units for a cheaper price.",
+  "price": 5,
+  "ref": "future",
+  "quantity": 1000
+},
+"item3":{
+  "id": "drugwars",
+  "name": "2000 TOKENS",
+  "type": "FUTURE",
+  "img": "future",
+  "detail": "Buy any upgrades or units for a cheaper price.",
+  "price": 10,
+  "ref": "future",
+  "quantity": 2000
+},
+"item4":{
+  "id": "drugwars",
+  "name": "5000 TOKENS",
+  "type": "FUTURE",
+  "img": "future",
+  "detail": "Buy any upgrades or units for a cheaper price.",
+  "price": 25,
+  "ref": "future",
+  "quantity": 5000
+},
+"item5":{
+  "id": "drugwars",
+  "name": "10000 TOKENS",
+  "type": "FUTURE",
+  "img": "future",
+  "detail": "Buy any upgrades or units for a cheaper price.",
+  "price": 50,
+  "ref": "future",
+  "quantity": 10000
+},
+"item6":{
+  "id": "drugwars",
+  "name": "50000 TOKENS",
+  "type": "FUTURE",
+  "img": "future",
+  "detail": "Buy any upgrades or units for a cheaper price.",
+  "price": 250,
+  "ref": "future",
+  "quantity": 50000
+}
+}
