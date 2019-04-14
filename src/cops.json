@@ -153,12 +153,12 @@
     "alcohols_cost": 800,
     "skills": [{"type":"tastynasty","effect":1,"range":1,"use":-1,"passive":true}]
   },
-  "mercenary": {
-    "id": "mercenary",
+  "military": {
+    "id": "military",
     "type": "Range",
     "mode": "both",
     "score": 383,
-    "name": "Mercenary",
+    "name": "Military",
     "desc": "He is a freelancer that will only listen to money, but you won’t regret spending on him.",
     "feature": "He is immortal... or no he just got a bullet proof! This unit will obtain 25HP if he get killed.",
     "attack": 120,

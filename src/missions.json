@@ -129,13 +129,6 @@
     }],
     "units": [
       {
-        "id": "guard",
-        "amount": {
-          "mini":100,
-          "max":150
-        }
-      },
-      {
         "id": "policeman",
         "amount": {
           "mini":25,
@@ -264,36 +257,36 @@
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":150
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":100,
+          "max":200
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":120,
+          "max":150
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":100
         }
       }
     ]
@@ -456,7 +449,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "future":{"id":"future","min":10,"max":100}
     }],
     "units": [
       {
@@ -1188,7 +1182,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "future":{"id":"future","min":100,"max":1000}
     }],
     "units": [
       {
