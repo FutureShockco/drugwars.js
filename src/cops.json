@@ -151,7 +151,7 @@
     "drugs_cost": 0,
     "weapons_cost": 3000,
     "alcohols_cost": 800,
-    "skills": [{"type":"taster","effect":1,"range":1,"use":-1,"passive":true}]
+    "skills": [{"type":"tastynasty","effect":1,"range":1,"use":-1,"passive":true}]
   },
   "mercenary": {
     "id": "mercenary",

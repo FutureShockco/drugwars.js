@@ -41,7 +41,7 @@
     "drugs_cost": 0,
     "weapons_cost": 600,
     "alcohols_cost": 0,
-    "skills": [{"type":"group","effect":1,"range":1,"use":-1,"passive":true}]
+    "skills": [{"type":"group","effect":4,"range":1,"use":-1,"passive":true}]
   },
   "bouncer": {
     "id": "bouncer",
@@ -51,8 +51,8 @@
     "name": "Super Bouncer",
     "desc": "He's not smart but will follow you until he dies.",
     "feature": "He got a shield!. He can use it once and obtain +2 defense.",
-    "attack": 6,
-    "defense": 10,
+    "attack": 5,
+    "defense": 12,
     "speed": 11,
     "range": 1,
     "time": 57,
@@ -85,7 +85,7 @@
     "drugs_cost": 0,
     "weapons_cost": 9000,
     "alcohols_cost": 12000,
-    "skills": [{"type":"groupheal","effect":2,"range":3,"use":3,"passive":false}]
+    "skills": [{"type":"groupheal","effect":3,"range":3,"use":3,"passive":false}]
   },
   "knifer": {
     "id": "knifer",
@@ -107,7 +107,7 @@
     "drugs_cost": 0,
     "weapons_cost": 3000,
     "alcohols_cost": 800,
-    "skills": [{"type":"taster","effect":1,"range":1,"use":-1,"passive":true}]
+    "skills": [{"type":"tastynasty","effect":1,"range":1,"use":-1,"passive":true}]
   },
   "gunman": {
     "id": "gunman",
@@ -117,7 +117,7 @@
     "name": "Gunman",
     "desc": "The legend says that he was born with a gun in his hand.",
     "feature": "He's pretty good against melee.",
-    "attack": 20,
+    "attack": 16,
     "defense": 12,
     "speed": 9,
     "range": 5,
@@ -227,7 +227,7 @@
     "name": "Bazooka Guy",
     "desc": "He would destroy a whole army as a sunday hobby.",
     "feature": "Splash Damage : Hit 9 enemies at once.",
-    "attack": 145,
+    "attack": 91,
     "defense": 25,
     "speed": 17,
     "range": 7,
@@ -239,7 +239,7 @@
     "drugs_cost": 0,
     "weapons_cost": 15000,
     "alcohols_cost": 13000,
-    "skills": [{"type":"splash","effect":11,"range":9,"use":5,"passive":false}]
+    "skills": [{"type":"splash","effect":11,"range":6,"use":5,"passive":false}]
   },
   "mercenary": {
     "id": "mercenary",
