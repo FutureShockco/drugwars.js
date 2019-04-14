@@ -5,6 +5,7 @@ import units from './units.json';
 import buildings from './buildings.json';
 import shop from './shop.json';
 import missions from './missions.json';
+import trainings from './trainings.json';
 import utils from './utils';
 module.exports = {
   constants,
@@ -14,5 +15,6 @@ module.exports = {
   buildings,
   shop,
   missions,
+  trainings,
   utils,
 };

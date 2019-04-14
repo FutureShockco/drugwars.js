@@ -67,8 +67,6 @@ export default class Army {
       if (group.undead > 0 && round != 1) {
         const attack = group.getAttack();
         if (attack > 0) {
-          console.log(group)
-          console.log(attack, group.skill, group.key, group.i)
           actions.push([attack, group.skill, group.key, group.i]);
         }
       }
