@@ -1,4 +1,5 @@
 import units from './units.json';
+
 export default class Unit {
   constructor(key, i, name, skill, log) {
     this.key = key;
@@ -7,12 +8,12 @@ export default class Unit {
     this.spec = units[key];
     this.health = units[key].defense;
     this.max_health = units[key].defense;
-    this.use = skill.use
+    this.use = skill.use;
     this.dead = false;
     this.priority = units[key].priority;
     this.log = log;
-    this.skill = skill
-    this.type = units[key].type
+    this.skill = skill;
+    this.type = units[key].type;
   }
 
   takeDamages(damages,skill_type,round,name,num) {
@@ -31,11 +32,14 @@ export default class Unit {
     {
       currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${Math.round(damages/10)}  DMG</span> bonus.`
       this.health = this.health - Math.round(damages/10);
+
     }
 
     if (this.skill.type === 'shield' && this.use > 0) {
-      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) shield.`
-      this.use = this.use-1;
+      currentlog += ` [${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${
+        this.i
+      }) used his (${this.use}) shield.`;
+      this.use = this.use - 1;
       this.health = this.health + this.skill.effect;
     } 
 
@@ -44,7 +48,12 @@ export default class Unit {
       this.use = this.use-1;
       currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i})<span style="color:blueviolet"> dodged</span> ${Math.round(damages)} DMG.`
     }
-    else if (this.health > 0 && this.health > damages) {
+
+    if (this.skill.type === 'dodge' && this.use > 0 && damages > this.health) {
+      currentlog += ` [${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${
+        this.i
+      }) dodged ${Math.round(damages)} DMG.`;
+    } else if (this.health > 0 && this.health > damages) {
       this.health = this.health - damages;
       currentlog += ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) got now ${this.health} HP.`
     } 
