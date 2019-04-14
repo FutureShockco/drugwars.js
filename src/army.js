@@ -2,22 +2,47 @@ import { orderBy } from 'lodash';
 import Unit from './unit';
 import dwunits from './units.json';
 import numeral from 'numeral';
+import Troop from './troop';
 
 export default class Army {
   constructor(units, name, log) {
     this.units = [];
+    this.groups = []
     this.alive = true;
     this.name = name;
     this.log = log;
+    this.groupid = 0;
     units.forEach(unit => {
-      for (let i = 0; i < unit.amount; i += 1) {
+      if(dwunits[unit.key].skills[0].type === "group")
+      {
+        let group_amount = unit.amount
         const skill =  dwunits[unit.key].skills[0]
-        if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy') {
-
+        const effect =  dwunits[unit.key].skills[0].effect
+        while(group_amount>0)
+        {
+          if(group_amount>=effect)
+          {
+            group_amount = group_amount - effect
+            this.groups.push(new Troop(unit.key, effect, this.groupid++, name, skill, log));	
+          }
+          else{
+            if(group_amount>0)
+            this.groups.push(new Troop(unit.key, group_amount, this.groupid++, name, skill, log));	
+            group_amount = 0
+          }
         }
-        else
-          this.units.push(new Unit(unit.key, i + 1, name, skill, log));
       }
+      else{
+        for (let i = 0; i < unit.amount; i += 1) {
+          const skill =  dwunits[unit.key].skills[0]
+          if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy') {
+  
+          }
+          else
+            this.units.push(new Unit(unit.key, i + 1, name, skill, log));
+        }
+      }
+
     });
   }
 
@@ -25,14 +50,12 @@ export default class Army {
     const actions = [];
     this.units.forEach(unit => {
       if (!unit.dead && unit.spec.attack > 0) {
-        if(round != 1 || unit.spec.range > 4 || unit.spec.skills[0].type === 'taster' || unit.key === 'hobo' )
+        if(round != 1 || unit.spec.range > 4 || unit.spec.skills[0].type === 'tastynasty' || unit.key === 'hobo' )
         {
             if(unit.use > 0 || unit.use === -1)
             {
-              //this.log.add(`[${unit.name}] ${unit.key} use his skill ${unit.skill.type}`);
             }
             else{
-              //this.log.add(`[${unit.name}] ${unit.key} can't use ${unit.skill.type} anymore and will attack with ${unit.spec.attack} dmg`);
               unit.skill.type = 'attack'
             }
           actions.push([unit.spec.attack, unit.skill, unit.key, unit.i]);
@@ -40,13 +63,23 @@ export default class Army {
         if (unit.health === 0 && !unit.dead) unit.kill();
       }
     });
+    this.groups.forEach(group => {
+      if (group.undead > 0 && round != 1) {
+        const attack = group.getAttack();
+        if (attack > 0) {
+          console.log(group)
+          console.log(attack, group.skill, group.key, group.i)
+          actions.push([attack, group.skill, group.key, group.i]);
+        }
+      }
+    });
     return actions;
   }
 
-  // Process all actions for attacker and defender
+  //Process all actions for attacker and defender
   processAllActions(allies, attackpower, enemies, round) {
     this.processArmyActions('allies', allies, null, round);
-    this.processArmyActions('enemies', enemies, attackpower, round);
+    this.processArmyActions('enemies',enemies, attackpower, round);
   }
 
   processArmyActions(target, actions, attackpower, round) {
@@ -76,16 +109,16 @@ export default class Army {
             for (let i = 0; i < action[1].range; i += 1) {
               serie.push(buff);
             }
-            unitsSorted.forEach(unit => {
-              if (serie.length > 0 && unit.health > 0) {
-                unit.takeBuff(serie[0].points , skill_type, round ,serie[0].author, serie[0].num);
-                serie.splice(0, 1);
-              }
-            });
             break;
           default:
             break;
         }
+        unitsSorted.forEach(unit => {
+          if (serie.length > 0 && !unit.dead) {
+            unit.takeBuff(serie[0].points , skill_type, round ,serie[0].author, serie[0].num);
+            serie.splice(0, 1);
+          }
+        });
       }
       else {
         switch (skill_type) {
@@ -121,7 +154,7 @@ export default class Army {
           attack.dmg = parseInt(Math.round((action[1].effect * action[1].range * round) * attackpower / 100));
             serie.push(attack);
             break;
-          case 'taster':
+          case 'tastynasty':
           attack = {}
           attack.author = name
           attack.num = num
@@ -142,6 +175,12 @@ export default class Army {
             serie.push(attack);
             break;
         }
+        this.groups.forEach(group => {	
+          if (group.undead > 0 && serie.length > 0) {	 
+            group.takeGroupDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round , serie[0].author, serie[0].num);	        
+            serie.splice(0, 1);	       
+          }	      
+        })
         unitsSorted.forEach(unit => {
           if (!unit.dead && serie.length > 0) {
             unit.takeDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round , serie[0].author, serie[0].num);
@@ -156,17 +195,18 @@ export default class Army {
 
   updateAliveStatus() {
     const unitsAlive = this.units.filter(unit => !unit.dead).length;
-    if (!unitsAlive) {
+    const groupAlive = this.groups.filter(group => !group.dead).length;
+    if (!unitsAlive && !groupAlive) {
       this.alive = false;
     }
   }
 
   size() {
-    return this.units.filter(unit => !unit.dead).length;
+    return this.units.filter(unit => !unit.dead).length
   }
 
   cost() {
-    const drug_cost = 0;
+    let drug_cost = 0;
     let weapon_cost = 0;
     let alcohol_cost = 0;
     this.units.forEach(unit => {
@@ -176,15 +216,23 @@ export default class Army {
         alcohol_cost += dwunits[unit.key].alcohols_cost
       }
     });
+    this.groups.forEach(group => {
+      if (!group.dead) {
+        drug_cost += dwunits[group.key].drugs_cost * group.amount
+        weapon_cost += dwunits[group.key].weapons_cost * group.amount
+        alcohol_cost += dwunits[group.key].alcohols_cost * group.amount
+      }
+    });
     return `<img class="minip" src="https://drugwars.io/img/icons/drug.png" > ${numeral(drug_cost).format('0.[00]a')}, <img class="minip" src="https://drugwars.io/img/icons/weapon.png" > ${numeral(weapon_cost).format('0.[00]a')}, <img class="minip" src="https://drugwars.io/img/icons/alcohol.png" > ${numeral(alcohol_cost).format('0.[00]a')}`
   }
 
   supply() {
     let supply = 0;
     this.units.forEach(unit => {
-      if (!unit.dead) supply += dwunits[unit.key].supply;
+      if (!unit.dead)
+        supply += dwunits[unit.key].supply
     });
-    return supply;
+    return supply
   }
 
   capacity() {
@@ -199,14 +247,24 @@ export default class Army {
   attackPower() {
     let attackpower = 0;
     this.units.forEach(unit => {
-      if (!unit.dead) attackpower += dwunits[unit.key].supply;
+      if (!unit.dead)
+        attackpower += dwunits[unit.key].supply
     });
     return Math.round(100 - parseFloat(attackpower / 5).toFixed(0) / 100)
   }
 
   getResult() {
     const unitsObj = {};
-
+    this.groups.forEach(group => {
+      if (!unitsObj[group.key]) {
+        unitsObj[group.key] = {
+          amount: 0,
+          dead: 0,
+        };
+      }
+      unitsObj[group.key].amount += group.amount;
+      unitsObj[group.key].dead += group.dead;
+    })
     this.units.forEach(unit => {
       if (!unitsObj[unit.key]) {
         unitsObj[unit.key] = {

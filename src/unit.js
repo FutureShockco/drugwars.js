@@ -28,11 +28,11 @@ export default class Unit {
       this.health = 25;
     }
 
-    if (this.type === 'Melee' && skill_type === 'accuratehit' && this.type != 'taster') {
-      currentlog += ` [${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${
-        this.i
-      }) took <span style="color:red"> ${Math.round(damages / 10)}  DMG</span> bonus.`;
-      this.health = this.health - Math.round(damages / 10);
+    if(this.type === 'Melee' && skill_type === 'accuratehit' && this.type != 'tastynasty')
+    {
+      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${Math.round(damages/10)}  DMG</span> bonus.`
+      this.health = this.health - Math.round(damages/10);
+
     }
 
     if (this.skill.type === 'shield' && this.use > 0) {
