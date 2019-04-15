@@ -13,7 +13,7 @@ const calculateTimeToBuild = (id, coeff, level, hqLevel) =>
     : ((coeff * 2000 * ((Math.sqrt(625 + 100 * (level * 250)) - 25) / 50)) / hqLevel) * 1000;
 
 const calculateTimeToTrain = (coeff, level, amount) =>
-  (coeff * 80 - (level * 10) / 100) * amount * 1000;
+ ((coeff * 160 - (level * 70) / 100)) * amount * 1000;
 
 const getBalances = (user, ocLvl, timestamp) => {
   const time = (timestamp - new Date(user.last_update).getTime()) / 1000;
