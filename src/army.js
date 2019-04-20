@@ -221,8 +221,8 @@ export default class Army {
         alcohol_cost += dwunits[group.key].alcohols_cost * group.amount
       }
     });
-    return `<img class="minip" src="https://drugwars.io/img/icons/drug.png" > ${numeral(drug_cost).format('0.[00]a')}, <img class="minip" src="https://drugwars.io/img/icons/weapon.png" > ${numeral(weapon_cost).format('0.[00]a')}, <img class="minip" src="https://drugwars.io/img/icons/alcohol.png" > ${numeral(alcohol_cost).format('0.[00]a')}`
-  }
+    return {drug_cost,weapon_cost,alcohol_cost}
+}
 
   supply() {
     let supply = 0;

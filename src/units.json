@@ -72,7 +72,7 @@
     "score": 203,
     "name": "Big Mama",
     "desc": "With her motherly instinct, she will protect her kids until death does you apart.",
-    "feature": "GROUPHEAL : She can heal 3 allies for 3PV at each round (can carry 3 medkit).",
+    "feature": "GROUPHEAL : She can heal 3 allies for 3HP at each round (can carry 3 medkit).",
     "attack": 12,
     "defense": 110,
     "speed": 20,
@@ -151,7 +151,7 @@
     "drugs_cost": 100,
     "weapons_cost": 100,
     "alcohols_cost": 300,
-    "skills": [{"type":"attack","effect":0,"range":0,"use":"-1","passive":true}]
+    "skills": [{"type":"attack","effect":0,"range":0,"use":-1,"passive":true}]
   },
   "sniper": {
     "id": "sniper",
@@ -161,7 +161,7 @@
     "name": "Sniper",
     "desc": "He will protect his bros by hook or by crook.",
     "feature": "CRITICAL CHARGE : At each round, the sniper will increase its damage per 1.5*X, where X is the number of that round.",
-    "attack": 30,
+    "attack": 15,
     "defense": 8,
     "speed": 14,
     "range": 6,
@@ -173,7 +173,7 @@
     "drugs_cost": 0,
     "weapons_cost": 3000,
     "alcohols_cost": 5600,
-    "skills": [{"type":"criticalhit","effect":15,"range":1.5,"use":1,"passive":false}]
+    "skills": [{"type":"criticalhit","effect":15,"range":1.5,"use":-1,"passive":false}]
   },
   "hitman": {
     "id": "hitman",
@@ -183,7 +183,7 @@
     "name": "Hitman",
     "desc": "He is meticulous, perfectionist and precise, he will never fail his job.",
     "feature": "MULTIPLE HIT : He will use two guns to take two shots.",
-    "attack": 30,
+    "attack": 22,
     "defense": 15,
     "speed": 8,
     "range": 5,
@@ -195,7 +195,7 @@
     "drugs_cost": 0,
     "weapons_cost": 10000,
     "alcohols_cost": 0,
-    "skills": [{"type":"multiplehit","effect":8,"range":2,"use":-1,"passive":false}]
+    "skills": [{"type":"multiplehit","effect":11,"range":2,"use":-1,"passive":false}]
   },
   "ninja": {
     "id": "ninja",
@@ -204,8 +204,8 @@
     "score": 185,
     "name": "Ninja",
     "desc": "Cold as a sashimi, powerful like a wasabi, faster than a sushi master.",
-    "feature": "DODGE : She will dodge two deadly hits.",
-    "attack": 50,
+    "feature": "DODGE : She will dodge 2 deadly hits. No matter the damage.",
+    "attack": 45,
     "defense": 30,
     "speed": 6,
     "range": 4,
@@ -227,7 +227,7 @@
     "name": "Bazooka Guy",
     "desc": "He would destroy a whole army as a sunday hobby.",
     "feature": "SPLASH : Hits 6 enemies at once (can carry 4 rockets).",
-    "attack": 91,
+    "attack": 60,
     "defense": 25,
     "speed": 17,
     "range": 7,
