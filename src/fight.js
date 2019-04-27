@@ -15,10 +15,9 @@ export default class Fight {
     const defenders = new Army(this.defenders, 'defender', this.log);
     attackers.updateAliveStatus();
     defenders.updateAliveStatus();
-
+    const attacker_start_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
+    const defender_start_value = {supply :defenders.supply(), power : defenders.attackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     let round = 0;
-    const attacker_value = `Supply : ${attackers.supply()} Power : ${attackers.attackPower()}% Size: ${attackers.size()}  <h5> Value :</h5><div> ${attackers.cost()} </div> Carry : ${attackers.capacity()}`;
-    const defender_value = `Supply : ${defenders.supply()} Power : ${defenders.attackPower()}% Size: ${defenders.size()} <h5> Value :</h5>  <div>${defenders.cost()}</div>`;
     while (attackers.alive && defenders.alive && round < 6) {
       round += 1;
       this.log.add(`Round ${round}`);
@@ -37,20 +36,20 @@ export default class Fight {
       result = 3;
       winner = 'defender';
     }
-    const attacker_end_value = `Supply : ${attackers.supply()} Power : ${attackers.attackPower()}% Size: ${attackers.size()} <h5> Value :</h5><div> ${attackers.cost()} </div> Carry : ${attackers.capacity()}`;
-    const defender_end_value = `Supply : ${defenders.supply()} Power : ${defenders.attackPower()}% Size: ${defenders.size()}  <h5> Value :</h5>  <div>${defenders.cost()}</div>`;
+    const attacker_end_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
+    const defender_end_value = {supply :defenders.supply(), power : defenders.attackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     this.log.add(`Fight ended in round ${round}, Winner is : ${winner}`);
 
     return {
       result,
       attacker: {
         units: attackers.getResult(),
-        value: attacker_value,
+        start_value: attacker_start_value,
         end_value: attacker_end_value,
       },
       target: {
         units: defenders.getResult(),
-        value: defender_value,
+        start_value: defender_start_value,
         end_value: defender_end_value,
       },
     };

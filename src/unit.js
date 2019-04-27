@@ -49,11 +49,12 @@ export default class Unit {
       currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i})<span style="color:blueviolet"> dodged</span> ${Math.round(damages)} DMG.`
     }
 
-    if (this.skill.type === 'dodge' && this.use > 0 && damages > this.health) {
-      currentlog += ` [${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${
-        this.i
-      }) dodged ${Math.round(damages)} DMG.`;
-    } else if (this.health > 0 && this.health > damages) {
+    if(this.skill.type === 'dodge' && this.use > 0 && damages > this.health)
+    {
+      this.use = this.use-1;
+      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i})<span style="color:blueviolet"> dodged</span> ${Math.round(damages)} DMG.`;
+    } 
+    else if (this.health > 0 && this.health > damages) {
       this.health = this.health - damages;
       currentlog += ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) got now ${this.health} HP.`
     } 

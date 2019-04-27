@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.33"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.36"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -16,7 +16,7 @@
     <div>
       <h3 class="mb-2">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.33
+        DrugWars fight simulator v0.0.35
       </h3>
       <div class="mb-4 columns">
           <div class="column col-6">
@@ -38,15 +38,71 @@
     <div class="column col-6 p-2 attacker text-center">
       <h5>
         <b>Attacker Start:</b>
-        <div v-html="result.attacker.value">
-        </div>
+        <div v-if="result.attacker.start_value">
+            <span>
+                Supply:
+                {{result.attacker.start_value.supply}} |
+            </span>
+            <span>
+                Power:
+                {{result.attacker.start_value.power}} |
+            </span>
+            <span>
+                Size:
+                {{result.attacker.start_value.size}}
+            </span>
+            <div>
+                Army Value:
+            <div v-if="result.attacker.start_value.cost.drug_cost">
+                DRUGS:  {{result.attacker.start_value.cost.drug_cost}}
+            </div>
+            <div v-if="result.attacker.start_value.cost.weapon_cost">
+                WEAPONS:  {{result.attacker.start_value.cost.weapon_cost}}
+            </div>
+            <div v-if="result.attacker.start_value.cost.alcohol_cost">
+                ALCOHOL:  {{result.attacker.start_value.cost.alcohol_cost}}
+            </div>
+            </div>
+            <div>
+                Carry:
+                {{result.attacker.start_value.carry}}
+            </div>
+          </div>
       </h5>
     </div>
       <div class="column col-6 p-2 defender text-center">
       <h5>
         <b>Defender Start:</b>
-        <div v-html="result.target.value">
-        </div>
+        <div v-if="result.target.start_value">
+            <span>
+                Supply:
+                {{result.target.start_value.supply}} |
+            </span>
+            <span>
+                Power:
+                {{result.target.start_value.power}} |
+            </span>
+            <span>
+                Size:
+                {{result.target.start_value.size}}
+            </span>
+            <div>
+                Army Value:
+            <div v-if="result.target.start_value.cost.drug_cost">
+                DRUGS:  {{result.target.start_value.cost.drug_cost}}
+            </div>
+            <div v-if="result.target.start_value.cost.weapon_cost">
+                WEAPONS:  {{result.target.start_value.cost.weapon_cost}}
+            </div>
+            <div v-if="result.target.start_value.cost.alcohol_cost">
+                ALCOHOL:  {{result.target.start_value.cost.alcohol_cost}}
+            </div>
+            </div>
+            <div>
+                Carry:
+                {{result.target.start_value.carry}}
+            </div>
+          </div>
       </h5>
       </div>
     </div>
@@ -82,19 +138,80 @@
             </div>
     </div>
     <div v-if="result.result" class="columns result">
-
         <div class="column col-6 p-2 attacker text-center">
             <h5>
               <b>Attacker End:</b>
-              <div v-html="result.attacker.end_value">
+              <div v-if="result.attacker.end_value">
+                <span>
+                    Supply:
+                    <span class="text-red"> {{result.attacker.end_value.supply - result.attacker.start_value.supply}}</span> |
+                </span>
+                <span>
+                    Power:
+                    {{result.attacker.end_value.power}} |
+                </span>
+                <span>
+                    Size:
+                <span class="text-red"> {{result.attacker.end_value.size - result.attacker.start_value.size}} </span>
+                </span>
+                <div>
+                    Army Value:
+                  </div>
+                <div>
+                    DRUGS:  
+                    <span class="text-red"> {{result.attacker.end_value.cost.drug_cost - result.attacker.start_value.cost.drug_cost}} </span> 
+                </div>
+                <div>
+                    WEAPONS:  
+                    <span class="text-red">{{result.attacker.end_value.cost.weapon_cost - result.attacker.start_value.cost.weapon_cost}} </span> 
+                </div>
+                <div>
+                    ALCOHOL:  
+                    <span class="text-red">{{result.attacker.end_value.cost.alcohol_cost - result.attacker.start_value.cost.alcohol_cost}}</span> 
+                </div>
+                <div>
+                    Carry:
+                    {{result.attacker.end_value.carry}}
+                </div>
               </div>
             </h5>
           </div>
             <div class="column col-6 p-2 defender text-center">
             <h5>
               <b>Defender End:</b>
-              <div v-html="result.target.end_value">
-              </div>
+              <div v-if="result.target.end_value">
+                  <span>
+                      Supply:
+                      <span class="text-red"> {{result.target.end_value.supply - result.target.start_value.supply}}</span> |
+                  </span>
+                  <span>
+                      Power:
+                      {{result.target.end_value.power}} |
+                  </span>
+                  <span>
+                      Size:
+                  <span class="text-red"> {{result.target.end_value.size - result.target.start_value.size}} </span>
+                  </span>
+                  <div>
+                      Army Value:
+                    </div>
+                  <div>
+                      DRUGS:  
+                      <span class="text-red"> {{result.target.end_value.cost.drug_cost - result.target.start_value.cost.drug_cost}} </span> 
+                  </div>
+                  <div>
+                      WEAPONS:  
+                      <span class="text-red">{{result.target.end_value.cost.weapon_cost - result.target.start_value.cost.weapon_cost}} </span> 
+                  </div>
+                  <div>
+                      ALCOHOL:  
+                      <span class="text-red">{{result.target.end_value.cost.alcohol_cost - result.target.start_value.cost.alcohol_cost}}</span>
+                  </div>
+                  <div>
+                      Carry:
+                      {{result.target.end_value.carry}}
+                  </div>
+                </div>
             </h5>
             </div>
           </div>

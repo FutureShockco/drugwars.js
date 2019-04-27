@@ -243,12 +243,17 @@ export default class Army {
   }
 
   attackPower() {
-    let attackpower = 0;
+    let supply = 0;
     this.units.forEach(unit => {
       if (!unit.dead)
-        attackpower += dwunits[unit.key].supply
+        supply += dwunits[unit.key].supply
     });
-    return Math.round(100 - parseFloat(attackpower / 5).toFixed(0) / 100)
+    let power = Math.round(100 - parseFloat(supply / 5).toFixed(0) / 100)
+    if(power>=60)
+    {
+      return power
+    }
+    else return 60
   }
 
   getResult() {
