@@ -1,5 +1,6 @@
 import Army from './army';
 import Log from './log';
+import dunits from './units.json';
 
 export default class Fight {
   constructor(json) {
@@ -23,12 +24,10 @@ export default class Fight {
     while (attackers.alive && defenders.alive && round < 6) {
       round += 1;
       this.log.add(`Round ${round}`);
-      const defendersActions = defenders.chooseActions(round);
-      const attackersActions = attackers.chooseActions(round);
+      let defendersActions = defenders.chooseActions(round);
+      let attackersActions = attackers.chooseActions(round);
       defenders.processAllActions(defendersActions,attackers.attackPower(),attackersActions,round);
       attackers.processAllActions(attackersActions,defenders.attackPower(),defendersActions,round);
-      console.log(attackers.units)
-
     }
 
     let winner = 'none';

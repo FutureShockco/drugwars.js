@@ -1,7 +1,6 @@
 import { orderBy } from 'lodash';
 import Unit from './unit';
 import dwunits from './units.json';
-import numeral from 'numeral';
 import Troop from './troop';
 
 export default class Army {
@@ -14,38 +13,37 @@ export default class Army {
     this.log = log;
     this.groupid = 0;
     units.forEach(unit => {
-      const skill =  dwunits[unit.key].skills[0]
-      const effect =  dwunits[unit.key].skills[0].effect
-      const use =  dwunits[unit.key].skills[0].use
-      skill.use = use;
-      if(dwunits[unit.key].skills[0].type === "group")
+      const effect = dwunits[unit.key].skill.effect
+      if(unit.amount>0)
       {
-        let group_amount = unit.amount
-        while(group_amount>0)
+        if(dwunits[unit.key].skill.type === "group")
         {
-          if(group_amount>=effect)
+          let group_amount = unit.amount
+          while(group_amount>0)
           {
-            group_amount = group_amount - effect
-            this.groups.push(new Troop(unit.key, effect, this.groupid++, name, skill, log));	
+            if(group_amount>=effect)
+            {
+              group_amount = group_amount - effect
+              this.groups.push(new Troop(unit.key, effect, this.groupid++, name, log));	
+            }
+            else{
+              if(group_amount>0)
+              this.groups.push(new Troop(unit.key, group_amount, this.groupid++, name, log));	
+              group_amount = 0
+            }
           }
-          else{
-            if(group_amount>0)
-            this.groups.push(new Troop(unit.key, group_amount, this.groupid++, name, skill, log));	
-            group_amount = 0
+        }
+        else{
+          for (let i = 0; i < unit.amount; i += 1) {
+            if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy') {
+            }
+            else
+             {
+              this.units.push(new Unit(unit.key, i + 1, name, log));
+             }
           }
         }
       }
-      else{
-        for (let i = 0; i < unit.amount; i += 1) {
-          if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy') {
-          }
-          else
-           {
-            this.units.push(new Unit(unit.key, i + 1, name, skill, log));
-           }
-        }
-      }
-
     });
     trainings.forEach(training => {
           if (training.key === 'routing' || training.lvl < 1) {
@@ -57,20 +55,20 @@ export default class Army {
     this.units.forEach(unit => {
       const protection = this.trainings.find(b => b.key === 'protection');
       if(protection)
-      unit.defense = unit.defense +  unit.defense/500 *protection.lvl;
+      unit.defense = unit.defense +  unit.defense/100 *protection.lvl;
         if(unit.spec.type === 'Melee')
         {
 
           const closecombat = this.trainings.find(b => b.key === 'closecombat');
           if(closecombat)
-          unit.attack = unit.attack + unit.attack /500 * closecombat.lvl;
+          unit.attack = unit.attack + unit.attack /100 * closecombat.lvl;
         }
         else{
           //ALL RANGE
           const firearms = this.trainings.find(b => b.key === 'firearms');
           if(firearms)
           {
-            unit.attack = unit.attack + unit.attack /500 * firearms.lvl;
+            unit.attack = unit.attack + unit.attack /100 * firearms.lvl;
           }
 
           // SNIPER
@@ -78,7 +76,7 @@ export default class Army {
           {
             const sniping = this.trainings.find(b => b.key === 'sniping');
             if(sniping)
-            unit.attack = unit.attack + unit.attack /500 * sniping.lvl;
+            unit.attack = unit.attack + unit.attack /100 * sniping.lvl;
           }
 
           // BAZOOKA
@@ -86,7 +84,7 @@ export default class Army {
           {
             const bomb = this.trainings.find(b => b.key === 'bomb');
             if(bomb)
-            unit.attack = unit.attack + unit.attack /500 * bomb.lvl;
+            unit.attack = unit.attack + unit.attack /100 * bomb.lvl;
           }
 
           // MERCENARY NINJA KNIFER
@@ -95,8 +93,8 @@ export default class Army {
             const psychological = this.trainings.find(b => b.key === 'psychological');
             if(psychological)
             {
-              unit.attack = unit.attack + unit.attack /500 *psychological.lvl;
-              unit.defense = unit.defense + unit.attack /500 *psychological.lvl;
+              unit.attack = unit.attack + unit.attack /100 *psychological.lvl;
+              unit.defense = unit.defense + unit.attack /100 *psychological.lvl;
             }
           }
 
@@ -105,7 +103,7 @@ export default class Army {
           {
             const chemical = this.trainings.find(b => b.key === 'chemical');
             if(chemical)
-            unit.attack = unit.attack + unit.attack /500 *chemical.lvl;
+            unit.attack = unit.attack + unit.attack /100 *chemical.lvl;
           }
 
         }
@@ -116,15 +114,17 @@ export default class Army {
     const actions = [];
     this.units.forEach(unit => {
       if (!unit.dead && unit.spec.attack > 0) {
-        if(round != 1 || unit.spec.range > 4 || unit.spec.skills[0].type === 'tastynasty' || unit.key === 'hobo' )
+        if(round != 1 || unit.spec.range > 4 || unit.spec.skill.type === 'tastynasty' || unit.key === 'hobo' )
         {
-            if(unit.use > 0 || unit.use === -1 || unit.skill.use > 0 || unit.skill.use === -1)
-            {
-            }
-            else{
-              unit.skill.type = 'attack'
-            }
-          actions.push([unit.attack, unit.skill, unit.key, unit.i]);
+            // if(unit.use > 0 || unit.use === -1)
+            // {
+            //   actions.push([unit.attack, unit.skill, unit.key, unit.i]);
+            // }
+            // else{
+            //   unit.skill_type = 'attack'
+            //   actions.push([unit.attack, unit.skill, unit.key, unit.i]);
+            // }
+            actions.push([unit.attack, unit.skill, unit.key, unit.i]);
         }
         if (unit.health === 0 && !unit.dead) unit.kill();
       }

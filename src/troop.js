@@ -1,20 +1,20 @@
 import units from './units.json';
 
 export default class Troop {
-  constructor(key, amount,i, name, skill, log) {
+  constructor(key, amount,i, name, log) {
     this.key = key;
     this.name = name;
     this.i = i;
     this.spec = units[key];
     this.attack = units[key].attack;
     this.defense = units[key].defense;
-    this.use = skill.use
     this.amount = amount;
     this.dead = 0;
     this.undead = amount;
     this.priority = units[key].priority;
     this.log = log;
-    this.skill = skill
+    this.skill = units[key].skill;
+    this.use = units[key].use;
     this.type = units[key].type
     }
 

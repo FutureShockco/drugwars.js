@@ -7,7 +7,7 @@
     "name": "Hobo",
     "desc": "He will fall into an ethylic coma after his first punch.",
     "feature": "KAMIKAZE : If he meets an enemy at the end of the first round, he will die. This unit can not defend!",
-    "attack": 2,
+    "attack": 12,
     "health": 0,
     "defense":0,
     "speed": 13,
@@ -20,7 +20,8 @@
     "drugs_cost": 0,
     "weapons_cost": 0,
     "alcohols_cost": 400,
-    "skills": [{"type":"attack","effect":1,"range":1,"use":-1,"passive":true}]
+    "use":-1,
+    "skill": {"type":"attack","effect":1,"range":1,"use":-1,"passive":true}
     },
   "rowdy": {
     "id": "rowdy",
@@ -30,9 +31,9 @@
     "name": "Rowdy",
     "desc": "He makes more noise than he hits.",
     "feature": "GROUP : The rowdy always fights in groups of 4.",
-    "attack": 2,
-    "health": 2,
-    "defense":1,
+    "attack": 200,
+    "health": 200,
+    "defense":40,
     "speed": 12,
     "range": 1,
     "time": 64,
@@ -43,7 +44,8 @@
     "drugs_cost": 0,
     "weapons_cost": 600,
     "alcohols_cost": 0,
-    "skills": [{"type":"group","effect":4,"range":1,"use":-1,"passive":true}]
+    "use":-1,
+    "skill": {"type":"group","effect":4,"range":1,"use":-1,"passive":true}
   },
   "bouncer": {
     "id": "bouncer",
@@ -53,9 +55,9 @@
     "name": "Super Bouncer",
     "desc": "He's not smart but will follow you until he dies.",
     "feature": "SHIELD : He can use it once and obtain +2 health.",
-    "attack": 5,
-    "health": 11,
-    "defense":3,
+    "attack": 500,
+    "health": 1100,
+    "defense":60,
     "speed": 11,
     "range": 1,
     "time": 57,
@@ -66,7 +68,8 @@
     "drugs_cost": 0,
     "weapons_cost": 1400,
     "alcohols_cost": 1300,
-    "skills": [{"type":"shield","effect":2,"range":1,"use":1,"passive":true}]
+    "use":1,
+    "skill": {"type":"shield","effect":2,"range":1,"use":1,"passive":true}
   },
   "big_mama": {
     "id": "big_mama",
@@ -76,9 +79,9 @@
     "name": "Big Mama",
     "desc": "With her motherly instinct, she will protect her kids until death does you apart.",
     "feature": "GROUPHEAL : She can heal 3 allies for 3HP at each round (can carry 3 medkit).",
-    "attack": 12,
-    "health": 110,
-    "defense":6,
+    "attack": 1200,
+    "health": 11000,
+    "defense":100,
     "speed": 20,
     "range": 3,
     "time": 38,
@@ -89,7 +92,8 @@
     "drugs_cost": 0,
     "weapons_cost": 9000,
     "alcohols_cost": 12000,
-    "skills": [{"type":"groupheal","effect":3,"range":3,"use":3,"passive":false}]
+    "use":3,
+    "skill": {"type":"groupheal","effect":3,"range":3,"use":3,"passive":false}
   },
   "knifer": {
     "id": "knifer",
@@ -99,9 +103,9 @@
     "name": "Knifer",
     "desc": "He only speaks with his knives and he is nothing without them.",
     "feature": "TASTY NASTY : He does not respect any rules, not even those about priority.",
-    "attack": 8,
-    "health": 5,
-    "defense":2,
+    "attack": 800,
+    "health": 500,
+    "defense":50,
     "speed": 10,
     "range": 1,
     "time": 67,
@@ -112,7 +116,8 @@
     "drugs_cost": 0,
     "weapons_cost": 3000,
     "alcohols_cost": 1200,
-    "skills": [{"type":"tastynasty","effect":1,"range":1,"use":-1,"passive":true}]
+    "use":-1,
+    "skill": {"type":"tastynasty","effect":1,"range":1,"use":-1,"passive":true}
   },
   "gunman": {
     "id": "gunman",
@@ -122,9 +127,9 @@
     "name": "Gunman",
     "desc": "The legend says that he was born with a gun in his hand.",
     "feature": "ACCURATE HIT : He's pretty good against melee and gives a bonus damage.",
-    "attack": 16,
-    "health": 12,
-    "defense":2,
+    "attack": 1600,
+    "health": 1200,
+    "defense":50,
     "speed": 9,
     "range": 5,
     "time": 102,
@@ -135,7 +140,8 @@
     "drugs_cost": 0,
     "weapons_cost": 3600,
     "alcohols_cost": 3200,
-    "skills": [{"type":"accuratehit","effect":1,"range":1,"use":-1,"passive":false}]
+    "use":-1,
+    "skill": {"type":"accuratehit","effect":1,"range":1,"use":-1,"passive":false}
   },
   "spy": {
     "id": "spy",
@@ -146,8 +152,8 @@
     "desc": "He can only gather informations but he does it at the speed of lightning.",
     "feature": "SPY : Gives a lot of information about an opponent. This unit can not defend!",
     "attack": 0,
-    "health": 1,
-    "defense":1,
+    "health": 100,
+    "defense":30,
     "speed": 3,
     "range": 5,
     "time": 67,
@@ -158,7 +164,8 @@
     "drugs_cost": 100,
     "weapons_cost": 100,
     "alcohols_cost": 300,
-    "skills": [{"type":"attack","effect":0,"range":0,"use":-1,"passive":true}]
+    "use":-1,
+    "skill": {"type":"attack","effect":0,"range":0,"use":-1,"passive":true}
   },
   "sniper": {
     "id": "sniper",
@@ -168,9 +175,9 @@
     "name": "Sniper",
     "desc": "He will protect his bros by hook or by crook.",
     "feature": "CRITICAL CHARGE : At each round, the sniper will increase its damage per 1.5*X, where X is the number of that round.",
-    "attack": 15,
-    "health": 8,
-    "defense":2,
+    "attack": 1500,
+    "health": 800,
+    "defense":50,
     "speed": 14,
     "range": 6,
     "time": 92,
@@ -181,7 +188,8 @@
     "drugs_cost": 0,
     "weapons_cost": 3000,
     "alcohols_cost": 5600,
-    "skills": [{"type":"criticalhit","effect":15,"range":1.5,"use":-1,"passive":false}]
+    "use":-1,
+    "skill": {"type":"criticalhit","effect":15,"range":1.5,"use":-1,"passive":false}
   },
   "hitman": {
     "id": "hitman",
@@ -191,9 +199,9 @@
     "name": "Hitman",
     "desc": "He is meticulous, perfectionist and precise, he will never fail his job.",
     "feature": "MULTIPLE HIT : He will use two guns to take two shots.",
-    "attack": 11,
-    "health": 15,
-    "defense":3,
+    "attack": 1100,
+    "health": 1500,
+    "defense":50,
     "speed": 8,
     "range": 5,
     "time": 67,
@@ -204,7 +212,8 @@
     "drugs_cost": 0,
     "weapons_cost": 10000,
     "alcohols_cost": 0,
-    "skills": [{"type":"multiplehit","effect":11,"range":2,"use":-1,"passive":false}]
+    "use":-1,
+    "skill": {"type":"multiplehit","effect":11,"range":2,"use":-1,"passive":false}
   },
   "ninja": {
     "id": "ninja",
@@ -214,9 +223,9 @@
     "name": "Ninja",
     "desc": "Cold as a sashimi, powerful like a wasabi, faster than a sushi master.",
     "feature": "DODGE : She will dodge 2 deadly hits. No matter the damage.",
-    "attack": 40,
-    "health": 30,
-    "defense":4,
+    "attack": 4000,
+    "health": 3000,
+    "defense":100,
     "speed": 6,
     "range": 4,
     "time": 67,
@@ -227,7 +236,8 @@
     "drugs_cost": 0,
     "weapons_cost": 7000,
     "alcohols_cost": 7000,
-    "skills": [{"type":"dodge","effect":1,"range":1,"use":2,"passive":true}]
+    "use":2,
+    "skill": {"type":"dodge","effect":1,"range":1,"use":2,"passive":true}
   },
   "bazooka": {
     "id": "bazooka",
@@ -237,9 +247,9 @@
     "name": "Bazooka Guy",
     "desc": "He would destroy a whole army as a sunday hobby.",
     "feature": "SPLASH : Hits 6 enemies at once (can carry 3 rockets).",
-    "attack": 66,
-    "health": 25,
-    "defense":2,
+    "attack": 6600,
+    "health": 2500,
+    "defense":50,
     "speed": 17,
     "range": 7,
     "time": 102,
@@ -250,7 +260,8 @@
     "drugs_cost": 0,
     "weapons_cost": 15000,
     "alcohols_cost": 13000,
-    "skills": [{"type":"splash","effect":11,"range":6,"use":3,"passive":false}]
+    "use":3,
+    "skill": {"type":"splash","effect":11,"range":6,"use":3,"passive":false}
   },
   "mercenary": {
     "id": "mercenary",
@@ -260,9 +271,9 @@
     "name": "Mercenary",
     "desc": "He is a freelancer that will only listen to money, but you won’t regret spending on him.",
     "feature": "BULLETPROOF : He is immortal... or not. He just has a bulletproof vest. This unit will obtain 25HP back when he reaches 0.",
-    "attack": 100,
-    "health": 75,
-    "defense":5,
+    "attack": 10000,
+    "health": 7500,
+    "defense":100,
     "speed": 15,
     "range": 6,
     "time": 137,
@@ -273,6 +284,7 @@
     "drugs_cost": 0,
     "weapons_cost": 19000,
     "alcohols_cost": 14000,
-    "skills": [{"type":"bulletproof","effect":0,"range":0,"use":1,"passive":true}]
+    "use":1,
+    "skill": {"type":"bulletproof","effect":0,"range":0,"use":1,"passive":true}
   }
 }

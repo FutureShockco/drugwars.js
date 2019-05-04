@@ -1,6 +1,6 @@
 {
   "name": "drugwars",
-  "version": "0.0.45",
+  "version": "0.0.54",
   "description": "A lightweight JavaScript library for DrugWars",
   "main": "lib/index.js",
   "browser": "dist/drugwars.min.js",
@@ -12,11 +12,9 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
-    "big.js": "^5.2.2",
     "debug": "^4.1.1",
     "kbyte": "0.0.4",
-    "lodash": "^4.17.11",
-    "numeral": "^2.0.6"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@taskr/babel": "^1.1.0",

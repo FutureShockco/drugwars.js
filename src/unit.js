@@ -1,34 +1,35 @@
-import units from './units.json';
+import dunits from './units.json';
 
 export default class Unit {
-  constructor(key, i, name, skill, log) {
+  constructor(key, i, name, log) {
     this.key = key;
     this.name = name;
     this.i = i;
-    this.attack = units[key].attack;
-    this.defense = units[key].defense;
-    this.spec = units[key];
-    this.health = units[key].health;
-    this.max_health = units[key].health;
+    this.attack = dunits[key].attack;
+    this.defense = dunits[key].defense;
+    this.spec = dunits[key];
+    this.health = dunits[key].health;
+    this.max_health = dunits[key].health;
     this.dead = false;
-    this.priority = units[key].priority;
+    this.priority = dunits[key].priority;
     this.log = log;
-    this.use = skill.use
-    this.skill = skill;
-    this.type = units[key].type;
+    this.skill = dunits[key].skill;
+    this.skill_type = dunits[key].skill.type;
+    this.use = dunits[key].use;
+    this.type = dunits[key].type;
   }
 
-  takeDamages(damages,skill_type,round,name,num) {
-    damages = damages - (this.defense)
-    let current =''
+  takeDamages(damage,sender_skill,round,name,num) {
+    let damages = damage - (this.defense);
+    let current ='';
     if(this.name === 'attacker')
-    current = "D"
-    else current = "A"
-    let currentlog = `[${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) with ${parseFloat(this.health).toFixed(2)} HP take <span style="color:red">${parseFloat(damages).toFixed(2)} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${skill_type}"</span>.`
+    current = "D";
+    else current = "A";
+    let currentlog = `[${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) with ${this.health} HP take <span style="color:red">${damages} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${sender_skill}"</span>.`
 
-    if(this.type === 'Melee' && skill_type === 'accuratehit' && this.type != 'tastynasty')
+    if(this.type === 'Melee' && sender_skill === 'accuratehit' && this.type != 'tastynasty')
     {
-      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${parseFloat(damages/10).toFixed(2)}  DMG</span> bonus.`
+      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${damages/10}  DMG</span> bonus.`
       this.health = this.health - damages/10;
     }
 
@@ -36,24 +37,24 @@ export default class Unit {
       currentlog += ` [${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${
         this.i
       }) used his (${this.use}) shield.`;
-      this.use = this.use - 1;
+      this.use -= 1;
       this.health = this.health + this.skill.effect;
     } 
 
 
     if(this.skill.type === 'bulletproof' && this.health < damages && this.use > 0){
-      currentlog += `[${this.name}] ${this.key} (${this.i}) used his (${this.use}) bulletproof`
-      this.use = this.use-1;
+      currentlog += `[${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) bulletproof.`
+      this.use -= 1;
       this.health = 25;
     }
     else if(this.skill.type === 'dodge' && this.use > 0 && damages > this.health)
     {
-      this.use = this.use-1;
+      this.use -= 1;
       currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i})<span style="color:blueviolet"> dodged</span> ${damages} DMG.`;
     } 
     else if (this.health > 0 && this.health > damages) {
       this.health =  this.health - damages
-      currentlog += ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) got now ${parseFloat(this.health).toFixed(2)} HP.`
+      currentlog += ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) got now ${this.health} HP.`
     } 
     else {
       currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) is <span style="color:darkorange">now dead.</span>`;
@@ -62,16 +63,15 @@ export default class Unit {
     this.log.add(currentlog);
   }
 
-  takeBuff(points,skill_type,round,name,num) {
-  if(this.health < this.max_health && skill_type === 'heal' || this.health < this.max_health && skill_type === 'groupheal')
+  takeBuff(points,sender_skill,round,name,num) {
+  if(this.health < this.max_health && sender_skill === 'heal' || this.health < this.max_health && sender_skill === 'groupheal')
     {
       this.log.add(
-        ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) with ${parseFloat(this.health).toFixed(2)} HP take ${skill_type} <span style="color:chartreuse">+${points} HP</span> from [${this.name.substring(0,1).toUpperCase()}] ${name} (${num}).`,
+        ` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) with ${this.health} HP take ${sender_skill} <span style="color:chartreuse">+${points} HP</span> from [${this.name.substring(0,1).toUpperCase()}] ${name} (${num}).`,
       );
       this.health = this.health + points;
       if(this.health > this.max_health)
       this.health = this.max_health
-      this.dead = false;
     }
   }
 
