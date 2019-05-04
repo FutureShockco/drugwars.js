@@ -78,8 +78,8 @@
     "score": 203,
     "name": "Big Mama",
     "desc": "With her motherly instinct, she will protect her kids until death does you apart.",
-    "feature": "GROUPHEAL : She can heal 3 allies for 3HP at each round (can carry 3 medkit).",
-    "attack": 1200,
+    "feature": "GROUPHEAL : She can heal 5 allies for 100HP at each round (can carry 3 medkit).",
+    "attack": 800,
     "health": 11000,
     "defense":100,
     "speed": 20,
@@ -93,7 +93,7 @@
     "weapons_cost": 9000,
     "alcohols_cost": 12000,
     "use":3,
-    "skill": {"type":"groupheal","effect":3,"range":3,"use":3,"passive":false}
+    "skill": {"type":"groupheal","effect":100,"range":5,"use":3,"passive":false}
   },
   "knifer": {
     "id": "knifer",
@@ -103,7 +103,7 @@
     "name": "Knifer",
     "desc": "He only speaks with his knives and he is nothing without them.",
     "feature": "TASTY NASTY : He does not respect any rules, not even those about priority.",
-    "attack": 800,
+    "attack": 1000,
     "health": 500,
     "defense":50,
     "speed": 10,
@@ -114,8 +114,8 @@
     "priority": 60,
     "coeff": 0.72,
     "drugs_cost": 0,
-    "weapons_cost": 3000,
-    "alcohols_cost": 1200,
+    "weapons_cost": 1800,
+    "alcohols_cost": 2000,
     "use":-1,
     "skill": {"type":"tastynasty","effect":1,"range":1,"use":-1,"passive":true}
   },
@@ -189,7 +189,7 @@
     "weapons_cost": 3000,
     "alcohols_cost": 5600,
     "use":-1,
-    "skill": {"type":"criticalhit","effect":15,"range":1.5,"use":-1,"passive":false}
+    "skill": {"type":"criticalhit","effect":1500,"range":1.5,"use":-1,"passive":false}
   },
   "hitman": {
     "id": "hitman",
@@ -213,7 +213,7 @@
     "weapons_cost": 10000,
     "alcohols_cost": 0,
     "use":-1,
-    "skill": {"type":"multiplehit","effect":11,"range":2,"use":-1,"passive":false}
+    "skill": {"type":"multiplehit","effect":1100,"range":2,"use":-1,"passive":false}
   },
   "ninja": {
     "id": "ninja",
@@ -246,8 +246,8 @@
     "score": 255,
     "name": "Bazooka Guy",
     "desc": "He would destroy a whole army as a sunday hobby.",
-    "feature": "SPLASH : Hits 6 enemies at once (can carry 3 rockets).",
-    "attack": 6600,
+    "feature": "SPLASH : Hits 10 enemies at once (can carry 3 rockets).",
+    "attack": 6000,
     "health": 2500,
     "defense":50,
     "speed": 17,
@@ -261,7 +261,7 @@
     "weapons_cost": 15000,
     "alcohols_cost": 13000,
     "use":3,
-    "skill": {"type":"splash","effect":11,"range":6,"use":3,"passive":false}
+    "skill": {"type":"splash","effect":600,"range":10,"use":3,"passive":false}
   },
   "mercenary": {
     "id": "mercenary",
