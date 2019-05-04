@@ -6,26 +6,48 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.36"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.43"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
 <body>
 
-  <div id="main" class="p-6" v-cloak>
-    <div>
-      <h3 class="mb-2">
+  <div id="main" v-cloak>
+    <div class="mt-2">
+      <h3 class="mb-4 pt-3">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.36
+        DrugWars fight simulator v0.0.43
       </h3>
-      <div class="mb-4 columns">
-          <div class="column col-6">
-              <textarea v-model="attacker" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
-
+      <div class="my-4 columns px-0">
+          <div class="column col-5 px-0 text-center">
+              <h3 class="text-red mb-2">UNITS</h3>
+                  <div class="column col-3 unitname" v-for="unit in attacker" :key="unit.id">
+                      <img :src="`https://drugwars.io/img/units/${unit.id}.jpg`" width="40" height="40" align="absmiddle">
+                      <div>{{ unit.id }}</div>
+                      <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
+                    </div>
+                    <h3 class="text-red mb-2">TRAININGS</h3>
+                    <div class="column col-3 unitname" v-for="training in attackertrainings" :key="training.id" v-if="training.id != 'routing' && training.id != 'information'">
+                        <img :src="`https://drugwars.io/img/trainings/${training.id}.jpg`" width="40" height="40" align="absmiddle">
+                        <div>{{ training.id }}</div>
+                        <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
+                      </div>
           </div>
-          <div class="column col-6">
-              <textarea v-model="defender" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
-
+          <div class="column col-2 vs">
+          </div>
+          <div class="column col-5 px-0 text-center">
+              <h3 class="text-blue mb-2">UNITS</h3>
+              <div class="column col-3 unitname" v-for="unit in defender" :key="unit.id">
+                  <img :src="`https://drugwars.io/img/units/${unit.id}.jpg`" width="40" height="40" align="absmiddle">
+                  <div>{{ unit.id }}</div>
+                  <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
+                </div>
+                <h3 class="text-blue mb-2">TRAININGS</h3>
+                <div class="column col-3 unitname" v-for="training in defendertrainings" :key="training.id" v-if="training.id != 'routing' && training.id != 'information'">
+                    <img :src="`https://drugwars.io/img/trainings/${training.id}.jpg`" width="40" height="40" align="absmiddle">
+                    <div>{{ training.id }}</div>
+                    <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
+                  </div>
             </div>
     </div>
     </div>
@@ -33,6 +55,9 @@
       <button @click="handleSubmit" class="btn btn-primary mb-2">
         Submit
       </button>
+      <button @click="handleReset" class="btn btn-red mb-2">
+          Reset
+        </button>
     </div>
     <div v-if="result.result" class="columns result">
     <div class="column col-6 p-2 attacker text-center">
@@ -155,7 +180,7 @@
                 <span class="text-red"> {{result.attacker.end_value.size - result.attacker.start_value.size}} </span>
                 </span>
                 <div>
-                    Army Value:
+                    Army Lost Value:
                   </div>
                 <div>
                     DRUGS:  
@@ -193,7 +218,7 @@
                   <span class="text-red"> {{result.target.end_value.size - result.target.start_value.size}} </span>
                   </span>
                   <div>
-                      Army Value:
+                      Army Lost Value:
                     </div>
                   <div>
                       DRUGS:  
@@ -238,32 +263,43 @@
         data: {
           attacker: null,
           defender:null,
+          attackertrainings: null,
+          defendertrainings:null,
           error: null,
           log: [],
           result: {}
         },
         mounted() {
-          let attackerUnits = '';
-          let targetUnits = '';
+          let attackerUnits = [];
+          let targetUnits = [];
           Object.keys(drugwars.units).forEach(unit => {
-            attackerUnits += `${unit}:0\n`;
-            targetUnits += `${unit}:0\n`;
+            attackerUnits.push({id:unit,key:unit,amount:0});
+            targetUnits.push({id:unit,key:unit,amount:0});
           });
-          this.attacker = `${attackerUnits}`;
-          this.defender = `${targetUnits}`;
+
+          this.attacker = attackerUnits;
+          this.defender = targetUnits;
+
+          let attackerTrainings = [];
+          let targetTrainings = [];
+          Object.keys(drugwars.trainings).forEach(training => {
+            attackerTrainings.push({id:training,key:training,lvl:0});
+            targetTrainings.push({id:training,key:training,lvl:0});
+          });          
+
+          this.attackertrainings = attackerTrainings;
+          this.defendertrainings = targetTrainings;
         },
         methods: {
           handleSubmit: function () {
             const attackers = this.attacker;
             const defenders = this.defender;
-            const attackerUnits = this.toUnits(attackers);
-            const targetUnits = this.toUnits(defenders);
+            const attackersTrainings = this.attackertrainings;
+            const defendersTrainings = this.defendertrainings;
             const json = {
-              attacker: { units: attackerUnits },
-              target: { units: targetUnits }
+              attacker: { units: attackers, trainings:attackersTrainings },
+              target: { units: defenders ,trainings:defendersTrainings}
             };
-            console.log('JSON', json);
-
             const fight = new drugwars.Fight(json);
             const result = fight.fight();
             this.result = result;
@@ -271,12 +307,26 @@
 
             this.log = fight.getLog();
           },
-          toUnits: function (input) {
-            const troops = input.split('\n').filter(Boolean);
-            return troops.map(troop => {
-              const [key, amount] = troop.split(':');
-              return { key, amount: parseInt(amount) };
-            });
+          handleReset: function () {
+            let attackerUnits = [];
+          let targetUnits = [];
+          Object.keys(drugwars.units).forEach(unit => {
+            attackerUnits.push({id:unit,key:unit,amount:0});
+            targetUnits.push({id:unit,key:unit,amount:0});
+          });
+
+          this.attacker = attackerUnits;
+          this.defender = targetUnits;
+
+          let attackerTrainings = [];
+          let targetTrainings = [];
+          Object.keys(drugwars.trainings).forEach(training => {
+            attackerTrainings.push({id:training,key:training,lvl:0});
+            targetTrainings.push({id:training,key:training,lvl:0});
+          });          
+
+          this.attackertrainings = attackerTrainings;
+          this.defendertrainings = targetTrainings;
           }
         }
       });
@@ -288,14 +338,19 @@
       display: none;
     }
     body{
-      background: black;
+      background: rgb(8, 8, 8);
       color:white;
     }
 
     #main {
       text-align: left;
-      max-width: 600px;
+      max-width: 900px;
+      padding-left: 20px;
+      padding-right: 20px;
       margin: 0 auto;
+      background: rgb(2, 2, 2);
+      box-shadow: 0px 0px 3px #a87b00;
+      border-radius: 10px;
     }
 
     textarea {
@@ -324,6 +379,22 @@
       background-color: black;
       border-radius: 5px;
       border: 2px solid #ffc400;
+    }
+
+    .unitname{
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .vs{
+      margin-top:40%;
+    }
+
+    input{
+      min-height: 16px!important;
+      padding: 0px 8px!important;
     }
 
   </style>

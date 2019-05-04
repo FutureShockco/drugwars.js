@@ -61,7 +61,6 @@
   },
   "research_center": {
     "id": "research_center",
-    "disabled": true,
     "type": "main",
     "score": 15,
     "name": "Research Center",

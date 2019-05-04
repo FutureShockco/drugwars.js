@@ -1,115 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.33"></script>
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.36"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
+
 <body>
 
-<div id="main" class="p-6" v-cloak>
+  <div id="main" class="p-6" v-cloak>
     <div>
-        <h3 class="mb-2">
-          <img src="https://drugwars.io/img/drugwars.png">
-          DrugWars fight simulator v0.0.33
-        </h3>
-        <div class="mb-4 columns">
-            <div class="column col-6">
-                <textarea v-model="attacker" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
-  
-            </div>
-            <div class="column col-6">
-                <textarea v-model="defender" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
-  
-              </div>
-      </div>
-      </div>
-      <div class="mb-4 text-center">
-        <button @click="handleSubmit" class="btn btn-primary mb-2">
-          Submit
-        </button>
-      </div>
-  <div v-if="result.result" class="columns result">
-      <div class="column col-6 p-2 attacker text-center">
-        <h5>
-          <b>Attacker:</b>
-        </h5>
-      </div>
-        <div class="column col-6 p-2 defender text-center">
-        <h5>
-          <b>Defender:</b>
-        </h5>
-        </div>
-      </div>
-      <div v-if="result.result" class="columns result">
-            <div v-for="(army) in ['attacker', 'target']" class="column col-6">
-                <h4 class="mb-2 name">{{ army }}</h4>
-                <div class="value p-2 mb-2" v-for="unit in result[army].units" v-if="unit.amount > 0">
-                  <b>
-                    <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle"
-                      class="mr-2" />
-                    <span v-if="unit.dead" class="text-red">
-                      {{ unit.dead }}
-                    </span>
-                    <span v-if="unit.dead">
-                      /
-                    </span>
-                    {{ unit.amount }}
-                  </b>
-                </div>
-                <div class="value p-2 mb-2" v-for="unit in result[army].troops" v-if="unit.amount > 0">
-                  <b>
-                    <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle"
-                      class="mr-2" />
-                    <span v-if="unit.dead" class="text-red">
-                      {{ unit.dead }}
-                    </span>
-                    <span v-if="unit.dead">
-                      /
-                    </span>
-                    {{ unit.amount }}
-                  </b>
-                </div>
-              </div>
-      </div>
-      <div v-if="result.result" class="columns result">
-          <div class="column col-6 p-2 attacker text-center">
-              <h5>
-                <b>Attacker End:</b>
-                <div v-if="result.attacker.end_value" v-html="result.attacker.end_value">
-                </div>
-              </h5>
-            </div>
-              <div class="column col-6 p-2 defender text-center">
-              <h5>
-                <b>Defender End:</b>
-                <div v-if="result.target.end_value" v-html="result.target.end_value">
-                  </div>
-              </h5>
-              </div>
-            </div>
-      <div  v-if="result.result">
-          <h3 class="text-center result uppercase">
-            <b>Result:</b>
-            <div>
-            {{ result.result === 2
-            ? 'draw' : result.result === 1
-              ? 'attacker win' : 'attacker lose'
-          }}
-        </div>
-          </h3>
-        </div>
-      <div v-if="log.length > 0" class="p-2 mb-4">
-        <p v-for="l in log" v-html="l">{{ l }}</p>
-      </div>
-</div>
+      <h3 class="mb-2">
+        <img src="https://drugwars.io/img/drugwars.png">
+        DrugWars fight simulator v0.0.36
+      </h3>
+      <div class="mb-4 columns">
+          <div class="column col-6">
+              <textarea v-model="attacker" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
 
-<script type="text/javascript">
-window.onload = function() {
-  new Vue({
+          </div>
+          <div class="column col-6">
+              <textarea v-model="defender" placeholder="Write a comment" class="form-control mb-2 width-full" /></textarea>
+
+            </div>
+    </div>
+    </div>
+    <div class="mb-4 text-center">
+      <button @click="handleSubmit" class="btn btn-primary mb-2">
+        Submit
+      </button>
+    </div>
+    <div v-if="result.result" class="columns result">
+    <div class="column col-6 p-2 attacker text-center">
+      <h5>
+        <b>Attacker Start:</b>
+        <div v-if="result.attacker.start_value">
+            <span>
+                Supply:
+                {{result.attacker.start_value.supply}} |
+            </span>
+            <span>
+                Power:
+                {{result.attacker.start_value.power}} |
+            </span>
+            <span>
+                Size:
+                {{result.attacker.start_value.size}}
+            </span>
+            <div>
+                Army Value:
+            <div v-if="result.attacker.start_value.cost.drug_cost">
+                DRUGS:  {{result.attacker.start_value.cost.drug_cost}}
+            </div>
+            <div v-if="result.attacker.start_value.cost.weapon_cost">
+                WEAPONS:  {{result.attacker.start_value.cost.weapon_cost}}
+            </div>
+            <div v-if="result.attacker.start_value.cost.alcohol_cost">
+                ALCOHOL:  {{result.attacker.start_value.cost.alcohol_cost}}
+            </div>
+            </div>
+            <div>
+                Carry:
+                {{result.attacker.start_value.carry}}
+            </div>
+          </div>
+      </h5>
+    </div>
+      <div class="column col-6 p-2 defender text-center">
+      <h5>
+        <b>Defender Start:</b>
+        <div v-if="result.target.start_value">
+            <span>
+                Supply:
+                {{result.target.start_value.supply}} |
+            </span>
+            <span>
+                Power:
+                {{result.target.start_value.power}} |
+            </span>
+            <span>
+                Size:
+                {{result.target.start_value.size}}
+            </span>
+            <div>
+                Army Value:
+            <div v-if="result.target.start_value.cost.drug_cost">
+                DRUGS:  {{result.target.start_value.cost.drug_cost}}
+            </div>
+            <div v-if="result.target.start_value.cost.weapon_cost">
+                WEAPONS:  {{result.target.start_value.cost.weapon_cost}}
+            </div>
+            <div v-if="result.target.start_value.cost.alcohol_cost">
+                ALCOHOL:  {{result.target.start_value.cost.alcohol_cost}}
+            </div>
+            </div>
+            <div>
+                Carry:
+                {{result.target.start_value.carry}}
+            </div>
+          </div>
+      </h5>
+      </div>
+    </div>
+    <div v-if="result.result" class="columns result">
+          <div v-for="(army) in ['attacker', 'target']" class="column col-6">
+              <h4 class="mb-2 name">{{ army }}</h4>
+              <div class="value p-2 mb-2" v-for="unit in result[army].units" v-if="unit.amount > 0">
+                <b>
+                  <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle"
+                    class="mr-2" />
+                  <span v-if="unit.dead" class="text-red">
+                    {{ unit.dead }}
+                  </span>
+                  <span v-if="unit.dead">
+                    /
+                  </span>
+                  {{ unit.amount }}
+                </b>
+              </div>
+              <div class="value p-2 mb-2" v-for="unit in result[army].troops" v-if="unit.amount > 0">
+                <b>
+                  <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle"
+                    class="mr-2" />
+                  <span v-if="unit.dead" class="text-red">
+                    {{ unit.dead }}
+                  </span>
+                  <span v-if="unit.dead">
+                    /
+                  </span>
+                  {{ unit.amount }}
+                </b>
+              </div>
+            </div>
+    </div>
+    <div v-if="result.result" class="columns result">
+        <div class="column col-6 p-2 attacker text-center">
+            <h5>
+              <b>Attacker End:</b>
+              <div v-if="result.attacker.end_value">
+                <span>
+                    Supply:
+                    <span class="text-red"> {{result.attacker.end_value.supply - result.attacker.start_value.supply}}</span> |
+                </span>
+                <span>
+                    Power:
+                    {{result.attacker.end_value.power}} |
+                </span>
+                <span>
+                    Size:
+                <span class="text-red"> {{result.attacker.end_value.size - result.attacker.start_value.size}} </span>
+                </span>
+                <div>
+                    Army Value:
+                  </div>
+                <div>
+                    DRUGS:  
+                    <span class="text-red"> {{result.attacker.end_value.cost.drug_cost - result.attacker.start_value.cost.drug_cost}} </span> 
+                </div>
+                <div>
+                    WEAPONS:  
+                    <span class="text-red">{{result.attacker.end_value.cost.weapon_cost - result.attacker.start_value.cost.weapon_cost}} </span> 
+                </div>
+                <div>
+                    ALCOHOL:  
+                    <span class="text-red">{{result.attacker.end_value.cost.alcohol_cost - result.attacker.start_value.cost.alcohol_cost}}</span> 
+                </div>
+                <div>
+                    Carry:
+                    {{result.attacker.end_value.carry}}
+                </div>
+              </div>
+            </h5>
+          </div>
+            <div class="column col-6 p-2 defender text-center">
+            <h5>
+              <b>Defender End:</b>
+              <div v-if="result.target.end_value">
+                  <span>
+                      Supply:
+                      <span class="text-red"> {{result.target.end_value.supply - result.target.start_value.supply}}</span> |
+                  </span>
+                  <span>
+                      Power:
+                      {{result.target.end_value.power}} |
+                  </span>
+                  <span>
+                      Size:
+                  <span class="text-red"> {{result.target.end_value.size - result.target.start_value.size}} </span>
+                  </span>
+                  <div>
+                      Army Value:
+                    </div>
+                  <div>
+                      DRUGS:  
+                      <span class="text-red"> {{result.target.end_value.cost.drug_cost - result.target.start_value.cost.drug_cost}} </span> 
+                  </div>
+                  <div>
+                      WEAPONS:  
+                      <span class="text-red">{{result.target.end_value.cost.weapon_cost - result.target.start_value.cost.weapon_cost}} </span> 
+                  </div>
+                  <div>
+                      ALCOHOL:  
+                      <span class="text-red">{{result.target.end_value.cost.alcohol_cost - result.target.start_value.cost.alcohol_cost}}</span>
+                  </div>
+                  <div>
+                      Carry:
+                      {{result.target.end_value.carry}}
+                  </div>
+                </div>
+            </h5>
+            </div>
+          </div>
+    <div  v-if="result.result">
+        <h3 class="text-center result uppercase">
+          <b>Result:</b>
+          <div>
+          {{ result.result === 2
+          ? 'draw' : result.result === 1
+            ? 'attacker win' : 'attacker lose'
+        }}
+      </div>
+        </h3>
+      </div>
+    <div v-if="log.length > 0" class="p-2 mb-4">
+      <p v-for="l in log" v-html="l">{{ l }}</p>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    window.onload = function () {
+      new Vue({
         el: '#main',
         data: {
           attacker: null,
@@ -155,54 +279,55 @@ window.onload = function() {
             });
           }
         }
-  });
-};
-</script>
+      });
+    };
+  </script>
 
-<style type="text/css">
-  [v-cloak] {
-    display: none;
-  }
-  body{
-    background: black;
-    color:white;
-  }
+  <style type="text/css">
+    [v-cloak] {
+      display: none;
+    }
+    body{
+      background: black;
+      color:white;
+    }
 
-  #main {
-    text-align: left;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+    #main {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-  textarea {
-    max-width: 600px;
-    height: 280px;
-  }
+    textarea {
+      max-width: 600px;
+      height: 280px;
+    }
 
-  .uppercase{
-    text-transform: uppercase;
-  }
+    .uppercase{
+      text-transform: uppercase;
+    }
 
-  .value{
-    background-image: radial-gradient(ellipse farthest-corner at center 0,#0a0a0a -150%,#131313 45%,rgb(17, 17, 17) 85%)!important;
-  }
+    .value{
+      background-image: radial-gradient(ellipse farthest-corner at center 0,#0a0a0a -150%,#131313 45%,rgb(17, 17, 17) 85%)!important;
+    }
 
-  .name{
-    visibility: hidden;
-    height: 0px;
-  }
+    .name{
+      visibility: hidden;
+      height: 0px;
+    }
 
-  .minip{
-    width: 24px;
-  }
+    .minip{
+      width: 24px;
+    }
 
-  .result{
-    background-color: black;
-    border-radius: 5px;
-    border: 2px solid #ffc400;
-  }
+    .result{
+      background-color: black;
+      border-radius: 5px;
+      border: 2px solid #ffc400;
+    }
 
-</style>
+  </style>
 
 </body>
+
 </html>

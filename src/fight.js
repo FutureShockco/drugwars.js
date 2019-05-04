@@ -6,13 +6,15 @@ export default class Fight {
     this.randomizer = json.merkle_root;
     this.attackers = json.attacker.units || [];
     this.defenders = json.target.units || [];
+    this.attackersTrainings = json.attacker.trainings || [];
+    this.defendersTrainings = json.target.trainings || [];
     this.log = new Log();
   }
 
   fight() {
     this.log.add('Fight start [A] Attacker - [D] Defender');
-    const attackers = new Army(this.attackers, 'attacker', this.log);
-    const defenders = new Army(this.defenders, 'defender', this.log);
+    const attackers = new Army(this.attackers, 'attacker', this.attackersTrainings, this.log);
+    const defenders = new Army(this.defenders, 'defender', this.defendersTrainings, this.log);
     attackers.updateAliveStatus();
     defenders.updateAliveStatus();
     const attacker_start_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
@@ -25,6 +27,8 @@ export default class Fight {
       const attackersActions = attackers.chooseActions(round);
       defenders.processAllActions(defendersActions,attackers.attackPower(),attackersActions,round);
       attackers.processAllActions(attackersActions,defenders.attackPower(),defendersActions,round);
+      console.log(attackers.units)
+
     }
 
     let winner = 'none';
@@ -39,7 +43,6 @@ export default class Fight {
     const attacker_end_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
     const defender_end_value = {supply :defenders.supply(), power : defenders.attackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     this.log.add(`Fight ended in round ${round}, Winner is : ${winner}`);
-
     return {
       result,
       attacker: {

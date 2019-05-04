@@ -5,19 +5,22 @@ import numeral from 'numeral';
 import Troop from './troop';
 
 export default class Army {
-  constructor(units, name, log) {
+  constructor(units, name, trainings, log) {
     this.units = [];
+    this.trainings = [];
     this.groups = []
     this.alive = true;
     this.name = name;
     this.log = log;
     this.groupid = 0;
     units.forEach(unit => {
+      const skill =  dwunits[unit.key].skills[0]
+      const effect =  dwunits[unit.key].skills[0].effect
+      const use =  dwunits[unit.key].skills[0].use
+      skill.use = use;
       if(dwunits[unit.key].skills[0].type === "group")
       {
         let group_amount = unit.amount
-        const skill =  dwunits[unit.key].skills[0]
-        const effect =  dwunits[unit.key].skills[0].effect
         while(group_amount>0)
         {
           if(group_amount>=effect)
@@ -34,16 +37,79 @@ export default class Army {
       }
       else{
         for (let i = 0; i < unit.amount; i += 1) {
-          const skill =  dwunits[unit.key].skills[0]
           if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy') {
-  
           }
           else
+           {
             this.units.push(new Unit(unit.key, i + 1, name, skill, log));
+           }
         }
       }
 
     });
+    trainings.forEach(training => {
+          if (training.key === 'routing' || training.lvl < 1) {
+          }
+          else
+          this.trainings.push({key:training.key,lvl:training.lvl});
+    });
+    //ATTRIBUTE TRAINING MODIFICATOR
+    this.units.forEach(unit => {
+      const protection = this.trainings.find(b => b.key === 'protection');
+      if(protection)
+      unit.defense = unit.defense +  unit.defense/100*protection.lvl;
+        if(unit.spec.type === 'Melee')
+        {
+
+          const closecombat = this.trainings.find(b => b.key === 'closecombat');
+          if(closecombat)
+          unit.attack = unit.attack + unit.attack /1000 * closecombat.lvl;
+        }
+        else{
+          //ALL RANGE
+          const firearms = this.trainings.find(b => b.key === 'firearms');
+          if(firearms)
+          {
+            unit.attack = unit.attack + unit.attack /1000 * firearms.lvl;
+          }
+
+          // SNIPER
+          if(unit.key === "sniper")
+          {
+            const sniping = this.trainings.find(b => b.key === 'sniping');
+            if(sniping)
+            unit.attack = unit.attack + unit.attack /1000 * sniping.lvl;
+          }
+
+          // BAZOOKA
+          if(unit.key === "bazooka")
+          {
+            const bomb = this.trainings.find(b => b.key === 'bomb');
+            if(bomb)
+            unit.attack = unit.attack + unit.attack /1000 * bomb.lvl;
+          }
+
+          // MERCENARY NINJA KNIFER
+          if(unit.key === "mercenary" || unit.key === "ninja" || unit.key === "knifer")
+          {
+            const psychological = this.trainings.find(b => b.key === 'psychological');
+            if(psychological)
+            {
+              unit.attack = unit.attack + unit.attack /1000 *psychological.lvl;
+              unit.defense = unit.defense + unit.attack /1000 *psychological.lvl;
+            }
+          }
+
+          // MERCENARY
+          if(unit.key === "mercenary")
+          {
+            const chemical = this.trainings.find(b => b.key === 'chemical');
+            if(chemical)
+            unit.attack = unit.attack + unit.attack /1000 *chemical.lvl;
+          }
+
+        }
+    })
   }
 
   chooseActions(round) {
@@ -52,13 +118,13 @@ export default class Army {
       if (!unit.dead && unit.spec.attack > 0) {
         if(round != 1 || unit.spec.range > 4 || unit.spec.skills[0].type === 'tastynasty' || unit.key === 'hobo' )
         {
-            if(unit.use > 0 || unit.use === -1)
+            if(unit.use > 0 || unit.use === -1 || unit.skill.use > 0 || unit.skill.use === -1)
             {
             }
             else{
               unit.skill.type = 'attack'
             }
-          actions.push([unit.spec.attack, unit.skill, unit.key, unit.i]);
+          actions.push([unit.attack, unit.skill, unit.key, unit.i]);
         }
         if (unit.health === 0 && !unit.dead) unit.kill();
       }
@@ -76,11 +142,11 @@ export default class Army {
 
   //Process all actions for attacker and defender
   processAllActions(allies, attackpower, enemies, round) {
-    this.processArmyActions('allies', allies, null, round);
+    this.processArmyActions('allies', allies, null, null, round);
     this.processArmyActions('enemies',enemies, attackpower, round);
   }
 
-  processArmyActions(target, actions, attackpower, round) {
+  processArmyActions(target, actions, attackpower,round) {
     const unitsSorted = orderBy(this.units, ['priority'], ['asc']);
     const unitsByHighestPriority = orderBy(this.units, ['priority'], ['desc']);
     actions.forEach(action => {
@@ -133,23 +199,29 @@ export default class Army {
           attack = {}
           attack.author = name
           attack.num = num
-          attack.dmg = parseInt(action[0]);
+          attack.dmg = action[0];
             serie.push(attack);
             break;
           case 'multiplehit':
           attack = {}
           attack.author = name
           attack.num = num
-          attack.dmg = parseInt(action[1].effect);
+          attack.dmg = action[0];
             for (let i = 0; i < action[1].range; i += 1) {
               serie.push(attack);
             }
+            unitsSorted.forEach(unit => {
+              if (!unit.dead && serie.length > 0) {
+                unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);
+                serie.splice(0, 1);
+              }
+            });
             break;
           case 'criticalhit':
           attack = {}
           attack.author = name
           attack.num = num
-          attack.dmg = parseInt(Math.round((action[1].effect * action[1].range * round) * attackpower / 100));
+          attack.dmg = (action[0] * action[1].range * round * attackpower / 100);
             serie.push(attack);
             break;
           case 'tastynasty':
@@ -160,7 +232,7 @@ export default class Army {
             serie.push(attack);
             unitsByHighestPriority.forEach(unit => {
               if (!unit.dead && serie.length > 0) {
-                unit.takeDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round,serie[0].author, serie[0].num);
+                unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round,serie[0].author, serie[0].num);
                 serie.splice(0, 1);
               }
             });
@@ -169,19 +241,19 @@ export default class Army {
           attack = {}
           attack.author = name
           attack.num = num
-          attack.dmg = parseInt(action[0]);
+          attack.dmg = action[0];
             serie.push(attack);
             break;
         }
         this.groups.forEach(group => {	
           if (group.undead > 0 && serie.length > 0) {	 
-            group.takeGroupDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round , serie[0].author, serie[0].num);	        
+            group.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);	        
             serie.splice(0, 1);	       
           }	      
         })
         unitsSorted.forEach(unit => {
           if (!unit.dead && serie.length > 0) {
-            unit.takeDamages(Math.round(serie[0].dmg * attackpower / 100), skill_type, round , serie[0].author, serie[0].num);
+            unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);
             serie.splice(0, 1);
           }
         });
@@ -249,8 +321,13 @@ export default class Army {
         supply += dwunits[unit.key].supply
     });
     let power = Math.round(100 - parseFloat(supply / 5).toFixed(0) / 100)
+    const coordination = this.trainings.find(b => b.key === 'coordination');
+    if(coordination)
+    power = power + parseInt(coordination.lvl)/10
     if(power>=60)
     {
+      if(power > 100)
+      power = 100
       return power
     }
     else return 60
