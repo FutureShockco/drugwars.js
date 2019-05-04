@@ -57,7 +57,7 @@ export default class Army {
     this.units.forEach(unit => {
       const protection = this.trainings.find(b => b.key === 'protection');
       if(protection)
-      unit.defense = unit.defense +  unit.defense/100*protection.lvl;
+      unit.defense = unit.defense +  unit.defense/1000 *protection.lvl;
         if(unit.spec.type === 'Melee')
         {
 
