@@ -57,20 +57,20 @@ export default class Army {
     this.units.forEach(unit => {
       const protection = this.trainings.find(b => b.key === 'protection');
       if(protection)
-      unit.defense = unit.defense +  unit.defense/1000 *protection.lvl;
+      unit.defense = unit.defense +  unit.defense/500 *protection.lvl;
         if(unit.spec.type === 'Melee')
         {
 
           const closecombat = this.trainings.find(b => b.key === 'closecombat');
           if(closecombat)
-          unit.attack = unit.attack + unit.attack /1000 * closecombat.lvl;
+          unit.attack = unit.attack + unit.attack /500 * closecombat.lvl;
         }
         else{
           //ALL RANGE
           const firearms = this.trainings.find(b => b.key === 'firearms');
           if(firearms)
           {
-            unit.attack = unit.attack + unit.attack /1000 * firearms.lvl;
+            unit.attack = unit.attack + unit.attack /500 * firearms.lvl;
           }
 
           // SNIPER
@@ -78,7 +78,7 @@ export default class Army {
           {
             const sniping = this.trainings.find(b => b.key === 'sniping');
             if(sniping)
-            unit.attack = unit.attack + unit.attack /1000 * sniping.lvl;
+            unit.attack = unit.attack + unit.attack /500 * sniping.lvl;
           }
 
           // BAZOOKA
@@ -86,7 +86,7 @@ export default class Army {
           {
             const bomb = this.trainings.find(b => b.key === 'bomb');
             if(bomb)
-            unit.attack = unit.attack + unit.attack /1000 * bomb.lvl;
+            unit.attack = unit.attack + unit.attack /500 * bomb.lvl;
           }
 
           // MERCENARY NINJA KNIFER
@@ -95,8 +95,8 @@ export default class Army {
             const psychological = this.trainings.find(b => b.key === 'psychological');
             if(psychological)
             {
-              unit.attack = unit.attack + unit.attack /1000 *psychological.lvl;
-              unit.defense = unit.defense + unit.attack /1000 *psychological.lvl;
+              unit.attack = unit.attack + unit.attack /500 *psychological.lvl;
+              unit.defense = unit.defense + unit.attack /500 *psychological.lvl;
             }
           }
 
@@ -105,7 +105,7 @@ export default class Army {
           {
             const chemical = this.trainings.find(b => b.key === 'chemical');
             if(chemical)
-            unit.attack = unit.attack + unit.attack /1000 *chemical.lvl;
+            unit.attack = unit.attack + unit.attack /500 *chemical.lvl;
           }
 
         }
