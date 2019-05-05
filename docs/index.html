@@ -277,11 +277,13 @@
           result: {}
         },
         mounted() {
-
+          let attackerUnits = [];
+          let targetUnits = [];
           if (window.location.href.indexOf('/?') > 0) {
               const toParse = window.location.href.split('?')[1]
               const elements = toParse.split(',')
               console.log(elements)
+
               elements.forEach(element => {
                   let player = parseInt(element.split('=')[0])
                   let type = element.split('=')[1]
@@ -289,7 +291,6 @@
                   Object.keys(drugwars.units).forEach(unit => {
                     if(unit.unit === element.type && player === 1)
                     attackerUnits.push({key:unit,amount:amount});
-                    targetUnits.push({key:unit,amount:amount});
                   });
                   Object.keys(drugwars.units).forEach(unit => {
                     if(unit.unit === element.type && player === 2)
@@ -297,11 +298,6 @@
                   });
               });
 
-              let attackerUnits = [];
-              let targetUnits = [];
-
-              let attackerTrainings = [];
-              let targetTrainings = [];
               Object.keys(drugwars.trainings).forEach(training => {
                 attackerTrainings.push({key:training,lvl:0});
                 targetTrainings.push({key:training,lvl:0});
