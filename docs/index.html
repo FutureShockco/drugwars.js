@@ -283,7 +283,9 @@
           let targetTrainings = [];
           
           if (window.location.href.indexOf('/?') > 0) {
+
               const toParse = window.location.href.split('?')[1]
+              console.log(toParse)
               const elements = toParse.split(',')
               console.log(elements)
 
