@@ -279,8 +279,10 @@
         mounted() {
 
           if (window.location.href.indexOf('/?') > 0) {
-              const toParse = window.location.href
-              console.log(window.location.href)
+              const toParse = window.location.href.split('?')[1]
+              const elements = toParse.split(',')
+              console.log(elements)
+
           }
           else{
 
