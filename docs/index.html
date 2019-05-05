@@ -282,7 +282,35 @@
               const toParse = window.location.href.split('?')[1]
               const elements = toParse.split(',')
               console.log(elements)
+              elements.forEach(element => {
+                  let player = parseInt(element.split('=')[0])
+                  let type = element.split('=')[1]
+                  let amount = element.split('=')[2]
+                  Object.keys(drugwars.units).forEach(unit => {
+                    if(unit.unit === element.type && player === 1)
+                    attackerUnits.push({key:unit,amount:amount});
+                    targetUnits.push({key:unit,amount:amount});
+                  });
+                  Object.keys(drugwars.units).forEach(unit => {
+                    if(unit.unit === element.type && player === 2)
+                    targetUnits.push({key:unit,amount:amount});
+                  });
+              });
 
+              let attackerUnits = [];
+              let targetUnits = [];
+
+              let attackerTrainings = [];
+              let targetTrainings = [];
+              Object.keys(drugwars.trainings).forEach(training => {
+                attackerTrainings.push({key:training,lvl:0});
+                targetTrainings.push({key:training,lvl:0});
+              });          
+              this.attacker = attackerUnits;
+              this.defender = targetUnits;
+
+              this.attackertrainings = attackerTrainings;
+              this.defendertrainings = targetTrainings;
           }
           else{
 
@@ -299,14 +327,12 @@
               attackerTrainings.push({key:training,lvl:0});
               targetTrainings.push({key:training,lvl:0});
             });          
+            this.attacker = attackerUnits;
+            this.defender = targetUnits;
+
+            this.attackertrainings = attackerTrainings;
+            this.defendertrainings = targetTrainings;
           }
-
-
-          this.attacker = attackerUnits;
-          this.defender = targetUnits;
-
-          this.attackertrainings = attackerTrainings;
-          this.defendertrainings = targetTrainings;
         },
         methods: {
           handleSubmit: function () {
