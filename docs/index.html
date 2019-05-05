@@ -281,33 +281,48 @@
           let targetUnits = [];
           let attackerTrainings = [];
           let targetTrainings = [];
-          
           if (window.location.href.indexOf('/?') > 0) {
-
               const toParse = window.location.href.split('?')[1]
-              console.log(toParse)
               const elements = toParse.split(',')
-              console.log(elements)
 
-              elements.forEach(element => {
-                  let player = parseInt(element.split('=')[0])
-                  let type = element.split('=')[1]
-                  let amount = element.split('=')[2]
-                  Object.keys(drugwars.units).forEach(unit => {
-                    console.log(unit)
-                    if(unit === type && player === 1)
-                    attackerUnits.push({key:unit,amount:amount});
-                  });
-                  Object.keys(drugwars.units).forEach(unit => {
-                    if(unit === type && player === 2)
-                    targetUnits.push({key:unit,amount:amount});
-                  });
-              });
+                Object.keys(drugwars.units).forEach(unit => {
+                    elements.find(element => {
+                      let player = parseInt(element.split('=')[1].split('&')[0])
+                      let type = element.split('=')[2].split('&')[0]
+                      let amount =  parseInt(element.split('=')[3].split('&')[0])
+                        if(unit === type && player === 1)
+                        attackerUnits.push({key:type,amount:amount});
+                        if(unit === type && player === 2)
+                        targetUnits.push({key:type,amount:amount});
+                      });
+                });
+                Object.keys(drugwars.units).forEach(unit => {
+                        if(!attackerUnits.filter(item => item.key === unit)[0])
+                        attackerUnits.push({key:unit,amount:0});
+                        if(!targetUnits.filter(item => item.key === unit)[0])
+                        targetUnits.push({key:unit,amount:0});
+                });
 
               Object.keys(drugwars.trainings).forEach(training => {
-                attackerTrainings.push({key:training,lvl:0});
-                targetTrainings.push({key:training,lvl:0});
-              });          
+                elements.find(element => {
+                      let player = parseInt(element.split('=')[1].split('&')[0])
+                      let type = element.split('=')[2].split('&')[0]
+                      let amount = element.split('=')[3].split('&')[0]
+                        if(training === type && player === 1)
+                        attackerTrainings.push({key:type,lvl:amount});
+                        if(training === type && player === 2)
+                        targetTrainings.push({key:type,lvl:amount});
+                      });
+
+              });    
+
+              Object.keys(drugwars.trainings).forEach(training => {
+                      if(!attackerTrainings.filter(item => item.key === training)[0])
+                      attackerTrainings.push({key:training,lvl:0});
+                        if(!targetTrainings.filter(item => item.key === training)[0])
+                        targetTrainings.push({key:training,lvl:0});
+                });
+
               this.attacker = attackerUnits;
               this.defender = targetUnits;
 
