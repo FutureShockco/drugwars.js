@@ -293,11 +293,11 @@
                   let amount = element.split('=')[2]
                   Object.keys(drugwars.units).forEach(unit => {
                     console.log(unit)
-                    if(unit === element.type && player === 1)
+                    if(unit === type && player === 1)
                     attackerUnits.push({key:unit,amount:amount});
                   });
                   Object.keys(drugwars.units).forEach(unit => {
-                    if(unit === element.type && player === 2)
+                    if(unit === type && player === 2)
                     targetUnits.push({key:unit,amount:amount});
                   });
               });
