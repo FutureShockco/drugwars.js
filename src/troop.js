@@ -9,6 +9,9 @@ export default class Troop {
     this.attack = units[key].attack;
     this.defense = units[key].defense;
     this.amount = amount;
+    this.health = units[key].health;
+    this.grouhealth = units[key].health*amount;
+    this.max_health = units[key].health;
     this.dead = 0;
     this.undead = amount;
     this.priority = units[key].priority;
@@ -22,23 +25,24 @@ export default class Troop {
     return this.undead > 0 ? this.attack * this.undead : 0;
   }
 
-  takeGroupDamages(damages,skill_type,round,name,num) {
+  takeGroupDamages(damage,skill_type,round,name,num) {
+    let damages = damage - (this.defense);
     let current =''
     if(this.name === 'attacker')
     current = "D"
     else 
     current = "A"
-    const health = this.undead * this.defense;
-    const healthAfterDamage = health - damages;
-    let currentlog = `[${this.name.substring(0,1).toUpperCase()}] group (${this.i})  with ${this.undead} x ${this.key} with ${health} HP take <span style="color:red">${damages} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${skill_type}"</span>.`
+    this.grouhealth = this.grouhealth- damages
+    let healthAfterDamage = this.grouhealth ;
+    let currentlog = `[${this.name.substring(0,1).toUpperCase()}] group (${this.i})  with ${this.undead} x ${this.key} with ${this.grouhealth} HP take <span style="color:red">${damages} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${skill_type}"</span>.`
     if (healthAfterDamage <= 0) {
       currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] group (${this.i}) ${this.undead} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
       this.dead = this.amount;
       this.undead = 0;
     } else {
-      const undead = Math.ceil(healthAfterDamage / this.defense);
+      const undead = Math.ceil(healthAfterDamage / this.health);
       if (undead !== this.undead) {
-        currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] ${this.undead - undead} x ${this.key} group (${this.i}) are left.`;
+        currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] ${undead} x ${this.key} group (${this.i}) are left.`;
 
         this.dead += this.undead - undead;
         this.undead = undead;

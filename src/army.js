@@ -55,20 +55,20 @@ export default class Army {
     this.units.forEach(unit => {
       const protection = this.trainings.find(b => b.key === 'protection');
       if(protection)
-      unit.defense = unit.defense +  unit.defense/100 *protection.lvl;
+      unit.defense = unit.defense +  (unit.defense/100 *protection.lvl);
         if(unit.spec.type === 'Melee')
         {
 
           const closecombat = this.trainings.find(b => b.key === 'closecombat');
           if(closecombat)
-          unit.attack = unit.attack + unit.attack /100 * closecombat.lvl;
+          unit.attack = unit.attack + (unit.attack /100 * closecombat.lvl);
         }
         else{
           //ALL RANGE
           const firearms = this.trainings.find(b => b.key === 'firearms');
           if(firearms)
           {
-            unit.attack = unit.attack + unit.attack /100 * firearms.lvl;
+            unit.attack = unit.attack + (unit.attack /100 * firearms.lvl);
           }
 
           // SNIPER
@@ -76,7 +76,7 @@ export default class Army {
           {
             const sniping = this.trainings.find(b => b.key === 'sniping');
             if(sniping)
-            unit.attack = unit.attack + unit.attack /100 * sniping.lvl;
+            unit.attack = unit.attack + (unit.attack /100 * sniping.lvl);
           }
 
           // BAZOOKA
@@ -84,27 +84,43 @@ export default class Army {
           {
             const bomb = this.trainings.find(b => b.key === 'bomb');
             if(bomb)
-            unit.attack = unit.attack + unit.attack /100 * bomb.lvl;
+            unit.attack = unit.attack + (unit.attack /100 * bomb.lvl);
           }
 
-          // MERCENARY NINJA KNIFER
-          if(unit.key === "mercenary" || unit.key === "ninja" || unit.key === "knifer")
+          // BAZOOKA
+          if(unit.key === "hobo")
+          {
+            const kamikaze = this.trainings.find(b => b.key === 'spiritwine');
+            if(kamikaze)
+            unit.attack = unit.attack + (unit.attack /100 * kamikaze.lvl);
+          }
+
+          // FIRE
+          if(unit.key === "bazooka" || unit.key === "gunman")
+          {
+            const fire = this.trainings.find(b => b.key === 'fire');
+            if(fire)
+            unit.attack = unit.attack + (unit.attack /100 * fire.lvl);
+          }
+
+          // CHEMICAL
+          if(unit.key === "mercenary"  || unit.key === "knifer")
+          {
+            const chemical = this.trainings.find(b => b.key === 'chemical');
+            if(chemical)
+            unit.attack = unit.attack + (unit.attack /100 *chemical.lvl);
+          }
+          
+          if(unit.key === "mercenary" || unit.key === "knifer" || unit.key === "big_mama" || unit.key === "ninja")
           {
             const psychological = this.trainings.find(b => b.key === 'psychological');
             if(psychological)
             {
-              unit.attack = unit.attack + unit.attack /100 *psychological.lvl;
-              unit.defense = unit.defense + unit.attack /100 *psychological.lvl;
+              unit.attack = unit.attack + (unit.attack /100 *psychological.lvl);
+              unit.defense = unit.defense + (unit.attack /100 *psychological.lvl);
             }
           }
 
-          // MERCENARY
-          if(unit.key === "mercenary")
-          {
-            const chemical = this.trainings.find(b => b.key === 'chemical');
-            if(chemical)
-            unit.attack = unit.attack + unit.attack /100 *chemical.lvl;
-          }
 
         }
     })
