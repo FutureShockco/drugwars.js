@@ -20,7 +20,7 @@ export default class Unit {
   }
 
   takeDamages(damage,sender_skill,round,name,num) {
-    let damages = damage - (this.defense);
+    let damages = damage - (damage/this.defense);
     let current ='';
     if(this.name === 'attacker')
     current = "D";

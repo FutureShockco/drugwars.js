@@ -56,9 +56,9 @@ export default class Army {
       const protection = this.trainings.find(b => b.key === 'protection');
       const giant = this.trainings.find(b => b.key === 'giant');
       if(protection)
-      unit.defense = unit.defense +  (unit.defense/100 *protection.lvl);
+      unit.defense = unit.defense +  (unit.defense/200 *protection.lvl);
       if(giant)
-      unit.health = unit.health +  (unit.health/100 *giant.lvl);
+      unit.health = unit.health +  (unit.health/200 *giant.lvl);
         //ALL MELEE
         if(unit.spec.type === 'Melee')
         {
@@ -130,8 +130,8 @@ export default class Army {
           const psychological = this.trainings.find(b => b.key === 'psychological');
           if(psychological)
           {
-            unit.attack = unit.attack + (unit.attack /100 *psychological.lvl);
-            unit.defense = unit.defense + (unit.attack /100 *psychological.lvl);
+            unit.attack = unit.attack + (unit.attack /200 *psychological.lvl);
+            unit.defense = unit.defense + (unit.defense /200 *psychological.lvl);
           }
         }
 
