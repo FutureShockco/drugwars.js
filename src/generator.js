@@ -79,7 +79,7 @@ export default class Generator {
     this.name = hero.name;
     this.country = hero.country;
     this.pic = this.getRandomInt(7);
-    this.pic = hero.id;
+    // this.pic = hero.id;
     this.border = this.getRandomInt(this.quality);
     this.background = this.getRandomInt(4);
     this.quality = this.setItemQuality();
