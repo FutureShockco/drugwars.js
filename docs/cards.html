@@ -145,7 +145,7 @@
             background.src = `./backgrounds/${result.attack_type}/${result.background}.png`;
 
             background.onload = () => {
-              character.src = `./heroes/1.png`;
+              character.src = `./heroes/${result.pic}.png`;
 
               ctx.imageSmoothingEnabled = true;
               ctx.drawImage(background, 0, 0,canvas.width,canvas.height);

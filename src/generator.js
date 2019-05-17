@@ -78,6 +78,7 @@ export default class Generator {
     const hero = heroes[this.family][this.getRandomArray(heroes[this.family].length)]
     this.name = hero.name;
     this.country = hero.country;
+    this.pic = this.getRandomInt(7);
     this.pic = hero.id;
     this.border = this.getRandomInt(this.quality);
     this.background = this.getRandomInt(4);
