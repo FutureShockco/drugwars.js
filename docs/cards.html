@@ -6,8 +6,8 @@
   <title>DrugWars card generator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.62"></script> 
-  <!-- <script src="../dist/drugwars.min.js"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.62"></script>  -->
+  <script src="../dist/drugwars.min.js"></script>
 </head>
 
 <body>
@@ -159,7 +159,7 @@
             };
 
             frame.onload = () => {
-              border.src = `./borders/${result.border}.png`;
+              border.src = `./borders/${result.quality}.png`;
               ctx.imageSmoothingEnabled = true;
               ctx.drawImage(frame, 0, 0,canvas.width,canvas.height);
             };
@@ -229,7 +229,7 @@
             ctx.shadowBlur = 3;
             ctx.font = "13px American Captain";
             ctx.fillStyle = "#000";
-            ctx.fillText(result.family, canvas.width/2, 178,);
+            ctx.fillText(result.family + ' ' + result.country, canvas.width/2, 178,);
             ctx.font = "20px American Captain";
 
             this.wrapText(ctx, result.prefixe+' '+result.name+' '+result.suffixe, canvas.width/2, 198, 150, 16);
@@ -237,22 +237,33 @@
             this.wrapText(ctx, result.prefixe+' '+result.name+' '+result.suffixe, canvas.width/2, 200, 150, 16);
             ctx.font = "13px American Captain";
 
-            ctx.fillText(result.family, canvas.width/2, 180,);
+            ctx.fillText(result.family + ' ' + result.country, canvas.width/2, 180,);
 
             //DRAW SKILLS
+            ctx.shadowBlur =0;
+
             ctx.textAlign = 'left';
             ctx.font = "13px American Captain";
+            ctx.fillStyle = "#fff";
+            ctx.fillRect(14,222,40,11);
+            ctx.fillStyle = "#000";
+            ctx.fillText("ACTIVE", 19, 232);
+
             ctx.fillStyle = "#ff3600";
-            ctx.fillText(result.active_skill.name, 14, 232);
+            ctx.fillText(result.active_skill.name, 58, 232);
             ctx.font = "11px Open Sans";
 
             ctx.fillStyle = "#fff";
             this.wrapText(ctx, result.active_skill.description, 14, 246, canvas.width-20, 11);
             
-            
             ctx.font = "13px American Captain";
+            ctx.fillStyle = "#fff";
+            ctx.fillRect(14,264,40,11);
+            ctx.fillStyle = "#000";
+            ctx.fillText("PASSIVE", 17, 274);
+            
             ctx.fillStyle = "#ff3600";
-            ctx.fillText(result.passive_skill.name, 14, 274);
+            ctx.fillText(result.passive_skill.name, 58, 274);
             ctx.font = "11px Open Sans";
 
             ctx.fillStyle = "#fff";
