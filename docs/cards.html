@@ -115,9 +115,13 @@
         },
         mounted() {
           const self = this
-          this.loading = true
+          this.loading = true          
           document.fonts.onloadingdone = function (fontFaceSetEvent) {
             self.handleSubmit()
+            this.loading = false
+
+            this.window.focus;
+
           }
         },
         methods: {
