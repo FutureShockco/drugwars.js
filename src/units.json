@@ -215,7 +215,7 @@
     "time": 40,
     "capacity": 10,
     "supply": 1,
-    "priority": 120,
+    "priority": 25,
     "coeff": 0.65,
     "drugs_cost": 100,
     "weapons_cost": 100,
