@@ -1,7 +1,30 @@
 {
-  "common": ["of defeat","of disaster","of worms","of rains","of caverns","of blinds","of creeps"],
-  "rare": ["of ghosts","of tears","of fream","of glory","of victory","of light","of clarity"],
-  "epic": ["of swarm","of wars","of ravage","of salvage","of knowledge","of brightness"],
-  "legendary": ["of the moon","of heaven","of hell","of gods","of steem","of future","of obyte"],
-  "mythical": ["of champions","of deads","of fame","of shocks","of darkness","of minds","of sickness"]
+  "physical":{
+    "5": ["of defeat","of disaster","of worms","of rains","of caverns","of blinds","of creeps"],
+    "4": ["of ghosts","of tears","of fream","of glory","of victory"],
+    "3": ["of ravage","of salvage","of knowledge"],
+    "2": ["of the moon","of steem","of future","of obyte","of minds"],
+    "1": ["of champions","of heaven","of fame","of shocks","of darkness","of gods"]
+  },
+  "weapon":{
+    "5": ["of detonation","of artillery"],
+    "4": ["of explosion","of assault","of salvo","of interception"],
+    "3": ["of burst","of fission"],
+    "2": ["of implosion"],
+    "1": ["of war"]
+  },
+  "fire":{
+    "5": ["of flame","of smoke","of fire","of scorch","of spark","of ash","of heat","of coal","of light","of roast"],
+    "4": ["of blaze","of incendiary","of burn","of ardent","of furnace","of glow","of ignition","of ardor","of pyrolysis"],
+    "3": ["of blast","of combustion","of fierce","of cremation","of sulfur","of demon","of shine","of eruption","of lava"],
+    "2": ["of conflagration","of dragon","of volcano","of immolation","of destruction","of magma"],
+    "1": ["of hell","of meteor","of iblis","of purification","of devil"]
+  },
+  "chemical":{
+    "5": ["of creep","of impurity","of polution","of dirt","of fever","of mushroom","of morbidity","of decay","of nausea"],
+    "4": ["of spider","of disease","of sickness","of alteration","of taint","of infection","of stale","of parasite"],
+    "3": ["of swarm","of snake","of corrosion","of virulence", "of atrocity","of contagion","of incubation"],
+    "2": ["of toxin","of venom","of virus","of corruption","of epidemic","of dementia"],
+    "1": ["of death","of plague","of neurotoxin","of comtamination","of pandemic","of radiation"]
   }
+}

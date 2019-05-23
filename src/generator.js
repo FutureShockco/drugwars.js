@@ -11,12 +11,12 @@ export default class Generator {
     this.prefixe = '';
     this.suffixe = '';
     this.pic = '';
+    this.family = '';
+    this.country = '';
     this.attack_type = '';
     this.name ='';
     this.border = '';
     this.background ='';
-    this.family = '';
-    this.country = '';
     this.quality = 0;
     this.attack = 0;
     this.health= 0;
@@ -39,6 +39,12 @@ export default class Generator {
   
   getRandomArray(max) {
     return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  getRandomIntMinMax(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   getFamily() {
@@ -78,18 +84,17 @@ export default class Generator {
     const hero = heroes[this.family][this.getRandomArray(heroes[this.family].length)]
     this.name = hero.name;
     this.country = hero.country;
-    this.pic = this.getRandomInt(7);
-    // this.pic = hero.id;
-    this.border = this.getRandomInt(this.quality);
-    this.background = this.getRandomInt(4);
+    // this.pic = this.getRandomInt(7);
+    this.pic = hero.id;
     this.quality = this.setItemQuality();
-    this.prefixe = this.setPrefixes(this.quality);
-    this.suffixe = this.setSuffixe(this.quality);
+    this.background = this.getRandomInt(4);
     this.attack_type = this.getAttackType()
-    this.attack = this.getRandomInt(20000)
-    this.health= this.getRandomInt(20000)
-    this.carry= this.getRandomInt(10000)
-    this.speed= this.getRandomInt(20)
+    this.prefixe = this.setPrefixes(this.quality);
+    this.suffixe = this.setSuffixe(this.quality,this.attack_type);
+    this.attack = this.getRandomIntMinMax(5000,8000+(3000*this.quality))
+    this.health= this.getRandomIntMinMax(5000,+(2000*this.quality))
+    this.carry= this.getRandomIntMinMax(1000,+(1000*this.quality))
+    this.speed= this.getRandomIntMinMax(10-this.quality,20)
 
     this.active_skill = skills[this.family]['active'][this.attack_type][this.getRandomArray(skills[this.family]['active'][this.attack_type].length)]
     this.passive_skill = skills[this.family]['passive'][this.getRandomArray(skills[this.family]['passive'].length)]
@@ -150,28 +155,8 @@ export default class Generator {
     return prefixe
   };
 
-  setSuffixe(quality) {
-    let suffixe;
-    switch (quality) {
-        case 1:
-            suffixe = suffixes.mythical[Math.floor(Math.random() * suffixes.mythical.length)]
-            break;
-        case 2:
-            suffixe = suffixes.legendary[Math.floor(Math.random() * suffixes.legendary.length)]
-            break;
-        case 3:
-            suffixe = suffixes.epic[Math.floor(Math.random() * suffixes.epic.length)]
-            break;
-        case 4:
-            suffixe = suffixes.rare[Math.floor(Math.random() * suffixes.rare.length)]
-            break;
-        case 5:
-            suffixe = suffixes.common[Math.floor(Math.random() * suffixes.common.length)]
-        break;
-        default:
-            suffixe = ''
-    }
-    return suffixe
+  setSuffixe(quality,type) {
+    return  suffixes[type][quality][Math.floor(Math.random() * suffixes[type][quality].length)]
   };
 
   getLog() {
