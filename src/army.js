@@ -35,7 +35,7 @@ export default class Army {
         }
         else{
           for (let i = 0; i < unit.amount; i += 1) {
-            if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy') {
+            if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' && unit.key === 'spy' ) {
             }
             else
              {
