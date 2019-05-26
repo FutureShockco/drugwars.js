@@ -348,6 +348,25 @@ export default class Army {
       if (!unit.dead)
         supply += dwunits[unit.key].supply
     });
+    let power = Math.round(100 - parseFloat(supply / 6).toFixed(0) / 100)
+    const coordination = this.trainings.find(b => b.key === 'coordination');
+    if(coordination)
+    power = power + parseInt(coordination.lvl)/10
+    if(power>=60)
+    {
+      if(power > 100)
+      power = 100
+      return power
+    }
+    else return 60
+  }
+
+  defensiveAttackPower() {
+    let supply = 0;
+    this.units.forEach(unit => {
+      if (!unit.dead)
+        supply += dwunits[unit.key].supply
+    });
     let power = Math.round(100 - parseFloat(supply / 5).toFixed(0) / 100)
     const coordination = this.trainings.find(b => b.key === 'coordination');
     if(coordination)

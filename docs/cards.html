@@ -6,7 +6,7 @@
   <title>DrugWars card generator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.64"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.67"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -18,11 +18,6 @@
         <img src="https://drugwars.io/img/drugwars.png">
         DrugWars Card Generator v0.0.62
       </h3>
-      <!-- <div class="mb-4 text-center">
-          <button @click="handleSubmit" class="btn btn-primary mb-2">
-            Generate
-          </button>
-        </div> -->
       <div class="my-4 columns px-0 text-center">
         <div class="container">
             <div v-if="loading" class="loading mt-6">
@@ -33,10 +28,7 @@
 
             <div v-for="card in cards" class="card" :id="card.id+'-card'" @click="clickCard(card)" style="opacity:0;pointer-events: none" >
                <img :src="card.img" alt="image host" :id="card.id+'-card-back'" class="card-back">
-               <!-- <img src="https://images2.imgbox.com/12/df/KXwGzEHm_o.png" :id="card.id+'-card-front'" alt="image host" class="card-front"> -->
                <canvas width=236 height=319 :id="card.id+'-card-front'" class="card-front"></canvas>
-
-               <!-- <img src="https://images2.imgbox.com/12/df/KXwGzEHm_o.png" :id="card.id+'-card-front'" alt="image host" class="card-front"> -->
               <div class="card-shine" :id="card.id+'-card-shine'"></div>
               <div v-if="card.open" class="sa-position sa-1"></div>
                 <div  v-if="card.open" class="sa-position sa-2"></div>
@@ -45,30 +37,6 @@
             </div>
           </div>
         </div>
-          <!-- <div  v-if="result" class="column col-5">
-              <div class="cards">
-
-                  <div class="level">  1               </div>
-                  <div class="name">  {{result.prefixe}} {{result.name}}         {{result.suffixe}}               </div>
-                  <div class="family">  {{result.family}} </div>
-
-                  <img class="frame" :src="`https://drugwars.io/img/cards/heroes/${result.pic}.png`"/>
-                  <div class="leftdetails">  
-                    <div>Attack<span>{{result.attack || 0 }}</span></div>        
-                    <div>Health<span>{{result.health || 0 }}</span></div>        
-                    <div>Carry<span>{{result.carry || 0 }}</span></div>        
-                    <div>Speed<span>{{result.speed || 0 }}M</span></div>        
-
-                </div>
-                  <div class="rightdetails">
-                      <div><span>{{result.res_physical || 0 }}%</span>Physical</div>        
-                      <div><span>{{result.res_weapon || 0 }}%</span>Weapon</div>        
-                      <div><span>{{result.res_fire || 0 }}%</span>Fire</div>        
-                      <div><span>{{result.res_chemical || 0 }}%</span>Chemical</div>   
-                  </div>
-              </div>
-          </div> -->
-
     </div>
     </div>
   

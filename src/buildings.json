@@ -437,7 +437,7 @@
     "score": 98,
     "name": "Gang Headquarters",
     "desc": "The gang headquarters coordinate the development speed of your gang. The higher the level of the Gang HQ and the faster the expansion of your gang will be.",
-    "feature": "Reduce the upgrade time for gang buildings",
+    "feature": "Unlock upgrades for gang buildings",
     "drugs_cost": 50000,
     "weapons_cost": 100000,
     "alcohols_cost": 75000,

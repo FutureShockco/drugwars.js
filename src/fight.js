@@ -19,7 +19,7 @@ export default class Fight {
     attackers.updateAliveStatus();
     defenders.updateAliveStatus();
     const attacker_start_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
-    const defender_start_value = {supply :defenders.supply(), power : defenders.attackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
+    const defender_start_value = {supply :defenders.supply(), power : defenders.defensiveAttackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     let round = 0;
     while (attackers.alive && defenders.alive && round < 6) {
       round += 1;
@@ -27,7 +27,7 @@ export default class Fight {
       let defendersActions = defenders.chooseActions(round);
       let attackersActions = attackers.chooseActions(round);
       defenders.processAllActions(defendersActions,attackers.attackPower(),attackersActions,round);
-      attackers.processAllActions(attackersActions,defenders.attackPower(),defendersActions,round);
+      attackers.processAllActions(attackersActions,defenders.defensiveAttackPower(),defendersActions,round);
     }
 
     let winner = 'none';
@@ -40,7 +40,7 @@ export default class Fight {
       winner = 'defender';
     }
     const attacker_end_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
-    const defender_end_value = {supply :defenders.supply(), power : defenders.attackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
+    const defender_end_value = {supply :defenders.supply(), power : defenders.defensiveAttackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     this.log.add(`Fight ended in round ${round}, Winner is : ${winner}`);
     return {
       result,
