@@ -202,8 +202,8 @@
     "score": 18,
     "name": "Spy",
     "desc": "He can only gather informations but he does it at the speed of lightning.",
-    "feature": "SPY : Gives a lot of information about an opponent. This unit can not defend!",
-    "attack": 0,
+    "feature": "SPY : Gives a lot of information about an opponent. This unit can not defend and attack per group of 100!",
+    "attack": 5,
     "health": 50,
     "defense":10,
     "weapon_defense":10,
@@ -221,7 +221,7 @@
     "weapons_cost": 100,
     "alcohols_cost": 300,
     "use":-1,
-    "skill": {"type":"attack","effect":0,"range":0,"use":-1,"passive":true}
+    "skill": {"type":"group","effect":100,"range":1,"use":-1,"passive":true}
   },
   "sniper": {
     "id": "sniper",
