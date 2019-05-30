@@ -16,7 +16,7 @@ export default class Army {
       const effect = dwunits[unit.key].skill.effect
       if(unit.amount>0)
       {
-        if(dwunits[unit.key].skill.type === "group" && !unit.key === 'spy')
+        if(dwunits[unit.key].skill.type === "group" && !unit.key === 'spy' || dwunits[unit.key].skill.type === "group" && this.name === 'attacker')
         {
           let group_amount = unit.amount
           while(group_amount>0)
@@ -35,7 +35,7 @@ export default class Army {
         }
         else{
           for (let i = 0; i < unit.amount; i += 1) {
-            if (this.name === 'defender' && unit.key === 'hobo' || unit.key === 'spy' ) {
+            if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' &&  unit.key === 'spy' ) {
             }
             else
              {
