@@ -1,762 +1,818 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DrugWars card generator</title>
+    <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.67"></script>  -->
+    <script src="../dist/drugwars.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <style>
+      @font-face {
+        font-family: 'American Captain';
+        src: url('./fonts/AmericanCaptain.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>DrugWars card generator</title>
-  <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
-  <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.67"></script> 
-  <!-- <script src="../dist/drugwars.min.js"></script> -->
-</head>
-
-<body>
-
-  <div id="main" v-cloak>
-    <div class="mt-2 text-center">
-      <h3 class="mb-4 pt-3">
-        <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars Card Generator v0.0.62
-      </h3>
-      <div class="my-4 columns px-0 text-center">
-        <div class="container">
+  <body>
+    <div id="main" v-cloak>
+      <div class="mt-2 text-center">
+        <h3 class="mb-4 pt-3">
+          <img src="https://drugwars.io/img/drugwars.png" />
+          DrugWars Card Generator v0.0.62
+        </h3>
+        <div class="my-4 columns px-0 text-center">
+          <div class="container">
             <div v-if="loading" class="loading mt-6">
-                <svg viewBox="0 0 79 80" xmlns="http://www.w3.org/2000/svg"><path fill="#fbbd08" fill-rule="evenodd" d="m78.7330914 47.1291816c-1.6765281 9.3191191-6.581009 17.5171686-13.5145191 23.3952251-2.4415962-1.5796738-5.6606125-1.7674062-8.3520266-.2135176-2.6946569 1.5557609-4.1418261 4.4424506-3.9905625 7.350324-4.2200524 1.513968-8.7684216 2.3387869-13.5094375 2.3387869-4.741016 0-9.2893851-.8248189-13.5094375-2.3387869.1512636-2.9078734-1.2959056-5.7945631-3.9905625-7.350324-2.6914141-1.5538886-5.9104305-1.3661562-8.3520267.2135176-6.93351007-5.8780565-11.83799093-14.076106-13.514519-23.3952251 2.59189117-1.3236225 4.36654568-4.0191557 4.36654568-7.1291816s-1.77465451-5.8055591-4.36654568-7.1291816c1.67652807-9.3191191 6.58100893-17.5171686 13.514519-23.39522515 2.4415962 1.57967385 5.6606126 1.76740625 8.3520267.21351762 2.6946569-1.55576087 4.1418261-4.44245059 3.9905625-7.35032402 4.2200524-1.51396791 8.7684215-2.33878685 13.5094375-2.33878685 4.7410159 0 9.2893851.82481894 13.5094375 2.33878685-.1512636 2.90787343 1.2959056 5.79456315 3.9905625 7.35032402 2.6914141 1.55388863 5.9104304 1.36615623 8.3520266-.21351762 6.9335101 5.87805655 11.837991 14.07610605 13.5145191 23.39522515-2.5918912 1.3236225-4.3665457 4.0191557-4.3665457 7.1291816s1.7746545 5.8055591 4.3665457 7.1291816zm-39.3665457-14.1291816c-3.8659933 0-7 3.1340068-7 7s3.1340067 7 7 7c3.8659932 0 7-3.1340068 7-7s-3.1340068-7-7-7zm0 23c-5.5228475 0-10 4.4771525-10 10s4.4771525 10 10 10 10-4.4771525 10-10-4.4771525-10-10-10zm0-52c-5.5228475 0-10 4.4771525-10 10s4.4771525 10 10 10 10-4.4771525 10-10-4.4771525-10-10-10zm-13.8564065 44c-2.7614237-4.7829262-8.8773278-6.4216778-13.660254-3.660254-4.78292625 2.7614237-6.4216778 8.8773278-3.66025405 13.660254s8.87732785 6.4216778 13.66025405 3.660254c4.7829262-2.7614237 6.4216778-8.8773278 3.660254-13.660254zm45.033321-26c-2.7614237-4.7829262-8.8773278-6.4216778-13.660254-3.660254-4.7829263 2.7614237-6.4216778 8.8773278-3.6602541 13.660254 2.7614238 4.7829262 8.8773278 6.4216778 13.6602541 3.660254 4.7829262-2.7614237 6.4216778-8.8773278 3.660254-13.660254zm-17.3205081 26c-2.7614237 4.7829262-1.1226722 10.8988303 3.6602541 13.660254 4.7829262 2.7614238 10.8988303 1.1226722 13.660254-3.660254 2.7614238-4.7829262 1.1226722-10.8988303-3.660254-13.660254-4.7829263-2.7614238-10.8988303-1.1226722-13.6602541 3.660254zm-45.03332095-26c-2.76142375 4.7829262-1.1226722 10.8988303 3.66025405 13.660254 4.7829262 2.7614238 10.8988303 1.1226722 13.660254-3.660254 2.7614238-4.7829262 1.1226722-10.8988303-3.660254-13.660254-4.7829262-2.7614238-10.8988303-1.1226722-13.66025405 3.660254z"/></svg>
+              <svg viewBox="0 0 79 80" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#fbbd08"
+                  fill-rule="evenodd"
+                  d="m78.7330914 47.1291816c-1.6765281 9.3191191-6.581009 17.5171686-13.5145191 23.3952251-2.4415962-1.5796738-5.6606125-1.7674062-8.3520266-.2135176-2.6946569 1.5557609-4.1418261 4.4424506-3.9905625 7.350324-4.2200524 1.513968-8.7684216 2.3387869-13.5094375 2.3387869-4.741016 0-9.2893851-.8248189-13.5094375-2.3387869.1512636-2.9078734-1.2959056-5.7945631-3.9905625-7.350324-2.6914141-1.5538886-5.9104305-1.3661562-8.3520267.2135176-6.93351007-5.8780565-11.83799093-14.076106-13.514519-23.3952251 2.59189117-1.3236225 4.36654568-4.0191557 4.36654568-7.1291816s-1.77465451-5.8055591-4.36654568-7.1291816c1.67652807-9.3191191 6.58100893-17.5171686 13.514519-23.39522515 2.4415962 1.57967385 5.6606126 1.76740625 8.3520267.21351762 2.6946569-1.55576087 4.1418261-4.44245059 3.9905625-7.35032402 4.2200524-1.51396791 8.7684215-2.33878685 13.5094375-2.33878685 4.7410159 0 9.2893851.82481894 13.5094375 2.33878685-.1512636 2.90787343 1.2959056 5.79456315 3.9905625 7.35032402 2.6914141 1.55388863 5.9104304 1.36615623 8.3520266-.21351762 6.9335101 5.87805655 11.837991 14.07610605 13.5145191 23.39522515-2.5918912 1.3236225-4.3665457 4.0191557-4.3665457 7.1291816s1.7746545 5.8055591 4.3665457 7.1291816zm-39.3665457-14.1291816c-3.8659933 0-7 3.1340068-7 7s3.1340067 7 7 7c3.8659932 0 7-3.1340068 7-7s-3.1340068-7-7-7zm0 23c-5.5228475 0-10 4.4771525-10 10s4.4771525 10 10 10 10-4.4771525 10-10-4.4771525-10-10-10zm0-52c-5.5228475 0-10 4.4771525-10 10s4.4771525 10 10 10 10-4.4771525 10-10-4.4771525-10-10-10zm-13.8564065 44c-2.7614237-4.7829262-8.8773278-6.4216778-13.660254-3.660254-4.78292625 2.7614237-6.4216778 8.8773278-3.66025405 13.660254s8.87732785 6.4216778 13.66025405 3.660254c4.7829262-2.7614237 6.4216778-8.8773278 3.660254-13.660254zm45.033321-26c-2.7614237-4.7829262-8.8773278-6.4216778-13.660254-3.660254-4.7829263 2.7614237-6.4216778 8.8773278-3.6602541 13.660254 2.7614238 4.7829262 8.8773278 6.4216778 13.6602541 3.660254 4.7829262-2.7614237 6.4216778-8.8773278 3.660254-13.660254zm-17.3205081 26c-2.7614237 4.7829262-1.1226722 10.8988303 3.6602541 13.660254 4.7829262 2.7614238 10.8988303 1.1226722 13.660254-3.660254 2.7614238-4.7829262 1.1226722-10.8988303-3.660254-13.660254-4.7829263-2.7614238-10.8988303-1.1226722-13.6602541 3.660254zm-45.03332095-26c-2.76142375 4.7829262-1.1226722 10.8988303 3.66025405 13.660254 4.7829262 2.7614238 10.8988303 1.1226722 13.660254-3.660254 2.7614238-4.7829262 1.1226722-10.8988303-3.660254-13.660254-4.7829262-2.7614238-10.8988303-1.1226722-13.66025405 3.660254z"
+                />
+              </svg>
               Generator processing...
+            </div>
+            <div v-else class="card-box">
+              <div
+                v-for="card in cards"
+                class="card"
+                :id="card.id+'-card'"
+                @click="clickCard(card)"
+              >
+                <img
+                  :src="card.img"
+                  alt="image host"
+                  :id="card.id+'-card-back'"
+                  class="card-back"
+                />
+                <canvas
+                  width="236"
+                  height="319"
+                  :id="card.id+'-card-front'"
+                  class="card-front"
+                ></canvas>
+                <div class="card-shine" :id="card.id+'-card-shine'"></div>
+                <div v-if="card.open" class="sa-position sa-1"></div>
+                <div v-if="card.open" class="sa-position sa-2"></div>
+                <div v-if="card.open" class="sa-position sa-3"></div>
+                <div v-if="card.open" class="sa-position sa-4"></div>
               </div>
-          <div  class="card-box">
-
-            <div v-for="card in cards" class="card" :id="card.id+'-card'" @click="clickCard(card)" style="opacity:0;pointer-events: none" >
-               <img :src="card.img" alt="image host" :id="card.id+'-card-back'" class="card-back">
-               <canvas width=236 height=319 :id="card.id+'-card-front'" class="card-front"></canvas>
-              <div class="card-shine" :id="card.id+'-card-shine'"></div>
-              <div v-if="card.open" class="sa-position sa-1"></div>
-                <div  v-if="card.open" class="sa-position sa-2"></div>
-                <div  v-if="card.open" class="sa-position sa-3"></div>
-                <div  v-if="card.open" class="sa-position sa-4"></div>
             </div>
           </div>
         </div>
-    </div>
-    </div>
-  
-    <div  v-if="result.result">
+      </div>
+
+      <div v-if="result.result">
         <h3 class="text-center result uppercase">
           <b>Result:</b>
           <div>
-          {{ result.result === 2
-          ? 'draw' : result.result === 1
-            ? 'attacker win' : 'attacker lose'
-        }}
-      </div>
+            {{
+              result.result === 2 ? 'draw' : result.result === 1 ? 'attacker win' : 'attacker lose'
+            }}
+          </div>
         </h3>
       </div>
       <div class="text-center">
-      <div class=" mb-4 mt-4 log">
-        </div>
+        <div class=" mb-4 mt-4 log"></div>
       </div>
-    <div v-if="log.length > 0 && details" class="p-2 mb-4">
-      <p v-for="l in log" v-html="l">{{ l }}</p>
+      <div v-if="log.length > 0 && details" class="p-2 mb-4">
+        <p v-for="l in log" v-html="l">{{ l }}</p>
+      </div>
     </div>
-  </div>
 
-  <script type="text/javascript">
-    window.onload = function () {
-      new Vue({
-        el: '#main',
-        data: {
-          error: null,
-          details:false,
-          json:null,
-          seed:null,
-          loading:null,
-          log: [],
-          result: {},
-          cards:[
-              {id:1,img:'./cards/1.png',open:null},
-              {id:2,img:'./cards/1.png',open:null},
-              {id:3,img:'./cards/1.png',open:null},
-              {id:4,img:'./cards/1.png',open:null},
-              {id:5,img:'./cards/1.png',open:null}
-
-          ]
-        },
-        mounted() {
-          const self = this
-          this.loading = true          
-          document.fonts.onloadingdone = function (fontFaceSetEvent) {
-            self.handleSubmit()
-            this.loading = false
-
-            this.window.focus;
-
-          }
-        },
-        methods: {
-          handleSubmit: function () {
-            if(document.fonts.check('bold 16px American Captain'))
-            {
-
-
-              this.seed = '1234556'
-            this.cards.forEach(card => {
-              const generator = new drugwars.Generator(this.seed);
-            const result = generator.generate();
-            //DRAW
-            var c = document.getElementById(card.id+'-card');
-            var b = document.getElementById(card.id+'-card-back');
-            c.style.pointerEvents = 'initial'
-            c.style.opacity = 1
-            let canvas = document.getElementById(card.id+'-card-front'),ctx = canvas.getContext('2d');
-            const background = new Image();
-            const attack_type = new Image();
-            const frame = new Image();
-            const character = new Image();
-            const border = new Image();
-
-            background.src = `./backgrounds/${result.attack_type}/${result.background}.png`;
-
-            background.onload = () => {
-              character.src = `./heroes/${result.pic}.png`;
-
-              ctx.imageSmoothingEnabled = true;
-              ctx.drawImage(background, 0, 0,canvas.width,canvas.height);
-            };
-
-
-            character.onload = () => {
-              frame.src = `./frames/1.png`;
-              ctx.imageSmoothingEnabled = true;
-              ctx.drawImage(character, 0, 0,canvas.width,canvas.height);
-            };
-
-            frame.onload = () => {
-              border.src = `./borders/${result.quality}.png`;
-              ctx.imageSmoothingEnabled = true;
-              ctx.drawImage(frame, 0, 0,canvas.width,canvas.height);
-            };
-
-            border.onload = () => {
-            attack_type.src = `./icons/${result.attack_type}.png`;
-              ctx.imageSmoothingEnabled = true;
-              ctx.drawImage(border, 0, 0,canvas.width,canvas.height);
-            };
-
-          attack_type.onload = () => {
-            ctx.imageSmoothingEnabled = true;
-            ctx.drawImage(attack_type, 18, 15,28,28);
-
-            ctx.font = "36px American Captain";
-            var yellowgradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
-            yellowgradient.addColorStop("0", "#e6ac00");
-            yellowgradient.addColorStop("0.5", "#ffca31");
-            yellowgradient.addColorStop("1.0", "#fbbd08");
-            ctx.fillStyle = yellowgradient;
-            ctx.textAlign = 'center'; 
-            ctx.strokeStyle = 'black';
-
-            //DRAW NAME
-            ctx.fillText(result.prefixe + ' '+result.name + ' '+ result.suffixe, canvas.width/2, 400);
-            //DRAW attributes LEFT
-            ctx.textAlign = 'left';
-
-            ctx.font = "20px American Captain";
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.attack, 48, 52);
-            ctx.strokeText(result.attack, 48, 52);
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.health, 48, 89);
-            ctx.strokeText(result.health, 48, 89);
-
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.carry, 48, 122);
-            ctx.strokeText(result.carry, 48, 122);
-
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.speed, 48, 154);
-            ctx.strokeText(result.speed, 48, 154);
-
-            //DRAW attributes right
-            ctx.textAlign = 'right';
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.res_physical, 180, 53);
-            ctx.strokeText(result.res_physical, 180, 53);
-
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.res_weapon, 180, 89);
-            ctx.strokeText(result.res_weapon, 180, 89);
-
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.res_fire, 180, 122);
-            ctx.strokeText(result.res_fire, 180, 122);
-
-            ctx.fillStyle = "#fff";
-            ctx.fillText(result.res_chemical, 180, 154);
-            ctx.strokeText(result.res_chemical, 180, 154);
-
-            //DRAW NAME
-            ctx.textAlign = 'center';
-            ctx.fillStyle = yellowgradient;
-            ctx.shadowColor = "rgba(0,0,0,1)";
-            ctx.shadowBlur = 3;
-            ctx.font = "13px American Captain";
-            ctx.fillStyle = "#000";
-            ctx.fillText(result.family + ' ' + result.country, canvas.width/2, 178,);
-            ctx.font = "20px American Captain";
-
-            this.wrapText(ctx, result.prefixe+' '+result.name+' '+result.suffixe, canvas.width/2, 198, 150, 16);
-            ctx.fillStyle = yellowgradient;
-            this.wrapText(ctx, result.prefixe+' '+result.name+' '+result.suffixe, canvas.width/2, 200, 150, 16);
-            ctx.font = "13px American Captain";
-
-            ctx.fillText(result.family + ' ' + result.country, canvas.width/2, 180,);
-
-            //DRAW SKILLS
-            ctx.shadowBlur =0;
-
-            ctx.textAlign = 'left';
-            ctx.font = "13px American Captain";
-            ctx.fillStyle = "#fff";
-            ctx.fillRect(14,222,40,11);
-            ctx.fillStyle = "#000";
-            ctx.fillText("ACTIVE", 19, 232);
-
-            ctx.fillStyle = "#ff3600";
-            ctx.fillText(result.active_skill.name, 58, 232);
-            ctx.font = "11px Open Sans";
-
-            ctx.fillStyle = "#fff";
-            this.wrapText(ctx, result.active_skill.description, 14, 246, canvas.width-20, 11);
-            
-            ctx.font = "13px American Captain";
-            ctx.fillStyle = "#fff";
-            ctx.fillRect(14,264,40,11);
-            ctx.fillStyle = "#000";
-            ctx.fillText("PASSIVE", 17, 274);
-            
-            ctx.fillStyle = "#ff3600";
-            ctx.fillText(result.passive_skill.name, 58, 274);
-            ctx.font = "11px Open Sans";
-
-            ctx.fillStyle = "#fff";
-            this.wrapText(ctx, result.passive_skill.description, 14, 288, canvas.width-20, 11);
-
-
-            b.style.transform = "rotateY(0deg)"
-            c.style.transform = "rotateY(0deg)"
-            this.result = result;
-
-          }
-
-
-            this.log = generator.getLog();
-            });
-            }
-            this.loading = false;
+    <script type="text/javascript">
+      window.onload = function() {
+        new Vue({
+          el: '#main',
+          data: {
+            error: null,
+            details: false,
+            json: null,
+            seed: null,
+            loading: null,
+            log: [],
+            result: {},
+            cards: [],
           },
-          wrapText(context, text, x, y, maxWidth, lineHeight)
+          created() {
+            const self = this;
+            // self.handleSubmit()
+            WebFont.load({
+              custom: {
+                families: ['American Captain']
+              }
+            });
+            this.loading = true;
+            const generator = new drugwars.CardPack(5);
+            self.cards = generator.cards;
+            self.loading = false;
+            document.fonts.onloadingdone = function (fontFaceSetEvent) {
+              self.handleSubmit()            
+            };
+          },
+          methods: {
+            handleSubmit: function() {
+                this.seed = '123456';
 
-{
-            var words = text.split(" ");
-            var line = "";
-            for (var n = 0; n < words.length; n++)
-{
-                var testLine = line + words[n] + " ";
+                this.cards.forEach(card => {
+                  var c = document.getElementById(card.id + '-card');
+                  var b = document.getElementById(card.id + '-card-back');
+                  console.log(c)
+                  let canvas = document.getElementById(card.id + '-card-front'),
+                    ctx = canvas.getContext('2d');
+                  const background = new Image();
+                  const attack_type = new Image();
+                  const frame = new Image();
+                  const character = new Image();
+                  const border = new Image();
+
+                  background.src = `./backgrounds/${card.attack_type}/${card.background}.png`;
+
+                  background.onload = () => {
+                    character.src = `./heroes/${card.pic}.png`;
+
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+                  };
+
+                  character.onload = () => {
+                    frame.src = `./frames/1.png`;
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(character, 0, 0, canvas.width, canvas.height);
+                  };
+
+                  frame.onload = () => {
+                    border.src = `./borders/${card.quality}.png`;
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
+                  };
+
+                  border.onload = () => {
+                    attack_type.src = `./icons/${card.attack_type}.png`;
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(border, 0, 0, canvas.width, canvas.height);
+                  };
+
+                  attack_type.onload = () => {
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(attack_type, 18, 15, 28, 28);
+
+                    ctx.font = '36px American Captain';
+                    var yellowgradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                    yellowgradient.addColorStop('0', '#e6ac00');
+                    yellowgradient.addColorStop('0.5', '#ffca31');
+                    yellowgradient.addColorStop('1.0', '#fbbd08');
+                    ctx.fillStyle = yellowgradient;
+                    ctx.textAlign = 'center';
+                    ctx.strokeStyle = 'black';
+
+                    //DRAW NAME
+                    ctx.fillText(
+                      card.prefixe + ' ' + card.name + ' ' + card.suffixe,
+                      canvas.width / 2,
+                      400,
+                    );
+                    //DRAW attributes LEFT
+                    ctx.textAlign = 'left';
+
+                    ctx.font = '20px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.attack, 48, 52);
+                    ctx.strokeText(card.attack, 48, 52);
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.health, 48, 89);
+                    ctx.strokeText(card.health, 48, 89);
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.carry, 48, 122);
+                    ctx.strokeText(card.carry, 48, 122);
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.speed, 48, 154);
+                    ctx.strokeText(card.speed, 48, 154);
+
+                    //DRAW attributes right
+                    ctx.textAlign = 'right';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_physical, 180, 53);
+                    ctx.strokeText(card.res_physical, 180, 53);
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_weapon, 180, 89);
+                    ctx.strokeText(card.res_weapon, 180, 89);
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_fire, 180, 122);
+                    ctx.strokeText(card.res_fire, 180, 122);
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_chemical, 180, 154);
+                    ctx.strokeText(card.res_chemical, 180, 154);
+
+                    //DRAW NAME
+                    ctx.textAlign = 'center';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.shadowColor = 'rgba(0,0,0,1)';
+                    ctx.shadowBlur = 3;
+                    ctx.font = '13px American Captain';
+                    ctx.fillStyle = '#000';
+                    ctx.fillText(card.family + ' ' + card.country, canvas.width / 2, 178);
+                    ctx.font = '20px American Captain';
+
+                    this.wrapText(
+                      ctx,
+                      card.prefixe + ' ' + card.name + ' ' + card.suffixe,
+                      canvas.width / 2,
+                      198,
+                      150,
+                      16,
+                    );
+                    ctx.fillStyle = yellowgradient;
+                    this.wrapText(
+                      ctx,
+                      card.prefixe + ' ' + card.name + ' ' + card.suffixe,
+                      canvas.width / 2,
+                      200,
+                      150,
+                      16,
+                    );
+                    ctx.font = '13px American Captain';
+
+                    ctx.fillText(card.family + ' ' + card.country, canvas.width / 2, 180);
+
+                    //DRAW SKILLS
+                    ctx.shadowBlur = 0;
+
+                    ctx.textAlign = 'left';
+                    ctx.font = '13px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(14, 222, 40, 11);
+                    ctx.fillStyle = '#000';
+                    ctx.fillText('ACTIVE', 19, 232);
+
+                    ctx.fillStyle = '#ff3600';
+                    ctx.fillText(card.active_skill.name, 58, 232);
+                    ctx.font = '11px Open Sans';
+
+                    ctx.fillStyle = '#fff';
+                    this.wrapText(
+                      ctx,
+                      card.active_skill.description,
+                      14,
+                      246,
+                      canvas.width - 20,
+                      11,
+                    );
+
+                    ctx.font = '13px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(14, 264, 40, 11);
+                    ctx.fillStyle = '#000';
+                    ctx.fillText('PASSIVE', 17, 274);
+
+                    ctx.fillStyle = '#ff3600';
+                    ctx.fillText(card.passive_skill.name, 58, 274);
+                    ctx.font = '11px Open Sans';
+
+                    ctx.fillStyle = '#fff';
+                    this.wrapText(
+                      ctx,
+                      card.passive_skill.description,
+                      14,
+                      288,
+                      canvas.width - 20,
+                      11,
+                    );
+
+                    b.style.transform = 'rotateY(0deg)';
+                    c.style.transform = 'rotateY(0deg)';
+                    this.card = card;
+                  };
+                });
+            },
+            wrapText(context, text, x, y, maxWidth, lineHeight) {
+              var words = text.split(' ');
+              var line = '';
+              for (var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + ' ';
                 var metrics = context.measureText(testLine);
                 var testWidth = metrics.width;
-                if (testWidth > maxWidth)
-{
-                    context.fillText(line, x, y);
-                    line = words[n] + " ";
+                if (testWidth > maxWidth) {
+                  context.fillText(line, x, y);
+                  line = words[n] + ' ';
 
-                    y += lineHeight;
+                  y += lineHeight;
+                } else {
+                  line = testLine;
                 }
-                else {
-                    line = testLine;
-                }
-            }
-            context.fillText(line, x, y);
-        },
-          showDetails: function () {
-            this.details = true
-          },
-          clickCard:function(card){
-            card.open = true;
-            var c = document.getElementById(card.id+'-card');
+              }
+              context.fillText(line, x, y);
+            },
+            showDetails: function() {
+              this.details = true;
+            },
+            clickCard: function(card) {
+              card.open = true;
+              var c = document.getElementById(card.id + '-card');
 
-            var b = document.getElementById(card.id+'-card-back');
-            var f = document.getElementById(card.id+'-card-front');
-            var s = document.getElementById(card.id+'-card-shine');
-            c.style.boxShadow = "none" 
-            c.style.backgroundColor = "transparent";
-            c.style.animationName = "none"
-            c.style.transform = "scale(1.1,1.1)"
-            b.style.animation = "cardback 0.15s" 
-            b.style.transform = "rotateY(90deg)"
-            var shining = ``;
-            setTimeout(
-              function(){
-                setTimeout(function(){
+              var b = document.getElementById(card.id + '-card-back');
+              var f = document.getElementById(card.id + '-card-front');
+              var s = document.getElementById(card.id + '-card-shine');
+              c.style.boxShadow = 'none';
+              c.style.backgroundColor = 'transparent';
+              c.style.animationName = 'none';
+              c.style.transform = 'scale(1.1,1.1)';
+              b.style.animation = 'cardback 0.15s';
+              b.style.transform = 'rotateY(90deg)';
+              var shining = ``;
+              setTimeout(function() {
+                setTimeout(function() {
                   // s.fadeIn()
-                  c.append(shining)
-                },302), 
-                f.style.display = 'block'
-                b.style.display = 'none'
-              },150);
-              f.style.animation = "cardfront 0.3s" 
-              f.style.transform = "rotateY(0deg)"
-          }
-        }
-      });
-    };
-  </script>
+                  c.append(shining);
+                }, 302),
+                  (f.style.display = 'block');
+                b.style.display = 'none';
+              }, 150);
+              f.style.animation = 'cardfront 0.3s';
+              f.style.transform = 'rotateY(0deg)';
+            },
+          },
+        });
+      };
+    </script>
 
-  <style type="text/css">
-    [v-cloak] {
-      display: none;
-    }
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-
-    @font-face {
-          font-family: 'American Captain';
-          src: url('./fonts/AmericanCaptain.eot');
-          src: url('./fonts/AmericanCaptain.woff') format('woff'),
-              url('./fonts/AmericanCaptain.ttf') format('truetype'),
-              url('./fonts/AmericanCaptain.svg') format('svg');
-          font-weight: normal;
-          font-style: normal;
+    <style type="text/css">
+      [v-cloak] {
+        display: none;
       }
 
-    body{
-      background: rgb(8, 8, 8);
-      color:white;
-    }
-    .card{
-      border:0px;
-      font-family: "American Captain", Verdana, Tahoma;
+      body {
+        background: rgb(8, 8, 8);
+        color: white;
+      }
+      .card {
+        border: 0px;
+        font-family: 'American Captain', Verdana, Tahoma;
+      }
 
-    }
+      .cards {
+        background-color: #000;
+        font-family: 'American Captain', Verdana, Tahoma;
+      }
 
-    .cards{
-      background-color: #000;
-      font-family: "American Captain", Verdana, Tahoma;
-    }
+      .cards .name {
+        position: absolute;
+        width: 312px;
+        left: calc(50% - 156px);
+        top: 580px;
+        font-size: 34px;
+        z-index: 10;
+        color: #fbbd08;
+      }
 
-    .cards .name{
-      position: absolute;
-      width: 312px;
-      left: calc(50% - 156px);
-      top: 580px;
-      font-size: 34px;
-      z-index: 10;
-      color:#fbbd08;
-    }
+      .cards .family {
+        position: absolute;
+        width: 312px;
+        left: calc(50% - 156px);
+        top: 570px;
+        letter-spacing: 2px;
+        font-size: 16px;
+        z-index: 10;
+      }
 
-    .cards .family{
-      position: absolute;
-      width: 312px;
-      left: calc(50% - 156px);
-      top: 570px;
-      letter-spacing: 2px;
-      font-size: 16px;
-      z-index: 10;
-    }
+      .cards .level {
+        position: absolute;
+        width: 312px;
+        left: calc(50% - 266px);
+        top: 528px;
+        font-size: 34px;
+        z-index: 10;
+        color: #000000;
+      }
 
-    .cards .level{
-      position: absolute;
-      width: 312px;
-      left: calc(50% - 266px);
-      top: 528px;
-      font-size: 34px;
-      z-index: 10;
-      color: #000000;
-    }
-
-    .cards .leftdetails{
+      .cards .leftdetails {
         text-align: left;
-      position: absolute;
-      width: 312px;
-      left: calc(50% - 137px);
-      top: 228px;
-      font-size: 15px;
-      z-index: 10;
-      color: #fbbd08;
-      line-height: 50px;
-      text-shadow: 0px 0px 3px black,0px 0px 3px black,0px 0px 3px black,0px 0px 3px black;
-    }
+        position: absolute;
+        width: 312px;
+        left: calc(50% - 137px);
+        top: 228px;
+        font-size: 15px;
+        z-index: 10;
+        color: #fbbd08;
+        line-height: 50px;
+        text-shadow: 0px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black;
+      }
 
-    .cards .rightdetails{
+      .cards .rightdetails {
         text-align: right;
-      position: absolute;
-      width: 312px;
-      left: calc(50% - 175px);
-      top: 228px;
-      font-size: 15px;
-      z-index: 10;
-      color: #fbbd08;
-      line-height: 50px;
-      text-shadow: 0px 0px 3px black,0px 0px 3px black,0px 0px 3px black,0px 0px 3px black;
+        position: absolute;
+        width: 312px;
+        left: calc(50% - 175px);
+        top: 228px;
+        font-size: 15px;
+        z-index: 10;
+        color: #fbbd08;
+        line-height: 50px;
+        text-shadow: 0px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black, 0px 0px 3px black;
+      }
 
-    }
+      .cards .leftdetails span {
+        margin-left: 5px;
+        color: white;
+        font-size: 18px;
+      }
 
-    .cards .leftdetails span{
-      margin-left:5px; 
-      color: white;
-      font-size: 18px;
-    }
-    
-    .cards .rightdetails span{
-      margin-right:5px; 
-      color: white;
-      font-size: 18px;
-    }
+      .cards .rightdetails span {
+        margin-right: 5px;
+        color: white;
+        font-size: 18px;
+      }
 
-    .container{
-      width: 1280px;
+      .container {
+        width: 1280px;
+      }
 
-    }
+      .uppercase {
+        text-transform: uppercase;
+      }
 
-    .uppercase{
-      text-transform: uppercase;
-    }
+      .value {
+        background-image: radial-gradient(
+          ellipse farthest-corner at center 0,
+          #0a0a0a -150%,
+          #131313 45%,
+          rgb(17, 17, 17) 85%
+        ) !important;
+      }
 
-    .value{
-      background-image: radial-gradient(ellipse farthest-corner at center 0,#0a0a0a -150%,#131313 45%,rgb(17, 17, 17) 85%)!important;
-    }
+      .minip {
+        width: 24px;
+      }
 
-    .minip{
-      width: 24px;
-    }
+      .result {
+        background-color: black;
+        border-radius: 5px;
+        border: 2px solid #ffc400;
+      }
 
-    .result{
-      background-color: black;
-      border-radius: 5px;
-      border: 2px solid #ffc400;
-    }
+      .unitname {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+      }
 
-    .unitname{
-      font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      text-align: center;
-    }
+      .vs {
+        margin-top: 40%;
+      }
 
-    .vs{
-      margin-top:40%;
-    }
+      input {
+        min-height: 16px !important;
+        padding: 0px 8px !important;
+      }
 
-    input{
-      min-height: 16px!important;
-      padding: 0px 8px!important;
-    }
+      svg {
+        width: 50vmin;
+        max-width: 200px;
+        animation: rotate 1s infinite cubic-bezier(0.3, -0.05, 0.9, 0.95);
+      }
 
+      @keyframes rotate {
+        0%,
+        20% {
+          transform: rotate(0);
+        }
+        46% {
+          transform: rotate(67deg);
+        }
+        66% {
+          transform: rotate(55deg);
+        }
+        80% {
+          transform: rotate(63deg);
+        }
+        86% {
+          transform: rotate(58deg);
+        }
+        93%,
+        to {
+          transform: rotate(60deg);
+        }
+      }
 
-    svg {
-  width: 50vmin;
-  max-width: 200px;
-  animation: rotate 1s infinite cubic-bezier(0.3, -0.05, 0.9, 0.95);
-}
+      @keyframes cardback {
+        from {
+          transform: rotateY(0);
+        }
+        to {
+          transform: rotateY(90deg);
+        }
+      }
+      @keyframes cardfront {
+        from {
+          transform: rotateY(90deg);
+        }
+        to {
+          transform: rotateY(0);
+        }
+      }
+      @keyframes cardshake {
+        from {
+          transform: translate(-0.6px, -0.6px);
+        }
+        0% {
+          transform: translate(0.6px, 0.6px);
+        }
+        20% {
+          transform: translate(-0.6px, 0);
+        }
+        40% {
+          transform: translate(0.6px, -0.6px);
+        }
+        60% {
+          transform: translate(-0.6px, 0.6px);
+        }
+        80% {
+          transform: translate(0.6px, -0.6px);
+        }
+        100% {
+          transform: translate(-0.6px, -0.6px);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @keyframes hoverscale {
+        from {
+          transform: translate(0);
+        }
+        to {
+          transform: translate(1.6);
+        }
+      }
 
-@keyframes rotate {
-  0%,
-  20% {
-    transform: rotate(0);
-  }
-  46% {
-    transform: rotate(67deg);
-  }
-  66% {
-    transform: rotate(55deg);
-  }
-  80% {
-    transform: rotate(63deg);
-  }
-  86% {
-    transform: rotate(58deg);
-  }
-  93%,
-  to {
-    transform: rotate(60deg);
-  }
-}
+      .card-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .card-box .card {
+        position: relative;
+        height: 290px;
+        width: 215px;
+        box-shadow: 0px 0px 60px 6px rgba(255, 196, 8, 0.3);
+        animation-name: cardshake;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+        cursor: pointer;
+        background-color: transparent;
+      }
+      .card-box .card:hover {
+        animation-name: hoverscale;
+        animation-duration: 0.3s;
+        animation-iteration-count: 1;
+        transform: scale(1.1, 1.1);
+      }
+      .card-box .card:nth-of-type(1) {
+        animation-duration: 2.15s;
+      }
+      .card-box .card:nth-of-type(2) {
+        animation-duration: 2.35s;
+      }
+      .card-box .card:nth-of-type(3) {
+        animation-duration: 2.55s;
+      }
+      .card-box .card:nth-of-type(4) {
+        animation-duration: 1.95s;
+      }
+      .card-box .card .card-back {
+        display: block;
+        height: 100%;
+        width: auto;
+        transform: rotateY(90deg);
+      }
+      .card-box .card .card-front {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        height: 100%;
+        width: auto;
+        transform: rotateY(180deg);
+        z-index: 1;
+      }
+      .card-box .card .card-shine {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        width: 100px;
+        height: 100px;
 
-
-
-    @keyframes cardback {
-  from {
-    transform: rotateY(0);
-  }
-  to {
-    transform: rotateY(90deg);
-  }
-}
-@keyframes cardfront {
-  from {
-    transform: rotateY(90deg);
-  }
-  to {
-    transform: rotateY(0);
-  }
-}
-@keyframes cardshake {
-  from {
-    transform: translate(-0.6px, -0.6px);
-  }
-  0% {
-    transform: translate(0.6px, 0.6px);
-  }
-  20% {
-    transform: translate(-0.6px, 0);
-  }
-  40% {
-    transform: translate(0.6px, -0.6px);
-  }
-  60% {
-    transform: translate(-0.6px, 0.6px);
-  }
-  80% {
-    transform: translate(0.6px, -0.6px);
-  }
-  100% {
-    transform: translate(-0.6px, -0.6px);
-  }
-  to {
-    transform: translate(0, 0);
-  }
-}
-@keyframes hoverscale {
-  from {
-    transform: translate(0);
-  }
-  to {
-    transform: translate(1.6);
-  }
-}
-
-.card-box {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-.card-box .card {
-  position: relative;
-  height: 290px;
-  width: 215px;
-  box-shadow: 0px 0px 60px 6px rgba(255, 196, 8, 0.3);
-  animation-name: cardshake;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  cursor: pointer;
-  background-color: transparent;
-}
-.card-box .card:hover {
-  animation-name: hoverscale;
-  animation-duration: 0.3s;
-  animation-iteration-count: 1;
-  transform: scale(1.1, 1.1);
-}
-.card-box .card:nth-of-type(1) {
-  animation-duration: 2.15s;
-}
-.card-box .card:nth-of-type(2) {
-  animation-duration: 2.35s;
-}
-.card-box .card:nth-of-type(3) {
-  animation-duration: 2.55s;
-}
-.card-box .card:nth-of-type(4) {
-  animation-duration: 1.95s;
-}
-.card-box .card .card-back {
-  display: block;
-  height: 100%;
-  width: auto;
-  transform: rotateY(90deg);
-}
-.card-box .card .card-front {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  height: 100%;
-  width: auto;
-  transform: rotateY(180deg);
-  z-index: 1;
-}
-.card-box .card .card-shine {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-  width: 100px;
-  height: 100px;
-  
-  box-shadow: 0px 0px 180px 60px rgba(255, 196, 6, 0.3);
-  z-index: 0.5;
-}
-.card-box .card .sa-position {
-  position: absolute;
-  top: 30%;
-  left: -50%;
-  z-index: 0,5;
-}
-.card-box .card .sa-1 {
-  width: 200%;
-  height: 60px;
-  background-image: radial-gradient(circle at center, rgba(255, 177, 27, 0), rgba(255, 177, 27, 0.2) 35%, rgba(255, 177, 27, 0.05) 50%, rgba(255, 177, 27, 0.025) 65%, rgba(255, 177, 27, 0) 80%, rgba(255, 177, 27, 0) 90%, rgba(255, 177, 27, 0) 100%);
-  transform-style: preserve-3d;
-  animation: spin1 10s linear infinite;
-  transform: rotateX(10deg) rotateZ(45deg);
-}
-.card-box .card .sa-2 {
-  width: 200%;
-  height: 60px;
-  background-image: radial-gradient(circle at center, rgba(255, 177, 27, 0), rgba(255, 177, 27, 0.2) 35%, rgba(255, 177, 27, 0.05) 50%, rgba(255, 177, 27, 0.025) 65%, rgba(255, 177, 27, 0) 80%, rgba(255, 177, 27, 0) 90%, rgba(255, 177, 27, 0) 100%);
-  transform-style: preserve-3d;
-  animation: spin2 10s linear infinite;
-  transform: rotateX(10deg) rotateZ(90deg);
-}
-.card-box .card .sa-3 {
-  width: 200%;
-  height: 60px;
-  background-image: radial-gradient(circle at center, rgba(255, 177, 27, 0), rgba(255, 177, 27, 0.2) 35%, rgba(255, 177, 27, 0.05) 50%, rgba(255, 177, 27, 0.025) 65%, rgba(255, 177, 27, 0) 80%, rgba(255, 177, 27, 0) 90%, rgba(255, 177, 27, 0) 100%);
-  transform-style: preserve-3d;
-  animation: spin3 10s linear infinite;
-  transform: rotateX(10deg) rotateZ(135deg);
-}
-.card-box .card .sa-4 {
-  width: 200%;
-  height: 60px;
-  background-image: radial-gradient(circle at center, rgba(255, 177, 27, 0), rgba(255, 177, 27, 0.2) 35%, rgba(255, 177, 27, 0.05) 50%, rgba(255, 177, 27, 0.025) 65%, rgba(255, 177, 27, 0) 80%, rgba(255, 177, 27, 0) 90%, rgba(255, 177, 27, 0) 100%);
-  transform-style: preserve-3d;
-  animation: spin4 10s linear infinite;
-  transform: rotateX(10deg) rotateZ(180deg);
-}
-@-moz-keyframes spin0 {
-  to {
-    transform: rotateZ(0deg);
-  }
-  from {
-    transform: rotateZ(360deg);
-  }
-}
-@-webkit-keyframes spin0 {
-  to {
-    transform: rotateZ(0deg);
-  }
-  from {
-    transform: rotateZ(360deg);
-  }
-}
-@keyframes spin0 {
-  to {
-    transform: rotateZ(0deg);
-  }
-  from {
-    transform: rotateZ(360deg);
-  }
-}
-@-moz-keyframes spin1 {
-  to {
-    transform: rotateZ(45deg);
-  }
-  from {
-    transform: rotateZ(405deg);
-  }
-}
-@-webkit-keyframes spin1 {
-  to {
-    transform: rotateZ(45deg);
-  }
-  from {
-    transform: rotateZ(405deg);
-  }
-}
-@keyframes spin1 {
-  to {
-    transform: rotateZ(45deg);
-  }
-  from {
-    transform: rotateZ(405deg);
-  }
-}
-@-moz-keyframes spin2 {
-  to {
-    transform: rotateZ(90deg);
-  }
-  from {
-    transform: rotateZ(450deg);
-  }
-}
-@-webkit-keyframes spin2 {
-  to {
-    transform: rotateZ(90deg);
-  }
-  from {
-    transform: rotateZ(450deg);
-  }
-}
-@keyframes spin2 {
-  to {
-    transform: rotateZ(90deg);
-  }
-  from {
-    transform: rotateZ(450deg);
-  }
-}
-@-moz-keyframes spin3 {
-  to {
-    transform: rotateZ(135deg);
-  }
-  from {
-    transform: rotateZ(495deg);
-  }
-}
-@-webkit-keyframes spin3 {
-  to {
-    transform: rotateZ(135deg);
-  }
-  from {
-    transform: rotateZ(495deg);
-  }
-}
-@keyframes spin3 {
-  to {
-    transform: rotateZ(135deg);
-  }
-  from {
-    transform: rotateZ(495deg);
-  }
-}
-@-moz-keyframes spin4 {
-  to {
-    transform: rotateZ(180deg);
-  }
-  from {
-    transform: rotateZ(540deg);
-  }
-}
-@-webkit-keyframes spin4 {
-  to {
-    transform: rotateZ(180deg);
-  }
-  from {
-    transform: rotateZ(540deg);
-  }
-}
-@keyframes spin4 {
-  to {
-    transform: rotateZ(180deg);
-  }
-  from {
-    transform: rotateZ(540deg);
-  }
-}
-
-  </style>
-
-</body>
-
+        box-shadow: 0px 0px 180px 60px rgba(255, 196, 6, 0.3);
+        z-index: 0.5;
+      }
+      .card-box .card .sa-position {
+        position: absolute;
+        top: 30%;
+        left: -50%;
+        z-index: 0, 5;
+      }
+      .card-box .card .sa-1 {
+        width: 200%;
+        height: 60px;
+        background-image: radial-gradient(
+          circle at center,
+          rgba(255, 177, 27, 0),
+          rgba(255, 177, 27, 0.2) 35%,
+          rgba(255, 177, 27, 0.05) 50%,
+          rgba(255, 177, 27, 0.025) 65%,
+          rgba(255, 177, 27, 0) 80%,
+          rgba(255, 177, 27, 0) 90%,
+          rgba(255, 177, 27, 0) 100%
+        );
+        transform-style: preserve-3d;
+        animation: spin1 10s linear infinite;
+        transform: rotateX(10deg) rotateZ(45deg);
+      }
+      .card-box .card .sa-2 {
+        width: 200%;
+        height: 60px;
+        background-image: radial-gradient(
+          circle at center,
+          rgba(255, 177, 27, 0),
+          rgba(255, 177, 27, 0.2) 35%,
+          rgba(255, 177, 27, 0.05) 50%,
+          rgba(255, 177, 27, 0.025) 65%,
+          rgba(255, 177, 27, 0) 80%,
+          rgba(255, 177, 27, 0) 90%,
+          rgba(255, 177, 27, 0) 100%
+        );
+        transform-style: preserve-3d;
+        animation: spin2 10s linear infinite;
+        transform: rotateX(10deg) rotateZ(90deg);
+      }
+      .card-box .card .sa-3 {
+        width: 200%;
+        height: 60px;
+        background-image: radial-gradient(
+          circle at center,
+          rgba(255, 177, 27, 0),
+          rgba(255, 177, 27, 0.2) 35%,
+          rgba(255, 177, 27, 0.05) 50%,
+          rgba(255, 177, 27, 0.025) 65%,
+          rgba(255, 177, 27, 0) 80%,
+          rgba(255, 177, 27, 0) 90%,
+          rgba(255, 177, 27, 0) 100%
+        );
+        transform-style: preserve-3d;
+        animation: spin3 10s linear infinite;
+        transform: rotateX(10deg) rotateZ(135deg);
+      }
+      .card-box .card .sa-4 {
+        width: 200%;
+        height: 60px;
+        background-image: radial-gradient(
+          circle at center,
+          rgba(255, 177, 27, 0),
+          rgba(255, 177, 27, 0.2) 35%,
+          rgba(255, 177, 27, 0.05) 50%,
+          rgba(255, 177, 27, 0.025) 65%,
+          rgba(255, 177, 27, 0) 80%,
+          rgba(255, 177, 27, 0) 90%,
+          rgba(255, 177, 27, 0) 100%
+        );
+        transform-style: preserve-3d;
+        animation: spin4 10s linear infinite;
+        transform: rotateX(10deg) rotateZ(180deg);
+      }
+      @-moz-keyframes spin0 {
+        to {
+          transform: rotateZ(0deg);
+        }
+        from {
+          transform: rotateZ(360deg);
+        }
+      }
+      @-webkit-keyframes spin0 {
+        to {
+          transform: rotateZ(0deg);
+        }
+        from {
+          transform: rotateZ(360deg);
+        }
+      }
+      @keyframes spin0 {
+        to {
+          transform: rotateZ(0deg);
+        }
+        from {
+          transform: rotateZ(360deg);
+        }
+      }
+      @-moz-keyframes spin1 {
+        to {
+          transform: rotateZ(45deg);
+        }
+        from {
+          transform: rotateZ(405deg);
+        }
+      }
+      @-webkit-keyframes spin1 {
+        to {
+          transform: rotateZ(45deg);
+        }
+        from {
+          transform: rotateZ(405deg);
+        }
+      }
+      @keyframes spin1 {
+        to {
+          transform: rotateZ(45deg);
+        }
+        from {
+          transform: rotateZ(405deg);
+        }
+      }
+      @-moz-keyframes spin2 {
+        to {
+          transform: rotateZ(90deg);
+        }
+        from {
+          transform: rotateZ(450deg);
+        }
+      }
+      @-webkit-keyframes spin2 {
+        to {
+          transform: rotateZ(90deg);
+        }
+        from {
+          transform: rotateZ(450deg);
+        }
+      }
+      @keyframes spin2 {
+        to {
+          transform: rotateZ(90deg);
+        }
+        from {
+          transform: rotateZ(450deg);
+        }
+      }
+      @-moz-keyframes spin3 {
+        to {
+          transform: rotateZ(135deg);
+        }
+        from {
+          transform: rotateZ(495deg);
+        }
+      }
+      @-webkit-keyframes spin3 {
+        to {
+          transform: rotateZ(135deg);
+        }
+        from {
+          transform: rotateZ(495deg);
+        }
+      }
+      @keyframes spin3 {
+        to {
+          transform: rotateZ(135deg);
+        }
+        from {
+          transform: rotateZ(495deg);
+        }
+      }
+      @-moz-keyframes spin4 {
+        to {
+          transform: rotateZ(180deg);
+        }
+        from {
+          transform: rotateZ(540deg);
+        }
+      }
+      @-webkit-keyframes spin4 {
+        to {
+          transform: rotateZ(180deg);
+        }
+        from {
+          transform: rotateZ(540deg);
+        }
+      }
+      @keyframes spin4 {
+        to {
+          transform: rotateZ(180deg);
+        }
+        from {
+          transform: rotateZ(540deg);
+        }
+      }
+    </style>
+  </body>
 </html>

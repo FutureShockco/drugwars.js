@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.68"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.71"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -16,38 +16,46 @@
     <div class="mt-2">
       <h3 class="mb-4 pt-3">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.66
+        DrugWars fight simulator v0.0.71
       </h3>
       <div class="my-4 columns px-0">
           <div class="column col-5 px-0 text-center">
               <h3 class="text-red mb-2">UNITS</h3>
+              <div class="columns">
                   <div class="column col-3 unitname" v-for="unit in attacker" :key="unit.key">
                       <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle">
                       <div>{{ unit.key }}</div>
                       <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
                     </div>
+                  </div>
+                  <div class="columns">
                     <h3 class="text-red mb-2">TRAININGS</h3>
                     <div class="column col-3 unitname" v-for="training in attackertrainings" :key="training.key" v-if="training.key != 'routing' && training.key != 'information'">
                         <img :src="`https://drugwars.io/img/trainings/${training.key}.jpg`" width="40" height="40" align="absmiddle">
                         <div>{{ training.key }}</div>
                         <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
                       </div>
+                    </div>
           </div>
           <div class="column col-2 vs">
           </div>
           <div class="column col-5 px-0 text-center">
               <h3 class="text-blue mb-2">UNITS</h3>
+              <div class="columns">
               <div class="column col-3 unitname" v-for="unit in defender" :key="unit.key">
                   <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle">
                   <div>{{ unit.key }}</div>
                   <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
                 </div>
+              </div>
+              <div class="columns">
                 <h3 class="text-blue mb-2">TRAININGS</h3>
                 <div class="column col-3 unitname" v-for="training in defendertrainings" :key="training.key" v-if="training.key != 'routing' && training.key != 'information'">
                     <img :src="`https://drugwars.io/img/trainings/${training.key}.jpg`" width="40" height="40" align="absmiddle">
                     <div>{{ training.key }}</div>
                     <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
                   </div>
+                </div>
             </div>
     </div>
     </div>
@@ -458,6 +466,10 @@
     input{
       min-height: 16px!important;
       padding: 0px 8px!important;
+    }
+
+    .divider{
+      display: inline;
     }
 
   </style>
