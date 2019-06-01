@@ -26,7 +26,9 @@ export default class Troop {
   }
 
   takeGroupDamages(damage,skill_type,round,name,num) {
-    let damages = damage - (this.defense);
+    let damages = 5;
+    if((damage - this.defense)>0)
+    damages  = damage - (this.defense);
     let current =''
     if(this.name === 'attacker')
     current = "D"
@@ -34,17 +36,17 @@ export default class Troop {
     current = "A"
     this.grouhealth = this.grouhealth- damages
     let healthAfterDamage = this.grouhealth ;
-    let currentlog = `[${this.name.substring(0,1).toUpperCase()}] group (${this.i})  with ${this.undead} x ${this.key} with ${this.grouhealth} HP take <span style="color:red">${damages} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${skill_type}"</span>.`
+    let currentlog = `[${this.name.substring(0,1).toUpperCase()}] group (${this.i})  with ${this.undead} x ${this.key} with ${parseFloat(this.grouhealth).toFixed(3)} HP take <span style="color:red">${damages} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${skill_type}"</span>.`
     if (healthAfterDamage <= 0) {
       currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] group (${this.i}) ${this.undead} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
-      this.dead = this.amount;
+      this.dead = Number(this.amount);
       this.undead = 0;
     } else {
       const undead = Math.ceil(healthAfterDamage / this.health);
       if (undead !== this.undead) {
         currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] ${undead} x ${this.key} group (${this.i}) are left.`;
-
-        this.dead += this.undead - undead;
+        
+        this.dead += Number(this.undead - undead);
         this.undead = undead;
       }
     }

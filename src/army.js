@@ -16,20 +16,22 @@ export default class Army {
       const effect = dwunits[unit.key].skill.effect
       if(unit.amount>0)
       {
-        if(dwunits[unit.key].skill.type === "group" && !unit.key === 'spy' && !this.name === 'defender' || dwunits[unit.key].skill.type === "group" && this.name === 'attacker')
+        if(dwunits[unit.key].skill.type === "group" && !unit.key === 'spy' || dwunits[unit.key].skill.type === "group" && this.name === 'attacker')
         {
           let group_amount = unit.amount
           while(group_amount>0)
           {
-            if(group_amount>=effect)
+            if(group_amount >= effect)
             {
               group_amount = group_amount - effect
               this.groups.push(new Troop(unit.key, effect, this.groupid++, name, log));	
             }
             else{
               if(group_amount>0)
-              this.groups.push(new Troop(unit.key, group_amount, this.groupid++, name, log));	
-              group_amount = 0
+              {
+                this.groups.push(new Troop(unit.key, group_amount, this.groupid++, name, log));	
+                group_amount = 0
+              }
             }
           }
         }
@@ -389,8 +391,8 @@ export default class Army {
           dead: 0,
         };
       }
-      unitsObj[group.key].amount += group.amount;
-      unitsObj[group.key].dead += group.dead;
+      unitsObj[group.key].amount += parseInt(group.amount);
+      unitsObj[group.key].dead += parseInt(group.dead);
     })
     this.units.forEach(unit => {
       if (!unitsObj[unit.key]) {

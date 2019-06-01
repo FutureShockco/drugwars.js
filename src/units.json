@@ -23,7 +23,7 @@
     "coeff": 0.54,
     "drugs_cost": 0,
     "weapons_cost": 0,
-    "alcohols_cost": 400,
+    "alcohols_cost": 600,
     "use":-1,
     "skill": {"type":"attack","effect":1,"range":1,"use":-1,"passive":true}
     },
@@ -36,7 +36,7 @@
     "desc": "He makes more noise than he hits.",
     "feature": "GROUP : The rowdy always fights in groups of 4.",
     "attack": 200,
-    "health": 240,
+    "health": 300,
     "defense":40,
     "weapon_defense":20,
     "fire_defense":0,

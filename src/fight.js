@@ -21,6 +21,8 @@ export default class Fight {
     const attacker_start_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
     const defender_start_value = {supply :defenders.supply(), power : defenders.defensiveAttackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     let round = 0;
+    console.log(attackers);
+
     while (attackers.alive && defenders.alive && round < 6) {
       round += 1;
       this.log.add(`Round ${round}`);
