@@ -5,14 +5,20 @@
     <title>DrugWars card generator</title>
     <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
     <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.74"></script> 
-    <!-- <script src="../dist/drugwars.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.76"></script>  -->
+    <script src="../dist/drugwars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
     <style>
       @font-face {
         font-family: 'American Captain';
         src: url('./fonts/AmericanCaptain.woff') format('woff');
         font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Legend';
+        src: url('./fonts/Legend.woff') format('woff');
+        font-weight: lighter;
         font-style: normal;
       }
     </style>
@@ -23,7 +29,7 @@
       <div class="mt-2 text-center">
         <h3 class="mb-4 pt-3">
           <img src="https://drugwars.io/img/drugwars.png" />
-          DrugWars Card Generator v0.0.74
+          DrugWars Card Generator v0.0.76
         </h3>
         <div class="my-4 columns px-0 text-center">
           <div class="container">
@@ -104,7 +110,7 @@
             // self.handleSubmit()
             WebFont.load({
               custom: {
-                families: ['American Captain']
+                families: ['American Captain','Legend']
               }
             });
             this.loading = true;
@@ -130,169 +136,226 @@
                   const frame = new Image();
                   const character = new Image();
                   const border = new Image();
-
+                  const flag = new Image();
                   background.src = `./backgrounds/${card.attack_type}/${card.background}.png`;
 
                   background.onload = () => {
-                    character.src = `./heroes/${card.pic}.png`;
-
-                    ctx.imageSmoothingEnabled = true;
-                    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-                  };
-
-                  character.onload = () => {
                     frame.src = `./frames/1.png`;
+
                     ctx.imageSmoothingEnabled = true;
-                    ctx.drawImage(character, 0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(background, 2, 2, canvas.width-4, canvas.height-4);
                   };
 
                   frame.onload = () => {
-                    border.src = `./borders/${card.quality}.png`;
+                    character.src = `./heroes/${card.pic}.png`;
+
                     ctx.imageSmoothingEnabled = true;
                     ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
                   };
 
+                  character.onload = () => {
+                    border.src = `./borders/${card.quality}.png`;
+
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(character, 0, 0, canvas.width, canvas.height);
+                  };
+
+
                   border.onload = () => {
-                    attack_type.src = `./icons/${card.attack_type}.png`;
+                    flag.src = `./flags/${card.flag}.png`;
                     ctx.imageSmoothingEnabled = true;
                     ctx.drawImage(border, 0, 0, canvas.width, canvas.height);
                   };
 
-                  attack_type.onload = () => {
+                  flag.onload = () => {
+                    // attack_type.src = `./icons/${card.attack_type}.png`;
                     ctx.imageSmoothingEnabled = true;
-                    ctx.drawImage(attack_type, 18, 15, 28, 28);
+                    ctx.drawImage(flag, 42, 233,20,12);
 
-                    ctx.font = '36px American Captain';
                     var yellowgradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
                     yellowgradient.addColorStop('0', '#e6ac00');
                     yellowgradient.addColorStop('0.5', '#ffca31');
                     yellowgradient.addColorStop('1.0', '#fbbd08');
                     ctx.fillStyle = yellowgradient;
-                    ctx.textAlign = 'center';
+                    ctx.textAlign = 'left';
                     ctx.strokeStyle = 'black';
 
-                    //DRAW NAME
-                    ctx.fillText(
-                      card.prefixe + ' ' + card.name + ' ' + card.suffixe,
-                      canvas.width / 2,
-                      400,
-                    );
-                    //DRAW attributes LEFT
-                    ctx.textAlign = 'left';
-
-                    ctx.font = '20px American Captain';
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.attack, 48, 52);
-                    ctx.strokeText(card.attack, 48, 52);
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.health, 48, 89);
-                    ctx.strokeText(card.health, 48, 89);
-
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.carry, 48, 122);
-                    ctx.strokeText(card.carry, 48, 122);
-
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.speed, 48, 154);
-                    ctx.strokeText(card.speed, 48, 154);
-
-                    //DRAW attributes right
-                    ctx.textAlign = 'right';
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.res_physical, 180, 53);
-                    ctx.strokeText(card.res_physical, 180, 53);
-
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.res_weapon, 180, 89);
-                    ctx.strokeText(card.res_weapon, 180, 89);
-
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.res_fire, 180, 122);
-                    ctx.strokeText(card.res_fire, 180, 122);
-
-                    ctx.fillStyle = '#fff';
-                    ctx.fillText(card.res_chemical, 180, 154);
-                    ctx.strokeText(card.res_chemical, 180, 154);
-
-                    //DRAW NAME
+                    //DRAW attributes TOP
                     ctx.textAlign = 'center';
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('ATTACK', 87, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.attack, 87, 252);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('HEALTH', 119, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.health, 119, 252);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('SPEED', 151, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.speed, 151, 252);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('CARRY', 183, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.carry, 183, 252);
+
+
+
+                    //DRAW attributes BOTTOM
+
+                    ctx.textAlign = 'center';
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('PHYSICAL', 87, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_physical, 87, 280);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('WEAPON', 119, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_weapon, 119, 280);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('FIRE', 151, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_fire, 151, 280);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('CHEMICAL', 183, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_chemical, 183, 280);
+
+                    // ctx.textAlign = 'center';
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_physical, 180, 53);
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_weapon, 180, 89);
+
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_fire, 180, 122);
+
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_chemical, 180, 154);
+
+                    //DRAW NAME
+                    ctx.textAlign = 'left';
                     ctx.fillStyle = yellowgradient;
                     ctx.shadowColor = 'rgba(0,0,0,1)';
                     ctx.shadowBlur = 3;
                     ctx.font = '13px American Captain';
                     ctx.fillStyle = '#000';
-                    ctx.fillText(card.family + ' ' + card.country, canvas.width / 2, 178);
-                    ctx.font = '20px American Captain';
+                    // ctx.fillText(card.family + ' ' + card.country, 30, 128);
 
-                    this.wrapText(
-                      ctx,
-                      card.prefixe + ' ' + card.name + ' ' + card.suffixe,
-                      canvas.width / 2,
-                      198,
-                      150,
-                      16,
-                    );
+                    // this.wrapText(
+                    //   ctx,
+                    //   card.prefixe + ' ' + card.suffixe,
+                    //   32,
+                    //   116,
+                    //   canvas.width - 50,
+                    //   16,
+                    // );
+                    ctx.font = '16px American Captain';
+
+                    //NAME SHADOW
+                    // this.wrapText(
+                    //   ctx,
+                    //   card.prefixe + ' ' + card.name +' '+ card.suffixe,
+                    //   32,
+                    //   144,
+                    //   canvas.width - 50,
+                    //   16,
+                    // );
+                    //NAME GRADIENT
                     ctx.fillStyle = yellowgradient;
                     this.wrapText(
                       ctx,
-                      card.prefixe + ' ' + card.name + ' ' + card.suffixe,
-                      canvas.width / 2,
-                      200,
-                      150,
+                      card.prefixe + ' ' + card.name +' '+ card.suffixe,
+                      30,
+                      142,
+                      canvas.width - 50,
                       16,
                     );
                     ctx.font = '13px American Captain';
 
-                    ctx.fillText(card.family + ' ' + card.country, canvas.width / 2, 180);
+                    // this.wrapText(
+                    //   ctx,
+                    //   card.prefixe + ' ' + card.suffixe,
+                    //   30,
+                    //   114,
+                    //   canvas.width - 50,
+                    //   16,
+                    // );
+                    // ctx.fillText(card.family + ' ' + card.country, 30, 130);
 
                     //DRAW SKILLS
-                    ctx.shadowBlur = 0;
 
                     ctx.textAlign = 'left';
-                    ctx.font = '13px American Captain';
+                    ctx.font = 'italic 12px Legend';
                     ctx.fillStyle = '#fff';
-                    ctx.fillRect(14, 222, 40, 11);
-                    ctx.fillStyle = '#000';
-                    ctx.fillText('ACTIVE', 19, 232);
-
-                    ctx.fillStyle = '#ff3600';
-                    ctx.fillText(card.active_skill.name, 58, 232);
-                    ctx.font = '11px Open Sans';
+                    ctx.fillText(card.active_skill.name.toString().toUpperCase(), 30, 158);
+                    ctx.font = 'italic 8px Helvetica';
 
                     ctx.fillStyle = '#fff';
                     this.wrapText(
                       ctx,
-                      card.active_skill.description,
-                      14,
-                      246,
-                      canvas.width - 20,
+                      card.active_skill.description.toString().toUpperCase(),
+                      30,
+                      169,
+                      canvas.width - 50,
                       11,
                     );
 
-                    ctx.font = '13px American Captain';
-                    ctx.fillStyle = '#fff';
-                    ctx.fillRect(14, 264, 40, 11);
-                    ctx.fillStyle = '#000';
-                    ctx.fillText('PASSIVE', 17, 274);
+                    ctx.font = 'italic  12px Legend';
 
-                    ctx.fillStyle = '#ff3600';
-                    ctx.fillText(card.passive_skill.name, 58, 274);
-                    ctx.font = '11px Open Sans';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.passive_skill.name.toString().toUpperCase(), 30, 196);
+                    ctx.font = 'italic 8px Helvetica';
 
                     ctx.fillStyle = '#fff';
                     this.wrapText(
                       ctx,
-                      card.passive_skill.description,
-                      14,
-                      288,
-                      canvas.width - 20,
+                      card.passive_skill.description.toString().toUpperCase(),
+                      30,
+                      208,
+                      canvas.width - 50,
                       11,
                     );
+
+                    ctx.font = 'italic  26px Legend';
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText('X1'.toUpperCase(), 40, 280);
 
                     b.style.transform = 'rotateY(0deg)';
                     c.style.transform = 'rotateY(0deg)';
                     this.card = card;
                   };
+
+
+                  // attack_type.onload = () => {
+                  //   ctx.imageSmoothingEnabled = true;
+                  //   ctx.drawImage(attack_type, 18, 15, 28, 28);
+
+                   
+                  // };
                 });
             },
             wrapText(context, text, x, y, maxWidth, lineHeight) {

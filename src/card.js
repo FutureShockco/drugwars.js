@@ -19,6 +19,7 @@ export default class Card {
     this.name ='';
     this.border = '';
     this.background ='';
+    this.flag='';
     this.quality = quality;
     this.attack = 0;
     this.health= 0;
@@ -87,12 +88,14 @@ export default class Card {
     const hero = heroes[this.family][this.getRandomArray(heroes[this.family].length)]
     this.name = hero.name;
     this.country = hero.country;
+    this.flag = hero.flag;
     // this.pic = this.getRandomInt(7);
     this.pic = hero.id;
     this.img ='./cards/1.png';
     this.open = false;
     this.id = this.createUniqueId();
     this.background = this.getRandomInt(4);
+
     this.attack_type = this.getAttackType()
     this.prefixe = this.setPrefixes(this.quality);
     this.suffixe = this.setSuffixe(this.quality,this.attack_type);
