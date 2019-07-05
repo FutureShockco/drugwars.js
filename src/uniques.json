@@ -1,0 +1,139 @@
+{
+  "gang": {
+    "active": {
+      "physical": [
+        {
+          "name": "Smash",
+          "description": "Stun an enemy for 2 round",
+          "id": "1"
+        }
+      ],
+      "weapon": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ],
+      "fire": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ],
+      "chemical": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ]
+    },
+    "passive": [
+      {
+        "name": "PowerBazooka",
+        "description": "Gives bazooka guys better rockets that hit +5 enemies at once",
+        "id": "1"
+      },
+      {
+        "name": "Weapons are the best",
+        "description": "When victorius, the loot will be only weapon, no drug and no alcohol",
+        "id": "2"
+      }
+    ]
+  },
+  "mafia": {
+    "active": {
+      "physical": [
+        {
+          "name": "Romantic",
+          "description": "Protects female units, restore 2500HP to Bigmama and Ninja after each hit",
+          "id": "1"
+        }
+      ],
+      "weapon": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ],
+      "fire": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ],
+      "chemical": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ]
+    },
+    "passive": [
+      {
+        "name": "Master of fire",
+        "description": "All your units make +20 fire damage.",
+        "id": "1"
+      },
+      {
+        "name": "Alcohol is the best",
+        "description": "When victorius, the loot will be only alcohol, no drug and no weapon",
+        "id": "2"
+      }
+    ]
+  },
+  "cartel": {
+    "active": {
+      "physical": [
+        {
+          "name": "Gomu gomu no",
+          "description": "Stun 5 enemies for 2 round",
+          "id": "2"
+        }
+      ],
+      "weapon": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ],
+      "fire": [
+        {
+          "name": "Deadly Fire Punch",
+          "description": "Each hit kill instantly (unit only)",
+          "id": "2"
+        }
+      ],
+      "chemical": [
+        {
+          "name": "Mines",
+          "description": "Throw mines that explode and hit 5 melee unit.",
+          "id": "2"
+        }
+      ]
+    },
+    "passive": [
+      {
+        "name": "Faulty Vest",
+        "description": "Enemies mercenaries can't user their bulletproofs.",
+        "id": "1"
+      },
+      {
+        "name": "Drugs are the best",
+        "description": "When victorius, the loot will be only drug, no weapon and no alcohol",
+        "id": "2"
+      },
+      {
+        "name": "Demoralize",
+        "description": "Reduce the offensive power of your enemy by 2%",
+        "id": "3"
+      }
+    ]
+  }
+}

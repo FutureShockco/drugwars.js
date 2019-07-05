@@ -130,13 +130,15 @@
                   var b = document.getElementById(card.id + '-card-back');
                   console.log(c)
                   let canvas = document.getElementById(card.id + '-card-front'),
-                    ctx = canvas.getContext('2d');
+                  ctx = canvas.getContext('2d');
                   const background = new Image();
                   const attack_type = new Image();
                   const frame = new Image();
                   const character = new Image();
                   const border = new Image();
                   const flag = new Image();
+                  const effect = new Image();
+
                   background.src = `./backgrounds/${card.attack_type}/${card.background}.png`;
 
                   background.onload = () => {
@@ -147,30 +149,44 @@
                   };
 
                   frame.onload = () => {
-                    character.src = `./heroes/${card.pic}.png`;
+                    effect.src = `./effects/${card.quality}.png`;
 
                     ctx.imageSmoothingEnabled = true;
                     ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
                   };
 
-                  character.onload = () => {
-                    border.src = `./borders/${card.quality}.png`;
 
+                  effect.onload = () => {
+                    character.src = `./heroes/${card.pic}.png`;
+                    
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(effect, 0, 0, canvas.width, canvas.height);
+                  };
+
+                  character.onload = () => {
+                    //border.src = `./borders/${card.quality}.png`;
+                    attack_type.src = `./icons/${card.attack_type}.png`;
                     ctx.imageSmoothingEnabled = true;
                     ctx.drawImage(character, 0, 0, canvas.width, canvas.height);
                   };
 
 
-                  border.onload = () => {
+                  // border.onload = () => {
+                  //   attack_type.src = `./icons/${card.attack_type}.png`;
+                  //   ctx.imageSmoothingEnabled = true;
+                  //   ctx.drawImage(border, 0, 0, canvas.width, canvas.height);
+                  // };
+
+                  attack_type.onload = () => {
                     flag.src = `./flags/${card.flag}.png`;
                     ctx.imageSmoothingEnabled = true;
-                    ctx.drawImage(border, 0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(attack_type, 38, 225, 40 ,40);
                   };
 
                   flag.onload = () => {
                     // attack_type.src = `./icons/${card.attack_type}.png`;
                     ctx.imageSmoothingEnabled = true;
-                    ctx.drawImage(flag, 42, 233,20,12);
+                    ctx.drawImage(flag, 30, 115,20,12);
 
                     var yellowgradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
                     yellowgradient.addColorStop('0', '#e6ac00');
@@ -665,6 +681,8 @@
         top: 0;
         left: 0;
         display: none;
+        border-radius: 20px;
+
         height: 100%;
         width: auto;
         transform: rotateY(180deg);

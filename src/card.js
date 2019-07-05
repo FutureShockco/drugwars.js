@@ -1,9 +1,8 @@
 import suffixes from './suffixes.json';
 import prefixes from './prefixes.json';
 import heroes from './heroes.json';
-import skills from './skills.json';
+import activeskills from './actives.json';
 import Log from './log';
-import { orderBy } from 'lodash';
 
 export default class Card {
   constructor(quality) {
@@ -53,6 +52,9 @@ export default class Card {
   getFamily() {
     var rnd = 0
     rnd = this.getRandomInt(1000)
+    if (rnd > 999) {
+      return 'cops'
+    }
     if (rnd > 800) {
         return 'cartel'
     }
@@ -86,25 +88,24 @@ export default class Card {
     this.quality = quality;
     this.family = this.getFamily()
     const hero = heroes[this.family][this.getRandomArray(heroes[this.family].length)]
+
     this.name = hero.name;
     this.country = hero.country;
     this.flag = hero.flag;
-    // this.pic = this.getRandomInt(7);
     this.pic = hero.id;
     this.img ='./cards/1.png';
     this.open = false;
     this.id = this.createUniqueId();
     this.background = this.getRandomInt(4);
-
     this.attack_type = this.getAttackType()
-    this.prefixe = this.setPrefixes(this.quality);
+    this.prefixe = this.setPrefixes(this.quality,this.family);
     this.suffixe = this.setSuffixe(this.quality,this.attack_type);
     this.attack = this.getRandomIntMinMax(5000,8000+(3000*this.quality))
     this.health= this.getRandomIntMinMax(5000,+(2000*this.quality))
     this.carry= this.getRandomIntMinMax(1000,+(1000*this.quality))
     this.speed= this.getRandomIntMinMax(10-this.quality,20)
-    this.active_skill = skills[this.family]['active'][this.attack_type][this.getRandomArray(skills[this.family]['active'][this.attack_type].length)]
-    this.passive_skill = skills[this.family]['passive'][this.getRandomArray(skills[this.family]['passive'].length)]
+    this.active_skill = activeskills[this.family]['active'][this.attack_type][this.getRandomArray(activeskills[this.family]['active'][this.attack_type].length)]
+    this.passive_skill = activeskills[this.family]['passive'][this.getRandomArray(activeskills[this.family]['passive'].length)]
 
     this.res_physical= this.getRandomInt(20)
     this.res_weapon= this.getRandomInt(20)
@@ -118,32 +119,12 @@ export default class Card {
     return id
   }
 
-  setPrefixes(quality) {
-    let prefixe;
-    switch (quality) {
-        case 1:
-            prefixe = prefixes.mythical[Math.floor(Math.random() * prefixes.mythical.length)]
-            break;
-        case 2:
-            prefixe = prefixes.legendary[Math.floor(Math.random() * prefixes.legendary.length)]
-            break;
-        case 3:
-            prefixe = prefixes.epic[Math.floor(Math.random() * prefixes.epic.length)]
-            break;
-        case 4:
-            prefixe =  prefixes.rare[Math.floor(Math.random() * prefixes.rare.length)]
-            break;
-        case 5:
-            prefixe = prefixes.common[Math.floor(Math.random() * prefixes.common.length)]
-        break;
-        default:
-            prefixe = ''
-    }
-    return prefixe
+  setPrefixes(quality,family) {
+    return  prefixes[family][quality][this.getRandomArray(prefixes[family][quality].length)]
   };
 
   setSuffixe(quality,type) {
-    return  suffixes[type][quality][Math.floor(Math.random() * suffixes[type][quality].length)]
+    return  suffixes[type][quality][this.getRandomArray(suffixes[type][quality].length)]
   };
 
   getLog() {

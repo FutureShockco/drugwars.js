@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DrugWars card generator</title>
+    <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
+    <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.76"></script>  -->
+    <script src="../drugwars.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <style>
+      @font-face {
+        font-family: 'American Captain';
+        src: url('./fonts/AmericanCaptain.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'Legend';
+        src: url('./fonts/Legend.woff') format('woff');
+        font-weight: lighter;
+        font-style: normal;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="main" v-cloak>
+      <div class="mt-2 text-center">
+        <h3 class="mb-4 pt-3">
+          <img src="https://drugwars.io/img/drugwars.png" />
+          DrugWars Card Generator v0.0.76
+        </h3>
+        <div class="my-4 columns px-0 text-center">
+          <div class="container">
+            <div v-if="loading" class="loading mt-6">
+              <svg viewBox="0 0 79 80" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#fbbd08"
+                  fill-rule="evenodd"
+                  d="m78.7330914 47.1291816c-1.6765281 9.3191191-6.581009 17.5171686-13.5145191 23.3952251-2.4415962-1.5796738-5.6606125-1.7674062-8.3520266-.2135176-2.6946569 1.5557609-4.1418261 4.4424506-3.9905625 7.350324-4.2200524 1.513968-8.7684216 2.3387869-13.5094375 2.3387869-4.741016 0-9.2893851-.8248189-13.5094375-2.3387869.1512636-2.9078734-1.2959056-5.7945631-3.9905625-7.350324-2.6914141-1.5538886-5.9104305-1.3661562-8.3520267.2135176-6.93351007-5.8780565-11.83799093-14.076106-13.514519-23.3952251 2.59189117-1.3236225 4.36654568-4.0191557 4.36654568-7.1291816s-1.77465451-5.8055591-4.36654568-7.1291816c1.67652807-9.3191191 6.58100893-17.5171686 13.514519-23.39522515 2.4415962 1.57967385 5.6606126 1.76740625 8.3520267.21351762 2.6946569-1.55576087 4.1418261-4.44245059 3.9905625-7.35032402 4.2200524-1.51396791 8.7684215-2.33878685 13.5094375-2.33878685 4.7410159 0 9.2893851.82481894 13.5094375 2.33878685-.1512636 2.90787343 1.2959056 5.79456315 3.9905625 7.35032402 2.6914141 1.55388863 5.9104304 1.36615623 8.3520266-.21351762 6.9335101 5.87805655 11.837991 14.07610605 13.5145191 23.39522515-2.5918912 1.3236225-4.3665457 4.0191557-4.3665457 7.1291816s1.7746545 5.8055591 4.3665457 7.1291816zm-39.3665457-14.1291816c-3.8659933 0-7 3.1340068-7 7s3.1340067 7 7 7c3.8659932 0 7-3.1340068 7-7s-3.1340068-7-7-7zm0 23c-5.5228475 0-10 4.4771525-10 10s4.4771525 10 10 10 10-4.4771525 10-10-4.4771525-10-10-10zm0-52c-5.5228475 0-10 4.4771525-10 10s4.4771525 10 10 10 10-4.4771525 10-10-4.4771525-10-10-10zm-13.8564065 44c-2.7614237-4.7829262-8.8773278-6.4216778-13.660254-3.660254-4.78292625 2.7614237-6.4216778 8.8773278-3.66025405 13.660254s8.87732785 6.4216778 13.66025405 3.660254c4.7829262-2.7614237 6.4216778-8.8773278 3.660254-13.660254zm45.033321-26c-2.7614237-4.7829262-8.8773278-6.4216778-13.660254-3.660254-4.7829263 2.7614237-6.4216778 8.8773278-3.6602541 13.660254 2.7614238 4.7829262 8.8773278 6.4216778 13.6602541 3.660254 4.7829262-2.7614237 6.4216778-8.8773278 3.660254-13.660254zm-17.3205081 26c-2.7614237 4.7829262-1.1226722 10.8988303 3.6602541 13.660254 4.7829262 2.7614238 10.8988303 1.1226722 13.660254-3.660254 2.7614238-4.7829262 1.1226722-10.8988303-3.660254-13.660254-4.7829263-2.7614238-10.8988303-1.1226722-13.6602541 3.660254zm-45.03332095-26c-2.76142375 4.7829262-1.1226722 10.8988303 3.66025405 13.660254 4.7829262 2.7614238 10.8988303 1.1226722 13.660254-3.660254 2.7614238-4.7829262 1.1226722-10.8988303-3.660254-13.660254-4.7829262-2.7614238-10.8988303-1.1226722-13.66025405 3.660254z"
+                />
+              </svg>
+              Generator processing...
+            </div>
+            <div v-else class="card-box">
+              <div
+                v-for="card in cards"
+                class="card"
+                :id="card.id+'-card'"
+                @click="clickCard(card)"
+              >
+              <div  class="auto">
+                <div id="card">
+                  <img :src="`./backgrounds/${card.attack_type}/${card.background}.png`" data-depth="18" />
+                  <img class="layer1" :src="`./backgrounds/${card.attack_type}/${card.background}.png`" data-depth="12" />
+                  <img class="layer2" :src="`./effects/${card.quality}.png`" data-depth="8" />
+                  <img class="layer3" :src="`./frames/1.png`" data-depth="6" />
+                  <!-- <img class="layer4" src="https://massivepenguin.com/pens/hb3d/05_head.png" data-depth="5" />
+                  <img class="layer4" src="https://massivepenguin.com/pens/hb3d/06_jaw.png" data-depth="5" />
+                  <img class="layer5" src="https://massivepenguin.com/pens/hb3d/07_tail.png" data-depth="3" /> -->
+                  <img class="layer6" :src="`./heroes/${card.pic}.png`" data-depth="2" />
+                  <div id="border">&nbsp;</div>
+                </div>
+              </div>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="result.result">
+        <h3 class="text-center result uppercase">
+          <b>Result:</b>
+          <div>
+            {{
+              result.result === 2 ? 'draw' : result.result === 1 ? 'attacker win' : 'attacker lose'
+            }}
+          </div>
+        </h3>
+      </div>
+      <div class="text-center">
+        <div class=" mb-4 mt-4 log"></div>
+      </div>
+      <div v-if="log.length > 0 && details" class="p-2 mb-4">
+        <p v-for="l in log" v-html="l">{{ l }}</p>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        new Vue({
+          el: '#main',
+          data: {
+            error: null,
+            details: false,
+            json: null,
+            seed: null,
+            loading: null,
+            log: [],
+            result: {},
+            cards: [],
+          },
+          created() {
+            const self = this;
+            // self.handleSubmit()
+            WebFont.load({
+              custom: {
+                families: ['American Captain','Legend']
+              }
+            });
+            this.loading = true;
+            const generator = new drugwars.CardPack(5);
+            self.cards = generator.cards;
+            self.loading = false;
+            document.fonts.onloadingdone = function (fontFaceSetEvent) {
+              self.handleSubmit()            
+            };
+          },
+          methods: {
+            handleSubmit: function() {
+                this.seed = '123456';
+
+                this.cards.forEach(card => {
+                  var c = document.getElementById(card.id + '-card');
+                  var b = document.getElementById(card.id + '-card-back');
+                  console.log(c)
+                  let canvas = document.getElementById(card.id + '-card-front'),
+                  ctx = canvas.getContext('2d');
+                  const background = new Image();
+                  const attack_type = new Image();
+                  const frame = new Image();
+                  const character = new Image();
+                  const border = new Image();
+                  const flag = new Image();
+                  const effect = new Image();
+
+                  background.src = `./backgrounds/${card.attack_type}/${card.background}.png`;
+
+                  background.onload = () => {
+                    frame.src = `./frames/1.png`;
+
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(background, 2, 2, canvas.width-4, canvas.height-4);
+                  };
+
+                  frame.onload = () => {
+                    effect.src = `./effects/${card.quality}.png`;
+
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(frame, 0, 0, canvas.width, canvas.height);
+                  };
+
+
+                  effect.onload = () => {
+                    character.src = `./heroes/${card.pic}.png`;
+                    
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(effect, 0, 0, canvas.width, canvas.height);
+                  };
+
+                  character.onload = () => {
+                    border.src = `./borders/${card.quality}.png`;
+
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(character, 0, 0, canvas.width, canvas.height);
+                  };
+
+
+                  border.onload = () => {
+                    attack_type.src = `./icons/${card.attack_type}.png`;
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(border, 0, 0, canvas.width, canvas.height);
+                  };
+
+                  attack_type.onload = () => {
+                    flag.src = `./flags/${card.flag}.png`;
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(attack_type, 38, 225, 40 ,40);
+                  };
+
+                  flag.onload = () => {
+                    // attack_type.src = `./icons/${card.attack_type}.png`;
+                    ctx.imageSmoothingEnabled = true;
+                    ctx.drawImage(flag, 30, 115,20,12);
+
+                    var yellowgradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
+                    yellowgradient.addColorStop('0', '#e6ac00');
+                    yellowgradient.addColorStop('0.5', '#ffca31');
+                    yellowgradient.addColorStop('1.0', '#fbbd08');
+                    ctx.fillStyle = yellowgradient;
+                    ctx.textAlign = 'left';
+                    ctx.strokeStyle = 'black';
+
+                    //DRAW attributes TOP
+                    ctx.textAlign = 'center';
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('ATTACK', 87, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.attack, 87, 252);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('HEALTH', 119, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.health, 119, 252);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('SPEED', 151, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.speed, 151, 252);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('CARRY', 183, 240);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.carry, 183, 252);
+
+
+
+                    //DRAW attributes BOTTOM
+
+                    ctx.textAlign = 'center';
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('PHYSICAL', 87, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_physical, 87, 280);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('WEAPON', 119, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_weapon, 119, 280);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('FIRE', 151, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_fire, 151, 280);
+
+                    ctx.font = '10px American Captain';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.fillText('CHEMICAL', 183, 268);
+                    ctx.font = '14px American Captain';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.res_chemical, 183, 280);
+
+                    // ctx.textAlign = 'center';
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_physical, 180, 53);
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_weapon, 180, 89);
+
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_fire, 180, 122);
+
+                    // ctx.fillStyle = '#fff';
+                    // ctx.fillText(card.res_chemical, 180, 154);
+
+                    //DRAW NAME
+                    ctx.textAlign = 'left';
+                    ctx.fillStyle = yellowgradient;
+                    ctx.shadowColor = 'rgba(0,0,0,1)';
+                    ctx.shadowBlur = 3;
+                    ctx.font = '13px American Captain';
+                    ctx.fillStyle = '#000';
+                    // ctx.fillText(card.family + ' ' + card.country, 30, 128);
+
+                    // this.wrapText(
+                    //   ctx,
+                    //   card.prefixe + ' ' + card.suffixe,
+                    //   32,
+                    //   116,
+                    //   canvas.width - 50,
+                    //   16,
+                    // );
+                    ctx.font = '16px American Captain';
+
+                    //NAME SHADOW
+                    // this.wrapText(
+                    //   ctx,
+                    //   card.prefixe + ' ' + card.name +' '+ card.suffixe,
+                    //   32,
+                    //   144,
+                    //   canvas.width - 50,
+                    //   16,
+                    // );
+                    //NAME GRADIENT
+                    ctx.fillStyle = yellowgradient;
+                    this.wrapText(
+                      ctx,
+                      card.prefixe + ' ' + card.name +' '+ card.suffixe,
+                      30,
+                      142,
+                      canvas.width - 50,
+                      16,
+                    );
+                    ctx.font = '13px American Captain';
+
+                    // this.wrapText(
+                    //   ctx,
+                    //   card.prefixe + ' ' + card.suffixe,
+                    //   30,
+                    //   114,
+                    //   canvas.width - 50,
+                    //   16,
+                    // );
+                    // ctx.fillText(card.family + ' ' + card.country, 30, 130);
+
+                    //DRAW SKILLS
+
+                    ctx.textAlign = 'left';
+                    ctx.font = 'italic 12px Legend';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.active_skill.name.toString().toUpperCase(), 30, 158);
+                    ctx.font = 'italic 8px Helvetica';
+
+                    ctx.fillStyle = '#fff';
+                    this.wrapText(
+                      ctx,
+                      card.active_skill.description.toString().toUpperCase(),
+                      30,
+                      169,
+                      canvas.width - 50,
+                      11,
+                    );
+
+                    ctx.font = 'italic  12px Legend';
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText(card.passive_skill.name.toString().toUpperCase(), 30, 196);
+                    ctx.font = 'italic 8px Helvetica';
+
+                    ctx.fillStyle = '#fff';
+                    this.wrapText(
+                      ctx,
+                      card.passive_skill.description.toString().toUpperCase(),
+                      30,
+                      208,
+                      canvas.width - 50,
+                      11,
+                    );
+
+                    ctx.font = 'italic  26px Legend';
+
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText('X1'.toUpperCase(), 40, 280);
+
+                    b.style.transform = 'rotateY(0deg)';
+                    c.style.transform = 'rotateY(0deg)';
+                    this.card = card;
+                  };
+
+
+                  // attack_type.onload = () => {
+                  //   ctx.imageSmoothingEnabled = true;
+                  //   ctx.drawImage(attack_type, 18, 15, 28, 28);
+
+                   
+                  // };
+                });
+            },
+            wrapText(context, text, x, y, maxWidth, lineHeight) {
+              var words = text.split(' ');
+              var line = '';
+              for (var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + ' ';
+                var metrics = context.measureText(testLine);
+                var testWidth = metrics.width;
+                if (testWidth > maxWidth) {
+                  context.fillText(line, x, y);
+                  line = words[n] + ' ';
+
+                  y += lineHeight;
+                } else {
+                  line = testLine;
+                }
+              }
+              context.fillText(line, x, y);
+            },
+            showDetails: function() {
+              this.details = true;
+            },
+            clickCard: function(card) {
+              card.open = true;
+              var c = document.getElementById(card.id + '-card');
+
+              var b = document.getElementById(card.id + '-card-back');
+              var f = document.getElementById(card.id + '-card-front');
+              var s = document.getElementById(card.id + '-card-shine');
+              c.style.boxShadow = 'none';
+              c.style.backgroundColor = 'transparent';
+              c.style.animationName = 'none';
+              c.style.transform = 'scale(1.1,1.1)';
+              b.style.animation = 'cardback 0.15s';
+              b.style.transform = 'rotateY(90deg)';
+              var shining = ``;
+              setTimeout(function() {
+                setTimeout(function() {
+                  // s.fadeIn()
+                  c.append(shining);
+                }, 302),
+                  (f.style.display = 'block');
+                b.style.display = 'none';
+              }, 150);
+              f.style.animation = 'cardfront 0.3s';
+              f.style.transform = 'rotateY(0deg)';
+            },
+          },
+        });
+      };
+    </script>
+
+    <style type="text/css">
+      [v-cloak] {
+        display: none;
+      }
+
+      .card-box{
+        display:inline-flex;
+      }
+
+      body {
+        background: rgb(8, 8, 8);
+        color: white;
+      }
+    
+
+      .container {
+        width: 1280px;
+      }
+
+      .uppercase {
+        text-transform: uppercase;
+      }
+
+      .value {
+        background-image: radial-gradient(
+          ellipse farthest-corner at center 0,
+          #0a0a0a -150%,
+          #131313 45%,
+          rgb(17, 17, 17) 85%
+        ) !important;
+      }
+
+      .minip {
+        width: 24px;
+      }
+
+      .result {
+        background-color: black;
+        border-radius: 5px;
+        border: 2px solid #ffc400;
+      }
+
+      .unitname {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+      }
+
+      .vs {
+        margin-top: 40%;
+      }
+
+      input {
+        min-height: 16px !important;
+        padding: 0px 8px !important;
+      }
+
+      svg {
+        width: 50vmin;
+        max-width: 200px;
+        animation: rotate 1s infinite cubic-bezier(0.3, -0.05, 0.9, 0.95);
+      }
+
+      /* these animations are hard-coded to demonstrate the effect - not prtable in the slightest! */
+@-webkit-keyframes rotate-card-base {
+  0% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  10% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  30% {
+    transform: perspective(550px) rotateX(20deg) rotateY(-20deg);
+  }
+  50% {
+    transform: perspective(550px) rotateX(20deg) rotateY(20deg);
+  }
+  70% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(20deg);
+  }
+  90% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(-20deg);
+  }
+  100% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+}
+@-moz-keyframes rotate-card-base {
+  0% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  10% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  30% {
+    transform: perspective(550px) rotateX(20deg) rotateY(-20deg);
+  }
+  50% {
+    transform: perspective(550px) rotateX(20deg) rotateY(20deg);
+  }
+  70% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(20deg);
+  }
+  90% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(-20deg);
+  }
+  100% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+}
+@-o-keyframes rotate-card-base {
+  0% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  10% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  30% {
+    transform: perspective(550px) rotateX(20deg) rotateY(-20deg);
+  }
+  50% {
+    transform: perspective(550px) rotateX(20deg) rotateY(20deg);
+  }
+  70% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(20deg);
+  }
+  90% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(-20deg);
+  }
+  100% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+}
+@keyframes rotate-card-base {
+  0% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  10% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+  30% {
+    transform: perspective(550px) rotateX(20deg) rotateY(-20deg);
+  }
+  50% {
+    transform: perspective(550px) rotateX(20deg) rotateY(20deg);
+  }
+  70% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(20deg);
+  }
+  90% {
+    transform: perspective(550px) rotateX(-20deg) rotateY(-20deg);
+  }
+  100% {
+    transform: perspective(550px) rotateX(0deg) rotateY(0deg);
+  }
+}
+@-webkit-keyframes rotate-trees {
+  0% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: 12%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: 12%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: -12%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: -12%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-moz-keyframes rotate-trees {
+  0% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: 12%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: 12%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: -12%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: -12%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-o-keyframes rotate-trees {
+  0% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: 12%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: 12%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: -12%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: -12%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@keyframes rotate-trees {
+  0% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: 12%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: 12%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(90px);
+    left: -12%;
+    top: -12%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(90px);
+    left: 12%;
+    top: -12%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(90px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-webkit-keyframes rotate-gruffalo-body {
+  0% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: 8%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: 8%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: -8%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: -8%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-moz-keyframes rotate-gruffalo-body {
+  0% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: 8%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: 8%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: -8%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: -8%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-o-keyframes rotate-gruffalo-body {
+  0% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: 8%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: 8%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: -8%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: -8%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@keyframes rotate-gruffalo-body {
+  0% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: 8%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: 8%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(60px);
+    left: -8%;
+    top: -8%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(60px);
+    left: 8%;
+    top: -8%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(60px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-webkit-keyframes rotate-mist {
+  0% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: 6%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: 6%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: -6%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: -6%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-moz-keyframes rotate-mist {
+  0% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: 6%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: 6%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: -6%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: -6%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-o-keyframes rotate-mist {
+  0% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: 6%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: 6%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: -6%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: -6%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@keyframes rotate-mist {
+  0% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: 6%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: 6%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(43px);
+    left: -6%;
+    top: -6%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(43px);
+    left: 6%;
+    top: -6%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(43px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-webkit-keyframes rotate-gruffalo-head {
+  0% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: 5%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: 5%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: -5%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: -5%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-moz-keyframes rotate-gruffalo-head {
+  0% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: 5%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: 5%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: -5%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: -5%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-o-keyframes rotate-gruffalo-head {
+  0% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: 5%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: 5%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: -5%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: -5%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@keyframes rotate-gruffalo-head {
+  0% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: 5%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: 5%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(36px);
+    left: -5%;
+    top: -5%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(36px);
+    left: 5%;
+    top: -5%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(36px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-webkit-keyframes rotate-hellboy-bg {
+  0% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: 3%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: 3%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: -3%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: -3%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-moz-keyframes rotate-hellboy-bg {
+  0% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: 3%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: 3%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: -3%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: -3%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-o-keyframes rotate-hellboy-bg {
+  0% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: 3%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: 3%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: -3%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: -3%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@keyframes rotate-hellboy-bg {
+  0% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: 3%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: 3%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(22px);
+    left: -3%;
+    top: -3%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(22px);
+    left: 3%;
+    top: -3%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(22px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-webkit-keyframes rotate-hellboy-fg {
+  0% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: 2%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: 2%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: -2%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: -2%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-moz-keyframes rotate-hellboy-fg {
+  0% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: 2%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: 2%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: -2%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: -2%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@-o-keyframes rotate-hellboy-fg {
+  0% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: 2%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: 2%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: -2%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: -2%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+}
+@keyframes rotate-hellboy-fg {
+  0% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  10% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+  30% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: 2%;
+  }
+  50% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: 2%;
+  }
+  70% {
+    transform: perspective(550px) translateZ(15px);
+    left: -2%;
+    top: -2%;
+  }
+  90% {
+    transform: perspective(550px) translateZ(15px);
+    left: 2%;
+    top: -2%;
+  }
+  100% {
+    transform: perspective(550px) translateZ(15px);
+    left: 0%;
+    top: 0%;
+  }
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #000;
+}
+
+#cardWrapper {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card{
+  background: transparent;
+  border:none;
+  margin-right: 20px;
+  border-radius: 20px;
+}
+
+#card {
+  position: relative;
+  width: 200px;
+  height: 269px;
+  background: transparent;
+  overflow: hidden;
+}
+#card img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+}
+#card .layer1 {
+  z-index: 1;
+}
+#card .layer2 {
+  z-index: 2;
+}
+#card .layer3 {
+  z-index: 3;
+}
+#card .layer4 {
+  z-index: 4;
+}
+#card .layer5 {
+  z-index: 5;
+}
+#card .layer6 {
+  z-index: 6;
+}
+
+#border {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: 0px solid white;
+  display: block;
+  z-index: 7;
+}
+
+#autoToggle {
+  border: none;
+  background-color: #0275d8;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 120%;
+  padding: 1em;
+  cursor: pointer;
+}
+#autoToggle:hover, #autoToggle:focus, #autoToggle:active {
+  background-color: #108ffd;
+}
+
+#instructions {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  color: #fff;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 300%;
+  opacity: 0.3;
+}
+
+.auto #card {
+  -webkit-animation: rotate-card-base 5s infinite;
+  -moz-animation: rotate-card-base 5s infinite;
+  -o-animation: rotate-card-base 5s infinite;
+  animation: rotate-card-base 5s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.auto .layer1 {
+  -webkit-animation: rotate-trees 5s infinite;
+  -moz-animation: rotate-trees 5s infinite;
+  -o-animation: rotate-trees 5s infinite;
+  animation: rotate-trees 5s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.auto .layer2 {
+  -webkit-animation: rotate-gruffalo-body 5s infinite;
+  -moz-animation: rotate-gruffalo-body 5s infinite;
+  -o-animation: rotate-gruffalo-body 5s infinite;
+  animation: rotate-gruffalo-body 5s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.auto .layer3 {
+  -webkit-animation: rotate-mist 5s infinite;
+  -moz-animation: rotate-mist 5s infinite;
+  -o-animation: rotate-mist 5s infinite;
+  animation: rotate-mist 5s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.auto .layer4 {
+  -webkit-animation: rotate-gruffalo-head 5s infinite;
+  -moz-animation: rotate-gruffalo-head 5s infinite;
+  -o-animation: rotate-gruffalo-head 5s infinite;
+  animation: rotate-gruffalo-head 5s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.auto .layer5 {
+  -webkit-animation: rotate-hellboy-bg 5s infinite;
+  -moz-animation: rotate-hellboy-bg 5s infinite;
+  -o-animation: rotate-hellboy-bg 5s infinite;
+  animation: rotate-hellboy-bg 5s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.auto .layer5 {
+  -webkit-animation: rotate-hellboy-fg 5s infinite;
+  -moz-animation: rotate-hellboy-fg 5s infinite;
+  -o-animation: rotate-hellboy-fg 5s infinite;
+  animation: rotate-hellboy-fg 5s infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+    </style>
+  </body>
+</html>

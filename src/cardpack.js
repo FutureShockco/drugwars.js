@@ -1,4 +1,3 @@
-import { orderBy } from 'lodash';
 import Card from './card';
 
 export default class CardPack {

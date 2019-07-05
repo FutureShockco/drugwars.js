@@ -1,7 +1,23 @@
 {
-"common": ["Hyena's","Frog's","Tin ","Bronze","Soldier's","Useless","Weak"],
-"rare": ["Iron","Steel","Silver","Deadly","Heavy"],
-"epic": ["Raven's","Serpent's","Gold","Master's","Knight's","Vicious","Brutal"],
-"legendary": ["Drake's","Platinum","Mithril","Champion's","Savage","Massive","Holy"],
-"mythical": ["Dragon's","Weird","Strange","King's","Merciless","Angel's","Godly"]
+  "gang":{
+    "5": ["Hyena's","Frog's","Tin","Bronze","Soldier's","Useless","Weak"],
+    "4": ["Iron","Steel","Silver","Deadly","Heavy","Strange"],
+    "3": ["Raven's","Serpent's","Gold","Master's","Knight's","Vicious","Brutal"],
+    "2": ["Drake's","Platinum","Champion's","Savage","Massive","Holy"],
+    "1": ["Dragon's","King's","Merciless","Angel's","Splendid"]
+  },
+  "mafia":{
+    "5": ["Vulnerable","Rusted","Dyslexic","Clumsy","Dull","Worried","Fearful"],
+    "4": ["Valiant","Sharp","Fine","Frightful","Mad","Fierce","Bitter","Abrupt"],
+    "3": ["Brilliant","Threatening","Trusty","Zealot","Bonny","Nasty"],
+    "2": ["Crazy","Cruel","Wicked","Evil","Ill","Odd"],
+    "1": ["Paranormal","Terrorizing","Famous","Unjust"]
+  },
+  "cartel":{
+    "5": ["Jagged","Frailty","Weird","Corrupted","Anguish","Slaughtered","Timid","Scared"],
+    "4": ["Plentiful","Minded","Grisly","Wild","Rabid","Sever","Arch"],
+    "3": ["Mighty","Superior","Snake's","Fanatic","Clipping","Naughty"],
+    "2": ["Lord's","Prime","Crack","Violent","Amazing"],
+    "1": ["Saintly","Stellar","Unfair","Marvelous"]
+  }
 }
