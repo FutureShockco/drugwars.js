@@ -34,9 +34,9 @@ export default class Troop {
     current = "D"
     else 
     current = "A"
-    this.grouhealth = this.grouhealth- damages
-    let healthAfterDamage = this.grouhealth ;
     let currentlog = `[${this.name.substring(0,1).toUpperCase()}] group (${this.i})  with ${this.undead} x ${this.key} with ${parseFloat(this.grouhealth).toFixed(3)} HP take <span style="color:red">${damages} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${skill_type}"</span>.`
+    this.grouhealth = this.grouhealth - damages
+    let healthAfterDamage = this.grouhealth ;
     if (healthAfterDamage <= 0) {
       currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] group (${this.i}) ${this.undead} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
       this.dead = Number(this.amount);

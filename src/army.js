@@ -4,9 +4,10 @@ import dwunits from './units.json';
 import Troop from './troop';
 
 export default class Army {
-  constructor(units, name, trainings, log) {
+  constructor(units, name, trainings, buildings, log) {
     this.units = [];
     this.trainings = [];
+    this.buildings = [];
     this.groups = []
     this.alive = true;
     this.name = name;
@@ -18,7 +19,7 @@ export default class Army {
       {
         if(dwunits[unit.key].skill.type === "group" && !unit.key === 'spy' || dwunits[unit.key].skill.type === "group" && (this.name === 'attacker' || this.name === 'defender'))
         {
-          let group_amount = unit.amount
+          let group_amount = unit.amount;
           while(group_amount>0)
           {
             if(group_amount >= effect)

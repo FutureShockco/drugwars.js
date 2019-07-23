@@ -370,7 +370,7 @@
     "score": 383,
     "name": "Mercenary",
     "desc": "He is a freelancer that will only listen to money, but you won’t regret spending on him.",
-    "feature": "BULLETPROOF : He is immortal... or not. He just has a bulletproof vest. This unit will obtain 25HP back when he reaches 0. Elite.",
+    "feature": "BULLETPROOF : He is immortal... or not. He just has a bulletproof vest. This unit will obtain 250HP back when he reaches 0. Elite.",
     "attack": 10000,
     "health": 7500,
     "defense":80,

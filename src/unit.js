@@ -47,7 +47,7 @@ export default class Unit {
     if(this.skill.type === 'bulletproof' && this.health < damages && this.use > 0){
       currentlog += `[${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) bulletproof.`
       this.use -= 1;
-      this.health = 25;
+      this.health = 250;
     }
     else if(this.skill.type === 'dodge' && this.use > 0 && damages > this.health)
     {
