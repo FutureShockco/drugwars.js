@@ -14,7 +14,7 @@
   "dependencies": {
     "debug": "^4.1.1",
     "kbyte": "0.0.4",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
     "@taskr/babel": "^1.1.0",
