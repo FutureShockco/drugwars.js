@@ -1,37 +1,37 @@
 {
   "item1":{
   "id": "drugwars",
-  "name": "500 TOKENS",
+  "name": "50 TOKENS",
   "type": "DWD",
   "img": "dwd",
   "detail": "Buy any upgrades or units for a cheaper price.",
   "price": 2.5,
   "ref": "dwd",
-  "quantity": 500
+  "quantity": 50
 },
 "item2":{
   "id": "drugwars",
-  "name": "1000 TOKENS",
+  "name": "100 TOKENS",
   "type": "DWD",
   "img": "dwd",
   "detail": "Buy any upgrades or units for a cheaper price.",
   "price": 5,
   "ref": "dwd",
-  "quantity": 1000
+  "quantity": 100
 },
 "item3":{
   "id": "drugwars",
-  "name": "2000 TOKENS",
+  "name": "200 TOKENS",
   "type": "DWD",
   "img": "dwd",
   "detail": "Buy any upgrades or units for a cheaper price.",
   "price": 10,
   "ref": "dwd",
-  "quantity": 2000
+  "quantity": 200
 },
 "item4":{
   "id": "drugwars",
-  "name": "5000 TOKENS",
+  "name": "500 TOKENS",
   "type": "DWD",
   "img": "dwd",
   "detail": "Buy any upgrades or units for a cheaper price.",
@@ -41,22 +41,22 @@
 },
 "item5":{
   "id": "drugwars",
-  "name": "10000 TOKENS",
+  "name": "1000 TOKENS",
   "type": "DWD",
   "img": "dwd",
   "detail": "Buy any upgrades or units for a cheaper price.",
   "price": 50,
   "ref": "dwd",
-  "quantity": 10000
+  "quantity": 1000
 },
 "item6":{
   "id": "drugwars",
-  "name": "50000 TOKENS",
+  "name": "5000 TOKENS",
   "type": "DWD",
   "img": "dwd",
   "detail": "Buy any upgrades or units for a cheaper price.",
   "price": 250,
   "ref": "dwd",
-  "quantity": 50000
+  "quantity": 5000
 }
 }
