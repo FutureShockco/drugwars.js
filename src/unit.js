@@ -35,6 +35,12 @@ export default class Unit {
       this.health = this.health - damages/10;
     }
 
+    if(this.type === 'Range' && sender_skill === 'accurateprecision')
+    {
+      currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${damages/10}  DMG</span> bonus.`
+      this.health = this.health - damages/10;
+    }
+
     if (this.skill.type === 'shield' && this.use > 0) {
       currentlog += ` [${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${
         this.i
@@ -42,7 +48,6 @@ export default class Unit {
       this.use -= 1;
       this.health = this.health + this.skill.effect;
     } 
-
 
     if(this.skill.type === 'bulletproof' && this.health < damages && this.use > 0){
       currentlog += `[${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) bulletproof.`

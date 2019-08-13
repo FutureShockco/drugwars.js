@@ -245,6 +245,11 @@ export default class Army {
               if (!unit.dead && serie.length > 0) {
                 unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);
                 serie.splice(0, 1);
+                if(unit.skill_type === 'bodyshield' && serie.length > 0)
+                {
+                  unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);
+                  serie.splice(0, 1);
+                }
               }
             });
             break;
@@ -265,6 +270,11 @@ export default class Army {
               if (!unit.dead && serie.length > 0) {
                 unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round,serie[0].author, serie[0].num);
                 serie.splice(0, 1);
+                if(unit.skill_type === 'bodyshield')
+                {
+                  unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);
+                  serie.splice(0, 1);
+                }
               }
             });
             break;
@@ -286,6 +296,11 @@ export default class Army {
           if (!unit.dead && serie.length > 0) {
             unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);
             serie.splice(0, 1);
+            if(unit.skill_type === 'bodyshield' && serie.length > 0)
+            {
+              unit.takeDamages(serie[0].dmg * attackpower / 100, skill_type, round , serie[0].author, serie[0].num);
+              serie.splice(0, 1);
+            }
           }
         });
       }
