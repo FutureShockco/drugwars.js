@@ -6,9 +6,8 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.87"></script>  -->
-    <script src="../dist/drugwars.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.90"></script> 
+  <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
 <body>
@@ -17,54 +16,53 @@
     <div class="mt-2">
       <h3 class="mb-4 pt-3">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.87
+        DrugWars fight simulator v0.0.90
       </h3>
       <div class="my-4 columns px-0">
-          <div class="column col-5 px-0 text-center">
+          <div class="column col-5 px-0">
               <h3 class="text-red mb-2">UNITS</h3>
-              <div class="columns">
-                  <div class="column col-2 unitname" v-for="unit in attacker" :key="unit.key">
+                  <div class="column col-3 unitname" v-for="unit in attacker" :key="unit.key">
                       <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle">
                       <div>{{ unit.key }}</div>
                       <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
                     </div>
-                  </div>
-                  <div class="columns">
-                    <h3 class="text-red mb-2">TRAININGS</h3>
+                    <h3 class="text-red mb-2 width-full">TRAININGS</h3>
                     <div class="column col-3 unitname" v-for="training in attackertrainings" :key="training.key" v-if="training.key != 'routing' && training.key != 'information'">
                         <img :src="`https://drugwars.io/img/trainings/${training.key}.jpg`" width="40" height="40" align="absmiddle">
                         <div>{{ training.key }}</div>
                         <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
                       </div>
-                    </div>
           </div>
           <div class="column col-2 vs">
           </div>
-          <div class="column col-5 px-0 text-center">
-              <h3 class="text-blue mb-2">UNITS</h3>
-              <div class="columns">
-              <div class="column col-2 unitname" v-for="unit in defender" :key="unit.key">
+          <div class="column col-5 px-0 ">
+              <h3 class="text-blue mb-2">UNITS <div class="float-right">  
+                <button @click="ChooseDefender('player')" class="btn mini mb-2" :class="{ 'btn-primary' : this.defender_type ==='player' }">
+                  Player
+                </button>
+                <button @click="ChooseDefender('npc')" class="btn mini mb-2" :class="{ 'btn-primary' : this.defender_type ==='npc' }">
+                    NPC
+                </button> 
+              </div></h3>
+              <div class="column col-3 unitname" v-for="unit in defender" :key="unit.key">
                   <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle">
                   <div>{{ unit.key }}</div>
                   <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
                 </div>
-              </div>
-              <div class="columns">
-                <h3 class="text-blue mb-2">TRAININGS</h3>
-                <div class="column col-3 unitname" v-for="training in defendertrainings" :key="training.key" v-if="training.key != 'routing' && training.key != 'information'">
+                <h3 v-if="defender_type === 'player'" class="text-blue mb-2  width-full">TRAININGS</h3>
+                <div v-if="defender_type === 'player'" class="column col-3 unitname" v-for="training in defendertrainings" :key="training.key" v-if="training.key != 'routing' && training.key != 'information'">
                     <img :src="`https://drugwars.io/img/trainings/${training.key}.jpg`" width="40" height="40" align="absmiddle">
                     <div>{{ training.key }}</div>
                     <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
                   </div>
-                </div>
             </div>
     </div>
     </div>
     <div class="mb-4 text-center">
-      <button @click="handleSubmit" class="btn btn-primary mb-2">
-        Submit
+      <button @click="handleSubmit" class="btn btn-primary mb-2" >
+        Submit 
       </button>
-      <button @click="handleReset" class="btn btn-red mb-2">
+      <button @click="handleReset" class="btn mb-2" >
           Reset
         </button>
     </div>
@@ -88,17 +86,14 @@
             <div>
                 Army Value:
             <div v-if="result.attacker.start_value.cost.drug_cost">
-                DRUGS:  {{result.attacker.start_value.cost.drug_cost | amount}}
+                DRUGS:  {{result.attacker.start_value.cost.drug_cost}}
             </div>
             <div v-if="result.attacker.start_value.cost.weapon_cost">
-                WEAPONS:  {{result.attacker.start_value.cost.weapon_cost | amount}}
+                WEAPONS:  {{result.attacker.start_value.cost.weapon_cost}}
             </div>
             <div v-if="result.attacker.start_value.cost.alcohol_cost">
-                ALCOHOL:  {{result.attacker.start_value.cost.alcohol_cost | amount}}
+                ALCOHOL:  {{result.attacker.start_value.cost.alcohol_cost}}
             </div>
-            <div class="total">
-              TOTAL:  {{result.attacker.start_value.cost.drug_cost + result.attacker.start_value.cost.weapon_cost + result.attacker.start_value.cost.alcohol_cost | amount}}
-          </div>
             </div>
             <div>
                 Carry:
@@ -126,17 +121,14 @@
             <div>
                 Army Value:
             <div v-if="result.target.start_value.cost.drug_cost">
-                DRUGS:  {{result.target.start_value.cost.drug_cost | amount}}
+                DRUGS:  {{result.target.start_value.cost.drug_cost}}
             </div>
             <div v-if="result.target.start_value.cost.weapon_cost">
-                WEAPONS:  {{result.target.start_value.cost.weapon_cost | amount}}
+                WEAPONS:  {{result.target.start_value.cost.weapon_cost}}
             </div>
             <div v-if="result.target.start_value.cost.alcohol_cost">
-                ALCOHOL:  {{result.target.start_value.cost.alcohol_cost | amount}}
+                ALCOHOL:  {{result.target.start_value.cost.alcohol_cost}}
             </div>
-            <div class="total">
-              TOTAL:  {{result.target.start_value.cost.drug_cost + result.target.start_value.cost.weapon_cost + result.target.start_value.cost.alcohol_cost | amount}}
-          </div>
             </div>
             <div>
                 Carry:
@@ -277,14 +269,13 @@
   </div>
 
   <script type="text/javascript">
-  
-    Vue.filter('amount', value => numeral(value).format('0.[00]a'));
     window.onload = function () {
       new Vue({
         el: '#main',
         data: {
           attacker: null,
           defender:null,
+          defender_type:null,
           attackertrainings: null,
           defendertrainings: null,
           error: null,
@@ -298,61 +289,69 @@
           let targetUnits = [];
           let attackerTrainings = [];
           let targetTrainings = [];
+          this.defender_type = 'player';
           if (window.location.href.indexOf('/?') > 0) {
-              const toParse = window.location.href.split('?')[1]
-              const elements = toParse.split(',')
+            const toParse = window.location.href.split('?')[1]
+            const elements = toParse.split(',')
 
-                Object.keys(drugwars.units).forEach(unit => {
-                    elements.find(element => {
-                      let player = parseInt(element.split('=')[1].split('&')[0])
-                      let type = element.split('=')[2].split('&')[0]
-                      let amount =  parseInt(element.split('=')[3].split('&')[0])
-                        if(unit === type && player === 1)
-                        attackerUnits.push({key:type,amount:amount});
-                        if(unit === type && player === 2)
-                        targetUnits.push({key:type,amount:amount});
-                      });
-                });
-                Object.keys(drugwars.units).forEach(unit => {
-                        if(!attackerUnits.filter(item => item.key === unit)[0])
-                        attackerUnits.push({key:unit,amount:0});
-                        if(!targetUnits.filter(item => item.key === unit)[0])
-                        targetUnits.push({key:unit,amount:0});
-                });
-
-              Object.keys(drugwars.trainings).forEach(training => {
+            Object.keys(drugwars.units).forEach(unit => {
                 elements.find(element => {
-                      let player = parseInt(element.split('=')[1].split('&')[0])
-                      let type = element.split('=')[2].split('&')[0]
-                      let amount = element.split('=')[3].split('&')[0]
-                        if(training === type && player === 1)
-                        attackerTrainings.push({key:type,lvl:amount});
-                        if(training === type && player === 2)
-                        targetTrainings.push({key:type,lvl:amount});
-                      });
+                  let player = parseInt(element.split('=')[1].split('&')[0])
+                  let type = element.split('=')[2].split('&')[0]
+                  let amount =  parseInt(element.split('=')[3].split('&')[0])
+                    if(unit === type && player === 1)
+                    attackerUnits.push({key:type,amount:amount});
+                    if(unit === type && player === 2)
+                    targetUnits.push({key:type,amount:amount});
+                  });
+            });
+            
+            Object.keys(drugwars.units).forEach(unit => {
+                    if(!attackerUnits.filter(item => item.key === unit)[0] && !drugwars.units[unit].npc)
+                    attackerUnits.push({key:unit,amount:0});
+                    if(!targetUnits.filter(item => item.key === unit)[0])
+                    targetUnits.push({key:unit,amount:0});
+            });
 
-              });    
+            Object.keys(drugwars.trainings).forEach(training => {
+              elements.find(element => {
+                    let player = parseInt(element.split('=')[1].split('&')[0])
+                    let type = element.split('=')[2].split('&')[0]
+                    let amount = element.split('=')[3].split('&')[0]
+                      if(training === type && player === 1)
+                      attackerTrainings.push({key:type,lvl:amount});
+                      if(training === type && player === 2)
+                      targetTrainings.push({key:type,lvl:amount});
+                    });
 
-              Object.keys(drugwars.trainings).forEach(training => {
-                      if(!attackerTrainings.filter(item => item.key === training)[0])
-                      attackerTrainings.push({key:training,lvl:0});
-                        if(!targetTrainings.filter(item => item.key === training)[0])
-                        targetTrainings.push({key:training,lvl:0});
-                });
+            });    
 
-              this.attacker = attackerUnits;
-              this.defender = targetUnits;
+            Object.keys(drugwars.trainings).forEach(training => {
+                    if(!attackerTrainings.filter(item => item.key === training)[0])
+                    attackerTrainings.push({key:training,lvl:0});
+                    if(!targetTrainings.filter(item => item.key === training)[0])
+                    targetTrainings.push({key:training,lvl:0});
+              });
 
-              this.attackertrainings = attackerTrainings;
-              this.defendertrainings = targetTrainings;
+            this.attacker = attackerUnits;
+            this.defender = targetUnits;
+
+            this.attackertrainings = attackerTrainings;
+            this.defendertrainings = targetTrainings;
           }
           else{
             Object.keys(drugwars.units).forEach(unit => {
+              if(!drugwars.units[unit].npc)
               attackerUnits.push({key:unit,amount:0});
-              targetUnits.push({key:unit,amount:0});
+              if(this.defender_type === 'npc' && drugwars.units[unit].npc)
+              targetUnits.push({id:unit,key:unit,amount:0});
+              else if (this.defender_type === 'player' && !drugwars.units[unit].npc){
+                targetUnits.push({key:unit,amount:0});
+            }
             });
             Object.keys(drugwars.trainings).forEach(training => {
               attackerTrainings.push({key:training,lvl:0});
+              if (this.defender_type === 'player')
               targetTrainings.push({key:training,lvl:0});
             });          
             this.attacker = attackerUnits;
@@ -374,7 +373,7 @@
               attacker: { units: attackerUnits, trainings:attackersTrainings , buildings:[]},
               target: { units: targetUnits , trainings:defendersTrainings, buildings:[]}
             };
-            this.json = json.attacker
+            this.json = json
             const fight = new drugwars.Fight(json);
             const result = fight.fight();
             this.result = result;
@@ -388,8 +387,13 @@
           this.attacker = [];
           this.defender = [];
           Object.keys(drugwars.units).forEach(unit => {
+            if(!drugwars.units[unit].npc)
             attackerUnits.push({id:unit,key:unit,amount:0});
+            if(this.defender_type === 'npc' && drugwars.units[unit].npc)
             targetUnits.push({id:unit,key:unit,amount:0});
+            else if (this.defender_type === 'player' && !drugwars.units[unit].npc){
+              targetUnits.push({id:unit,key:unit,amount:0});
+            }
           });
 
           this.attacker = attackerUnits;
@@ -407,6 +411,10 @@
           },
           showDetails: function () {
             this.details = true
+          },
+          ChooseDefender: function (value) {
+            this.defender_type = value
+            this.handleReset()
           },
         }
       });
@@ -442,6 +450,10 @@
       text-transform: uppercase;
     }
 
+    .width-full{
+      width: 60px!important;
+    }
+
     .value{
       background-image: radial-gradient(ellipse farthest-corner at center 0,#0a0a0a -150%,#131313 45%,rgb(17, 17, 17) 85%)!important;
     }
@@ -461,10 +473,6 @@
       border: 2px solid #ffc400;
     }
 
-    .total{
-      color: #ffc400;
-    }
-
     .unitname{
       font-size: 12px;
       font-weight: 700;
@@ -479,10 +487,6 @@
     input{
       min-height: 16px!important;
       padding: 0px 8px!important;
-    }
-
-    .divider{
-      display: inline;
     }
 
   </style>

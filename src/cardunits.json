@@ -216,7 +216,7 @@
         "score": 21,
         "name": "Jeep",
         "desc": "Put your ass in the chair and start to use the machine.",
-        "feature": "GATLING : 25% to hit 5 unitss.",
+        "feature": "GATLING : 25% to hit 5 units.",
         "attack": 1600,
         "health": 1200,
         "defense": 50,

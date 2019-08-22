@@ -11,7 +11,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":0,"max":1000},
       "weapons":{"id":"weapons","min":0,"max":1000},
-      "alcohol":{"id":"alcohol","min":0,"max":1000}
+      "alcohol":{"id":"alcohol","min":0,"max":1000},
+      "dwd":{"id":"dwd","min":0.001,"max":0.050}
     }],
     "units": [
       {
@@ -26,6 +27,13 @@
         "amount": {
           "mini":5,
           "max":10
+        }
+      },
+      {
+        "id": "bodyguard",
+        "amount": {
+          "mini":1,
+          "max":5
         }
       }
     ]
@@ -42,7 +50,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":500,"max":2500},
       "weapons":{"id":"weapons","min":500,"max":2500},
-      "alcohol":{"id":"alcohol","min":500,"max":2500}
+      "alcohol":{"id":"alcohol","min":500,"max":2500},
+      "dwd":{"id":"dwd","min":0.010,"max":0.075}
     }],
     "units": [
       {
@@ -80,7 +89,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":1000,"max":5000},
       "weapons":{"id":"weapons","min":1000,"max":5000},
-      "alcohol":{"id":"alcohol","min":1000,"max":5000}
+      "alcohol":{"id":"alcohol","min":1000,"max":5000},
+      "dwd":{"id":"dwd","min":0.020,"max":0.100}
     }],
     "units": [
       {
@@ -125,7 +135,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.030,"max":0.150}
     }],
     "units": [
       {
@@ -171,6 +182,7 @@
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
       "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.040,"max":0.250},
       "units":[{"id":"unit1","type":"spy","min":0,"max":5}]
     }],
     "units": [
@@ -230,7 +242,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.050,"max":0.350}
     }],
     "units": [
       {
@@ -303,7 +316,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.060,"max":0.500}
     }],
     "units": [
       {
@@ -376,7 +390,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.070,"max":0.600}
     }],
     "units": [
       {
@@ -450,7 +465,8 @@
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
       "alcohol":{"id":"alcohol","min":2500,"max":5000},
-      "future":{"id":"future","min":10,"max":100}
+      "future":{"id":"future","min":10,"max":100},
+      "dwd":{"id":"dwd","min":0.080,"max":0.700}
     }],
     "units": [
       {
@@ -524,7 +540,8 @@
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
       "alcohol":{"id":"alcohol","min":2500,"max":5000},
-      "future":{"id":"future","min":0,"max":250}
+      "future":{"id":"future","min":0,"max":250},
+      "dwd":{"id":"dwd","min":0.100,"max":1.000}
     }],
     "units": [
       {
@@ -598,6 +615,7 @@
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
       "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":1,"max":3},
       "units":[{"id":"unit1","type":"spy","min":0,"max":5}]
     }],
     "units": [
@@ -671,7 +689,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":1,"max":4}
     }],
     "units": [
       {
@@ -744,7 +763,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.300,"max":3.000}
     }],
     "units": [
       {
@@ -817,7 +837,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.500,"max":5.000}
     }],
     "units": [
       {
@@ -890,7 +911,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.600,"max":6.000}
     }],
     "units": [
       {
@@ -963,7 +985,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.700,"max":7.000}
     }],
     "units": [
       {
@@ -1036,7 +1059,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.800,"max":8.000}
     }],
     "units": [
       {
@@ -1109,7 +1133,8 @@
     "rewards":[{
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
-      "alcohol":{"id":"alcohol","min":2500,"max":5000}
+      "alcohol":{"id":"alcohol","min":2500,"max":5000},
+      "dwd":{"id":"dwd","min":0.800,"max":8.000}
     }],
     "units": [
       {
@@ -1183,7 +1208,8 @@
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
       "alcohol":{"id":"alcohol","min":2500,"max":5000},
-      "future":{"id":"future","min":100,"max":1000}
+      "future":{"id":"future","min":100,"max":1000},
+      "dwd":{"id":"dwd","min":0.800,"max":8.000}
     }],
     "units": [
       {
@@ -1257,7 +1283,8 @@
       "drugs":{"id":"drugs","min":2500,"max":5000},
       "weapons":{"id":"weapons","min":2500,"max":5000},
       "alcohol":{"id":"alcohol","min":2500,"max":5000},
-      "future":{"id":"future","min":0,"max":2500}
+      "future":{"id":"future","min":0,"max":2500},
+      "dwd":{"id":"dwd","min":1.00,"max":10.000}
     }],
     "units": [
       {
