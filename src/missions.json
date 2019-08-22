@@ -18,8 +18,8 @@
       {
         "id": "guard",
         "amount": {
-          "mini":5,
-          "max":10
+          "mini":10,
+          "max":15
         }
       },
       {
@@ -64,15 +64,15 @@
       {
         "id": "policeman",
         "amount": {
-          "mini":25,
-          "max":50
+          "mini":15,
+          "max":25
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":25,
-          "max":50
+          "mini":5,
+          "max":15
         }
       }
     ]
@@ -103,21 +103,21 @@
       {
         "id": "policeman",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":15,
+          "max":25
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":0,
+          "mini":1,
           "max":15
         }
       }
@@ -142,8 +142,8 @@
       {
         "id": "policeman",
         "amount": {
-          "mini":25,
-          "max":50
+          "mini":50,
+          "max":100
         }
       },
       {
@@ -156,14 +156,14 @@
       {
         "id": "swat",
         "amount": {
-          "mini":25,
-          "max":100
+          "mini":15,
+          "max":25
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":0,
+          "mini":1,
           "max":15
         }
       }
@@ -203,8 +203,8 @@
       {
         "id": "bodyguard",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":25,
+          "max":75
         }
       },
       {
@@ -217,14 +217,14 @@
       {
         "id": "elitesniper",
         "amount": {
-          "mini":0,
+          "mini":5,
           "max":25
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":0,
+          "mini":5,
           "max":15
         }
       }
@@ -249,57 +249,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":150,
+          "max":250
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":75,
+          "max":150
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":75
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":250,
-          "max":500
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":50,
-          "max":150
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":100,
-          "max":200
+          "mini":1,
+          "max":25
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":120,
-          "max":150
+          "mini":1,
+          "max":25
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":1,
+          "max":5
         }
       }
     ]
@@ -323,57 +323,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":300,
+          "max":600
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":100,
+          "max":250
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":100
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":10,
+          "max":25
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5,
+          "max":15
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5,
+          "max":10
         }
       }
     ]
@@ -404,50 +404,50 @@
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":100,
+          "max":250
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":100
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":75
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":10,
+          "max":25
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5,
+          "max":10
         }
       }
     ]
@@ -472,57 +472,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":750,
+          "max":1500
         }
       },
       {
         "id": "policeman",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":150,
+          "max":250
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":100
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":75
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":10,
+          "max":25
         }
       }
     ]
@@ -547,42 +547,42 @@
       {
         "id": "guard",
         "amount": {
-          "mini":250,
-          "max":500
+          "mini":1500,
+          "max":2500
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":750,
+          "max":1500
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":500,
+          "max":750
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":100,
+          "max":250
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":50,
+          "mini":75,
           "max":100
         }
       },
@@ -590,14 +590,14 @@
         "id": "cia",
         "amount": {
           "mini":50,
-          "max":100
+          "max":75
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":50,
-          "max":100
+          "mini":25,
+          "max":50
         }
       }
     ]
@@ -622,57 +622,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":100,
+          "max":250
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":100
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":15,
+          "max":25
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":10,
+          "max":20
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5,
+          "max":15
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5,
+          "max":10
         }
       }
     ]
@@ -697,56 +697,56 @@
         "id": "guard",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":700
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":125,
+          "max":250
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":75,
+          "max":125
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":75
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":35,
+          "max":50
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":15,
+          "max":30
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5,
+          "max":20
         }
       }
     ]
@@ -770,57 +770,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":750,
+          "max":1500
         }
       },
       {
         "id": "policeman",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":150,
+          "max":250
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":350
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":75,
+          "max":150
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":75
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":50
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5,
+          "max":25
         }
       }
     ]
@@ -844,57 +844,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":1500,
+          "max":2500
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":750,
+          "max":1500
         }
       },
       {
         "id": "bodyguard",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":125,
+          "max":250
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":75,
+          "max":125
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":75
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":25,
+          "max":50
         }
       }
     ]
@@ -918,21 +918,21 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":2000,
+          "max":3000
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":1500,
+          "max":2000
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
+          "mini":750,
           "max":1000
         }
       },
@@ -940,35 +940,35 @@
         "id": "swat",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":125,
+          "max":250
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":75,
+          "max":125
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":50,
+          "max":75
         }
       }
     ]
@@ -992,57 +992,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":2500,
+          "max":4000
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":1750,
+          "max":2500
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":750,
+          "max":1250
         }
       },
       {
         "id": "swat",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":350,
+          "max":500
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":350
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":150,
+          "max":250
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":100,
+          "max":150
         }
       }
     ]
@@ -1066,28 +1066,28 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":3000,
+          "max":5000
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":2000,
+          "max":3000
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":1000,
+          "max":1500
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
+          "mini":750,
           "max":1000
         }
       },
@@ -1095,28 +1095,28 @@
         "id": "elitesniper",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":500
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":125,
+          "max":250
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":150,
+          "max":250
         }
       }
     ]
@@ -1140,57 +1140,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":4000,
+          "max":6000
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":2500,
+          "max":4000
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":1250,
+          "max":1750
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":750,
+          "max":1250
         }
       },
       {
         "id": "elitesniper",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":350,
+          "max":500
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":250,
+          "max":350
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":150,
+          "max":250
         }
       }
     ]
@@ -1215,35 +1215,35 @@
       {
         "id": "guard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":5000,
+          "max":8000
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":3000,
+          "max":5000
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":1500,
+          "max":2500
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":1000,
+          "max":1250
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":500,
+          "mini":750,
           "max":1000
         }
       },
@@ -1251,21 +1251,21 @@
         "id": "fbi",
         "amount": {
           "mini":500,
-          "max":1000
+          "max":750
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":350,
+          "max":500
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":500,
-          "max":1000
+          "mini":300,
+          "max":500
         }
       }
     ]
@@ -1290,57 +1290,57 @@
       {
         "id": "guard",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":7000,
+          "max":10000
         }
       },
       {
         "id": "policeman",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":5000,
+          "max":7000
         }
       },
       {
         "id": "bodyguard",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":1750,
+          "max":2500
         }
       },
       {
         "id": "swat",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":1250,
+          "max":1750
         }
       },
       {
         "id": "elitesniper",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":1000,
+          "max":1250
         }
       },
       {
         "id": "fbi",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":750,
+          "max":1000
         }
       },
       {
         "id": "cia",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":500,
+          "max":750
         }
       },
       {
         "id": "military",
         "amount": {
-          "mini":2500,
-          "max":5000
+          "mini":350,
+          "max":750
         }
       }
     ]
