@@ -83,8 +83,6 @@ export default class Army {
              }
           }
         }
-        console.log(this.groups)
-
       }
     });
     trainings.forEach(training => {
@@ -201,7 +199,6 @@ export default class Army {
           actions.push([attack, group.skill, group.key, group.i]);
         }
       }
-      console.log(group)
       if (group.grouhealth < 0 || group.grouhealth === 0  && !group.dead) group.kill();
     });
     return actions;
