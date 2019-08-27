@@ -17,7 +17,7 @@ export default class Army {
       const effect = dwunits[unit.key].skill.effect
       if(unit.amount>0)
       {
-        if(dwunits[unit.key].skill.type === "group" && !unit.key === 'spy' || dwunits[unit.key].skill.type === "group" && (this.name === 'attacker' || this.name === 'defender'))
+        if(dwunits[unit.key].skill.type === "group" && !unit.key === 'spy' || dwunits[unit.key].skill.type === "group" && (this.name === 'attacker' || this.name === 'defender' && unit.key === 'hobo' && unit.amount < 50000 ))
         {
           let group_amount = unit.amount;
           while(group_amount>0)
@@ -36,9 +36,46 @@ export default class Army {
             }
           }
         }
+        else if (unit.key === 'hobo' && unit.amount > 25000)
+        {
+          let units_per_group = 0;
+          if(unit.amount > 100000)
+          {
+            units_per_group = 5000;
+          }
+          else if(unit.amount > 50000)
+          {
+            units_per_group = 1000;
+          }
+          else if(unit.amount > 25000)
+          {
+            units_per_group = 500;
+          }
+          else if(unit.amount > 15000)
+          {
+            units_per_group = 100;
+          }
+          let group_amount = unit.amount;
+          while(group_amount>0)
+          {
+            if(group_amount >= units_per_group)
+            {
+              group_amount = group_amount - units_per_group
+              this.groups.push(new Troop(unit.key, units_per_group, this.groupid++, name, log));	
+            }
+            else{
+              if(group_amount>0)
+              {
+                this.groups.push(new Troop(unit.key, group_amount, this.groupid++, name, log));	
+                group_amount = 0
+              }
+            }
+          }
+        }
         else{
           for (let i = 0; i < unit.amount; i += 1) {
             if (this.name === 'defender' && unit.key === 'hobo' || this.name === 'defender' &&  unit.key === 'spy' ) {
+            
             }
             else
              {
@@ -46,6 +83,8 @@ export default class Army {
              }
           }
         }
+        console.log(this.groups)
+
       }
     });
     trainings.forEach(training => {
@@ -56,88 +95,83 @@ export default class Army {
     });
     //ATTRIBUTE TRAINING MODIFICATOR
     this.units.forEach(unit => {
-      const protection = this.trainings.find(b => b.key === 'protection');
-      const giant = this.trainings.find(b => b.key === 'giant');
-      if(protection)
-      unit.defense = unit.defense +  (unit.defense/200 *protection.lvl);
-      if(giant)
-      unit.health = unit.health +  (unit.health/200 *giant.lvl);
-        //ALL MELEE
-        if(unit.spec.type === 'Melee')
-        {
-          const closecombat = this.trainings.find(b => b.key === 'closecombat');
-          if(closecombat)
-          unit.attack = unit.attack + (unit.attack /100 * closecombat.lvl);
-        }
-        else{
-          const firearms = this.trainings.find(b => b.key === 'firearms');
-          if(firearms)
+      // HOBO
+      if(unit.key === "hobo")
+      {
+        const kamikaze = this.trainings.find(b => b.key === 'spiritwine');
+        if(kamikaze)
+        unit.attack = unit.attack + (unit.attack /100 * kamikaze.lvl);
+      }
+      else
+      {
+        const protection = this.trainings.find(b => b.key === 'protection');
+        const giant = this.trainings.find(b => b.key === 'giant');
+        if(protection)
+        unit.defense = unit.defense +  (unit.defense/200 *protection.lvl);
+        if(giant)
+        unit.health = unit.health +  (unit.health/200 *giant.lvl);
+          //ALL MELEE
+          if(unit.spec.type === 'Melee')
           {
-            unit.attack = unit.attack + (unit.attack /100 * firearms.lvl);
+            const closecombat = this.trainings.find(b => b.key === 'closecombat');
+            if(closecombat)
+            unit.attack = unit.attack + (unit.attack /100 * closecombat.lvl);
           }
-        }
-
-        // HOBO
-        if(unit.key === "hobo")
-        {
-          const kamikaze = this.trainings.find(b => b.key === 'spiritwine');
-          if(kamikaze)
-          unit.attack = unit.attack + (unit.attack /100 * kamikaze.lvl);
-        }
-
-        // SNIPER
-        if(unit.key === "sniper")
-        {
-          const sniping = this.trainings.find(b => b.key === 'sniping');
-          if(sniping)
-          unit.attack = unit.attack + (unit.attack /100 * sniping.lvl);
-        }
-
-        // BAZOOKA
-        if(unit.key === "bazooka")
-        {
-          const bomb = this.trainings.find(b => b.key === 'bomb');
-          if(bomb)
-          unit.attack = unit.attack + (unit.attack /100 * bomb.lvl);
-        }
-
-        //WEAPON
-        if(unit.key === "rowdy" || unit.key === "sniper" || unit.key === "hitman")
-          {
-          const firearms = this.trainings.find(b => b.key === 'weapon');
-          if(firearms)
-          {
-            unit.attack = unit.attack + (unit.attack /100 * firearms.lvl);
+          else{
+            const firearms = this.trainings.find(b => b.key === 'firearms');
+            if(firearms)
+            {
+              unit.attack = unit.attack + (unit.attack /100 * firearms.lvl);
+            }
           }
-        }
-
-        // FIRE
-        if(unit.key === "bazooka" || unit.key === "gunman")
-        {
-          const fire = this.trainings.find(b => b.key === 'fire');
-          if(fire)
-          unit.attack = unit.attack + (unit.attack /100 * fire.lvl);
-        }
-
-        // CHEMICAL
-        if(unit.key === "mercenary"  || unit.key === "knifer")
-        {
-          const chemical = this.trainings.find(b => b.key === 'chemical');
-          if(chemical)
-          unit.attack = unit.attack + (unit.attack /100 *chemical.lvl);
-        }
-        
-        //ELITE
-        if(unit.key === "mercenary" || unit.key === "knifer" || unit.key === "big_mama" || unit.key === "ninja")
-        {
-          const psychological = this.trainings.find(b => b.key === 'psychological');
-          if(psychological)
+          if(unit.key === "sniper")
           {
-            unit.attack = unit.attack + (unit.attack /200 *psychological.lvl);
-            unit.defense = unit.defense + (unit.defense /200 *psychological.lvl);
+            const sniping = this.trainings.find(b => b.key === 'sniping');
+            if(sniping)
+            unit.attack = unit.attack + (unit.attack /100 * sniping.lvl);
           }
-        }
-
+          else if(unit.key === "bazooka")
+          {
+            const bomb = this.trainings.find(b => b.key === 'bomb');
+            if(bomb)
+            unit.attack = unit.attack + (unit.attack /100 * bomb.lvl);
+          }
+          //WEAPON
+          else if(unit.key === "rowdy" || unit.key === "sniper" || unit.key === "hitman")
+            {
+            const firearms = this.trainings.find(b => b.key === 'weapon');
+            if(firearms)
+            {
+              unit.attack = unit.attack + (unit.attack /100 * firearms.lvl);
+            }
+          }
+          // FIRE
+          if(unit.key === "bazooka" || unit.key === "gunman")
+          {
+            const fire = this.trainings.find(b => b.key === 'fire');
+            if(fire)
+            unit.attack = unit.attack + (unit.attack /100 * fire.lvl);
+          }
+  
+          // CHEMICAL
+          if(unit.key === "mercenary"  || unit.key === "knifer")
+          {
+            const chemical = this.trainings.find(b => b.key === 'chemical');
+            if(chemical)
+            unit.attack = unit.attack + (unit.attack /100 *chemical.lvl);
+          }
+          
+          //ELITE
+          if(unit.key === "mercenary" || unit.key === "knifer" || unit.key === "big_mama" || unit.key === "ninja")
+          {
+            const psychological = this.trainings.find(b => b.key === 'psychological');
+            if(psychological)
+            {
+              unit.attack = unit.attack + (unit.attack /200 *psychological.lvl);
+              unit.defense = unit.defense + (unit.defense /200 *psychological.lvl);
+            }
+          }
+      }
     })
   }
 
@@ -157,7 +191,7 @@ export default class Army {
             // }
             actions.push([unit.attack, unit.skill, unit.key, unit.i]);
         }
-        if (unit.health === 0 && !unit.dead) unit.kill();
+        if (unit.health < 0 || unit.health === 0  && !unit.dead) unit.kill();
       }
     });
     this.groups.forEach(group => {
@@ -167,6 +201,8 @@ export default class Army {
           actions.push([attack, group.skill, group.key, group.i]);
         }
       }
+      console.log(group)
+      if (group.grouhealth < 0 || group.grouhealth === 0  && !group.dead) group.kill();
     });
     return actions;
   }

@@ -41,9 +41,10 @@ export default class Troop {
       currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] group (${this.i}) ${this.undead} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
       this.dead = Number(this.amount);
       this.undead = 0;
+      this.kill();
     } else {
       const undead = Math.ceil(healthAfterDamage / this.health);
-      if (undead !== this.undead) {
+    if (undead !== this.undead) {
         currentlog+= ` [${this.name.substring(0,1).toUpperCase()}] ${undead} x ${this.key} group (${this.i}) are left.`;
         
         this.dead += Number(this.undead - undead);
@@ -67,4 +68,9 @@ export default class Troop {
         this.dead = false;
       }
     }
+
+  kill() {
+    this.health = 0;
+    this.grouhealth = 0;
+  }
 }
