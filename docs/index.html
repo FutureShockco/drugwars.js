@@ -143,7 +143,7 @@
               <h4 class="mb-2 name">{{ army }}</h4>
               <div class="value p-2 mb-2" v-for="unit in result[army].units" v-if="unit.amount > 0">
                 <b>
-                  <img :src="`https://drugwars.io/img/units/${unit.key}.png`" width="40" height="40" align="absmiddle"
+                  <img :src="`https://drugwars.io/img/units/${unit.key}.png`" width="40" height="54" align="absmiddle"
                     class="mr-2" />
                   <span v-if="unit.dead" class="text-red">
                     {{ unit.dead }}
@@ -156,7 +156,7 @@
               </div>
               <div class="value p-2 mb-2" v-for="unit in result[army].troops" v-if="unit.amount > 0">
                 <b>
-                  <img :src="`https://drugwars.io/img/units/${unit.key}.png`" width="40" height="40" align="absmiddle"
+                  <img :src="`https://drugwars.io/img/units/${unit.key}.png`" width="40" height="54" align="absmiddle"
                     class="mr-2" />
                   <span v-if="unit.dead" class="text-red">
                     {{ unit.dead }}
