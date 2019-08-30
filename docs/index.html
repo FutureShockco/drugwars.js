@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.96"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.97"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -16,13 +16,13 @@
     <div class="mt-2">
       <h3 class="mb-4 pt-3">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.96
+        DrugWars fight simulator v0.0.97
       </h3>
       <div class="my-4 columns px-0">
           <div class="column col-5 px-0">
               <h3 class="text-red mb-2">UNITS</h3>
                   <div class="column col-3 unitname" v-for="unit in attacker" :key="unit.key">
-                      <img class="preview unit" :src="`https://drugwars.io/img/cards/units/${unit.key}.png`" align="absmiddle">
+                      <img class="preview unit" :src="`https://drugwars.io/img/units/${unit.key}.png`" align="absmiddle">
                       <div>{{ unit.key }}</div>
                       <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
                     </div>
@@ -45,7 +45,7 @@
                 </button> 
               </div></h3>
               <div class="column col-3 unitname" v-for="unit in defender" :key="unit.key">
-                  <img class="preview unit" :src="`https://drugwars.io/img/cards/units/${unit.key}.png`" align="absmiddle">
+                  <img class="preview unit" :src="`https://drugwars.io/img/units/${unit.key}.png`" align="absmiddle">
                   <div>{{ unit.key }}</div>
                   <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
                 </div>
@@ -143,7 +143,7 @@
               <h4 class="mb-2 name">{{ army }}</h4>
               <div class="value p-2 mb-2" v-for="unit in result[army].units" v-if="unit.amount > 0">
                 <b>
-                  <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle"
+                  <img :src="`https://drugwars.io/img/units/${unit.key}.png`" width="40" height="40" align="absmiddle"
                     class="mr-2" />
                   <span v-if="unit.dead" class="text-red">
                     {{ unit.dead }}
@@ -156,7 +156,7 @@
               </div>
               <div class="value p-2 mb-2" v-for="unit in result[army].troops" v-if="unit.amount > 0">
                 <b>
-                  <img :src="`https://drugwars.io/img/units/${unit.key}.jpg`" width="40" height="40" align="absmiddle"
+                  <img :src="`https://drugwars.io/img/units/${unit.key}.png`" width="40" height="40" align="absmiddle"
                     class="mr-2" />
                   <span v-if="unit.dead" class="text-red">
                     {{ unit.dead }}

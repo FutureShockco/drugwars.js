@@ -36,7 +36,7 @@ export default class Army {
             }
           }
         }
-        else if (unit.key === 'hobo' && unit.amount > 25000)
+        else if (this.name === 'attacker' && unit.key === 'hobo' && unit.amount > 25000)
         {
           let units_per_group = 0;
           if(unit.amount > 100000)
