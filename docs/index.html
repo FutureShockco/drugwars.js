@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.97"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.98"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -16,7 +16,7 @@
     <div class="mt-2">
       <h3 class="mb-4 pt-3">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.97
+        DrugWars fight simulator v0.0.98
       </h3>
       <div class="my-4 columns px-0">
           <div class="column col-5 px-0">
@@ -489,7 +489,28 @@
       padding: 0px 8px!important;
     }
 
+    .tick.attacker{
+        padding: 10px;
+        border: #5a5a5a 1px solid;
+ 
+        background: #2f00ff3a;
+    }  
 
+
+    .tick.defender{
+        padding: 10px;
+        border: #5a5a5a 1px solid;
+
+        background: #ff000041;
+    }  
+
+
+    .round{
+      font-weight: bold;
+        padding: 10px;
+        background: #ffc400;
+        color:black;
+    }      
     .preview.unit {
         background-image: url('https://drugwars.io/img/cards/background/1.png');
         background-size: contain;
