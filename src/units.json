@@ -370,7 +370,7 @@
     "feature": "BULLETPROOF : This unit will obtain 250HP back when he reaches 0. Elite.",
     "attack": 1000,
     "health": 750,
-    "defense":80,
+    "defense":8,
     "weapon_defense":6,
     "fire_defense":4,
     "chemical_defense":4,
