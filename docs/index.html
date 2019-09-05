@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.0.99"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.1.1"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -16,7 +16,7 @@
     <div class="mt-2">
       <h3 class="mb-4 pt-3">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.0.99
+        DrugWars fight simulator v0.1.1
       </h3>
       <div class="my-4 columns px-0">
           <div class="column col-5 px-0">
@@ -307,9 +307,9 @@
             });
             
             Object.keys(drugwars.units).forEach(unit => {
-                    if(!attackerUnits.filter(item => item.key === unit) && !drugwars.units[unit].npc)
+                    if(!attackerUnits.filter(item => item.key === unit)[0] && !drugwars.units[unit].npc)
                     attackerUnits.push({key:unit,amount:0});
-                    if(!targetUnits.filter(item => item.key === unit))
+                    if(!targetUnits.filter(item => item.key === unit)[0])
                     targetUnits.push({key:unit,amount:0});
             });
 
