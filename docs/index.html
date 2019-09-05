@@ -382,13 +382,10 @@
             this.log = fight.getLog();
           },
           handleReset: function () {
-            let attackerUnits = [];
           let targetUnits = [];
-          this.attacker = [];
           this.defender = [];
           Object.keys(drugwars.units).forEach(unit => {
-            if(!drugwars.units[unit].npc)
-            attackerUnits.push({id:unit,key:unit,amount:0});
+
             if(this.defender_type === 'npc' && drugwars.units[unit].npc)
             targetUnits.push({id:unit,key:unit,amount:0});
             else if (this.defender_type === 'player' && !drugwars.units[unit].npc){
@@ -396,17 +393,13 @@
             }
           });
 
-          this.attacker = attackerUnits;
           this.defender = targetUnits;
 
-          let attackerTrainings = [];
           let targetTrainings = [];
           Object.keys(drugwars.trainings).forEach(training => {
-            attackerTrainings.push({id:training,key:training,lvl:0});
             targetTrainings.push({id:training,key:training,lvl:0});
           });          
           this.details = false
-          this.attackertrainings = attackerTrainings;
           this.defendertrainings = targetTrainings;
           },
           showDetails: function () {
