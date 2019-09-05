@@ -266,7 +266,6 @@ export default class Army {
           attack.num = num
           attack.dmg = action[0];
           serie.push(attack);
-            console.log(name)
             break;
         }
         unitsSorted.forEach(unit => {
