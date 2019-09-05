@@ -28,10 +28,9 @@ export default class Fight {
       this.log.add(`<div class="round">Round ${round} Attacker AP : ${attackers.attackPower()}% - Defender AP : ${defenders.defensiveAttackPower()}%</div>`);
       let defendersActions = defenders.chooseActions(round);
       let attackersActions = attackers.chooseActions(round);
-      defenders.processAllActions(defendersActions,attackers.attackPower(),attackersActions,round);
-      defendersActions = defenders.chooseActions(round);
-      attackersActions = attackers.chooseActions(round);
       attackers.processAllActions(attackersActions,defenders.defensiveAttackPower(),defendersActions,round);
+      defenders.processAllActions(defendersActions,attackers.attackPower(),attackersActions,round);
+
     }
 
     let winner = 'none';

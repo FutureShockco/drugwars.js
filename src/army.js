@@ -152,9 +152,9 @@ export default class Army {
         }
       }
       else if(group.undead > 0 && group.key != 'spy'){
-        const attack = group.getAttack()/3;
+        const attack = group.getAttack()/5;
         if (attack > 0) {
-          actions.push([attack, group.skill, group.key, group.i,parseInt(group.undead/3)]);
+          actions.push([attack, group.skill, group.key, group.i,parseInt(group.undead/5)]);
         }
       }
       if (group.grouphealth < 0 || group.grouphealth === 0  && !group.dead) group.kill();
