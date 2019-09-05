@@ -309,7 +309,7 @@
             Object.keys(drugwars.units).forEach(unit => {
                     if(!attackerUnits.filter(item => item.key === unit)[0] && !drugwars.units[unit].npc)
                     attackerUnits.push({key:unit,amount:0});
-                    if(!targetUnits.filter(item => item.key === unit)[0])
+                    if(!targetUnits.filter(item => item.key === unit)[0] && !drugwars.units[unit].npc)
                     targetUnits.push({key:unit,amount:0});
             });
 
