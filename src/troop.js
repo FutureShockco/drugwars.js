@@ -34,7 +34,7 @@ export default class Troop {
     current = "D"
     else 
     current = "A"
-    let healthAfterDamage = this.grouphealth ;
+    let healthAfterDamage = this.grouphealth || 0 ;
     this.undead = Math.floor(healthAfterDamage / this.health);
     let currentlog=`<div class="tick ${this.name}">`;
     if(this.type === 'Melee' && sender_skill === 'accuratehit' && this.type != 'tastynasty')
@@ -67,15 +67,25 @@ export default class Troop {
     else if(this.skill.type === 'dodge' && this.use > 0 && damages > this.grouphealth)
     {
       this.use -= 1;
-      currentlog +=`[${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i})<span style="color:blueviolet"> dodged</span> ${parseFloat(damages).toFixed(0)} DMG.`;
+      currentlog +=`[${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i})<span style="color:blueviolet"> dodged</span> <span style="color:red">${parseFloat(damages).toFixed(0)} DMG.</span>`;
     } 
     else {
+      if(this.key ==="hobo")
+      {     
+        currentlog += `[${this.name.substring(0,1).toUpperCase()}] (${this.i})  with ${this.amount} x ${this.key} with <span style="color:green">${parseFloat(this.grouphealth).toFixed(0)}</span> HP take <span style="color:red">${parseFloat(damages).toFixed(0)} DMG</span> from [${current}] (${num}) with ${sender_amount} x ${name}  <span style="color:blueviolet"> "${sender_skill}"</span>.`
+      }
+      else
       currentlog += `[${this.name.substring(0,1).toUpperCase()}] (${this.i})  with ${this.undead} x ${this.key} with <span style="color:green">${parseFloat(this.grouphealth).toFixed(0)}</span> HP take <span style="color:red">${parseFloat(damages).toFixed(0)} DMG</span> from [${current}] (${num}) with ${sender_amount} x ${name}  <span style="color:blueviolet"> "${sender_skill}"</span>.`
       this.grouphealth = this.grouphealth - damages
       healthAfterDamage = this.grouphealth ;
     }
 
     if (healthAfterDamage <= 0) {
+      if(this.key ==="hobo")
+      {     
+        currentlog+= `<br/> [${this.name.substring(0,1).toUpperCase()}] (${this.i}) ${this.amount} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
+      }
+      else
       currentlog+= `<br/> [${this.name.substring(0,1).toUpperCase()}] (${this.i}) ${this.undead} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
       this.dead = Number(this.amount);
       this.undead = 0;
@@ -101,9 +111,9 @@ export default class Troop {
         this.log.add(
           `<br/> [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) with ${this.health} HP take ${sender_skill} <span style="color:chartreuse">+${points} HP</span> from [${this.name.substring(0,1).toUpperCase()}] (${num}) with${name} .`,
         );
-        this.health = this.health + points;
-        if(this.health > this.max_health)
-        this.health = this.max_health
+        this.grouhealth = this.grouhealth + points;
+        if(this.grouhealth > (this.undead * this.max_health))
+        this.grouhealth = this.undead * this.max_health
         this.dead = false;
       }
     }
