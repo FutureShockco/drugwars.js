@@ -337,7 +337,7 @@
     "score": 255,
     "name": "Bazooka Guy",
     "desc": "He would destroy a whole army as a sunday hobby.",
-    "feature": "SPLASH : Hits 3 enemies at once.",
+    "feature": "SPLASH : Hits 5 enemies at once.",
     "attack": 100,
     "health": 250,
     "defense":7,
@@ -357,7 +357,7 @@
     "weapons_cost": 15000,
     "alcohols_cost": 13000,
     "use":3,
-    "skill": {"type":"splash","effect":100,"range":10,"use":3,"passive":false}
+    "skill": {"type":"splash","effect":100,"range":5,"use":3,"passive":false}
   },
   "mercenary": {
     "id": "mercenary",
