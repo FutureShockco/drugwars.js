@@ -5,7 +5,7 @@ import activeskills from './actives.json';
 import Log from './log';
 
 export default class Card {
-  constructor(quality) {
+  constructor(quality,seed) {
     this.id = '';
     this.prefixe = '';
     this.suffixe = '';
@@ -20,6 +20,7 @@ export default class Card {
     this.background ='';
     this.flag='';
     this.quality = quality;
+    this.seed = seed;
     this.attack = 0;
     this.health= 0;
     this.carry= 0;
@@ -49,9 +50,9 @@ export default class Card {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  getFamily() {
+  getFamily(seed) {
     var rnd = 0
-    rnd = this.getRandomInt(1000)
+    rnd = parseInt(seed.toString().substring(0,2)*10);
     if (rnd > 999) {
       return 'cops'
     }
@@ -66,9 +67,9 @@ export default class Card {
     }
   }
 
-  getAttackType() {
+  getAttackType(seed) {
     var rnd = 0
-    rnd = this.getRandomInt(1000)
+    rnd = parseInt(seed.toString().substring(1,3)*10);
     if (rnd > 800) {
         return 'chemical'
     }
@@ -83,12 +84,15 @@ export default class Card {
     }
   }
 
-
-  generate(quality) {
+  generate(quality,seed) {
     this.quality = quality;
-    this.family = this.getFamily()
-    const hero = heroes[this.family][this.getRandomArray(heroes[this.family].length)]
-
+    this.family = this.getFamily(seed);
+    let hero = heroes[this.family][seed];
+    let passage = 1;
+    while (hero === undefined) {
+      hero = heroes[this.family][(Math.round(seed/10))-passage];
+      passage++;
+    }
     this.name = hero.name;
     this.country = hero.country;
     this.flag = hero.flag;
@@ -97,7 +101,7 @@ export default class Card {
     this.open = false;
     this.id = this.createUniqueId();
     this.background = this.getRandomInt(4);
-    this.attack_type = this.getAttackType()
+    this.attack_type = this.getAttackType(seed)
     this.prefixe = this.setPrefixes(this.quality,this.family);
     this.suffixe = this.setSuffixe(this.quality,this.attack_type);
     this.attack = this.getRandomIntMinMax(5000,8000+(3000*this.quality))
