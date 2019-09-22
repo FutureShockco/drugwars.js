@@ -1,6 +1,5 @@
 import Army from './army';
 import Log from './log';
-import dunits from './units.json';
 
 export default class Fight {
   constructor(json) {

@@ -8,8 +8,10 @@ import buildings from './buildings.json';
 import shop from './shop.json';
 import missions from './missions.json';
 import trainings from './trainings.json';
+import upgrades from './upgrades.json';
 import drugs from './drugs.json';
 import locations from './locations.json';
+import continents from './continents.json';
 import utils from './utils';
 module.exports = {
   constants,
@@ -22,7 +24,9 @@ module.exports = {
   shop,
   missions,
   trainings,
+  upgrades,
   drugs,
   locations,
+  continents,
   utils,
 };

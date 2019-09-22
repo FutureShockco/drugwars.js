@@ -59,9 +59,10 @@ export default class Troop {
     } 
 
     if(this.skill.type === 'bulletproof' && this.grouphealth < damages && this.use > 0){
+      currentlog += `[${this.name.substring(0,1).toUpperCase()}] (${this.i})  with ${this.undead} x ${this.key} with <span style="color:green">${parseFloat(this.grouphealth).toFixed(0)}</span> HP take <span style="color:red">${parseFloat(damages).toFixed(0)} DMG</span> from [${current}] (${num}) with ${sender_amount} x ${name}  <span style="color:blueviolet"> "${sender_skill}"</span>.`
       currentlog += `[${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) bulletproof.`
       this.use -= 1;
-      this.grouphealth = 250 * this.undead;
+      this.grouphealth = this.grouphealth + 250 * this.undead;
       healthAfterDamage = this.grouphealth ;
     }
     else if(this.skill.type === 'dodge' && this.use > 0 && damages > this.grouphealth)

@@ -74,7 +74,7 @@ export default class Army {
         const protection = this.trainings.find(b => b.key === 'protection');
         const giant = this.trainings.find(b => b.key === 'giant');
         if(protection)
-        unit.defense = unit.defense +  (unit.defense/200 *protection.lvl);
+        unit.defense = unit.defense +  (unit.defense/5 *protection.lvl);
         if(giant)
         unit.health = unit.health +  (unit.health/200 *giant.lvl);
           //ALL MELEE
