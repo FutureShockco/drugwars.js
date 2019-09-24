@@ -35,7 +35,7 @@ export default class Troop {
     else 
     current = "A"
     let healthAfterDamage = this.grouphealth || 0 ;
-    this.undead = Math.floor(healthAfterDamage / this.health);
+    this.undead = Math.round(healthAfterDamage / this.health);
     let currentlog=`<div class="tick ${this.name}">`;
     if(this.type === 'Melee' && sender_skill === 'accuratehit' && this.type != 'tastynasty')
     {
@@ -93,7 +93,7 @@ export default class Troop {
       this.kill();
     } 
     else {
-      const undead = parseInt(Math.floor(healthAfterDamage / this.health));
+      const undead = parseInt(Math.round(healthAfterDamage / this.health));
     if (undead !== this.undead) {
         currentlog+= `<br/> [${this.name.substring(0,1).toUpperCase()}] (${this.i}) ${undead} x ${this.key} are left.`;
         this.dead += Number(this.undead - undead);

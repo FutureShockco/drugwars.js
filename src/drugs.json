@@ -4,9 +4,9 @@
       "minprice": 3,
       "effect": null,
       "location":["na","sa","eu","an","af","as","oc"],
-      "id": "weed",
+      "id": "marijuana",
       "name": "Marijuana",
-      "description": "Cannabis is indigenous to Central and South Asia. There is evidence of inhalation of cannabis smoke from the 3rd millennium BCE, namely charred cannabis seeds found in a ritual brazier at an ancient burial site in present-day Romania. In 2003, a leather basket filled with cannabis leaf fragments and seeds was found next to a 2,500- to 2,800-year-old mummified shaman in the northwestern Xinjiang Uygur Autonomous Region of China. Evidence of cannabis consumption was also found \r\n\t in Egyptian mummies dated about 950 BC. Cannabis was also used by the ancient Hindus of India and Nepal thousands of years ago. The herb is called ganja (Sanskrit ga�ja) or ganjika in Sanskrit and other modern Indo-Aryan languages. Some scholars suggest that the ancient drug soma, mentioned in the Vedas, was cannabis, although this theory is disputed.",
+      "description": "Marijuana is indigenous to Central and South Asia. There is evidence of inhalation of cannabis smoke from the 3rd millennium BCE, namely charred cannabis seeds found in a ritual brazier at an ancient burial site in present-day Romania. In 2003, a leather basket filled with cannabis leaf fragments and seeds was found next to a 2,500- to 2,800-year-old mummified shaman in the northwestern Xinjiang Uygur Autonomous Region of China. Evidence of cannabis consumption was also found \r\n\t in Egyptian mummies dated about 950 BC. Cannabis was also used by the ancient Hindus of India and Nepal thousands of years ago. ",
       "icon": "weed_icon.png",
       "weight": 0,
       "volume": 0
@@ -101,8 +101,8 @@
       "effect": null,
       "location":["na","eu","as"],
       "id": "amphet",
-      "name": "Amphetamine",
-      "description": "Amphetamine was first synthesized in 1887 in Germany by Romanian chemist Lazar Edeleanu who named it phenylisopropylamine, its stimulant effects remained unknown until 1927, when it was independently resynthesized by Gordon Alles and reported to have sympathomimetic properties. Amphetamine had no pharmacological use until 1934, when Smith, Kline and French began selling it as an inhaler under the trade name Benzedrine as a decongestant. Benzedrine sulfate was introduced three years later and found a wide variety of medical applications, including narcolepsy. During World War II, amphetamine and methamphetamine were used extensively by both the Allied and Axis forces for their stimulant and performance-enhancing effects. As the addictive properties of the drug became known, governments began to place strict controls on the sale of amphetamine.",
+      "name": "methamphetamine",
+      "description": "Methamphetamine was discovered in 1893, it is a potent central nervous system stimulant that is mainly used as a recreational drug and less commonly as a second-line treatment for attention deficit hyperactivity disorder and obesity.",
       "icon": "amphet_icon.png",
       "weight": 0,
       "volume": 0
@@ -114,7 +114,7 @@
       "location":["na","eu"],
       "id": "mdma",
       "name": "MDMA",
-      "description": "MDMA was first synthesized in 1912 by Merck chemist Anton K�llisch. At the time, Merck was interested in developing substances that stopped abnormal bleeding. Merck wanted to avoid an existing patent held by Bayer for one such compound hydrastinine. K�llisch developed a preparation of a hydrastinine analogue, methylhydrastinine, at the request of fellow lab members, Walther Beckh and Otto Wolfes. MDMA (called methylsafrylamin, safrylmethylamin or N-Methyl-a-Methylhomopiperonylamin in Merck laboratory reports) was an intermediate compound in the synthesis of methylhydrastinine. Merck was not interested in MDMA itself at the time.On 24 December 1912, Merck filed two patent applications that described the synthesis and some chemical properties of MDMAand its subsequent conversion to methylhydrastinine.",
+      "description": "MDMA was first synthesized in 1912 by Merck chemist Anton Köllisch. At the time, Merck was interested in developing substances that stopped abnormal bleeding. Merck wanted to avoid an existing patent held by Bayer for one such compound hydrastinine. Köllisch developed a preparation of a hydrastinine analogue, methylhydrastinine, at the request of fellow lab members, Walther Beckh and Otto Wolfes. MDMA (called methylsafrylamin, safrylmethylamin or N-Methyl-a-Methylhomopiperonylamin in Merck laboratory reports) was an intermediate compound in the synthesis of methylhydrastinine. Merck was not interested in MDMA itself at the time.On 24 December 1912, Merck filed two patent applications that described the synthesis and some chemical properties of MDMAand its subsequent conversion to methylhydrastinine.",
       "icon": "mdma_icon.png",
       "weight": 0,
       "volume": 0
@@ -126,7 +126,7 @@
       "location":["na","eu","an","oc"],
       "id": "lsd",
       "name": "LSD",
-      "description": "LSD was first synthesized on November 16, 1938 by Swiss chemist Albert Hofmann at the Sandoz Laboratories in Basel, Switzerland as part of a large research program searching for medically useful ergot alkaloid derivatives. LSD's psychedelic properties were discovered 5 years later when Hofmann himself accidentally ingested an unknown  quantity of the chemical. The first intentional ingestion of LSD occurred on April 19, 1943, when Hofmann ingested 250 �g of LSD. He said this would be a threshold dose based on the dosages of other ergot alkaloids. Hofmann found the effects to be much stronger than he anticipated. Sandoz Laboratories introduced LSD as a psychiatric drug in 1947.",
+      "description": "LSD was first synthesized on November 16, 1938 by Swiss chemist Albert Hofmann at the Sandoz Laboratories in Basel, Switzerland as part of a large research program searching for medically useful ergot alkaloid derivatives. LSD's psychedelic properties were discovered 5 years later when Hofmann himself accidentally ingested an unknown  quantity of the chemical. The first intentional ingestion of LSD occurred on April 19, 1943, when Hofmann ingested 250 micrograms of LSD. He said this would be a threshold dose based on the dosages of other ergot alkaloids. Hofmann found the effects to be much stronger than he anticipated.",
       "icon": "lsd_icon.png",
       "weight": 0,
       "volume": 0
@@ -162,7 +162,7 @@
       "location":["sa"],
       "id": "cocaine",
       "name": "Cocaine",
-      "description": "For over a thousand years South American indigenous peoples have chewed the leaves of Erythroxylon coca, a plant that contains vital nutrients as well as numerous alkaloids, including cocaine. The coca leaf was, and still is, chewed almost universally by some indigenous communities. The remains of coca leaves have been found with ancient Peruvian mummies, and pottery from the time period depicts humans with bulged cheeks, indicating the presence of something on which they are chewing. There is also evidence that these cultures used a mixture of coca leaves and saliva as an anesthetic for the performance of trepanation. When the Spanish arrived in South America, most at first ignored aboriginal claims that the leaf gave them strength and energy, and declared the practice of chewing it the work of the Devil. But after discovering that these claims were true, they legalized and taxed the leaf, taking 10% off the value of each crop.[94] In 1569, Nicol�s Monardes described the indigenous peoples' practice of chewing a mixture of tobacco and coca leaves to induce great contentment.",
+      "description": "For over a thousand years South American indigenous peoples have chewed the leaves of Erythroxylon coca, a plant that contains vital nutrients as well as numerous alkaloids, including cocaine. The coca leaf was, and still is, chewed almost universally by some indigenous communities. The remains of coca leaves have been found with ancient Peruvian mummies, and pottery from the time period depicts humans with bulged cheeks, indicating the presence of something on which they are chewing. There is also evidence that these cultures used a mixture of coca leaves and saliva as an anesthetic for the performance of trepanation. When the Spanish arrived in South America, most at first ignored aboriginal claims that the leaf gave them strength and energy, and declared the practice of chewing it the work of the Devil. But after discovering that these claims were true, they legalized and taxed the leaf, taking 10% off the value of each crop. In 1569, Nicolás Monardes described the indigenous peoples' practice of chewing a mixture of tobacco and coca leaves to induce great contentment.",
       "icon": "coke_icon.png",
       "weight": 0,
       "volume": 0

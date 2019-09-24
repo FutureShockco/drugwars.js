@@ -6,29 +6,32 @@ import Log from './log';
 
 export default class Card {
   constructor(quality,seed) {
-    id = '';
-    quality = 0;
-    attack_type = '';
-    attack = 0;
-    health= 0;
-    carry= 0;
-    speed= 0;
-    prefixe = '';
-    suffixe = '';
+    this.id = '';
+    this.prefixe = '';
+    this.suffixe = '';
+    this.pic = '';
+    this.family = '';
+    this.country = '';
+    this.img = '';
+    this.open = '';
+    this.attack_type = '';
+    this.name ='';
+    this.border = '';
+    this.background ='';
+    this.flag='';
+    this.quality = quality;
+    this.attack = 0;
+    this.health= 0;
+    this.carry= 0;
+    this.speed= 0;
 
-    family = '';
-    name ='';
-    img = '';
-    pic = '';
-    country = '';
-    flag='';
+    this.active_skill={};
+    this.passive_kill ={};
 
-    active_skill={};
-    passive_kill ={};
-    res_physical= 0;
-    res_weapon= 0;
-    res_fire= 0;
-    res_chemical= 0;
+    this.res_physical= 0;
+    this.res_weapon= 0;
+    this.res_fire= 0;
+    this.res_chemical= 0;
     this.log = new Log();
   }
 

@@ -15,7 +15,7 @@
         "desc": "Produce the best natural hash extraction from home using only ice & water.",
         "production_type": "hash",
         "production_rate": 0.010,
-        "drugs_cost": 125,
+        "drugs_cost": 250,
         "cost":[{"type":"hash","amount":10}],
         "coeff": 2
       }
@@ -28,7 +28,7 @@
         "desc": "Considered the “gold standard” for growing weed, these lights are powerful and proven to provide great yields.",
         "production_type": "marijuana",
         "production_rate": 0.020,
-        "drugs_cost": 125,
+        "drugs_cost": 500,
         "cost":[{"type":"marijuana","amount":10}],
         "coeff": 2
       },
@@ -37,7 +37,7 @@
         "desc": "No tattletale will see the upcoming Empire through the cracks. You can produce DRUGS without fear and at your own pace.",
         "production_type": "salvia",
         "production_rate": 0.015,
-        "drugs_cost": 125,
+        "drugs_cost": 750,
         "cost":[{"type":"crack","amount":10}],
         "coeff": 2
       },
@@ -46,7 +46,7 @@
         "desc": "Mushroom spawn is sawdust permeated with mushroom mycelia — essentially the root structure of the fungus.",
         "production_type": "psylocybin",
         "production_rate": 0.015,
-        "drugs_cost": 125,
+        "drugs_cost": 1000,
         "cost":[{"type":"psylocybin","amount":10}],
         "coeff": 2
       }
@@ -59,7 +59,7 @@
         "desc": "A special room where the chemistry happen like in famous series.",
         "production_type": "metamphetamine",
         "production_rate": 0.010,
-        "drugs_cost": 125,
+        "drugs_cost": 1250,
         "cost":[{"type":"metamphetamine","amount":10}],
         "coeff": 2
       },
@@ -68,7 +68,7 @@
         "desc": "Produce pure salts of triboluminescent LSD emitting small flashes of white light when shaken in the dark of this room.",
         "production_type": "lsd",
         "production_rate": 0.008,
-        "drugs_cost": 125,
+        "drugs_cost": 1500,
         "cost":[{"type":"lsd","amount":10}],
         "coeff": 2
       },
@@ -77,7 +77,7 @@
         "desc": "All amino acids are formed from intermediates in the catabolic processes of glycolysis, the citric acid cycle, or the pentose phosphate pathway. ",
         "production_type": "anabolics",
         "production_rate": 0.012,
-        "drugs_cost": 125,
+        "drugs_cost": 1750,
         "cost":[{"type":"anabolics","amount":10}],
         "coeff": 2
       }
@@ -90,7 +90,7 @@
         "desc": "Put the leaves in the metal drums, over them with gasoline in order to extract the coca base.",
         "production_type": "cocaine",
         "production_rate": 0.002,
-        "drugs_cost": 125,
+        "drugs_cost": 2000,
         "cost":[{"type":"cocaine","amount":10}],
         "coeff": 2
       },
@@ -99,7 +99,7 @@
         "desc": "The milky fluid is harvested with a curved spatula and then dried in those open wooden boxes. ",
         "production_type": "opium",
         "production_rate": 0.004,
-        "drugs_cost": 125,
+        "drugs_cost": 2500,
         "cost":[{"type":"opium","amount":10}],
         "coeff": 2
       },
@@ -108,7 +108,7 @@
         "desc": "Refine the opium to make morphine, then further refine into different forms of heroin.",
         "production_type": "heroine",
         "production_rate": 0.006,
-        "drugs_cost": 125,
+        "drugs_cost": 2500,
         "cost":[{"type":"heroine","amount":10}],
         "coeff": 2
       }
@@ -121,7 +121,7 @@
         "desc": "This laboratory permit to produce poppers.",
         "production_type": "poppers",
         "production_rate": 0.014,
-        "drugs_cost": 125,
+        "drugs_cost": 2000,
         "cost":[{"type":"poppers","amount":10}],
         "coeff": 2
       },
@@ -130,7 +130,7 @@
         "desc": "This laboratory permit to produce pcp.",
         "production_type": "pcp",
         "production_rate": 0.003,
-        "drugs_cost": 125,
+        "drugs_cost": 2500,
         "cost":[{"type":"pcp","amount":10}],
         "coeff": 2
       },
@@ -139,7 +139,7 @@
         "desc": "This laboratory permit to produce ghb.",
         "production_type": "ghb",
         "production_rate": 0.005,
-        "drugs_cost": 125,
+        "drugs_cost": 2000,
         "cost":[{"type":"ghb","amount":10}],
         "coeff": 2
       },
@@ -148,7 +148,7 @@
         "desc": "This laboratory permit to produce mdma.",
         "production_type": "mdma",
         "production_rate": 0.007,
-        "drugs_cost": 125,
+        "drugs_cost": 2000,
         "cost":[{"type":"mdma","amount":10}],
         "coeff": 2
       }
