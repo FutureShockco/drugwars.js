@@ -114,7 +114,8 @@
               }
             });
             this.loading = true;
-            const generator = new drugwars.CardPack(5,'7760564950603495');
+            const generator = drugwars.Cards;
+            console.log(generator)
             self.cards = generator.cards;
             self.loading = false;
             document.fonts.onloadingdone = function (fontFaceSetEvent) {
