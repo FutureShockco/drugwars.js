@@ -1,138 +1,190 @@
 {
   "gang": {
-    "active": {
-      "physical": [
-        {
-          "name": "Smash",
-          "description": "Stun an enemy for 2 round",
-          "id": "1"
-        }
-      ],
-      "weapon": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "fire": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "chemical": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ]
-    },
-    "passive": [
-      {
-        "name": "PowerBazooka",
-        "description": "Gives bazooka guys better rockets that hit +5 enemies at once",
-        "id": "1"
+    "physical": [{
+        "name": "Taunt",
+        "description": "Taunts nearby enemy units, forcing them to attack this hero."
       },
       {
-        "name": "Weapons are the best",
-        "description": "When victorius, the loot will be only weapon, no drug and no alcohol",
-        "id": "2"
+        "name": "Enrage",
+        "description": "Enrages an enemy unit, causing it to be slowed and take damage over time until it kills another unit or the duration ends"
+      },
+      {
+        "name": "Chop",
+        "description": "Hits the enemy aiming for the neck. If enemy HP is below 1/3 the head will be chopped and the skill can be used again"
+      },
+      {
+        "name": "Injection",
+        "description": "Transforms this hero into powerful junkie with a ranged attack"
+      }
+    ],
+    "weapon": [{
+        "name": "Kevlar Shield",
+        "description": "Reflect opponent hit with the shield making all enemies around will receive their own damage."
+      },
+      {
+        "name": "Mines",
+        "description": "Throw mines that explode and hit 5 melee unit."
+      },
+      {
+        "name": "Rope Shot",
+        "description": "Ties the target to an enemy unit behind it. If no unit is present, the stun duration is halved."
+      },
+      {
+        "name": "Boom! ShotGun",
+        "description": "Damages enemies. For each enemy the shotGun hits, its damage is reduced."
+      }
+    ],
+    "fire": [{
+        "name": "Summon Iblis",
+        "description": "A copy of Iblis will be summoned to keep company to this hero, with half his HP and damage"
+      },
+      {
+        "name": "Rain of Meteorits",
+        "description": "Attack a target enemy four times in a row. Damage is lightly reduced."
+      },
+      {
+        "name": "Fire Blast",
+        "description": "Damage and stun a target then slows and deals damage over time."
+      },
+      {
+        "name": "Piece of Sun",
+        "description": "Channels fire to damage enemies in a line."
+      }
+    ],
+    "chemical": [{
+        "name": "Chemical Fall",
+        "description": "Damages all enemies around him. One random enemy will be hit twice."
+      },
+      {
+        "name": "Toxic breath",
+        "description": "Stuns and damages a single target. The distance will increase the damage and the stun (Max Dmg 15, Max Stun: 4 turns)."
+      },
+      {
+        "name": "Sleeping pills",
+        "description": "A peaceful way to puts all enemies to sleep."
       }
     ]
   },
   "mafia": {
-    "active": {
-      "physical": [
-        {
-          "name": "Romantic",
-          "description": "Protects female units, restore 2500HP to Bigmama and Ninja after each hit",
-          "id": "1"
-        }
-      ],
-      "weapon": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "fire": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "chemical": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ]
-    },
-    "passive": [
+    "physical": [
       {
-        "name": "Master of fire",
-        "description": "All your units make +20 fire damage.",
-        "id": "1"
+        "name": "Carapace",
+        "description": "Reflect damage received and stun the source of damage."
       },
       {
-        "name": "Alcohol is the best",
-        "description": "When victorius, the loot will be only alcohol, no drug and no weapon",
-        "id": "2"
+        "name": "Big Leap",
+        "description": "Jump to the target spot and receive bonus speed."
+      },
+      {
+        "name": "Wind Runner",
+        "description": "Increases the movement speed and adds evasion from all attacks."
+      },
+      {
+        "name": "Let'em come",
+        "description": "Turns the enemy numbers against them, dealing bonus damage per unit and extra bonus per hero"
+      }
+    ],
+    "weapon": [
+      {
+        "name": "Burrow",
+        "description": "This hero becomes invisible and gains bonus speed and damage."
+      },
+      {
+        "name": "In my Shoes",
+        "description": "Instantaneously swaps positions with a target Hero, friend or enemy."
+      },
+      {
+        "name": "Mafia Mortar",
+        "description": "Throw mines that explode and hit 5 melee unit."
+      },
+      {
+        "name": "Last Hope",
+        "description": "Increases the attack and armor of all units."
+      }
+    ],
+    "fire": [
+      {
+        "name": "Dragon Flames",
+        "description": "A column of flames damages enemies in a line."
+      },
+      {
+        "name": "Fireball",
+        "description": "A ball of fire stuns and damages enemies in target area."
+      },
+      {
+        "name": "Seduction",
+        "description": "Takes control over an enemy unit or slow an enemy hero."
+      }
+    ],
+    "chemical": [
+      {
+        "name": "Toxic Swarm",
+        "description": "A burst of damaging toxicity that slows enemies in the target area."
+      },
+      {
+        "name": "Toxic Spear",
+        "description": "Attack a target enemy with bonus damage equal to twice the distance."
       }
     ]
   },
   "cartel": {
-    "active": {
-      "physical": [
-        {
-          "name": "Gomu gomu no",
-          "description": "Stun 5 enemies for 2 round",
-          "id": "2"
-        }
-      ],
-      "weapon": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "fire": [
-        {
-          "name": "Deadly Fire Punch",
-          "description": "Each hit kill instantly (unit only)",
-          "id": "2"
-        }
-      ],
-      "chemical": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ]
-    },
-    "passive": [
-      {
-        "name": "Faulty Vest",
-        "description": "Enemies mercenaries can't user their bulletproofs.",
-        "id": "1"
+    "physical": [{
+        "name": "Horn Blow",
+        "description": "Purge the target unit and grants bonus damage and heals."
       },
       {
-        "name": "Drugs are the best",
-        "description": "When victorius, the loot will be only drug, no weapon and no alcohol",
-        "id": "2"
+        "name": "Blink",
+        "description": "Teleport to the target spot."
       },
       {
-        "name": "Demoralize",
-        "description": "Reduce the offensive power of your enemy by 2%",
-        "id": "3"
+        "name": "Rock Wave",
+        "description": "Rock spikes burst along a straight path, hitted enemies are stunned and take damage."
+      },
+      {
+        "name": "Meat Hook",
+        "description": "Launches a hook that will snag the first unit it encounters, dragging the unit and dealing damage if enemy. Interrupts enemy channel.."
+      }
+    ],
+    "weapon": [
+      {
+        "name": "Corruption",
+        "description": "Weakens enemy armor."
+      },
+      {
+        "name": "Shadows",
+        "description": "All player heroes will become invisible."
+      },
+      {
+        "name": "Prison",
+        "description": "Prevents movement and attack while dealing damage over time. Interrupts target channel."
+      },
+      {
+        "name": "Grenades",
+        "description": "Channels a storm of grenades explosions that deals damage and slows enemies around her."
+      }
+    ],
+    "fire": [
+      {
+        "name": "Zap",
+        "description": "Fires off a bolt of lightning at a single enemy unit."
+      },
+      {
+        "name": "Mind Burn",
+        "description": "Deals damage according to opponent's heroes HP."
+      },
+      {
+        "name": "Mind Burn",
+        "description": "Deals damage according to opponent's heroes HP."
+      }
+    ],
+    "chemical": [
+      {
+        "name": "Stink",
+        "description": "A stink cloud that deals damage and slows enemies. Damage is dealt at the turn end, this hero will also be damaged."
+      },
+      {
+        "name": "Challenge",
+        "description": "Exchanges three attacks with a target enemy. If anyone dies, the killer gains permanent bonus damage"
       }
     ]
   }

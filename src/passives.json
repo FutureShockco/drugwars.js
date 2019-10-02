@@ -1,107 +1,100 @@
 {
   "gang": [
-      {
-        "name": "PowerBazooka",
-        "description": "Gives bazooka guys better rockets that hit +5 enemies at once",
-        "id": "1"
-      },
-      {
-        "name": "Weapons are the best",
-        "description": "When victorius, the loot will be only weapon, no drug and no alcohol",
-        "id": "2"
-      }
-    ],
-  "mafia": {
-    "active": {
-      "physical": [
-        {
-          "name": "Romantic",
-          "description": "Protects female units, restore 2500HP to Bigmama and Ninja after each hit",
-          "id": "1"
-        }
-      ],
-      "weapon": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "fire": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "chemical": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ]
+    {
+      "name": "Untouched",
+      "description": "Attacker's will be cursed and suffer reduced damage for the turn."
     },
-    "passive": [
-      {
-        "name": "Master of fire",
-        "description": "All your units make +20 fire damage.",
-        "id": "1"
-      },
-      {
-        "name": "Alcohol is the best",
-        "description": "When victorius, the loot will be only alcohol, no drug and no weapon",
-        "id": "2"
-      }
-    ]
-  },
-  "cartel": {
-    "active": {
-      "physical": [
-        {
-          "name": "Gomu gomu no",
-          "description": "Stun 5 enemies for 2 round",
-          "id": "2"
-        }
-      ],
-      "weapon": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ],
-      "fire": [
-        {
-          "name": "Deadly Fire Punch",
-          "description": "Each hit kill instantly (unit only)",
-          "id": "2"
-        }
-      ],
-      "chemical": [
-        {
-          "name": "Mines",
-          "description": "Throw mines that explode and hit 5 melee unit.",
-          "id": "2"
-        }
-      ]
+    {
+      "name": "Counter Attack",
+      "description": "When attacked, there is a chance to immediately counterattack all enemies around."
     },
-    "passive": [
-      {
-        "name": "Faulty Vest",
-        "description": "Enemies mercenaries can't user their bulletproofs.",
-        "id": "1"
-      },
-      {
-        "name": "Drugs are the best",
-        "description": "When victorius, the loot will be only drug, no weapon and no alcohol",
-        "id": "2"
-      },
-      {
-        "name": "Demoralize",
-        "description": "Reduce the offensive power of your enemy by 2%",
-        "id": "3"
-      }
-    ]
-  }
+    {
+      "name": "Meat Armor",
+      "description": "Gives bonus HP and damage on every kill and reduces elements damage."
+    },
+    {
+      "name": "Weapons are the best",
+      "description": "When victorius, the loot will be only weapon, no drug and no alcohol."
+    },
+    {
+      "name": "Mortal Strike",
+      "description": "Will have a chance of inflicting critical damage bonus."
+    },
+    {
+      "name": "Bouncerize",
+      "description": "Grant bonus damage to all your bouncers."
+    },
+    {
+      "name": "Kamikaze",
+      "description": "Grant bonus damage to all your hobos."
+    },
+    {
+      "name": "Sword Master",
+      "description": "Grant bonus damage to all your knifers."
+    },
+    {
+      "name": "Negotiator",
+      "description": "Double the bonus of the lawyers."
+    }
+  ],
+  "mafia": [
+    {
+      "name": "Vengeance Aura",
+      "description": "An aura that increases the attack damage of nearby friendly units. If Venge dies, damage bonus will double."
+    },
+    {
+      "name": "Vampiric Aura",
+      "description": "Grants attack lifesteal. Every attack will heal by a percentage of the damage."
+    },
+    {
+      "name": "Master of fire",
+      "description": "All your units make +20 fire damage."
+    },
+    {
+      "name": "Alcohol is the best",
+      "description": "When victorius, the loot will be only alcohol, no drug and no weapon."
+    },
+    {
+      "name": "Hooligan Blood",
+      "description": "Grant bonus damage to all your rowdies."
+    },
+    {
+      "name": "Hit & Run",
+      "description": "Grant bonus speed to all your gunmans."
+    },
+    {
+      "name": "Eye of the Eagle",
+      "description": "Grant bonus damage to all your snipers."
+    },
+    {
+      "name": "Drunken Master",
+      "description": "Double the bonus of the ninjas."
+    }
+  ],
+  "cartel": [
+    {
+      "name": "Faulty Vest",
+      "description": "Enemies mercenaries can't user their bulletproofs."
+    },
+    {
+      "name": "Demoralize",
+      "description": "Reduce the offensive power of your enemy by 2%."
+    },
+    {
+      "name": "Reincarnation",
+      "description": "Will come back on next player turn after being killed slowing enemies around."
+    },
+    {
+      "name": "Drugs are the best",
+      "description": "When victorius, the loot will be only drygs, no alcohol and no weapons."
+    },
+    {
+      "name": "Mama Lova",
+      "description": "Grant bonus damage to all your big mamas."
+    },
+    {
+      "name": "Commander",
+      "description": "Grant bonus damage to all your mercenaries."
+    }
+  ]
 }
