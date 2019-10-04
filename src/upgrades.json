@@ -2,6 +2,7 @@
   "crackhouse": {
     "id": "crackhouse",
     "upgrades": [{
+        "id":"small_kitchen",
         "name": "Small kitchen appliance",
         "desc": "Use this small appliance to produce your own crack.",
         "production_type": "crack",
@@ -11,6 +12,7 @@
         "coeff": 2
       },
       {
+        "id":"hash_extractor",
         "name": "Ice Hash Extractor",
         "desc": "Produce the best natural hash extraction from home using only ice & water.",
         "production_type": "hash",
@@ -24,6 +26,7 @@
   "hydrofarm": {
     "id": "hydrofarm",
     "upgrades": [{
+        "id":"hid",
         "name": "High Intensity Discharge (HID) lights",
         "desc": "Considered the “gold standard” for growing weed, these lights are powerful and proven to provide great yields.",
         "production_type": "marijuana",
@@ -33,6 +36,7 @@
         "coeff": 2
       },
       {
+        "id":"salvia_lab",
         "name": "Special place for Salvia divinorum",
         "desc": "No tattletale will see the upcoming Empire through the cracks. You can produce DRUGS without fear and at your own pace.",
         "production_type": "salvia",
@@ -42,6 +46,7 @@
         "coeff": 2
       },
       {
+        "id":"mushroom_spawn",
         "name": "Mushroom spawn",
         "desc": "Mushroom spawn is sawdust permeated with mushroom mycelia — essentially the root structure of the fungus.",
         "production_type": "psylocybin",
@@ -55,6 +60,7 @@
   "meth_lab": {
     "id": "meth_lab",
     "upgrades": [{
+      "id":"meth_room",
         "name": "Metamphetamine Room",
         "desc": "A special room where the chemistry happen like in famous series.",
         "production_type": "metamphetamine",
@@ -64,6 +70,7 @@
         "coeff": 2
       },
       {
+        "id":"salty_room",
         "name": "Salty Room",
         "desc": "Produce pure salts of triboluminescent LSD emitting small flashes of white light when shaken in the dark of this room.",
         "production_type": "lsd",
@@ -73,6 +80,7 @@
         "coeff": 2
       },
       {
+        "id":"anabo_room",
         "name": "Anabolics Room",
         "desc": "All amino acids are formed from intermediates in the catabolic processes of glycolysis, the citric acid cycle, or the pentose phosphate pathway. ",
         "production_type": "anabolics",
@@ -86,7 +94,8 @@
   "cocina": {
     "id": "cocina",
     "upgrades": [{
-        "name": "Industrial metal drumsdrums",
+      "id":"metal_drums",
+        "name": "Industrial metal drums",
         "desc": "Put the leaves in the metal drums, over them with gasoline in order to extract the coca base.",
         "production_type": "cocaine",
         "production_rate": 0.002,
@@ -95,6 +104,7 @@
         "coeff": 2
       },
       {
+        "id":"opium_boxes",
         "name": "Opium Poppies Boxes",
         "desc": "The milky fluid is harvested with a curved spatula and then dried in those open wooden boxes. ",
         "production_type": "opium",
@@ -104,6 +114,7 @@
         "coeff": 2
       },
       {
+        "id":"opium_ref",
         "name": "Opium refinery",
         "desc": "Refine the opium to make morphine, then further refine into different forms of heroin.",
         "production_type": "heroine",
@@ -117,7 +128,8 @@
   "pharma_lab": {
     "id": "pharma_lab",
     "upgrades": [{
-        "name": "Poppers lab",
+      "id":"poppers_lab",
+        "name": "Poppers Addon",
         "desc": "This laboratory permit to produce poppers.",
         "production_type": "poppers",
         "production_rate": 0.014,
@@ -126,7 +138,8 @@
         "coeff": 2
       },
       {
-        "name": "Crack House",
+        "id":"pcp_lab",
+        "name": "PCP Addon",
         "desc": "This laboratory permit to produce pcp.",
         "production_type": "pcp",
         "production_rate": 0.003,
@@ -135,7 +148,8 @@
         "coeff": 2
       },
       {
-        "name": "Crack House",
+        "id":"ghb_lab",
+        "name": "GHB Addon",
         "desc": "This laboratory permit to produce ghb.",
         "production_type": "ghb",
         "production_rate": 0.005,
@@ -144,7 +158,8 @@
         "coeff": 2
       },
       {
-        "name": "Crack House",
+        "id":"mdma_lab",
+        "name": "MDMA Addon",
         "desc": "This laboratory permit to produce mdma.",
         "production_type": "mdma",
         "production_rate": 0.007,
