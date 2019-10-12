@@ -318,15 +318,15 @@
      "description": "Release a ring of chemical effluvium causing $$value1$$ damage to all enemies.",
      "targets": ["Self"],
      "suffixes": [{
-        "name": "of disaster",
+        "name": "of frowst",
         "values": [4]
       },
       {
-        "name": "of plague",
+        "name": "of disaster",
         "values": [8]
       },
       {
-        "name": "of madness",
+        "name": "of plague",
         "values": [16]
       },
       {
