@@ -1,0 +1,343 @@
+ [{
+     "id": 1,
+     "name": "taunt",
+     "title": "Taunt",
+     "description": "Taunts $$value1$$ nearby enemy units, forcing them to attack this hero.",
+     "targets": ["Self"],
+     "aoe": "Radial",
+     "suffixes": [{
+         "name": "of joke",
+         "values": [2]
+       },
+       {
+         "name": "of sarcam",
+         "values": [3]
+       },
+       {
+         "name": "of sneer",
+         "values": [3]
+       },
+       {
+         "name": "of jeer",
+         "values": [3]
+       },
+       {
+         "name": "of scoff",
+         "values": [4]
+       }
+     ]
+   },
+   {
+     "id": 2,
+     "name": "seduction",
+     "title": "Seduction",
+     "description": "Takes control over an $$value1$$ enemy unit until the end of the turn.",
+     "targets": ["Enemy"],
+     "aoe": "Radial",
+     "suffixes": [{
+         "name": "of rejection",
+         "values": [1]
+       },
+       {
+         "name": "of attraction",
+         "values": [1]
+       },
+       {
+         "name": "of charm",
+         "values": [1]
+       },
+       {
+         "name": "of minds",
+         "values": [2]
+       },
+       {
+         "name": "of manipulation",
+         "values": [3]
+       }
+     ]
+   },
+   {
+     "id": 3,
+     "name": "enrage",
+     "title": "Enrage",
+     "description": "Enrages an enemy unit, causing it to be slowed and take damage over $$value1$$ turn",
+     "targets": ["Enemy"],
+     "suffixes": [{
+         "name": "of cry",
+         "values": [2]
+       },
+       {
+         "name": "of irritation",
+         "values": [2]
+       },
+       {
+         "name": "of anger",
+         "values": [3]
+       },
+       {
+         "name": "of fury",
+         "values": [3]
+       },
+       {
+         "name": "of rage",
+         "values": [4]
+       }
+     ]
+   },
+   {
+     "id": 4,
+     "name": "chop",
+     "title": "Chop",
+     "description": "Hits the enemy aiming for the neck. If enemy HP is below $$value1$$ the head will be chopped and the skill can be used again",
+     "targets": ["Enemy"],
+     "suffixes": [{
+         "name": "of scar",
+         "values": [20]
+       },
+       {
+         "name": "of butchery",
+         "values": [30]
+       },
+       {
+         "name": "of slaughter",
+         "values": [50]
+       },
+       {
+         "name": "of execution",
+         "values": [80]
+       },
+       {
+         "name": "of carnage",
+         "values": [100]
+       }
+     ]
+   },
+   {
+     "id": 5,
+     "name": "injection",
+     "title": "Injection",
+     "description": "Transforms this hero into a powerful junkie, obtain $$value1$$ % damage bonus with a ranged attack",
+     "targets": ["Self"],
+     "suffixes": [{
+         "name": "of steel's",
+         "values": [2]
+       },
+       {
+         "name": "of brawl",
+         "values": [4]
+       },
+       {
+         "name": "of soldier's",
+         "values": [6]
+       },
+       {
+         "name": "of king's",
+         "values": [8]
+       },
+       {
+         "name": "of champion's",
+         "values": [10]
+       }
+     ]
+   },
+   {
+     "id": 6,
+     "name": "Tornado",
+     "title": "tornado",
+     "description": "Release a tornado that deals $$value1$$ damage to $$value2$$ nearby enemies.",
+     "targets": ["Enemy"],
+     "aoe": "Radial",
+     "suffixes": [{
+         "name": "of breeze",
+         "values": [2,2]
+       },
+       {
+         "name": "of wind",
+         "values": [4,2]
+       },
+       {
+         "name": "of gust",
+         "values": [6,2]
+       },
+       {
+         "name": "of squall",
+         "values": [8,3]
+       },
+       {
+         "name": "of tempest",
+         "values": [10,4]
+       }
+     ]
+   },
+   {
+     "id": 7,
+     "name": "Carapace",
+     "title": "carapace",
+     "description": "Reflect $$value1$$ % of the damage received and stun the source of damage.",
+     "targets": ["Self"],
+     "suffixes": [{
+         "name": "of hull",
+         "values": [5]
+       },
+       {
+         "name": "of shell",
+         "values": [10]
+       },
+       {
+         "name": "of turtle's",
+         "values": [15]
+       },
+       {
+         "name": "of plate",
+         "values": [20]
+       },
+       {
+         "name": "of spike",
+         "values": [25]
+       }
+     ]
+   },
+   {
+     "id": 8,
+     "name": "big_leap",
+     "title": "Big Leap",
+     "description": "Jump to the target spot and receive $$value1$$ % bonus speed.",
+     "targets": ["Spot", "Range", "Free"],
+     "suffixes": [{
+         "name": "of bound",
+         "values": [2]
+       },
+       {
+         "name": "of jump",
+         "values": [4]
+       },
+       {
+         "name": "of leap",
+         "values": [6]
+       },
+       {
+         "name": "of vault",
+         "values": [8]
+       },
+       {
+         "name": "of capriole",
+         "values": [10]
+       }
+     ]
+   },
+   {
+     "id": 9,
+     "name": "letem_come",
+     "title": "Let'em come",
+     "description": "Turns the enemy numbers against them, dealing $$value1$$ bonus damage per unit and extra $$value2$$ bonus per hero",
+     "targets": ["Spot", "Self"],
+     "aoe": "Radial",
+     "suffixes": [{
+         "name": "of fame",
+         "values": [2,4]
+       },
+       {
+         "name": "of fream",
+         "values": [4,6]
+       },
+       {
+         "name": "of glory",
+         "values": [6,8]
+       },
+       {
+         "name": "of victory",
+         "values": [8,6]
+       },
+       {
+         "name": "of gods",
+         "values": [10,10]
+       }
+     ]
+   },
+   {
+     "id": 10,
+     "name": "horn_blow",
+     "title": "Horn Blow",
+     "description": "Purge the target unit and grants $$value1$$ bonus damage and heals.",
+     "targets": ["Ally"],
+     "suffixes": [{
+         "name": "of treat",
+         "values": [2]
+       },
+       {
+         "name": "of care",
+         "values": [4]
+       },
+       {
+         "name": "of cure",
+         "values": [6]
+       },
+       {
+         "name": "of aid",
+         "values": [8]
+       },
+       {
+         "name": "of rejuvenation",
+         "values": [10]
+       }
+     ]
+   },
+   {
+     "id": 11,
+     "name": "rock_wave",
+     "title": "Rock Wave",
+     "description": "Rock spikes burst along a straight path, hitted enemies are stunned and take $$value1$$ damage.",
+     "targets": ["Spot"],
+     "aoe": "Linear",
+     "suffixes": [{
+         "name": "of pebble",
+         "values": [2]
+       },
+       {
+         "name": "of stone",
+         "values": [4]
+       },
+       {
+         "name": "of rock",
+         "values": [6]
+       },
+       {
+         "name": "of ground",
+         "values": [8]
+       },
+       {
+         "name": "of mountain's",
+         "values": [10]
+       }
+     ]
+   },
+   {
+     "id": 12,
+     "name": "hook",
+     "title": "Hook",
+     "description": "Launches a hook that will snag the first unit it encounters, dragging the unit and dealing $$value1$$ damage.",
+     "targets": ["Spot"],
+     "aoe": "Linear",
+     "suffixes": [{
+         "name": "of clip",
+         "values": [2]
+       },
+       {
+         "name": "of brace",
+         "values": [4]
+       },
+       {
+         "name": "of hanger",
+         "values": [6]
+       },
+       {
+         "name": "of fang",
+         "values": [8]
+       },
+       {
+         "name": "of capture",
+         "values": [10]
+       }
+     ]
+   }
+ ]
