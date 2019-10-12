@@ -1,0 +1,342 @@
+ [{
+     "id": 1,
+     "name": "fireball",
+     "title": "Fireball",
+     "description": "A ball of fire stuns and deal $$value1$$ damages enemies in target area.",
+     "targets": ["Spot", "Enemy"],
+     "aoe": "Radial",
+     "suffixes": [{
+      "name": "of ashes",
+      "values": [1]
+    },
+    {
+      "name": "of warmth",
+      "values": [2]
+    },
+    {
+      "name": "of heat",
+      "values": [3]
+    },
+    {
+      "name": "of flame",
+      "values": [4]
+    },
+    {
+      "name": "of fire",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 2,
+     "name": "molotov_cocktail",
+     "title": "Molotov Cocktail",
+     "description": "Throw a Molotov Cocktail and damage nearby units.",
+     "targets": ["Enemy", "Spot", "Free"],
+     "suffixes": [{
+      "name": "of ardent",
+      "values": [1]
+    },
+    {
+      "name": "of flare",
+      "values": [2]
+    },
+    {
+      "name": "of incendiary",
+      "values": [3]
+    },
+    {
+      "name": "of scorch",
+      "values": [4]
+    },
+    {
+      "name": "of pyre",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 3,
+     "name": "call_fire_eater",
+     "title": "Call Fire Eater",
+     "description": "A copy of a Fire Eater will be summoned to keep company to this hero.",
+     "targets": ["Spot", "Free"],
+     "suffixes": [{
+      "name": "of coal",
+      "values": [1]
+    },
+    {
+      "name": "",
+      "values": [2]
+    },
+    {
+      "name": "of wildfire",
+      "values": [3]
+    },
+    {
+      "name": "",
+      "values": [4]
+    },
+    {
+      "name": "of iblis",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 4,
+     "name": "rain_of_meteorits",
+     "title": "Rain of Meteorits",
+     "description": "Attack a target enemy four times in a row. Damage is lightly reduced.",
+     "targets": ["Enemy"],
+     "aoe": "Radial",
+     "suffixes": [{
+      "name": "",
+      "values": [1]
+    },
+    {
+      "name": "",
+      "values": [2]
+    },
+    {
+      "name": "of meteor",
+      "values": [3]
+    },
+    {
+      "name": "",
+      "values": [4]
+    },
+    {
+      "name": "of purification",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 5,
+     "name": "fire_blast",
+     "title": "Fire Blast",
+     "description": "Damage and stun a target then slows and deals damage over time.",
+     "targets": ["Enemy"],
+     "suffixes": [{
+      "name": "of sparks",
+      "values": [1]
+    },
+    {
+      "name": "of scorch",
+      "values": [2]
+    },
+    {
+      "name": "of burn",
+      "values": [3]
+    },
+    {
+      "name": "of dragon",
+      "values": [4]
+    },
+    {
+      "name": "of pyrolysis",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 6,
+     "name": "piece_of_sun",
+     "title": "Piece of Sun",
+     "description": "Channels fire to damage $$value$$ enemies in a line.",
+     "targets": ["Spot", "Enemy"],
+     "aoe": "Linear",
+     "suffixes": [{
+      "name": "of luminosity",
+      "values": [1]
+    },
+    {
+      "name": "of gleam",
+      "values": [2]
+    },
+    {
+      "name": "of glow",
+      "values": [3]
+    },
+    {
+      "name": "of flash",
+      "values": [4]
+    },
+    {
+      "name": "of solarity",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 7,
+     "name": "fire_wall",
+     "title": "Fire Wall",
+     "description": "A column of flames damages enemies in a line.",
+     "targets": ["Spot", "Enemy"],
+     "aoe": "Linear",
+     "suffixes": [{
+      "name": "",
+      "values": [1]
+    },
+    {
+      "name": "",
+      "values": [2]
+    },
+    {
+      "name": "",
+      "values": [3]
+    },
+    {
+      "name": "",
+      "values": [4]
+    },
+    {
+      "name": "",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 8,
+     "name": "burn",
+     "title": "Burn",
+     "description": "Fires off a bolt of flame at a single enemy unit.",
+     "targets": ["Enemy"],
+     "suffixes": [{
+      "name": "",
+      "values": [1]
+    },
+    {
+      "name": "",
+      "values": [2]
+    },
+    {
+      "name": "",
+      "values": [3]
+    },
+    {
+      "name": "",
+      "values": [4]
+    },
+    {
+      "name": "",
+      "values": [5]
+    }
+  ]
+   },
+   {
+    "id": 9,
+    "name": "smoke",
+    "title": "Smoke",
+    "description": "Fires off a bolt of lightning at a single enemy unit.",
+    "targets": ["Enemy"],
+    "suffixes": [{
+      "name": "",
+      "values": [1]
+    },
+    {
+      "name": "",
+      "values": [2]
+    },
+    {
+      "name": "",
+      "values": [3]
+    },
+    {
+      "name": "",
+      "values": [4]
+    },
+    {
+      "name": "",
+      "values": [5]
+    }
+  ]
+  },
+   {
+     "id": 10,
+     "name": "immolation",
+     "title": "Immolation",
+     "description": "Deals damage according to HP left + $$value1$$ bonus and burn this hero.",
+     "targets": ["Enemy"],
+     "suffixes": [{
+      "name": "of ignition",
+      "values": [1]
+    },
+    {
+      "name": "of cremation",
+      "values": [2]
+    },
+    {
+      "name": "",
+      "values": [3]
+    },
+    {
+      "name": "",
+      "values": [4]
+    },
+    {
+      "name": "",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 11,
+     "name": "mind_burn",
+     "title": "Mind Burn",
+     "description": "Deals damage according to opponent's heroes HP.",
+     "targets": ["Enemy"],
+     "suffixes": [{
+      "name": "",
+      "values": [1]
+    },
+    {
+      "name": "",
+      "values": [2]
+    },
+    {
+      "name": "",
+      "values": [3]
+    },
+    {
+      "name": "",
+      "values": [4]
+    },
+    {
+      "name": "",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 12,
+     "name": "lava_split",
+     "title": "Lava split",
+     "description": "Open the ground and let the lava flow dealing all enemies $$value1$$ damages and burning them for $$value2$$ turn.",
+     "targets": ["Enemy"],
+     "aoe": "Linear",
+     "suffixes": [{
+      "name": "",
+      "values": [1]
+    },
+    {
+      "name": "",
+      "values": [2]
+    },
+    {
+      "name": "of eruption",
+      "values": [3]
+    },
+    {
+      "name": "of volcano",
+      "values": [4]
+    },
+    {
+      "name": "of magma",
+      "values": [5]
+    }
+  ]
+   }
+ ]

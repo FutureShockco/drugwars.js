@@ -318,7 +318,7 @@
     "targets": ["Spot", "Enemy"],
     "aoe": "Linear",
     "suffixes": [{
-      "name": "of blast",
+      "name": "of reduction",
       "values": [4,1]
     },
     {
