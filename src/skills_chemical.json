@@ -287,7 +287,7 @@
      "id": 11,
      "name": "neurotoxine",
      "title": "Neurotoxine",
-     "description": "Exchanges $$value1$$ toxic attacks with a target enemy. If anyone dies, the killer gains $$value1$$ permanent bonus damage",
+     "description": "Exchanges $$value1$$ toxic attacks with a target enemy. If anyone dies, the killer gains $$value2$$ permanent bonus damage",
      "targets": ["Enemy"],
      "suffixes": [{
         "name": "of neurotoxin",
@@ -315,7 +315,7 @@
      "id": 12,
      "name": "poison_nova",
      "title": "Poison Nova",
-     "description": "Release a ring of chemical effluvium causing $$value$$ damage to all enemies.",
+     "description": "Release a ring of chemical effluvium causing $$value1$$ damage to all enemies.",
      "targets": ["Self"],
      "suffixes": [{
         "name": "of disaster",
