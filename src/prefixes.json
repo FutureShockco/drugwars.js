@@ -1,23 +1,23 @@
 {
   "gang":{
-    "5": ["Hyena's","Frog's","Tin","Bronze","Soldier's","Useless","Weak","Frivolous","Timid","Sarcastic","Unwise","Messy","Phony"],
-    "4": ["Iron","Steel","Silver","Deadly","Heavy","Strange","Reliable","Crafty","Polite","Good","Prompt","Normal"],
-    "3": ["Raven's","Serpent's","Gold","Master's","Knight's","Rash","Brutal","Wise","Tense","Vulgar"],
-    "2": ["Drake's","Platinum","Champion's","Savage","Massive","Holy","Vicious","Humble"],
-    "1": ["Dragon's","King's","Merciless","Angel's","Splendid","Proud","Unethical"]
+    "5": ["Hyena's","Frog's","Sarcastic","Phony"],
+    "4": ["Steel","Deadly","Strange","Crafty","Polite"],
+    "3": ["Raven's","Serpent's","Wise","Tense","Vulgar"],
+    "2": ["Champion's","Savage","Vicious"],
+    "1": ["Angel's","Splendid","Proud"]
   },
   "mafia":{
-    "5": ["Vulnerable","Rusted","Dyslexic","Clumsy","Dull","Worried","Fearful","Artificial","Clumsy","Tender","Lazy","Innocent"],
-    "4": ["Valiant","Sharp","Fine","Frightful","Mad","Fierce","Bitter","Abrupt","Loyal","Silent","Fickle","Ordinary"],
-    "3": ["Brilliant","Threatening","Trusty","Zealot","Bonny","Nasty","Strict","Mature","Cold"],
-    "2": ["Crazy","Cruel","Wicked","Evil","Ill","Odd","Extravagant","Cynical","Bossy","Bold"],
-    "1": ["Paranormal","Terrorizing","Famous","Unjust","Iconic","Lucky","Sly"]
+    "5": ["Worried","Artificial","Innocent"],
+    "4": ["Mad","Fierce","Bitter","Abrupt","Silent"],
+    "3": ["Brilliant","Threatening","Zealot","Bonny","Mature"],
+    "2": ["Crazy","Cruel","Wicked","Evil","Extravagant","Cynical"],
+    "1": ["Famous"]
   },
   "cartel":{
-    "5": ["Jagged","Frailty","Weird","Corrupted","Anguish","Slaughtered","Timid","Scared","Troubled","Noisy","Dull","Superficial"],
-    "4": ["Plentiful","Minded","Grisly","Wild","Rabid","Sever","Arch","Silly","Alert","Witty","Stingy"],
-    "3": ["Mighty","Superior","Snake's","Fanatic","Clipping","Naughty","Versatile","Capable","Insolent"],
-    "2": ["Lord's","Prime","Crack","Violent","Amazing","Critical","Nervous","Neat"],
-    "1": ["Saintly","Stellar","Unfair","Marvelous","Scientific","Crude","Sadistic"]
+    "5": ["Jagged","Frailty","Corrupted","Anguish","Timid","Scared","Troubled","Noisy","Dull","Superficial"],
+    "4": ["Plentiful","Minded","Rabid","Silly","Stingy"],
+    "3": ["Clipping","Capable","Insolent"],
+    "2": ["Prime","Crack","Amazing","Critical","Nervous","Neat"],
+    "1": ["Saintly","Stellar","Marvelous","Scientific","Crude"]
   }
 }

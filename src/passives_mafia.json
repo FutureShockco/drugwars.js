@@ -1,0 +1,183 @@
+ [{
+     "id": 1,
+     "name": "Vengeance Aura",
+     "description": "An aura that increases the attack damage by $$value1$$ % of nearby allies.",
+     "suffixes": [{
+         "name": "frivolous",
+         "values": [1]
+       },
+       {
+         "name": "fickle",
+         "values": [2]
+       },
+       {
+         "name": "versatile",
+         "values": [3]
+       },
+       {
+         "name": "proud",
+         "values": [4]
+       },
+       {
+         "name": "famous",
+         "values": [5]
+       }
+     ]
+   },
+   {
+     "id": 2,
+     "name": "Vampiric Aura",
+     "description": "Grants attack lifesteal. Every attack will heal by $$value1$$ % of the damage.",
+     "suffixes": [{
+      "name": "venous",
+      "values": [1]
+    },
+    {
+      "name": "leech",
+      "values": [2]
+    },
+    {
+      "name": "bloody",
+      "values": [3]
+    },
+    {
+      "name": "gore",
+      "values": [4]
+    },
+    {
+      "name": "vampirous",
+      "values": [5]
+    }
+  ]
+   },
+   {
+     "id": 3,
+     "name": "Master of fire",
+     "description": "All your units with fire damage type makes +$$value1$$ fire damage.",
+     "suffixes": [{
+         "name": "crimson",
+         "values": [1]
+       },
+       {
+         "name": "amber",
+         "values": [2]
+       },
+       {
+         "name": "drake's",
+         "values": [3]
+       },
+       {
+         "name": "dragon's",
+         "values": [4]
+       },
+       {
+         "name": "evil's",
+         "values": [5]
+       }
+     ]
+   },
+   {
+     "id": 4,
+     "name": "Alcohol is the best",
+     "description": "When victorius, obtain $$value1$$ % bonus on alcohol loot.",
+     "suffixes": [{
+         "name": "unfortunate",
+         "values": [1]
+       },
+       {
+         "name": "stingy",
+         "values": [2]
+       },
+       {
+         "name": "greedy",
+         "values": [3]
+       },
+       {
+         "name": "abundant",
+         "values": [4]
+       },
+       {
+         "name": "fat",
+         "values": [5]
+       }
+     ]
+   },
+   {
+     "id": 5,
+     "name": "Hooligan Blood",
+     "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your rowdies.",
+     "suffixes": [{
+         "name": "dyslexic",
+         "values": [1]
+       },
+       {
+         "name": "wild",
+         "values": [2]
+       },
+       {
+         "name": "fierce",
+         "values": [3]
+       },
+       {
+         "name": "wicked",
+         "values": [4]
+       },
+       {
+         "name": "iconic",
+         "values": [5]
+       }
+     ]
+   },
+   {
+     "id": 6,
+     "name": "Eye of the Eagle",
+     "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your snipers.",
+     "suffixes": [{
+         "name": "blind",
+         "values": [1]
+       },
+       {
+         "name": "sighted",
+         "values": [2]
+       },
+       {
+         "name": "precise",
+         "values": [3]
+       },
+       {
+         "name": "accurate",
+         "values": [4]
+       },
+       {
+         "name": "unfair",
+         "values": [5]
+       }
+     ]
+   },
+   {
+     "id": 7,
+     "name": "Drunken Master",
+     "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your ninjas.",
+     "suffixes": [{
+         "name": "timid",
+         "values": [1]
+       },
+       {
+         "name": "fuddled",
+         "values": [2]
+       },
+       {
+         "name": "drunken",
+         "values": [3]
+       },
+       {
+         "name": "satiated",
+         "values": [4]
+       },
+       {
+         "name": "amazing",
+         "values": [5]
+       }
+     ]
+   }
+ ]

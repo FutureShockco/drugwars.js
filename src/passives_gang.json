@@ -1,0 +1,235 @@
+[{
+    "id": 1,
+    "name": "Untouched",
+    "description": "Attacker's will be cursed and suffer reduced $$value1$$ % damage for the turn.",
+    "suffixes": [{
+        "name": "wretch",
+        "values": [1]
+      },
+      {
+        "name": "vulnerable",
+        "values": [2]
+      },
+      {
+        "name": "cold",
+        "values": [3]
+      },
+      {
+        "name": "untouchable",
+        "values": [4]
+      },
+      {
+        "name": "holy",
+        "values": [5]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Counter Attack",
+    "description": "When attacked, there is a chance $$value1$$ % to immediately counterattack all enemies around.",
+    "suffixes": [{
+        "name": "unwise",
+        "values": [1]
+      },
+      {
+        "name": "vulnerable",
+        "values": [2]
+      },
+      {
+        "name": "prompt",
+        "values": [3]
+      },
+      {
+        "name": "alert",
+        "values": [4]
+      },
+      {
+        "name": "sly",
+        "values": [5]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Riot Armor",
+    "description": "Gives bonus $$value1$$ HP and damage on every kill and reduces elements damage.",
+    "suffixes": [{
+        "name": "weak",
+        "values": [1]
+      },
+      {
+        "name": "bold",
+        "values": [2]
+      },
+      {
+        "name": "armored",
+        "values": [3]
+      },
+      {
+        "name": "knight's",
+        "values": [4]
+      },
+      {
+        "name": "spartan",
+        "values": [5]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Weapons are the best",
+    "description": "When victorius, obtain $$value1$$ % bonus on weapon loot.",
+    "suffixes": [{
+        "name": "poor",
+        "values": [1]
+      },
+      {
+        "name": "unlucky",
+        "values": [2]
+      },
+      {
+        "name": "lucky",
+        "values": [3]
+      },
+      {
+        "name": "fortunate",
+        "values": [4]
+      },
+      {
+        "name": "varnished",
+        "values": [5]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Mortal Strike",
+    "description": "$$value1$$ % chance of inflicting $$value2$$ % critical damage bonus.",
+    "suffixes": [{
+        "name": "rusted",
+        "values": [5, 100]
+      },
+      {
+        "name": "fine",
+        "values": [10, 115]
+      },
+      {
+        "name": "sever",
+        "values": [15, 130]
+      },
+      {
+        "name": "unjust",
+        "values": [20, 150]
+      },
+      {
+        "name": "sadistic",
+        "values": [30, 200]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Bouncerize",
+    "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your bouncers.",
+    "suffixes": [{
+        "name": "messy",
+        "values": [1, 1]
+      },
+      {
+        "name": "normal",
+        "values": [2, 2]
+      },
+      {
+        "name": "good",
+        "values": [3, 3]
+      },
+      {
+        "name": "heavy",
+        "values": [4, 4]
+      },
+      {
+        "name": "massive",
+        "values": [5, 5]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Kamikaze",
+    "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your hobos.",
+    "suffixes": [{
+        "name": "fearful",
+        "values": [1, 1]
+      },
+      {
+        "name": "clumsy",
+        "values": [2, 2]
+      },
+      {
+        "name": "zealot",
+        "values": [3, 3]
+      },
+      {
+        "name": "valiant",
+        "values": [4, 4]
+      },
+      {
+        "name": "fanatic",
+        "values": [5, 5]
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Sword Master",
+    "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your knifers.",
+    "suffixes": [{
+        "name": "useless",
+        "values": [1, 1]
+      },
+      {
+        "name": "reliable",
+        "values": [2, 2]
+      },
+      {
+        "name": "sharp",
+        "values": [3, 3]
+      },
+      {
+        "name": "nasty",
+        "values": [4, 4]
+      },
+      {
+        "name": "terrorizing",
+        "values": [5, 5]
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Master of weapons",
+    "description": "All your units with weapon damage type makes +$$value1$$ weapon damage.",
+    "suffixes": [{
+        "name": "brawler",
+        "values": [1]
+      },
+      {
+        "name": "soldier",
+        "values": [2]
+      },
+      {
+        "name": "lord",
+        "values": [3]
+      },
+      {
+        "name": "king",
+        "values": [4]
+      },
+      {
+        "name": "master",
+        "values": [5]
+      }
+    ]
+  }
+]

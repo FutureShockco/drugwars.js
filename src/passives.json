@@ -1,8 +1,28 @@
 {
-  "gang": [
-    {
+  "gang": [{
       "name": "Untouched",
-      "description": "Attacker's will be cursed and suffer reduced damage for the turn."
+      "description": "Attacker's will be cursed and suffer reduced $$value1$$ % damage for the turn.",
+      "suffixes": [{
+          "name": "of impurity",
+          "values": [1]
+        },
+        {
+          "name": "of nausea",
+          "values": [2]
+        },
+        {
+          "name": "of ugliness",
+          "values": [3]
+        },
+        {
+          "name": "of morbidity",
+          "values": [4]
+        },
+        {
+          "name": "of atrocity",
+          "values": [5]
+        }
+      ]
     },
     {
       "name": "Counter Attack",
@@ -37,8 +57,7 @@
       "description": "Double the bonus of the lawyers."
     }
   ],
-  "mafia": [
-    {
+  "mafia": [{
       "name": "Vengeance Aura",
       "description": "An aura that increases the attack damage of nearby friendly units. If Venge dies, damage bonus will double."
     },
@@ -71,8 +90,7 @@
       "description": "Double the bonus of the ninjas."
     }
   ],
-  "cartel": [
-    {
+  "cartel": [{
       "name": "Faulty Vest",
       "description": "Enemies mercenaries can't user their bulletproofs."
     },

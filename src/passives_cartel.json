@@ -1,0 +1,157 @@
+[{
+    "id": 1,
+    "name": "Demoralize",
+    "description": "Reduce the offensive power of your enemy by $$value1$$ %.",
+    "suffixes": [{
+        "name": "tender",
+        "values": [1]
+      },
+      {
+        "name": "frightful",
+        "values": [2]
+      },
+      {
+        "name": "strict",
+        "values": [3]
+      },
+      {
+        "name": "bossy",
+        "values": [4]
+      },
+      {
+        "name": "superior",
+        "values": [5]
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Drugs are the best",
+    "description": "When victorius, obtain $$value1$$ % bonus on drugs loot.",
+    "suffixes": [{
+        "name": "ruined",
+        "values": [1]
+      },
+      {
+        "name": "ease",
+        "values": [2]
+      },
+      {
+        "name": "glorious",
+        "values": [3]
+      },
+      {
+        "name": "rich",
+        "values": [4]
+      },
+      {
+        "name": "wealthy",
+        "values": [5]
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Mama Lova",
+    "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your big mamas.",
+    "suffixes": [{
+        "name": "clumsy",
+        "values": [1, 1]
+      },
+      {
+        "name": "trusty",
+        "values": [2, 2]
+      },
+      {
+        "name": "witty",
+        "values": [3, 3]
+      },
+      {
+        "name": "dear",
+        "values": [4, 4]
+      },
+      {
+        "name": "daddy",
+        "values": [5, 5]
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Commander",
+    "description": "Grant bonus $$value1$$ HP and $$value2$$ damage to all your mercenaries.",
+    "suffixes": [{
+        "name": "bronze",
+        "values": [1, 1]
+      },
+      {
+        "name": "silver",
+        "values": [2, 2]
+      },
+      {
+        "name": "gold",
+        "values": [3, 3]
+      },
+      {
+        "name": "platinum",
+        "values": [4, 4]
+      },
+      {
+        "name": "diamond",
+        "values": [5, 5]
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Master of toxin",
+    "description": "All your units with chemical damage type makes +$$value1$$ chemical damage.",
+    "suffixes": [{
+        "name": "weird",
+        "values": [1]
+      },
+      {
+        "name": "cynical",
+        "values": [2]
+      },
+      {
+        "name": "mighty",
+        "values": [3]
+      },
+      {
+        "name": "unethical",
+        "values": [4]
+      },
+      {
+        "name": "paranormal",
+        "values": [5]
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Master of physic",
+    "description": "All your units with physical damage type makes +$$value1$$ physical damage.",
+    "suffixes": [{
+        "name": "lazy",
+        "values": [1]
+      },
+      {
+        "name": "humble",
+        "values": [2]
+      },
+      {
+        "name": "loyal",
+        "values": [3]
+      },
+      {
+        "name": "brutal",
+        "values": [4]
+      },
+      {
+        "name": "merciless",
+        "values": [5]
+      }
+    ]
+  }
+]
