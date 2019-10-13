@@ -5,26 +5,26 @@
     "description": "Reflect opponent hit with the shield making all enemies around receive $$value1$$ % of the damage.",
     "targets": ["Self"],
     "suffixes": [{
-      "name": "of protection",
-      "values": [3]
-    },
-    {
-      "name": "of defense",
-      "values": [5]
-    },
-    {
-      "name": "of block",
-      "values": [8]
-    },
-    {
-      "name": "of reverberation",
-      "values": [10]
-    },
-    {
-      "name": "of reflection",
-      "values": [15]
-    }
-  ]
+        "name": "of protection",
+        "values": [3]
+      },
+      {
+        "name": "of defense",
+        "values": [5]
+      },
+      {
+        "name": "of block",
+        "values": [8]
+      },
+      {
+        "name": "of reverberation",
+        "values": [10]
+      },
+      {
+        "name": "of reflection",
+        "values": [15]
+      }
+    ]
   },
   {
     "id": 2,
@@ -34,26 +34,26 @@
     "targets": ["Spot", "Enemy"],
     "aoe": "Radial",
     "suffixes": [{
-      "name": "of weaponry",
-      "values": [2,10,2]
-    },
-    {
-      "name": "of detonation",
-      "values": [2,15,2]
-    },
-    {
-      "name": "of artillery",
-      "values": [3,20,2]
-    },
-    {
-      "name": "of explosion",
-      "values": [3,30,3]
-    },
-    {
-      "name": "of destruction",
-      "values": [3,50,4]
-    }
-  ]
+        "name": "of weaponry",
+        "values": [2, 10, 2]
+      },
+      {
+        "name": "of detonation",
+        "values": [2, 15, 2]
+      },
+      {
+        "name": "of artillery",
+        "values": [3, 20, 2]
+      },
+      {
+        "name": "of explosion",
+        "values": [3, 30, 3]
+      },
+      {
+        "name": "of destruction",
+        "values": [3, 50, 4]
+      }
+    ]
   },
   {
     "id": 3,
@@ -62,26 +62,26 @@
     "description": "Ties the target to an enemy unit behind it for $$value1$$ turn. If no unit is present, the stun duration is halved.",
     "targets": ["Enemy"],
     "suffixes": [{
-      "name": "of archery",
-      "values": [1]
-    },
-    {
-      "name": "of dexterity",
-      "values": [2]
-    },
-    {
-      "name": "of precision",
-      "values": [3]
-    },
-    {
-      "name": "of accuracy",
-      "values": [4]
-    },
-    {
-      "name": "of eagles",
-      "values": [5]
-    }
-  ]
+        "name": "of archery",
+        "values": [1]
+      },
+      {
+        "name": "of dexterity",
+        "values": [2]
+      },
+      {
+        "name": "of precision",
+        "values": [3]
+      },
+      {
+        "name": "of accuracy",
+        "values": [4]
+      },
+      {
+        "name": "of eagles",
+        "values": [5]
+      }
+    ]
   },
   {
     "id": 4,
@@ -91,26 +91,26 @@
     "targets": ["Spot", "Enemy"],
     "aoe": "Linear",
     "suffixes": [{
-      "name": "of hunting",
-      "values": [1,2]
-    },
-    {
-      "name": "of assault",
-      "values": [2,2]
-    },
-    {
-      "name": "of chevy",
-      "values": [3,3]
-    },
-    {
-      "name": "of recidive",
-      "values": [4,3]
-    },
-    {
-      "name": "of fragmentation",
-      "values": [5,4]
-    }
-  ]
+        "name": "of hunting",
+        "values": [1, 2]
+      },
+      {
+        "name": "of assault",
+        "values": [2, 2]
+      },
+      {
+        "name": "of chevy",
+        "values": [3, 3]
+      },
+      {
+        "name": "of recidive",
+        "values": [4, 3]
+      },
+      {
+        "name": "of fragmentation",
+        "values": [5, 4]
+      }
+    ]
   },
   {
     "id": 5,
@@ -119,26 +119,26 @@
     "description": "This hero becomes invisible and gains bonus speed and damage for $$value1$$ turn.",
     "targets": ["Self"],
     "suffixes": [{
-      "name": "of vanishing",
-      "values": [1]
-    },
-    {
-      "name": "of dissolution",
-      "values": [2]
-    },
-    {
-      "name": "of invisibility",
-      "values": [3]
-    },
-    {
-      "name": "of disappearance",
-      "values": [4]
-    },
-    {
-      "name": "of ghost",
-      "values": [5]
-    }
-  ]
+        "name": "of vanishing",
+        "values": [1]
+      },
+      {
+        "name": "of dissolution",
+        "values": [2]
+      },
+      {
+        "name": "of invisibility",
+        "values": [3]
+      },
+      {
+        "name": "of disappearance",
+        "values": [4]
+      },
+      {
+        "name": "of ghost",
+        "values": [5]
+      }
+    ]
   },
   {
     "id": 6,
@@ -148,26 +148,26 @@
     "targets": ["Enemy", "Ally"],
     "aoe": "Radial",
     "suffixes": [{
-      "name": "of swap",
-      "values": [1]
-    },
-    {
-      "name": "of transfer",
-      "values": [2]
-    },
-    {
-      "name": "of flip",
-      "values": [3]
-    },
-    {
-      "name": "of psychokinesis",
-      "values": [4]
-    },
-    {
-      "name": "of quantum",
-      "values": [5]
-    }
-  ]
+        "name": "of swap",
+        "values": [1]
+      },
+      {
+        "name": "of transfer",
+        "values": [2]
+      },
+      {
+        "name": "of flip",
+        "values": [3]
+      },
+      {
+        "name": "of psychokinesis",
+        "values": [4]
+      },
+      {
+        "name": "of quantum",
+        "values": [5]
+      }
+    ]
   },
   {
     "id": 7,
@@ -176,26 +176,26 @@
     "description": "Increases the attack and armor of all units by $$value1$$ %.",
     "targets": ["Self"],
     "suffixes": [{
-      "name": "of gnarl",
-      "values": [2]
-    },
-    {
-      "name": "of scandal",
-      "values": [3]
-    },
-    {
-      "name": "of power",
-      "values": [5]
-    },
-    {
-      "name": "of spite",
-      "values": [7]
-    },
-    {
-      "name": "of madness",
-      "values": [10]
-    }
-  ]
+        "name": "of gnarl",
+        "values": [2]
+      },
+      {
+        "name": "of scandal",
+        "values": [3]
+      },
+      {
+        "name": "of power",
+        "values": [5]
+      },
+      {
+        "name": "of spite",
+        "values": [7]
+      },
+      {
+        "name": "of madness",
+        "values": [10]
+      }
+    ]
   },
   {
     "id": 8,
@@ -204,26 +204,26 @@
     "description": "Weakens enemy armor by $$value1$$ %.",
     "targets": ["Enemy"],
     "suffixes": [{
-      "name": "of decay",
-      "values": [2]
-    },
-    {
-      "name": "of bribery",
-      "values": [3]
-    },
-    {
-      "name": "of depravity",
-      "values": [5]
-    },
-    {
-      "name": "of cripple",
-      "values": [7]
-    },
-    {
-      "name": "of squalor",
-      "values": [10]
-    }
-  ]
+        "name": "of decay",
+        "values": [2]
+      },
+      {
+        "name": "of bribery",
+        "values": [3]
+      },
+      {
+        "name": "of depravity",
+        "values": [5]
+      },
+      {
+        "name": "of cripple",
+        "values": [7]
+      },
+      {
+        "name": "of squalor",
+        "values": [10]
+      }
+    ]
   },
   {
     "id": 9,
@@ -232,26 +232,26 @@
     "description": "All player heroes will become invisible for $$value1$$ turn.",
     "targets": ["Self"],
     "suffixes": [{
-      "name": "of shade",
-      "values": [1]
-    },
-    {
-      "name": "of darkness",
-      "values": [2]
-    },
-    {
-      "name": "of spectre",
-      "values": [3]
-    },
-    {
-      "name": "of phantom",
-      "values": [4]
-    },
-    {
-      "name": "of darkness",
-      "values": [5]
-    }
-  ]
+        "name": "of shade",
+        "values": [1]
+      },
+      {
+        "name": "of darkness",
+        "values": [2]
+      },
+      {
+        "name": "of spectre",
+        "values": [3]
+      },
+      {
+        "name": "of phantom",
+        "values": [4]
+      },
+      {
+        "name": "of darkness",
+        "values": [5]
+      }
+    ]
   },
   {
     "id": 10,
@@ -260,26 +260,26 @@
     "description": "Prevents movement and attack while dealing $$value1$$ damage over $$value2$$ turn. Interrupts target channel.",
     "targets": ["Enemy"],
     "suffixes": [{
-      "name": "of lockup",
-      "values": [4,1]
-    },
-    {
-      "name": "of trap",
-      "values": [8,2]
-    },
-    {
-      "name": "of jail",
-      "values": [16,2]
-    },
-    {
-      "name": "of gaol",
-      "values": [20,3]
-    },
-    {
-      "name": "of detention",
-      "values": [30,4]
-    }
-  ]
+        "name": "of lockup",
+        "values": [4, 1]
+      },
+      {
+        "name": "of trap",
+        "values": [8, 2]
+      },
+      {
+        "name": "of jail",
+        "values": [16, 2]
+      },
+      {
+        "name": "of gaol",
+        "values": [20, 3]
+      },
+      {
+        "name": "of detention",
+        "values": [30, 4]
+      }
+    ]
   },
   {
     "id": 11,
@@ -289,26 +289,26 @@
     "targets": ["Spot", "Enemy"],
     "aoe": "Linear",
     "suffixes": [{
-      "name": "of storm",
-      "values": [4]
-    },
-    {
-      "name": "of bust",
-      "values": [8]
-    },
-    {
-      "name": "of war",
-      "values": [16]
-    },
-    {
-      "name": "of massdeath",
-      "values": [20]
-    },
-    {
-      "name": "of extinction",
-      "values": [30]
-    }
-  ]
+        "name": "of storm",
+        "values": [4]
+      },
+      {
+        "name": "of bust",
+        "values": [8]
+      },
+      {
+        "name": "of war",
+        "values": [16]
+      },
+      {
+        "name": "of massdeath",
+        "values": [20]
+      },
+      {
+        "name": "of extinction",
+        "values": [30]
+      }
+    ]
   },
   {
     "id": 12,
@@ -318,25 +318,25 @@
     "targets": ["Spot", "Enemy"],
     "aoe": "Linear",
     "suffixes": [{
-      "name": "of reduction",
-      "values": [4,1]
-    },
-    {
-      "name": "of anarchy",
-      "values": [8,2]
-    },
-    {
-      "name": "of violation",
-      "values": [16,2]
-    },
-    {
-      "name": "of wipe",
-      "values": [20,3]
-    },
-    {
-      "name": "of eradication",
-      "values": [30,3]
-    }
-  ]
+        "name": "of reduction",
+        "values": [4, 1]
+      },
+      {
+        "name": "of anarchy",
+        "values": [8, 2]
+      },
+      {
+        "name": "of violation",
+        "values": [16, 2]
+      },
+      {
+        "name": "of wipe",
+        "values": [20, 3]
+      },
+      {
+        "name": "of eradication",
+        "values": [30, 3]
+      }
+    ]
   }
 ]

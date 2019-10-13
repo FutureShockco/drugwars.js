@@ -149,23 +149,23 @@
      "aoe": "Radial",
      "suffixes": [{
          "name": "of breeze",
-         "values": [2,2]
+         "values": [2, 2]
        },
        {
          "name": "of wind",
-         "values": [4,2]
+         "values": [4, 2]
        },
        {
          "name": "of gust",
-         "values": [6,2]
+         "values": [6, 2]
        },
        {
          "name": "of squall",
-         "values": [8,3]
+         "values": [8, 3]
        },
        {
          "name": "of tempest",
-         "values": [10,4]
+         "values": [10, 4]
        }
      ]
    },
@@ -234,23 +234,23 @@
      "aoe": "Radial",
      "suffixes": [{
          "name": "of fame",
-         "values": [2,4]
+         "values": [2, 4]
        },
        {
          "name": "of infamy",
-         "values": [4,6]
+         "values": [4, 6]
        },
        {
          "name": "of glory",
-         "values": [6,8]
+         "values": [6, 8]
        },
        {
          "name": "of victory",
-         "values": [8,6]
+         "values": [8, 6]
        },
        {
          "name": "of gods",
-         "values": [10,10]
+         "values": [10, 10]
        }
      ]
    },

@@ -5,26 +5,26 @@
      "description": "Put into sleep a single target for $$value1$$ turn.",
      "targets": ["Enemy"],
      "suffixes": [{
-        "name": "of impurity",
-        "values": [1]
-      },
-      {
-        "name": "of nausea",
-        "values": [2]
-      },
-      {
-        "name": "of ugliness",
-        "values": [3]
-      },
-      {
-        "name": "of morbidity",
-        "values": [4]
-      },
-      {
-        "name": "of atrocity",
-        "values": [5]
-      }
-    ]
+         "name": "of impurity",
+         "values": [1]
+       },
+       {
+         "name": "of nausea",
+         "values": [2]
+       },
+       {
+         "name": "of ugliness",
+         "values": [3]
+       },
+       {
+         "name": "of morbidity",
+         "values": [4]
+       },
+       {
+         "name": "of atrocity",
+         "values": [5]
+       }
+     ]
    },
    {
      "id": 2,
@@ -63,23 +63,23 @@
      "aoe": "Radial",
      "suffixes": [{
          "name": "of blight",
-         "values": [6,2]
+         "values": [6, 2]
        },
        {
          "name": "of corrosion",
-         "values": [10,3]
+         "values": [10, 3]
        },
        {
          "name": "of alteration",
-         "values": [20,5]
+         "values": [20, 5]
        },
        {
          "name": "of decadence",
-         "values": [30,6]
+         "values": [30, 6]
        },
        {
          "name": "of degeneration",
-         "values": [50,8]
+         "values": [50, 8]
        }
      ]
    },
@@ -89,85 +89,85 @@
      "title": "Chemical Fall",
      "description": "Deal $$value1$$ damages to $$value2$$ enemies in the area. One random enemy will be hit twice.",
      "targets": ["Enemy"],
-     "aoe": "Radial",  
+     "aoe": "Radial",
      "suffixes": [{
-        "name": "of dirt",
-        "values": [6,2]
-      },
-      {
-        "name": "of polution",
-        "values": [10,3]
-      },
-      {
-        "name": "of gas",
-        "values": [20,5]
-      },
-      {
-        "name": "of intoxication",
-        "values": [30,6]
-      },
-      {
-        "name": "of chemtrails",
-        "values": [50,8]
-      }
-    ]
+         "name": "of dirt",
+         "values": [6, 2]
+       },
+       {
+         "name": "of polution",
+         "values": [10, 3]
+       },
+       {
+         "name": "of gas",
+         "values": [20, 5]
+       },
+       {
+         "name": "of intoxication",
+         "values": [30, 6]
+       },
+       {
+         "name": "of chemtrails",
+         "values": [50, 8]
+       }
+     ]
    },
    {
      "id": 5,
      "name": "biodegredation",
      "title": "Biodegredation",
      "description": "Inflict $$value1$$ to a target enemy then slows and deals $$value2$$ damage over $$value3$$ turn.",
-     "targets": ["Enemy"],  
+     "targets": ["Enemy"],
      "suffixes": [{
-        "name": "of spoilage",
-        "values": [6,2,1]
-      },
-      {
-        "name": "of senescence",
-        "values": [10,3,1]
-      },
-      {
-        "name": "of decomposition",
-        "values": [20,5,2]
-      },
-      {
-        "name": "of decrepitude",
-        "values": [30,6,3]
-      },
-      {
-        "name": "of putrefaction",
-        "values": [50,8,3]
-      }
-    ]
+         "name": "of spoilage",
+         "values": [6, 2, 1]
+       },
+       {
+         "name": "of senescence",
+         "values": [10, 3, 1]
+       },
+       {
+         "name": "of decomposition",
+         "values": [20, 5, 2]
+       },
+       {
+         "name": "of decrepitude",
+         "values": [30, 6, 3]
+       },
+       {
+         "name": "of putrefaction",
+         "values": [50, 8, 3]
+       }
+     ]
    },
    {
      "id": 6,
      "name": "toxic_pills",
      "title": "Toxic pills",
      "description": "A peaceful way to puts $$value1$$ enemies to sleep for $$value2$$ turn.",
-     "targets": ["Spot", "Self","Enemy"],
+     "targets": ["Spot", "Self", "Enemy"],
      "aoe": "Radial",
      "suffixes": [{
-        "name": "of rest",
-        "values": [1,1]
-      },
-      {
-        "name": "of slumber",
-        "values": [1,2]
-      },
-      {
-        "name": "of narcolepsy",
-        "values": [2,2]
-      },
-      {
-        "name": "of toxin",
-        "values": [3,2]
-      },
-      {
-        "name": "of coma",
-        "values": [3,3]
-      }
-    ]
+         "name": "of rest",
+         "values": [1, 1]
+       },
+       {
+         "name": "of slumber",
+         "values": [1, 2]
+       },
+       {
+         "name": "of narcolepsy",
+         "values": [2, 2]
+       },
+       {
+         "name": "of toxin",
+         "values": [3, 2]
+       },
+       {
+         "name": "of coma",
+         "values": [3, 3]
+       }
+     ]
    },
    {
      "id": 7,
@@ -177,26 +177,26 @@
      "targets": ["Spot", "Enemy"],
      "aoe": "Radial",
      "suffixes": [{
-        "name": "of slug",
-        "values": [2,1]
-      },
-      {
-        "name": "of leisure",
-        "values": [3,2]
-      },
-      {
-        "name": "of idleness",
-        "values": [4,3]
-      },
-      {
-        "name": "of sloth",
-        "values": [4,4]
-      },
-      {
-        "name": "of swarm",
-        "values": [4,5]
-      }
-    ]
+         "name": "of slug",
+         "values": [2, 1]
+       },
+       {
+         "name": "of leisure",
+         "values": [3, 2]
+       },
+       {
+         "name": "of idleness",
+         "values": [4, 3]
+       },
+       {
+         "name": "of sloth",
+         "values": [4, 4]
+       },
+       {
+         "name": "of swarm",
+         "values": [4, 5]
+       }
+     ]
    },
    {
      "id": 8,
@@ -205,26 +205,26 @@
      "description": "Attack a target enemy with $$value1$$ damage and deal a bonus damage equal to twice the distance.",
      "targets": ["Enemy"],
      "suffixes": [{
-        "name": "of fever",
-        "values": [5]
-      },
-      {
-        "name": "of stale",
-        "values": [10]
-      },
-      {
-        "name": "of pain",
-        "values": [15]
-      },
-      {
-        "name": "of virulence",
-        "values": [20]
-      },
-      {
-        "name": "of cyanide",
-        "values": [25]
-      }
-    ]
+         "name": "of fever",
+         "values": [5]
+       },
+       {
+         "name": "of stale",
+         "values": [10]
+       },
+       {
+         "name": "of pain",
+         "values": [15]
+       },
+       {
+         "name": "of virulence",
+         "values": [20]
+       },
+       {
+         "name": "of cyanide",
+         "values": [25]
+       }
+     ]
    },
    {
      "id": 9,
@@ -234,26 +234,26 @@
      "targets": ["Spot", "Enemy"],
      "aoe": "Radial",
      "suffixes": [{
-        "name": "of sickness",
-        "values": [4]
-      },
-      {
-        "name": "of stink",
-        "values": [8]
-      },
-      {
-        "name": "of disease",
-        "values": [16]
-      },
-      {
-        "name": "of acid",
-        "values": [20]
-      },
-      {
-        "name": "of gangrene",
-        "values": [30]
-      }
-    ]
+         "name": "of sickness",
+         "values": [4]
+       },
+       {
+         "name": "of stink",
+         "values": [8]
+       },
+       {
+         "name": "of disease",
+         "values": [16]
+       },
+       {
+         "name": "of acid",
+         "values": [20]
+       },
+       {
+         "name": "of gangrene",
+         "values": [30]
+       }
+     ]
    },
    {
      "id": 10,
@@ -262,26 +262,26 @@
      "description": "Attack an enemy. If he die, make it explode with $$value1$$ damage and poison nearby units.",
      "targets": ["Enemy"],
      "suffixes": [{
-        "name": "of incubation",
-        "values": [4]
-      },
-      {
-        "name": "of comtamination",
-        "values": [8]
-      },
-      {
-        "name": "of contagion",
-        "values": [16]
-      },
-      {
-        "name": "of pandemic",
-        "values": [20]
-      },
-      {
-        "name": "of epidemic",
-        "values": [30]
-      }
-    ]
+         "name": "of incubation",
+         "values": [4]
+       },
+       {
+         "name": "of comtamination",
+         "values": [8]
+       },
+       {
+         "name": "of contagion",
+         "values": [16]
+       },
+       {
+         "name": "of pandemic",
+         "values": [20]
+       },
+       {
+         "name": "of epidemic",
+         "values": [30]
+       }
+     ]
    },
    {
      "id": 11,
@@ -290,26 +290,26 @@
      "description": "Exchanges $$value1$$ toxic attacks with a target enemy. If anyone dies, the killer gains $$value2$$ permanent bonus damage",
      "targets": ["Enemy"],
      "suffixes": [{
-        "name": "of neurotoxin",
-        "values": [2,10]
-      },
-      {
-        "name": "of parasite",
-        "values": [2,20]
-      },
-      {
-        "name": "of death",
-        "values": [3,30]
-      },
-      {
-        "name": "of mutation",
-        "values": [3,40]
-      },
-      {
-        "name": "of evolution",
-        "values": [4,50]
-      }
-    ]
+         "name": "of neurotoxin",
+         "values": [2, 10]
+       },
+       {
+         "name": "of parasite",
+         "values": [2, 20]
+       },
+       {
+         "name": "of death",
+         "values": [3, 30]
+       },
+       {
+         "name": "of mutation",
+         "values": [3, 40]
+       },
+       {
+         "name": "of evolution",
+         "values": [4, 50]
+       }
+     ]
    },
    {
      "id": 12,
@@ -318,25 +318,25 @@
      "description": "Release a ring of chemical effluvium causing $$value1$$ damage to all enemies.",
      "targets": ["Self"],
      "suffixes": [{
-        "name": "of frowst",
-        "values": [4]
-      },
-      {
-        "name": "of disaster",
-        "values": [8]
-      },
-      {
-        "name": "of plague",
-        "values": [16]
-      },
-      {
-        "name": "of nova",
-        "values": [20]
-      },
-      {
-        "name": "of radiation",
-        "values": [30]
-      }
-    ]
+         "name": "of frowst",
+         "values": [4]
+       },
+       {
+         "name": "of disaster",
+         "values": [8]
+       },
+       {
+         "name": "of plague",
+         "values": [16]
+       },
+       {
+         "name": "of nova",
+         "values": [20]
+       },
+       {
+         "name": "of radiation",
+         "values": [30]
+       }
+     ]
    }
  ]
