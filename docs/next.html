@@ -293,7 +293,7 @@
           if (window.location.href.indexOf('/?') > 0) {
             const toParse = window.location.href.split('?')[1]
             const elements = toParse.split(',')
-
+            this.defender_type = elements.splice(0,1)
             Object.keys(drugwars.units).forEach(unit => {
                 elements.find(element => {
                   let player = parseInt(element.split('=')[1].split('&')[0])
