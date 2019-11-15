@@ -289,12 +289,10 @@
           let targetUnits = [];
           let attackerTrainings = [];
           let targetTrainings = [];
-          console.log(window.location.href)
           if (window.location.href.indexOf('?') > 0) {
             const toParse = window.location.href.split('?')[1]
             const elements = toParse.split(',')
             this.defender_type = elements.splice(0,1)[0]
-            console.log(this.defender_type);
             Object.keys(drugwars.units).forEach(unit => {
 
                 elements.find(element => {
