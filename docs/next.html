@@ -289,19 +289,23 @@
           let targetUnits = [];
           let attackerTrainings = [];
           let targetTrainings = [];
-          if (window.location.href.indexOf('/?') > 0) {
+          console.log(window.location.href)
+          if (window.location.href.indexOf('?') > 0) {
             const toParse = window.location.href.split('?')[1]
             const elements = toParse.split(',')
             this.defender_type = elements.splice(0,1)[0]
             console.log(this.defender_type);
             Object.keys(drugwars.units).forEach(unit => {
+
                 elements.find(element => {
                   let player = parseInt(element.split('=')[1].split('&')[0])
                   let type = element.split('=')[2].split('&')[0]
                   let amount =  parseInt(element.split('=')[3].split('&')[0])
                     if(unit === type && player === 1)
                     attackerUnits.push({key:type,amount:amount});
-                    if(unit === type && player === 2)
+                    if(unit === type && this.defender_type === 'npc' && drugwars.units[type].npc)
+                      targetUnits.push({id:type,key:type,amount:amount});
+                    else if(unit === type && player === 2)
                     targetUnits.push({key:type,amount:amount});
                   });
             });
@@ -309,7 +313,9 @@
             Object.keys(drugwars.units).forEach(unit => {
                     if(!attackerUnits.filter(item => item.key === unit)[0] && !drugwars.units[unit].npc)
                     attackerUnits.push({key:unit,amount:0});
-                    if(!targetUnits.filter(item => item.key === unit)[0] && !drugwars.units[unit].npc)
+                    if(this.defender_type === 'npc' && !targetUnits.filter(item => item.key === unit)[0] && drugwars.units[unit].npc)
+                    targetUnits.push({key:unit,amount:0});
+                    else if(this.defender_type === 'player' && !targetUnits.filter(item => item.key === unit)[0] && !drugwars.units[unit].npc)
                     targetUnits.push({key:unit,amount:0});
             });
 
