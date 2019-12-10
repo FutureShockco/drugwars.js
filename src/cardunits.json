@@ -87,7 +87,7 @@
         "speed": 9,
         "range": 5,
         "time": 102,
-        "capacity": 200,
+        "capacity": 10000,
         "supply": 3,
         "priority": 75,
         "coeff": 1.28,
