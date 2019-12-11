@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.1.21"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.1.33"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -16,7 +16,7 @@
     <div class="mt-2">
       <h3 class="mb-4 pt-3">
         <img src="https://drugwars.io/img/drugwars.png">
-        DrugWars fight simulator v0.1.21
+        DrugWars Fight Simulator v0.1.33
       </h3>
       <div class="my-4 columns px-0">
           <div class="column col-5 px-0">
@@ -50,7 +50,7 @@
                   <input v-model="unit.amount" type="number" class="form-control mb-2 width-full" /></input>
                 </div>
                 <h3 v-if="defender_type === 'player'" class="text-blue mb-2  width-full">TRAININGS</h3>
-                <div v-if="defender_type === 'player'" class="column col-3 unitname" v-for="training in defendertrainings" :key="training.key" v-if="training.key != 'routing' && training.key != 'information'">
+                <div v-if="defender_type === 'player' && training.key != 'routing' && training.key != 'information'" class="column col-3 unitname" v-for="training in defendertrainings" :key="training.key">
                     <img :src="`//img.drugwars.io/trainings/${training.key}.jpg`" width="40" height="40" align="absmiddle">
                     <div>{{ training.key }}</div>
                     <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
@@ -275,7 +275,7 @@
         data: {
           attacker: null,
           defender:null,
-          defender_type:null,
+          defender_type:'player',
           attackertrainings: null,
           defendertrainings: null,
           error: null,
@@ -373,17 +373,17 @@
             const targetUnits = defenders;
             const attackersTrainings = this.attackertrainings;
             const defendersTrainings = this.defendertrainings;
+            console.log(attackersTrainings,defendersTrainings)
             const json = {
               attacker: { units: attackerUnits, trainings:attackersTrainings , buildings:[]},
               target: { units: targetUnits , trainings:defendersTrainings, buildings:[]}
             };
             this.json = json
-            const fight = new drugwars.Fight(json);
-            const result = fight.fight();
-            this.result = result;
-            console.log('Result', result);
+            const fight = new drugwars.Fight(json).fight();
+            this.result = fight;
+            console.log('Result', this.result);
             this.details = false
-            this.log = fight.getLog();
+            this.log = new drugwars.Fight(json).getLog();
           },
           handleReset: function () {
           let targetUnits = [];

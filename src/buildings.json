@@ -12,7 +12,8 @@
     "base_price": 25,
     "coeff": 4,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "training_facility": {
     "id": "training_facility",
@@ -27,7 +28,8 @@
     "base_price": 250,
     "coeff": 1.5,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "operation_center": {
     "id": "operation_center",
@@ -42,7 +44,8 @@
     "base_price": 300,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "pantheon": {
     "id": "pantheon",
@@ -57,7 +60,8 @@
     "base_price": 300,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "research_center": {
     "id": "research_center",
@@ -72,7 +76,24 @@
     "base_price": 250,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
+  },
+  "strategic_center": {
+    "id": "strategic_center",
+    "type": "main",
+    "score": 15,
+    "name": "Strategic Center",
+    "desc": "The Strategic Center decrease the waiting time of jobs. The time in which each jobs will be reset will depend on the level of the strategic center.",
+    "feature": "Decrease the time required to restart a job",
+    "drugs_cost": 1000,
+    "weapons_cost": 2500,
+    "alcohols_cost": 1500,
+    "base_price": 250,
+    "coeff": 4,
+    "attack": 0,
+    "defense": 0,
+    "pay":false
   },
   "crackhouse": {
     "id": "crackhouse",
@@ -88,7 +109,8 @@
     "base_price": 250,
     "coeff": 2,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "hydrofarm": {
     "id": "hydrofarm",
@@ -104,7 +126,8 @@
     "base_price": 250,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "meth_lab": {
     "id": "meth_lab",
@@ -120,7 +143,8 @@
     "base_price": 250,
     "coeff": 4,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "cocina": {
     "id": "cocina",
@@ -136,7 +160,8 @@
     "base_price": 250,
     "coeff": 6,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "pharma_lab": {
     "id": "pharma_lab",
@@ -152,7 +177,8 @@
     "base_price": 250,
     "coeff": 8,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "drug_storage": {
     "id": "drug_storage",
@@ -166,7 +192,8 @@
     "base_price": 250,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "ammunition": {
     "id": "ammunition",
@@ -182,7 +209,8 @@
     "base_price": 250,
     "coeff": 2,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "weapon_factory": {
     "id": "weapon_factory",
@@ -198,7 +226,8 @@
     "base_price": 250,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "smuggle": {
     "id": "smuggle",
@@ -214,7 +243,8 @@
     "base_price": 250,
     "coeff": 4,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "blackmarket": {
     "id": "blackmarket",
@@ -230,7 +260,8 @@
     "base_price": 250,
     "coeff": 6,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "metalprint": {
     "id": "metalprint",
@@ -246,7 +277,8 @@
     "base_price": 250,
     "coeff": 8,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "weapon_storage": {
     "id": "weapon_storage",
@@ -260,7 +292,8 @@
     "base_price": 250,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "t_distillery": {
     "id": "t_distillery",
@@ -276,7 +309,8 @@
     "base_price": 250,
     "coeff": 2,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "bar": {
     "id": "bar",
@@ -292,7 +326,8 @@
     "base_price": 250,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "brewery": {
     "id": "brewery",
@@ -308,7 +343,8 @@
     "base_price": 250,
     "coeff": 4,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "castle": {
     "id": "castle",
@@ -324,7 +360,8 @@
     "base_price": 250,
     "coeff": 6,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "industrial_distillery": {
     "id": "industrial_distillery",
@@ -340,7 +377,8 @@
     "base_price": 250,
     "coeff": 8,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "alcohol_storage": {
     "id": "alcohol_storage",
@@ -354,7 +392,8 @@
     "base_price": 250,
     "coeff": 3,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "camera": {
     "id": "camera",
@@ -369,7 +408,8 @@
     "alcohols_cost": 500,
     "coeff": 1,
     "attack": 0,
-    "defense": 15
+    "defense": 15,
+    "pay":false
   },
   "dogs": {
     "id": "dogs",
@@ -384,7 +424,8 @@
     "alcohols_cost": 500,
     "coeff": 3,
     "attack": 25,
-    "defense": 15
+    "defense": 15,
+    "pay":false
   },
   "defense_troop": {
     "id": "defense_troop",
@@ -399,7 +440,8 @@
     "alcohols_cost": 500,
     "coeff": 3,
     "attack": 50,
-    "defense": 60
+    "defense": 60,
+    "pay":false
   },
   "defense_system": {
     "id": "defense_system",
@@ -414,7 +456,8 @@
     "alcohols_cost": 500,
     "coeff": 5,
     "attack": 75,
-    "defense": 120
+    "defense": 120,
+    "pay":false
   },
   "hidden_mines": {
     "id": "hidden_mines",
@@ -429,7 +472,8 @@
     "alcohols_cost": 500,
     "coeff": 10,
     "attack": 100,
-    "defense": 5
+    "defense": 5,
+    "pay":false
   },
   "gang_hq": {
     "id": "gang_hq",
@@ -445,7 +489,8 @@
     "base_price": 25,
     "coeff": 4,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "embassy": {
     "id": "embassy",
@@ -461,7 +506,8 @@
     "base_price": 25,
     "coeff": 2,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "academy": {
     "id": "academy",
@@ -477,7 +523,8 @@
     "base_price": 25,
     "coeff": 5,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "exchange": {
     "id": "exchange",
@@ -493,7 +540,8 @@
     "base_price": 25,
     "coeff": 10,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "scientific_lab": {
     "id": "scientific_lab",
@@ -509,7 +557,8 @@
     "base_price": 25,
     "coeff": 7,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "weapon_center": {
     "id": "weapon_center",
@@ -525,7 +574,8 @@
     "base_price": 25,
     "coeff": 5,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   },
   "distillery_school": {
     "id": "distillery_school",
@@ -541,6 +591,7 @@
     "base_price": 25,
     "coeff": 6,
     "attack": 0,
-    "defense": 0
+    "defense": 0,
+    "pay":false
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "drugwars",
-  "version": "0.1.27",
+  "version": "0.1.33",
   "description": "A lightweight JavaScript library for DrugWars",
   "main": "lib/index.js",
   "browser": "dist/drugwars.min.js",
@@ -38,7 +38,7 @@
     "webpack-cli": "^3.1.2",
     "webpack-visualizer-plugin": "^0.1.11"
   },
-  "author": "Bonustrack",
+  "author": "Bonustrack & HighTouch",
   "license": "MIT",
   "files": [
     "dist",

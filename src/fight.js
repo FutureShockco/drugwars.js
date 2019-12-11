@@ -3,7 +3,7 @@ import Log from './log';
 
 export default class Fight {
   constructor(json) {
-    this.randomizer = json.merkle_root;
+    this.randomizer = json.merkle_root || [];
     this.attackers = json.attacker.units || [];
     this.defenders = json.target.units || [];
     this.defendersBuildings = json.target.buildings || [];
@@ -19,16 +19,16 @@ export default class Fight {
     const defenders = new Army(this.defenders, 'defender', this.defendersTrainings, this.defendersBuildings, this.log);
     attackers.updateAliveStatus();
     defenders.updateAliveStatus();
-    const attacker_start_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
-    const defender_start_value = {supply :defenders.supply(), power : defenders.defensiveAttackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
+    const attacker_start_value = {supply :attackers.supply(), power : attackers.attackPower(this.attackersTrainings), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
+    const defender_start_value = {supply :defenders.supply(), power : defenders.defensiveAttackPower(this.defendersTrainings), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     let round = 0;
     while (attackers.alive && defenders.alive && round < 6) {
       round += 1;
-      this.log.add(`<div class="round">Round ${round} Attacker AP : ${attackers.attackPower()}% - Defender AP : ${defenders.defensiveAttackPower()}%</div>`);
+      this.log.add(`<div class="round">Round ${round} Attacker AP : ${attackers.attackPower(this.attackersTrainings)}% - Defender AP : ${defenders.defensiveAttackPower(this.defendersTrainings)}%</div>`);
       let defendersActions = defenders.chooseActions(round);
       let attackersActions = attackers.chooseActions(round);
-      attackers.processAllActions(attackersActions,defenders.defensiveAttackPower(),defendersActions,round);
-      defenders.processAllActions(defendersActions,attackers.attackPower(),attackersActions,round);
+      attackers.processAllActions(attackersActions,defenders.defensiveAttackPower(this.defendersTrainings),defendersActions,round);
+      defenders.processAllActions(defendersActions,attackers.attackPower(this.attackersTrainings),attackersActions,round);
 
     }
 
@@ -41,8 +41,8 @@ export default class Fight {
       result = 3;
       winner = 'defender';
     }
-    const attacker_end_value = {supply :attackers.supply(), power : attackers.attackPower(), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
-    const defender_end_value = {supply :defenders.supply(), power : defenders.defensiveAttackPower(), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
+    const attacker_end_value = {supply :attackers.supply(), power : attackers.attackPower(this.attackersTrainings), size: attackers.size(),cost:attackers.cost(), carry:attackers.capacity()};
+    const defender_end_value = {supply :defenders.supply(), power : defenders.defensiveAttackPower(this.defendersTrainings), size: defenders.size(),cost:defenders.cost(), carry:defenders.capacity()};
     this.log.add(`Fight ended in round ${round}, Winner is : ${winner}`);
     const receiveDate = (new Date()).getTime();
     console.log('Ended in '+ (receiveDate - sendDate +'ms'));
