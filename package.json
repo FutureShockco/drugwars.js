@@ -1,6 +1,6 @@
 {
   "name": "drugwars",
-  "version": "0.1.33",
+  "version": "0.1.36",
   "description": "A lightweight JavaScript library for DrugWars",
   "main": "lib/index.js",
   "browser": "dist/drugwars.min.js",
