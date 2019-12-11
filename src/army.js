@@ -6,7 +6,7 @@ import Troop from './troop';
 export default class Army {
   constructor(units, name, trainings, buildings, log) {
     this.units = [];
-    this.trainings = [];
+    this.trainings = trainings || [];
     this.buildings = [];
     this.groups = []
     this.alive = true;
