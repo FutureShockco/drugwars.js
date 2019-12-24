@@ -6,7 +6,7 @@
   <title>DrugWars fight simulator</title>
   <link rel="stylesheet" href="https://unpkg.com/primer-css@9.6.0/build/build.css" />
   <script src="https://unpkg.com/vue@latest/dist/vue.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.1.37"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/drugwars@0.1.39"></script> 
   <!-- <script src="../dist/drugwars.min.js"></script> -->
 </head>
 
@@ -259,7 +259,7 @@
         </h3>
       </div>
       <div class="text-center">
-      <button  v-if="log.length > 0 && !details" @click="showDetails" class="btn btn-blue mb-4 mt-4">
+      <button  v-if="log && !details" @click="showDetails" class="btn btn-blue mb-4 mt-4">
           Show Details
         </button>
       </div>
@@ -379,11 +379,11 @@
               target: { units: targetUnits , trainings:defendersTrainings, buildings:[]}
             };
             this.json = json
-            const fight = new drugwars.Fight(json).fight();
-            this.result = fight;
-            console.log('Result', this.result);
+            const fight = new drugwars.Fight(json);
+            const result = fight.fight();
+            this.result = result;
             this.details = false
-            this.log = new drugwars.Fight(json).getLog();
+            this.log = fight.getLog();
           },
           handleReset: function () {
           let targetUnits = [];
