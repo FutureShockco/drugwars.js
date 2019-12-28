@@ -89,6 +89,8 @@ export default class Troop {
       else
       currentlog+= `<br/> [${this.name.substring(0,1).toUpperCase()}] (${this.i}) ${this.undead} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
       this.dead = Number(this.amount);
+      if(this.dead <0)
+      this.dead = 0;
       this.undead = 0;
       this.kill();
     } 
@@ -97,6 +99,8 @@ export default class Troop {
     if (undead !== this.undead) {
         currentlog+= `<br/> [${this.name.substring(0,1).toUpperCase()}] (${this.i}) ${undead} x ${this.key} are left.`;
         this.dead += Number(this.undead - undead);
+        if(this.dead <0)
+        this.dead = 0;
         this.undead = undead;
       }
     }
