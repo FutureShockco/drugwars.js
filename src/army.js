@@ -90,7 +90,7 @@ export default class Army {
           }
         }
         // FIRE
-        if (unit.key === "bazooka" || unit.key === "gunman" || unit.key === "helicopter") {
+        if (unit.key === "gunman" || unit.key === "helicopter") {
           let fire = this.trainings.find(b => b.key === 'fire');
           if (fire)
             unit.attack = unit.attack + (unit.attack / 100 * fire.lvl);
