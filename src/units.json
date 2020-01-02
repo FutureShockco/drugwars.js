@@ -384,7 +384,7 @@
     "range": 7,
     "time": 102,
     "capacity": 300,
-    "supply": 6,
+    "supply": 10,
     "priority": 90,
     "coeff": 4.28,
     "special_cost":[{"name":"psylocybin","cost":25}],
