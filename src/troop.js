@@ -58,6 +58,7 @@ export default class Troop {
       healthAfterDamage = this.grouphealth ;
     } 
 
+
     if(this.skill.type === 'bulletproof' && (this.grouphealth/this.undead) < damages && this.use > 0){
       currentlog += `[${this.name.substring(0,1).toUpperCase()}] (${this.i})  with ${this.undead} x ${this.key} with <span style="color:green">${parseFloat(this.grouphealth).toFixed(0)}</span> HP take <span style="color:red">${parseFloat(damages).toFixed(0)} DMG</span> from [${current}] (${num}) with ${sender_amount} x ${name}  <span style="color:blueviolet"> "${sender_skill}"</span>.`
       currentlog += `[${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) bulletproof.`
@@ -88,17 +89,19 @@ export default class Troop {
       }
       else
       currentlog+= `<br/> [${this.name.substring(0,1).toUpperCase()}] (${this.i}) ${this.undead} x ${this.key} are <span style="color:darkorange">now dead.</span>`;
-      this.dead = Number(this.amount);
+      this.dead = this.amount;
       if(this.dead <0)
       this.dead = 0;
       this.undead = 0;
       this.kill();
     } 
     else {
-      const undead = Math.ceil(healthAfterDamage / this.health);
-    if (undead !== this.undead) {
+      const undead = Math.round(healthAfterDamage / this.health);
+    if (undead !== this.undead || undead !== this.amount) {
         currentlog+= `<br/> [${this.name.substring(0,1).toUpperCase()}] (${this.i}) ${undead} x ${this.key} are left.`;
         this.dead += Number(this.undead - undead);
+        if(this.dead>this.amount)
+        this.dead = this.amount
         if(this.dead <0)
         this.dead = 0;
         this.undead = undead;

@@ -1,13 +1,14 @@
 import { orderBy } from 'lodash';
 import Unit from './unit';
 import dwunits from './units.json';
+import dwbuildings from './buildings.json';
 import Troop from './troop';
 
 export default class Army {
   constructor(units, name, trainings, buildings, log) {
     this.units = [];
     this.trainings = trainings || [];
-    this.buildings = [];
+    this.buildings = buildings || null;
     this.groups = []
     this.alive = true;
     this.name = name;
@@ -117,6 +118,37 @@ export default class Army {
 
   chooseActions(round) {
     const actions = [];
+    if(this.buildings && round === 1)
+    {
+      let mines = this.buildings.find(b => b.key === 'hidden_mines' && b.lvl >0)
+      if(mines){
+        const attack = dwbuildings[mines.key].attack * mines.lvl
+        actions.push([attack, {type:'splash',range:8}, dwbuildings[mines.key].name, 1, 1]);
+      }
+    }
+    else if (this.buildings){
+      if(round === 2 || round === 4 || round === 6 )
+      {
+        let defense_system = this.buildings.find(b => b.key === 'defense_system' && b.lvl >0)
+        if(defense_system){
+          const attack = dwbuildings[defense_system.key].attack * defense_system.lvl
+          actions.push([attack, {type:'defense_system',range:8}, dwbuildings[defense_system.key].name, 1, 1]);
+        }
+      }
+      let troops = this.buildings.find(b => b.key === 'troops' && b.lvl >0)
+      if(troops){
+        const attack = dwbuildings[troops.key].attack * troops.lvl
+        actions.push([attack, {type:'attack',range:4}, dwbuildings[troops.key].name, 1, 1]);
+      }
+      if(round === 2)
+      {
+        let dogs = this.buildings.find(b => b.key === 'dogs' && b.lvl >0)
+        if(dogs){
+          const attack = dwbuildings[dogs.key].attack * dogs.lvl
+          actions.push([attack, {type:'dog_attack',range:4}, dwbuildings[dogs.key].name, 1, 1]);
+        }
+      }
+    }
     this.groups.forEach(group => {
       if (group.undead > 0 && group.key != 'spy' && round != 1 || group.spec.range > 4 || group.spec.skill.type === 'tastynasty' || group.key === 'hobo') {
         const attack = group.getAttack();
@@ -125,9 +157,9 @@ export default class Army {
         }
       }
       else if (group.undead > 0 && group.key != 'spy') {
-        const attack = group.getAttack() / 5;
+        const attack = group.getAttack();
         if (attack > 0) {
-          actions.push([attack, group.skill, group.key, group.i, parseInt(group.undead / 5)]);
+          actions.push([attack, group.skill, group.key, group.i, parseInt(group.undead)]);
         }
       }
       if (group.grouphealth < 0 || group.grouphealth === 0 && !group.dead) group.kill();
@@ -213,6 +245,42 @@ export default class Army {
               }
             });
             break;
+          case 'defense_system':
+              attack = {}
+              attack.author = name
+              attack.num = num
+              attack.dmg = action[0];
+              serie.push(attack);
+              unitsSorted.forEach(unit => {
+                if (unit.undead > 0 && serie.length > 0) {
+                  if(unit.type !== 'Range')
+                  {
+                    unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                  }
+                  else
+                  unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                  serie.splice(0, 1);
+                }
+              });
+              break;  
+          case 'dog_attack':
+                attack = {}
+                attack.author = name
+                attack.num = num
+                attack.dmg = action[0];
+                serie.push(attack);
+                unitsSorted.forEach(unit => {
+                  if (unit.undead > 0 && serie.length > 0) {
+                    if(unit.type !== 'Melee')
+                    {
+                      unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                    }
+                    else
+                    unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                    serie.splice(0, 1);
+                  }
+                });
+                break;  
           case 'criticalhit':
             attack = {}
             attack.author = name
@@ -333,16 +401,16 @@ export default class Army {
       if (unit.undead > 0)
         supply += dwunits[unit.key].supply * unit.undead
     });
-    let power = Math.round(100 - parseFloat(supply / 6).toFixed(0) / 100)
+    let power = Math.round(100 - parseFloat(supply / 5).toFixed(0) / 100)
     const coordination = trainings.find(b => b.key === 'coordination');
     if (coordination)
       power = power + parseInt(coordination.lvl) / 10
-    if (power >= 60) {
+    if (power >= 50) {
       if (power > 100)
         power = 100
       return power
     }
-    else return 60
+    else return 50
   }
 
   defensiveAttackPower(trainings) {
@@ -351,16 +419,16 @@ export default class Army {
       if (unit.undead > 0)
         supply += dwunits[unit.key].supply * unit.undead
     });
-    let power = Math.round(100 - parseFloat(supply / 5).toFixed(0) / 100)
+    let power = Math.round(100 - parseFloat(supply / 6).toFixed(0) / 100)
     const coordination = trainings.find(b => b.key === 'coordination');
     if (coordination)
       power = power + parseInt(coordination.lvl) / 10
-    if (power >= 60) {
+    if (power >= 50) {
       if (power > 100)
         power = 100
       return power
     }
-    else return 60
+    else return 50
   }
 
   getResult() {
@@ -373,7 +441,23 @@ export default class Army {
         };
       }
       unitsObj[group.key].amount += parseInt(group.amount);
-      unitsObj[group.key].dead += parseInt(group.dead);
+      if(this.buildings)
+      {
+        let emergency = this.buildings.find(b => b.key === 'emergency' && b.lvl >0)
+        if(emergency){
+          const save_percent = emergency.lvl / 400
+          let saved_units = group.dead * save_percent
+          if(saved_units > group.dead/2)
+          saved_units = group.dead/2;
+          unitsObj[group.key].dead += parseInt(group.dead - saved_units);
+        }
+        else {
+          unitsObj[group.key].dead += parseInt(group.dead);
+        }
+      }
+      else{
+        unitsObj[group.key].dead += parseInt(group.dead);
+      }
     })
 
     return Object.keys(unitsObj).map(key => {
