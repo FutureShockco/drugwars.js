@@ -55,7 +55,7 @@
                     <div>{{ training.key }}</div>
                     <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
                   </div>
-                  <h3 v-if="defender_type === 'player'" class="text-blue mb-2  width-full">BUILDINGS</h3>
+                  <h3 v-if="defender_type === 'player'" class="text-blue mb-2  width-full">DEFENSE</h3>
                   <div v-if="defender_type === 'player' && building.key != 'camera'" class="column col-3 unitname" v-for="building in defenderbuildings" :key="building.key">
                       <img :src="`//img.drugwars.io/buildings/${building.key}.jpg`" width="40" height="40" align="absmiddle">
                       <div>{{ building.key }}</div>
