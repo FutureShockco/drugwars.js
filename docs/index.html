@@ -307,6 +307,13 @@
                   let player = parseInt(element.split('=')[1].split('&')[0])
                   let type = element.split('=')[2].split('&')[0]
                   let amount =  parseInt(element.split('=')[3].split('&')[0])
+                    if(drugwars.buildings[type] && drugwars.buildings[type].type ==='defense')
+                    {
+                      if(targetBuildings.find(t => t.key === type))
+                      {}
+                      else
+                      targetBuildings.push({key:type,lvl:amount})
+                    }
                     if(unit === type && player === 1)
                     attackerUnits.push({key:type,amount:amount});
                     if(unit === type && this.defender_type === 'npc' && drugwars.units[type].npc)
@@ -343,12 +350,6 @@
                     attackerTrainings.push({key:training,lvl:0});
                     if(!targetTrainings.filter(item => item.key === training)[0])
                     targetTrainings.push({key:training,lvl:0});
-              });
-
-              Object.keys(drugwars.buildings).forEach(building => {
-              if(drugwars.buildings[building].type === 'defense')
-                if(!targetBuildings.filter(item => item.key === building)[0] )
-                    targetBuildings.push({key:building,lvl:0});
               });
 
             this.attacker = attackerUnits;
