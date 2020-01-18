@@ -32,6 +32,12 @@
                         <div>{{ training.key }}</div>
                         <input v-model="training.lvl" type="number" class="form-control mb-2 width-full" /></input>
                       </div>
+                      <div class="column mt-2" >
+                        <button @click="handleResetMyUnits" class="btn mb-2" >
+                          Reset my units
+                        </button>
+                      </div>
+
           </div>
           <div class="column col-2 vs">
           </div>
@@ -432,6 +438,19 @@
           });          
           this.details = false
           this.defendertrainings = targetTrainings;
+          },
+          handleResetMyUnits: function () {
+            console.log('bra')
+          let attackerUnits = [];
+          this.attackerUnits = [];
+          Object.keys(drugwars.units).forEach(unit => {
+            if (!drugwars.units[unit].npc){
+              attackerUnits.push({id:unit,key:unit,amount:0});
+            }
+          });
+          this.attacker =attackerUnits;
+
+          this.details = false
           },
           showDetails: function () {
             this.details = true
