@@ -122,8 +122,11 @@ export default class Army {
     {
       let mines = this.buildings.find(b => b.key === 'hidden_mines' && b.lvl >0)
       if(mines){
-        const attack = dwbuildings[mines.key].attack * mines.lvl
-        actions.push([attack, {type:'splash',range:8}, dwbuildings[mines.key].name, 1, 1]);
+        const attack = dwbuildings[mines.key].attack
+        for(let i=0;i<parseInt(Math.ceil(mines.lvl/5));i++)
+        {
+          actions.push([attack, {type:'splash',range:5}, dwbuildings[mines.key].name, 1, 1]);
+        }
       }
     }
     else if (this.buildings){
@@ -441,7 +444,7 @@ export default class Army {
         };
       }
       unitsObj[group.key].amount += parseInt(group.amount);
-      if(this.buildings)
+      if(this.buildings && unitsObj[group.key].amount>1)
       {
         let emergency = this.buildings.find(b => b.key === 'emergency' && b.lvl >0)
         if(emergency){
