@@ -136,7 +136,7 @@ export default class Army {
       {
         let defense_system = this.buildings.find(b => b.key === 'defense_system' && b.lvl >0)
         if(defense_system){
-          let attack = dwbuildings[defense_system.key].attack * Math.ceil(defense_system.lvl*3)
+          let attack = dwbuildings[defense_system.key].attack * Math.ceil(defense_system.lvl*12)
           if(attack>120)
           attack = 120;
           for(let i=0;i<parseInt(Math.ceil(defense_system.lvl/5));i++)
@@ -147,7 +147,7 @@ export default class Army {
       }
       let troops = this.buildings.find(b => b.key === 'troops' && b.lvl >0)
       if(troops){
-        let attack = dwbuildings[troops.key].attack * Math.ceil(troops.lvl *3)
+        let attack = dwbuildings[troops.key].attack * Math.ceil(troops.lvl *10)
         if(attack>100)
         attack = 100;
         for(let i=0;i<parseInt(Math.ceil(troops.lvl/5));i++)
