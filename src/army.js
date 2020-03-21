@@ -136,21 +136,31 @@ export default class Army {
       {
         let defense_system = this.buildings.find(b => b.key === 'defense_system' && b.lvl >0)
         if(defense_system){
-          const attack = dwbuildings[defense_system.key].attack * defense_system.lvl
-          actions.push([attack, {type:'defense_system',range:8}, dwbuildings[defense_system.key].name, 1, 1]);
+          let attack = dwbuildings[defense_system.key].attack * Math.ceil(defense_system.lvl*3)
+          if(attack>120)
+          attack = 120;
+          for(let i=0;i<parseInt(Math.ceil(defense_system.lvl/5));i++)
+          {
+            actions.push([attack, {type:'defense_system',range:6}, dwbuildings[defense_system.key].name, 1, 1]);
+          }
         }
       }
       let troops = this.buildings.find(b => b.key === 'troops' && b.lvl >0)
       if(troops){
-        const attack = dwbuildings[troops.key].attack * troops.lvl
-        actions.push([attack, {type:'attack',range:4}, dwbuildings[troops.key].name, 1, 1]);
+        let attack = dwbuildings[troops.key].attack * Math.ceil(troops.lvl *3)
+        if(attack>100)
+        attack = 100;
+        for(let i=0;i<parseInt(Math.ceil(troops.lvl/5));i++)
+        {
+          actions.push([attack, {type:'attack',range:4}, dwbuildings[troops.key].name, 1, 1]);
+        }
       }
       if(round === 2)
       {
         let dogs = this.buildings.find(b => b.key === 'dogs' && b.lvl >0)
         if(dogs){
           const attack = dwbuildings[dogs.key].attack * dogs.lvl
-          actions.push([attack, {type:'dog_attack',range:4}, dwbuildings[dogs.key].name, 1, 1]);
+          actions.push([attack, {type:'dog_attack',range:10}, dwbuildings[dogs.key].name, 1, 1]);
         }
       }
     }

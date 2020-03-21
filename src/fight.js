@@ -45,7 +45,6 @@ export default class Fight {
     this.log.add(`Fight ended in round ${round}, Winner is : ${winner}`);
     const receiveDate = (new Date()).getTime();
     console.log('Ended in '+ (receiveDate - sendDate +'ms'));
-    console.log(attackers.getResult())
     return {
       result,
       attacker: {
