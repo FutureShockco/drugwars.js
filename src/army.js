@@ -122,7 +122,9 @@ export default class Army {
     {
       let mines = this.buildings.find(b => b.key === 'hidden_mines' && b.lvl >0)
       if(mines){
-        const attack = dwbuildings[mines.key].attack
+        let attack = dwbuildings[mines.key].attack * Math.ceil(mines.lvl*5)
+        if(attack>100)
+        attack = 100;
         for(let i=0;i<parseInt(Math.ceil(mines.lvl/5));i++)
         {
           actions.push([attack, {type:'splash',range:5}, dwbuildings[mines.key].name, 1, 1]);
