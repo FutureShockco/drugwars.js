@@ -60,7 +60,7 @@ export default class Army {
       else {
         let protection = this.trainings.find(b => b.key === 'protection');
         if (protection)
-          unit.defense = unit.defense + (unit.defense / 5 * protection.lvl);
+          unit.health = unit.health + (unit.health / 100 * protection.lvl);
         //ALL MELEE
         if (unit.spec.type === 'Melee') {
           let closecombat = this.trainings.find(b => b.key === 'closecombat');
@@ -260,7 +260,16 @@ export default class Army {
             }
             unitsSorted.forEach(unit => {
               if (unit.undead > 0 && serie.length > 0) {
-                unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                let leftdamage = unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                if(leftdamage > 0){
+                  console.log('damage left from' + serie[0].author)
+    
+                  attack = {}
+                  attack.author = serie[0].author
+                  attack.num = serie[0].num
+                  attack.dmg = leftdamage;
+                  serie.push(attack);
+                }
                 serie.splice(0, 1);
               }
             });
@@ -273,12 +282,24 @@ export default class Army {
               serie.push(attack);
               unitsSorted.forEach(unit => {
                 if (unit.undead > 0 && serie.length > 0) {
+                  leftdamage = 0;
                   if(unit.type !== 'Range')
                   {
-                    unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                    leftdamage = unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
                   }
                   else
-                  unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                    leftdamage = unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+
+                  if(leftdamage > 0){
+                    console.log('damage left from' + serie[0].author)
+      
+                    attack = {}
+                    attack.author = serie[0].author
+                    attack.num = serie[0].num
+                    attack.dmg = leftdamage;
+                    serie.push(attack);
+                  }
+
                   serie.splice(0, 1);
                 }
               });
@@ -291,12 +312,24 @@ export default class Army {
                 serie.push(attack);
                 unitsSorted.forEach(unit => {
                   if (unit.undead > 0 && serie.length > 0) {
+                    leftdamage = 0;
+
                     if(unit.type !== 'Melee')
                     {
-                      unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                      leftdamage = unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
                     }
                     else
-                    unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                      leftdamage = unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+
+                    if(leftdamage > 0){
+                      console.log('damage left from' + serie[0].author)
+        
+                      attack = {}
+                      attack.author = serie[0].author
+                      attack.num = serie[0].num
+                      attack.dmg = leftdamage;
+                      serie.push(attack);
+                    }
                     serie.splice(0, 1);
                   }
                 });
@@ -316,7 +349,16 @@ export default class Army {
             serie.push(attack);
             unitsByHighestPriority.forEach(unit => {
               if (unit.undead > 0 && serie.length > 0) {
-                unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                let leftdamage = unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                if(leftdamage > 0){
+                  console.log('damage left from' + serie[0].author)
+
+                  attack = {}
+                  attack.author = serie[0].author
+                  attack.num = serie[0].num
+                  attack.dmg = leftdamage;
+                  serie.push(attack);
+                }
                 serie.splice(0, 1);
               }
             });
@@ -329,14 +371,32 @@ export default class Army {
             serie.push(attack);
             unitsByHighestPriority.forEach(unit => {
               if (unit.undead > 0 && serie.length > 0) {
-                unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                let leftdamage = unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                if(leftdamage > 0){
+                  console.log('damage left from' + serie[0].author)
+
+                  attack = {}
+                  attack.author = serie[0].author
+                  attack.num = serie[0].num
+                  attack.dmg = leftdamage;
+                  serie.push(attack);
+                }
                 serie.splice(0, 1);
               }
             });
             serie.push(attack);
             unitsSorted.forEach(unit => {
               if (unit.undead > 0 && serie.length > 0) {
-                unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                let leftdamage = unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                if(leftdamage > 0){
+                  console.log('damage left from' + serie[0].author)
+
+                  attack = {}
+                  attack.author = serie[0].author
+                  attack.num = serie[0].num
+                  attack.dmg = leftdamage;
+                  serie.push(attack);
+                }
                 serie.splice(0, 1);
               }
             });
@@ -351,7 +411,16 @@ export default class Army {
         }
         unitsSorted.forEach(unit => {
           if (unit.undead > 0 && serie.length > 0) {
-            unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+            let leftdamage = unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+            if(leftdamage > 0){
+              console.log('damage left from' + serie[0].author)
+
+              attack = {}
+              attack.author = serie[0].author
+              attack.num = serie[0].num
+              attack.dmg = leftdamage;
+              serie.push(attack);
+            }
             serie.splice(0, 1);
           }
         });

@@ -145,7 +145,7 @@
     "image": "coordination",
     "name": "Protection",
     "desc": "Tired of losing your units? offers them protection.",
-    "feature": "UNIQUE : Each level increase the defense of all units by 0.5%.",
+    "feature": "UNIQUE : Each level increase the health of all units by 1%.",
     "drugs_cost": 1000,
     "weapons_cost": 2500,
     "alcohols_cost": 3500,

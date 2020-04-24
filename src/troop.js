@@ -26,14 +26,17 @@ export default class Troop {
   }
 
   takeGroupDamages(damage,sender_skill,round,name,num,sender_amount) {
-    let damages = 5;
-    if((damage - this.defense)>0)
-    damages  = parseInt(damage - (this.defense));
+    let damages = Math.floor(damage - Math.ceil(this.defense));
+    if(damages<0)
+    damages = 1;
+    let displayDefense = Math.ceil(this.defense)
+    let damageleft = 0;
     let current =''
     if(this.name === 'attacker')
     current = "D"
     else 
     current = "A"
+
     let healthAfterDamage = this.grouphealth || 0 ;
     this.undead = Math.round(healthAfterDamage / this.health);
     let currentlog=`<div class="tick ${this.name}">`;
@@ -51,10 +54,12 @@ export default class Troop {
       healthAfterDamage = this.grouphealth ;
     }
 
-    if (this.skill.type === 'shield' && this.use > 0 && this.undead != this.amount && (this.grouphealth + (this.skill.effect * this.undead)) < this.amount * this.max_health ) {
+    if (this.skill.type === 'shield' && this.use > 0 && this.undead != this.amount) {
       currentlog += `[${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) shield. `;
       this.use -= 1;
+      if(this.grouphealth + (this.skill.effect * this.undead) < this.amount * this.max_health)
       this.grouphealth = this.grouphealth + (this.skill.effect * this.undead);
+      else this.grouhealth = this.amount * this.max_health
       healthAfterDamage = this.grouphealth ;
     } 
 
@@ -77,11 +82,10 @@ export default class Troop {
         currentlog += `[${this.name.substring(0,1).toUpperCase()}] (${this.i})  with ${this.amount} x ${this.key} with <span style="color:green">${parseFloat(this.grouphealth).toFixed(0)}</span> HP take <span style="color:red">${parseFloat(damages).toFixed(0)} DMG</span> from [${current}] (${num}) with ${sender_amount} x ${name}  <span style="color:blueviolet"> "${sender_skill}"</span>.`
       }
       else
-      currentlog += `[${this.name.substring(0,1).toUpperCase()}] (${this.i})  with ${this.undead} x ${this.key} with <span style="color:green">${parseFloat(this.grouphealth).toFixed(0)}</span> HP take <span style="color:red">${parseFloat(damages).toFixed(0)} DMG</span> from [${current}] (${num}) with ${sender_amount} x ${name}  <span style="color:blueviolet"> "${sender_skill}"</span>.`
+      currentlog += `[${this.name.substring(0,1).toUpperCase()}] (${this.i})  with ${this.undead} x ${this.key} with <span style="color:green">${parseFloat(this.grouphealth).toFixed(0)}</span> HP and <span style="color:yellow">${parseFloat(displayDefense).toFixed(0)}</span> DEF take <span style="color:red">${parseFloat(damages).toFixed(0)} DMG</span> from [${current}] (${num}) with ${sender_amount} x ${name}  <span style="color:blueviolet"> "${sender_skill}"</span>.`
       this.grouphealth = this.grouphealth - damages
       healthAfterDamage = this.grouphealth ;
     }
-
     if (healthAfterDamage <= 0) {
       if(this.key ==="hobo")
       {     
@@ -111,6 +115,9 @@ export default class Troop {
     this.log.add(
       currentlog
     );
+    if(damage > this.grouhealth && this.dead === this.amount)
+    damageleft = damage - this.grouhealth;
+    return Math.round(damageleft)
   }
 
   takeGroupBuff(points,sender_skill,round,name,num) {
