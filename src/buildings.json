@@ -79,6 +79,22 @@
     "defense": 0,
     "pay":false
   },
+  "bunker": {
+    "id": "bunker",
+    "type": "main",
+    "score": 15,
+    "name": "Bunker",
+    "desc": "The Bunker permit you to keep safe a part of your units. The number of safe units is defined by their supply and the level of the bunker.",
+    "feature": "Increase the size of the bunker by 1000 supply",
+    "drugs_cost": 2000,
+    "weapons_cost": 3500,
+    "alcohols_cost": 2500,
+    "base_price": 250,
+    "coeff": 3,
+    "attack": 0,
+    "defense": 0,
+    "pay":false
+  },
   "strategic_center": {
     "id": "strategic_center",
     "type": "main",
