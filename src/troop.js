@@ -40,7 +40,7 @@ export default class Troop {
     let healthAfterDamage = this.grouphealth || 0 ;
     this.undead = Math.round(healthAfterDamage / this.health);
     let currentlog=`<div class="tick ${this.name}">`;
-    if(this.type === 'Melee' && sender_skill === 'accuratehit' && this.type != 'tastynasty')
+    if(this.type === 'Melee' && sender_skill === 'accuratehit' && this.type !=='tastynasty')
     {
       currentlog +=`[${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${damages/10}  DMG</span> bonus.`
       this.grouphealth = this.grouphealth - (damages/10);
@@ -54,7 +54,7 @@ export default class Troop {
       healthAfterDamage = this.grouphealth ;
     }
 
-    if (this.skill.type === 'shield' && this.use > 0 && this.undead != this.amount) {
+    if (this.skill.type === 'shield' && this.use > 0 && this.undead !==this.amount) {
       currentlog += `[${this.name.substring(0, 1).toUpperCase()}] ${this.key} (${this.i}) used his (${this.use}) shield. `;
       this.use -= 1;
       if(this.grouphealth + (this.skill.effect * this.undead) < this.amount * this.max_health)

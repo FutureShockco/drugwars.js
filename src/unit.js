@@ -29,7 +29,7 @@ export default class Unit {
     else current = "A";
     let currentlog = `[${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) with <span style="color:green">${parseFloat(this.health).toFixed(0)}</span> HP and ${this.defense} DEF take <span style="color:red">${damages} DMG</span> from [${current}] ${name} (${num}) with <span style="color:blueviolet"> "${sender_skill}"</span>.`
 
-    if(this.type === 'Melee' && sender_skill === 'accuratehit' && this.type != 'tastynasty')
+    if(this.type === 'Melee' && sender_skill === 'accuratehit' && this.type !=='tastynasty')
     {
       currentlog +=` [${this.name.substring(0,1).toUpperCase()}] ${this.key} (${this.i}) took <span style="color:red"> ${damages/10}  DMG</span> bonus.`
       this.health = this.health - damages/10;

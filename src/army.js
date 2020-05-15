@@ -55,39 +55,39 @@ export default class Army {
       if (unit.key === "hobo") {
         let kamikaze = this.trainings.find(b => b.key === 'spiritwine');
         if (kamikaze)
-          unit.attack = unit.attack + (unit.attack * kamikaze.lvl / 100 );
+          unit.attack = unit.attack + (unit.attack * kamikaze.lvl / 100);
       }
       else {
         let protection = this.trainings.find(b => b.key === 'protection');
         if (protection)
-          unit.health = unit.health + (unit.health  * protection.lvl / 100);
+          unit.health = unit.health + (unit.health * protection.lvl / 100);
         //ALL MELEE
         if (unit.spec.type === 'Melee') {
           let closecombat = this.trainings.find(b => b.key === 'closecombat');
           if (closecombat)
-            unit.attack = unit.attack + (unit.attack * closecombat.lvl  / 100);
+            unit.attack = unit.attack + (unit.attack * closecombat.lvl / 100);
         }
         else {
           let firearms = this.trainings.find(b => b.key === 'firearms');
           if (firearms) {
-            unit.attack = unit.attack + (unit.attack  * firearms.lvl / 100);
+            unit.attack = unit.attack + (unit.attack * firearms.lvl / 100);
           }
         }
         if (unit.key === "sniper") {
           let sniping = this.trainings.find(b => b.key === 'sniping');
           if (sniping)
-            unit.attack = unit.attack + (unit.attack  * sniping.lvl / 100);
+            unit.attack = unit.attack + (unit.attack * sniping.lvl / 100);
         }
         else if (unit.key === "bazooka") {
           let bomb = this.trainings.find(b => b.key === 'bomb');
           if (bomb)
-            unit.attack = unit.attack + (unit.attack  * bomb.lvl / 100);
+            unit.attack = unit.attack + (unit.attack * bomb.lvl / 100);
         }
         //WEAPON
         else if (unit.key === "rowdy" || unit.key === "sniper" || unit.key === "hitman" || unit.key === "biker") {
           let firearms = this.trainings.find(b => b.key === 'weapon');
           if (firearms) {
-            unit.attack = unit.attack + (unit.attack  * firearms.lvl / 100);
+            unit.attack = unit.attack + (unit.attack * firearms.lvl / 100);
           }
         }
         // FIRE
@@ -118,53 +118,46 @@ export default class Army {
 
   chooseActions(round) {
     const actions = [];
-    if(this.buildings && round === 1)
-    {
-      let mines = this.buildings.find(b => b.key === 'hidden_mines' && b.lvl >0)
-      if(mines){
-        let attack = dwbuildings[mines.key].attack * Math.ceil(mines.lvl*5)
-        if(attack>100)
-        attack = 100;
-        for(let i=0;i<parseInt(Math.ceil(mines.lvl/5));i++)
-        {
-          actions.push([attack, {type:'splash',range:5}, dwbuildings[mines.key].name, 1, 1]);
+    if (this.buildings && round === 1) {
+      let mines = this.buildings.find(b => b.key === 'hidden_mines' && b.lvl > 0)
+      if (mines) {
+        let attack = dwbuildings[mines.key].attack * Math.ceil(mines.lvl * 5)
+        if (attack > 100)
+          attack = 100;
+        for (let i = 0; i < parseInt(Math.ceil(mines.lvl / 5)); i++) {
+          actions.push([attack, { type: 'splash', range: 5 }, dwbuildings[mines.key].name, 1, 1]);
         }
       }
     }
-    else if (this.buildings){
-      if(round === 2 || round === 4 || round === 6 )
-      {
-        let defense_system = this.buildings.find(b => b.key === 'defense_system' && b.lvl >0)
-        if(defense_system){
-          let attack = dwbuildings[defense_system.key].attack * (defense_system.lvl*12)
-          if(attack>120)
-          attack = 120;
-          for(let i=0;i<parseInt(Math.ceil(defense_system.lvl/5));i++)
-          {
-            actions.push([attack, {type:'defense_system',range:6}, dwbuildings[defense_system.key].name, 1, 1]);
+    else if (this.buildings) {
+      if (round === 2 || round === 4 || round === 6) {
+        let defense_system = this.buildings.find(b => b.key === 'defense_system' && b.lvl > 0)
+        if (defense_system) {
+          let attack = dwbuildings[defense_system.key].attack * (defense_system.lvl * 12)
+          if (attack > 120)
+            attack = 120;
+          for (let i = 0; i < parseInt(Math.ceil(defense_system.lvl / 5)); i++) {
+            actions.push([attack, { type: 'defense_system', range: 6 }, dwbuildings[defense_system.key].name, 1, 1]);
           }
         }
       }
-      let troops = this.buildings.find(b => b.key === 'troops' && b.lvl >0)
-      if(troops){
-        let attack = dwbuildings[troops.key].attack * (troops.lvl *10)
-        if(attack>100)
-        attack = 100;
-        for(let i=0;i<parseInt(Math.ceil(troops.lvl/5));i++)
-        {
-          actions.push([attack, {type:'attack',range:4}, dwbuildings[troops.key].name, 1, 1]);
+      let troops = this.buildings.find(b => b.key === 'troops' && b.lvl > 0)
+      if (troops) {
+        let attack = dwbuildings[troops.key].attack * (troops.lvl * 10)
+        if (attack > 100)
+          attack = 100;
+        for (let i = 0; i < parseInt(Math.ceil(troops.lvl / 5)); i++) {
+          actions.push([attack, { type: 'attack', range: 4 }, dwbuildings[troops.key].name, 1, 1]);
         }
       }
-      if(round === 2)
-      {
-        let dogs = this.buildings.find(b => b.key === 'dogs' && b.lvl >0)
-        if(dogs){
-          let attack = dwbuildings[dogs.key].attack * (dogs.lvl*5)
-          if(attack>100)
-          attack = 80;
-          for(let i=0;i<parseInt(Math.ceil(dogs.lvl/5));i++)
-          {
-            actions.push([attack, {type:'dog_attack',range:10}, dwbuildings[dogs.key].name, 1, 1]);
+      if (round === 2) {
+        let dogs = this.buildings.find(b => b.key === 'dogs' && b.lvl > 0)
+        if (dogs) {
+          let attack = dwbuildings[dogs.key].attack * (dogs.lvl * 5)
+          if (attack > 100)
+            attack = 80;
+          for (let i = 0; i < parseInt(Math.ceil(dogs.lvl / 5)); i++) {
+            actions.push([attack, { type: 'dog_attack', range: 10 }, dwbuildings[dogs.key].name, 1, 1]);
           }
         }
       }
@@ -266,44 +259,42 @@ export default class Army {
             });
             break;
           case 'defense_system':
-              attack = {}
-              attack.author = name
-              attack.num = num
-              attack.dmg = action[0];
-              serie.push(attack);
-              unitsSorted.forEach(unit => {
-                if (unit.undead > 0 && serie.length > 0) {
-                  if(unit.type !== 'Range')
-                  {
-                  unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
-                  }
-                  else
+            attack = {}
+            attack.author = name
+            attack.num = num
+            attack.dmg = action[0];
+            serie.push(attack);
+            unitsSorted.forEach(unit => {
+              if (unit.undead > 0 && serie.length > 0) {
+                if (unit.type !== 'Range') {
+                  unit.takeGroupDamages((serie[0].dmg / 2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                }
+                else
                   unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
 
-                  serie.splice(0, 1);
-                }
-              });
-              break;  
+                serie.splice(0, 1);
+              }
+            });
+            break;
           case 'dog_attack':
-                attack = {}
-                attack.author = name
-                attack.num = num
-                attack.dmg = action[0];
-                serie.push(attack);
-                unitsSorted.forEach(unit => {
-                  if (unit.undead > 0 && serie.length > 0) {
+            attack = {}
+            attack.author = name
+            attack.num = num
+            attack.dmg = action[0];
+            serie.push(attack);
+            unitsSorted.forEach(unit => {
+              if (unit.undead > 0 && serie.length > 0) {
 
-                    if(unit.type !== 'Melee')
-                    {
-                      unit.takeGroupDamages((serie[0].dmg/2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
-                    }
-                    else
-                      unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                if (unit.type !== 'Melee') {
+                  unit.takeGroupDamages((serie[0].dmg / 2) * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                }
+                else
+                  unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
 
-                    serie.splice(0, 1);
-                  }
-                });
-                break;  
+                serie.splice(0, 1);
+              }
+            });
+            break;
           case 'criticalhit':
             attack = {}
             attack.author = name
@@ -330,14 +321,15 @@ export default class Army {
             attack.author = name
             attack.num = num
             attack.dmg = parseInt(action[0]);
-            serie.push(attack);
-            unitsByHighestPriority.forEach(unit => {
-              if (unit.undead > 0 && serie.length > 0) {
-                unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
-
-                serie.splice(0, 1);
-              }
-            });
+            if (round > 1) {
+              serie.push(attack);
+              unitsByHighestPriority.forEach(unit => {
+                if (unit.undead > 0 && serie.length > 0) {
+                  unit.takeGroupDamages(serie[0].dmg * attackpower / 100, skill_type, round, serie[0].author, serie[0].num, undead);
+                  serie.splice(0, 1);
+                }
+              });
+            }
             serie.push(attack);
             unitsSorted.forEach(unit => {
               if (unit.undead > 0 && serie.length > 0) {
@@ -345,6 +337,7 @@ export default class Army {
                 serie.splice(0, 1);
               }
             });
+
             break;
           default:
             attack = {}
@@ -467,21 +460,20 @@ export default class Army {
         };
       }
       unitsObj[group.key].amount += parseInt(group.amount);
-      if(this.buildings && unitsObj[group.key].amount>1)
-      {
-        let emergency = this.buildings.find(b => b.key === 'emergency' && b.lvl >0)
-        if(emergency){
+      if (this.buildings && unitsObj[group.key].amount > 1) {
+        let emergency = this.buildings.find(b => b.key === 'emergency' && b.lvl > 0)
+        if (emergency) {
           const save_percent = emergency.lvl / 400
           let saved_units = group.dead * save_percent
-          if(saved_units > group.dead/2)
-          saved_units = group.dead/2;
+          if (saved_units > group.dead / 2)
+            saved_units = group.dead / 2;
           unitsObj[group.key].dead += parseInt(group.dead - saved_units);
         }
         else {
           unitsObj[group.key].dead += parseInt(group.dead);
         }
       }
-      else{
+      else {
         unitsObj[group.key].dead += parseInt(group.dead);
       }
     })
