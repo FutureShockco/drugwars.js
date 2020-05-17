@@ -1,55 +1,55 @@
 {
-  "name": "drugwars",
-  "version": "0.1.65",
-  "description": "A lightweight JavaScript library for DrugWars",
-  "main": "lib/index.js",
-  "browser": "dist/drugwars.min.js",
-  "scripts": {
-    "build": "taskr cjs && webpack",
-    "lint": "eslint 'src/**/*.js' --fix",
-    "prettier": "prettier 'src/**/*.js' --list-different",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
-  },
-  "dependencies": {
-    "debug": "^4.1.1",
-    "kbyte": "0.0.4",
-    "lodash": "^4.17.15"
-  },
-  "devDependencies": {
-    "@taskr/babel": "^1.1.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.0.3",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.7.0",
-    "bluebird": "^3.5.3",
-    "eslint": "^5.8.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-config-prettier": "^2.10.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^2.7.0",
-    "jest": "^23.6.0",
-    "prettier": "^1.14.3",
-    "taskr": "^1.1.0",
-    "webpack": "^4.24.0",
-    "webpack-cli": "^3.1.2",
-    "webpack-visualizer-plugin": "^0.1.11"
-  },
-  "author": "Bonustrack & HighTouch",
-  "license": "MIT",
-  "files": [
-    "dist",
-    "lib",
-    "src"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/FutureShockco/drugwars.js.git"
-  },
-  "bugs": {
-    "url": "https://github.com/FutureShockco/drugwars.js/issues"
-  }
+    "name": "drugwars",
+    "version": "0.1.68",
+    "description": "A lightweight JavaScript library for DrugWars",
+    "main": "lib/index.js",
+    "browser": "dist/drugwars.min.js",
+    "scripts": {
+        "build": "taskr cjs && webpack",
+        "lint": "eslint 'src/**/*.js' --fix",
+        "prettier": "prettier 'src/**/*.js' --list-different",
+        "test": "jest",
+        "test:coverage": "jest --coverage"
+    },
+    "dependencies": {
+        "debug": "^4.1.1",
+        "kbyte": "0.0.4",
+        "lodash": "^4.17.15"
+    },
+    "devDependencies": {
+        "@taskr/babel": "^1.1.0",
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^8.0.3",
+        "babel-loader": "^7.1.5",
+        "babel-plugin-add-module-exports": "^0.2.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-env": "^1.7.0",
+        "bluebird": "^3.5.3",
+        "eslint": "^5.8.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-config-prettier": "^2.10.0",
+        "eslint-plugin-import": "^2.14.0",
+        "eslint-plugin-prettier": "^2.7.0",
+        "jest": "^23.6.0",
+        "prettier": "^1.14.3",
+        "taskr": "^1.1.0",
+        "webpack": "^4.24.0",
+        "webpack-cli": "^3.1.2",
+        "webpack-visualizer-plugin": "^0.1.11"
+    },
+    "author": "Bonustrack & HighTouch",
+    "license": "MIT",
+    "files": [
+        "dist",
+        "lib",
+        "src"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/FutureShockco/drugwars.js.git"
+    },
+    "bugs": {
+        "url": "https://github.com/FutureShockco/drugwars.js/issues"
+    }
 }
