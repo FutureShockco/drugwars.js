@@ -29,7 +29,7 @@ export default class Fight {
         const defenderPower = defender_start_value.power
         const attackerPower = attacker_start_value.power
         let round = 0;
-        while (attackers.alive && defenders.alive && round < 6 || (this.defendersBuildings.find(b => b.key === 'hidden_mines' && b.lvl > 0) && round === 0)) {
+        while (attackers.alive && defenders.alive && round < 7 || (this.defendersBuildings.find(b => b.key === 'hidden_mines' && b.lvl > 0) && round === 0)) {
             round += 1;
             this.log.add(`<div class="round">Round ${round} Attacker AP : ${attackers.attackPower(this.attackersTrainings)}% - Defender AP : ${defenders.defensiveAttackPower(this.defendersTrainings)}%</div>`);
             let defendersActions = defenders.chooseActions(round);

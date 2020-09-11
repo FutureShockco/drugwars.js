@@ -497,7 +497,7 @@
     "score": 98,
     "name": "Hidden Mines",
     "desc": "Put some mines around your base and suprise your opponents!",
-    "feature": "Splash damage triggered once at the first round",
+    "feature": "Splash damage triggered once at the first round (Each 5 level hit 3 enemies)",
     "base_price": 5000,
     "drugs_cost": 1000,
     "weapons_cost": 1000,
