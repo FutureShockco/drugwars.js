@@ -415,11 +415,11 @@ export default class Army {
         const coordination = trainings.find(b => b.key === 'coordination');
         if (coordination)
             power = power + parseInt(coordination.lvl) / 10
-        if (power >= 50) {
+        if (power >= 60) {
             if (power > 100)
                 power = 100
             return power
-        } else return 50
+        } else return 60
     }
 
     defensiveAttackPower(trainings) {
@@ -432,11 +432,11 @@ export default class Army {
         const coordination = trainings.find(b => b.key === 'coordination');
         if (coordination)
             power = power + parseInt(coordination.lvl) / 10
-        if (power >= 50) {
+        if (power >= 65) {
             if (power > 100)
                 power = 100
             return power
-        } else return 50
+        } else return 65
     }
 
     getResult() {

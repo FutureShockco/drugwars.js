@@ -21,11 +21,7 @@ export default class Fight {
         defenders.updateAliveStatus();
         const attacker_start_value = { supply: attackers.supply(), power: attackers.attackPower(this.attackersTrainings), size: attackers.size(), cost: attackers.cost(), carry: attackers.capacity() };
         const defender_start_value = { supply: defenders.supply(), power: defenders.defensiveAttackPower(this.defendersTrainings), size: defenders.size(), cost: defenders.cost(), carry: defenders.capacity() };
-        if (attacker_start_value.size === defender_start_value.size) {
 
-        } else if (attacker_start_value.size > defender_start_value.size)
-            attacker_start_value.power = attacker_start_value.power - 10
-        else defender_start_value.power = defender_start_value.power - 10
         const defenderPower = defender_start_value.power
         const attackerPower = attacker_start_value.power
         let round = 0;
