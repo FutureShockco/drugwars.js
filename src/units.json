@@ -474,7 +474,7 @@
     "name": "AH-64 Apache",
     "desc": "A typical twin-turboshaft attack helicopter.",
     "feature": "MULTI TARGET : After the first round target the lowest and the highest enemies at once.",
-    "attack": 60,
+    "attack": 30,
     "health": 70,
     "defense":10,
     "weapon_defense":10,
